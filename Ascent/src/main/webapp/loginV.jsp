@@ -15,7 +15,6 @@
 		padding: 50px ;
 	}
 </style>
-
 <script type="text/javascript">
 	let alertTxt = '<%=(String)session.getAttribute("alertTxt")%>';
 	if(alertTxt!== "null"){
