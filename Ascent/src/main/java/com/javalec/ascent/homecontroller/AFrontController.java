@@ -97,7 +97,7 @@ public class AFrontController extends HttpServlet {
 			case ("/login.do"):
 				command = new ALoginCommand();
 				command.execute(request, response);
-				viewPage = "loginCheckH.jsp";
+				viewPage = (String) request.getAttribute("viewPage");
 				break;
 			// logOut
 			case("/logout.do"):
