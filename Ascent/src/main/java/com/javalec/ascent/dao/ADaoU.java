@@ -96,4 +96,98 @@ DataSource dataSource;
 		} //finally
 		return dtoADs;
 	} // login 
+	
+	// sign out
+	public void signout(String userID, String userPW) {
+				
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+				
+		try {
+			//DB연결메서드 불러오기
+			connection = dataSource.getConnection(); 
+			//pstmt 생성
+			String query = "update userinfo set u_ResignDate = now() where userID = ? and userPW = ?" ;
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, userID);
+			preparedStatement.setString(2, userPW);
+			//실행 
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { 
+				try {
+					if(preparedStatement !=null) preparedStatement.close();
+					if(connection != null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+	}//sign out
+	
+	// find ID
+		public String findID(String userName, String userEmail) {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultSet = null;
+			String id = null;
+			
+			try {
+				connection = dataSource.getConnection();
+				String query = "select userID from userinfo where userName = ? and userEmail = ? and u_ResignDate is null";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, userName);
+				preparedStatement.setString(2, userEmail);
+				resultSet = preparedStatement.executeQuery();
+				
+				if(resultSet.next()) {
+					id = resultSet.getString("userID");
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally {
+					try {
+						if(resultSet != null) resultSet.close();
+						if(preparedStatement != null) preparedStatement.close();
+						if(connection != null) connection.close();
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+			} //finally
+			return id;
+		} // findID
+	
+		// find PW
+		public String findPW(String userID ,String userName, String userEmail) {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultSet = null;
+			String pw = null;
+			
+			try {
+				connection = dataSource.getConnection();
+				String query = "select userPW from userinfo where userID =? and userName = ? and userEmail = ? and u_ResignDate is null";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, userID);
+				preparedStatement.setString(2, userName);
+				preparedStatement.setString(3, userEmail);
+				resultSet = preparedStatement.executeQuery();
+				
+				if(resultSet.next()) {
+					pw = resultSet.getString("userPW");
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally {
+				try {
+					if(resultSet != null) resultSet.close();
+					if(preparedStatement != null) preparedStatement.close();
+					if(connection != null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			} //finally
+			return pw;
+		} // find PW
+		
 }

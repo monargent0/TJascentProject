@@ -19,6 +19,8 @@ import com.javalec.ascent.command.ACounselDeleteCommand;
 import com.javalec.ascent.command.ACounselDetailCommand;
 import com.javalec.ascent.command.ACounselListCommand;
 import com.javalec.ascent.command.ACounselWriteCommand;
+import com.javalec.ascent.command.AFindIDCommand;
+import com.javalec.ascent.command.AFindPWCommand;
 import com.javalec.ascent.command.ALoginCommand;
 import com.javalec.ascent.command.ALogoutCommand;
 import com.javalec.ascent.command.ANoticeBoardListCommand;
@@ -55,7 +57,6 @@ public class AFrontController extends HttpServlet {
      * Default constructor. 
      */
     public AFrontController() {
-        // TODO Auto-generated constructor stub
 
     }
 
@@ -63,7 +64,6 @@ public class AFrontController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		actionDo(request,response);
 
 	}
@@ -72,7 +72,6 @@ public class AFrontController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		actionDo(request,response);
 	}
 
@@ -97,14 +96,19 @@ public class AFrontController extends HttpServlet {
 				command = new ALoginCommand();
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
-				break;
-			// logOut
-			case("/logOut.do"):
-				command = new ALogoutCommand();
+				break;		
+			// 아이디 찾기
+			case("/findID.do") :
+				command = new AFindIDCommand();
 				command.execute(request, response);
-				viewPage = "mainV.jsp";
+				viewPage = "findIDRV.jsp";
 				break;
-				
+			// 비밀번호 찾기
+			case("/findPW.do") :
+				command = new AFindPWCommand();
+				command.execute(request, response);
+				viewPage = "findPWRV.jsp";
+				break;
 			// userDetail, 개인정보 보기
 			case("/userDetail.do"):
 				command = new AUserDetailCommand();
@@ -121,9 +125,8 @@ public class AFrontController extends HttpServlet {
 			case("/signOut.do"):
 				command = new ASignoutCommand();
 				command.execute(request, response);
-				viewPage = "mainV.jsp";
+				viewPage = (String) request.getAttribute("viewPage");
 				break;
-				
 			// orderList, 주문내역
 			case("/orderList.do"):
 				command = new AOrderListCommand();
