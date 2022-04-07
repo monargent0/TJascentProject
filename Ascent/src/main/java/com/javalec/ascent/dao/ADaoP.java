@@ -33,7 +33,7 @@ public class ADaoP {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query1 = "select productCode,productName,productPrice,productSize,productDetail,category_categoryCode from product where productCode like 'P-%'";
+			String query1 = "select productCode,productName,productPrice,productSize,productImages,category_categoryCode from product where productCode like 'P-%'";
 			ps = conn.prepareStatement(query1);
 			rs = ps.executeQuery();
 			
@@ -42,10 +42,10 @@ public class ADaoP {
 				String productName = rs.getString("productName");
 				int productPrice = rs.getInt("productPrice");
 				String productSize = rs.getString("productSize");
-				String productDetail = rs.getString("productDetail");
+				String productImages = rs.getString("productImages");
 				String category_categoryCode = rs.getString("category_categoryCode");
 				
-				ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productDetail, category_categoryCode);
+				ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
 				dtoPs.add(dtoP);
 				
 			}

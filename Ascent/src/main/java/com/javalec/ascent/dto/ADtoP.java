@@ -7,7 +7,7 @@ public class ADtoP {
 	String productName;
 	int productPrice;
 	String productSize;
-	String productDetail;
+	String productImages;
 	String category_categoryCode;
 	
 	public ADtoP() {
@@ -46,12 +46,12 @@ public class ADtoP {
 		this.productSize = productSize;
 	}
 
-	public String getProductDetail() {
-		return productDetail;
+	public String getProductImages() {
+		return productImages;
 	}
 
-	public void setProductDetail(String productDetail) {
-		this.productDetail = productDetail;
+	public void setProductImages(String productImages) {
+		this.productImages = productImages;
 	}
 
 	public String getCategory_categoryCode() {
@@ -62,15 +62,19 @@ public class ADtoP {
 		this.category_categoryCode = category_categoryCode;
 	}
 
-	public ADtoP(String productCode, String productName, int productPrice, String productSize, String productDetail,
+	public ADtoP(String productCode, String productName, int productPrice, String productSize, String productImages,
 			String category_categoryCode) {
 		super();
 		this.productCode = productCode;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productSize = productSize;
-		this.productDetail = productDetail;
+		this.productImages = productImages;
 		this.category_categoryCode = category_categoryCode;
 	}
+
+	
+
+	
 	
 }

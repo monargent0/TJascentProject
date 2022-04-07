@@ -13,6 +13,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
     <!-- Bootstrap core CSS -->
 	<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" href="css/productlist.css" rel="stylesheet" >
 	  <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -98,9 +99,13 @@
  .card-body {
          height:100px;
         }
- .py-5 div:hover {
+ . div:hover {
        border-color:#333;
+      
        }
+  .col {
+  padding:500px 0 0 100px;
+  }     
 </style>
 <body>
 <!-- 상단홈바 -->
@@ -181,42 +186,85 @@
                 </div>
             </div>
         </header>
-        <!-- Section -->
+       
      
-        
-            <!-- 실행해보기 -->
-          
-           <table border="1" >
-			<tr>
-				<th>이미지</th>				<%--first row --%>
-				<th>이름</th>
-				<th>가격</th>
-				<th>용량</th>
-			</tr>
-			<c:forEach items="${APp01list }" var="dto"><%--반복문,dto --%>
-				<tr>
-				<td><img src="${dto.productDetail}" width="300"></td>				
-				<td>${dto.productName }</td>
-				<td>${dto.productPrice }</td>
-				<td>${dto.productSize }</td>			
-			</tr>		
-			</c:forEach>
-		 </table>
+       
+		  <!-- 실행해보기 -->
+       <%--    <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <div class="card">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <a class="card-image" href="/Pplist.view.do"><img class="card-img-top" src="${dto.productImages}" alt="" width="100%"/></a>
+                            <!-- Product details-->
+                            <div class="card-body">
+                                <div class="text-center">
+                                   <p class="pd.name">${dto.productName }</p>
+                                    <!-- Product size-->
+                             		<p class="pd.size">${dto.productSize }ml</p>
+                                    <!-- Product price-->
+                             		<p class="pd.price">${dto.productPrice }원</p>
+                                </div>
+                            </div>
+               			   --%>
+               			  
+               			   <section class="py-5">
+               			  <div class="row row-cols-1 row-cols-md-4 g-4">
+		  					<c:forEach items="${appList }" var="dto"><%--반복문,dto --%>
+ 								 <div class="col">
+   									 <div class="card h-100">
+   									  <a class="card-image" href="/Pplist.view.do"><img class="card-img-top" src="${dto.productImages}" alt="" width="100%"/></a>
+     								 <div class="card-body">
+     								  <div class="text-center">
+                              	     <p class="pd.name">${dto.productName }</p>
+                                    <!-- Product size-->
+                             		<p class="pd.size">${dto.productSize }ml</p>
+                                    <!-- Product price-->
+                             		<p class="pd.price">${dto.productPrice }원</p>
+    				 		 </div>
+    				 		 </div>
+    				 		 </div>
+    				 		 </div>
+               		 </c:forEach>
+  				  </div>
+  				  </section>
+                            <!-- Product actions-->
+                           
+                            		 <!-- Product name-
+                            		  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <!-- 찜  
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">옵션 보기 </a></div>
+                                <br> -->
+                               <!--   <div class="text-center"><j class="text-center bi bi-heart" style="font-size:1.7rem;cursor: pointer;" href="#"></j></div>
+                        	        <script>
+                           		     var j = 0;
+            						$('j').on('click', function() {
+            						if (j == 0) {
+            							$(this).attr('class', 'bi-heart-fill');
+            							j++;
+            						} else if (j == 1) {
+            							$(this).attr('class', 'bi-heart');
+            							j--;
+            						}
+            					});
+                            	    </script> -->
+                            </div>
+                    	    </div>
+                   		 </div>
+                   	 </div>
+                 
+               </section>
          
            
            
            
            
            
-             <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; ascent 2022</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-            
+           
+           
+           
+           
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
