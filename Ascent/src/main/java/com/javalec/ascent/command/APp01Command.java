@@ -14,7 +14,7 @@ public class APp01Command implements ACommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		ADaoP dao = new ADaoP();
-		ArrayList<ADtoP> dtos = dao.apPlist();
+		ArrayList<ADtoP> dtos = dao.appList();
 		request.setAttribute("APp01list", dtos);
 		
 	System.out.println(dtos);

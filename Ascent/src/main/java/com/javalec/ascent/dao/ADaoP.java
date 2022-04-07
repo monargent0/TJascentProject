@@ -25,7 +25,7 @@ public class ADaoP {
 		
 	}
 	
-	public ArrayList<ADtoP> apPlist() {
+	public ArrayList<ADtoP> appList() {
 		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();
 		Connection conn = null;
 		PreparedStatement ps = null;
