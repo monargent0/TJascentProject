@@ -88,7 +88,7 @@ public class AFrontController extends HttpServlet {
 		
 		switch (domain) {
 		case("/main.do"):
-			viewPage = "main.jsp";
+			viewPage = "mainV.jsp";
 			break;
 		case("/Pplist.do"):	
 			command = new APp01Command() ;
