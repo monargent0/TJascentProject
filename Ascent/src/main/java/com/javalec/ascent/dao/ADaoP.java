@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.javalec.ascent.dto.ADtoP;
@@ -14,6 +16,12 @@ public class ADaoP {
 	DataSource dataSource;
 	
 	public ADaoP() {
+		try {
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/ascent");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
