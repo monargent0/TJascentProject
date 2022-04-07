@@ -155,7 +155,7 @@
 	</div>
 	
 	<div>
-		<form action="signin.do" method="get" name="signin">
+		<form action="signIn.do" method="get" name="signin">
 			<div>
 				<div>
 					<label>Name</label>

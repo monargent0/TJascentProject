@@ -35,7 +35,7 @@
 	</div>  
  
  	<div>
- 		<form action="login.do" method="get">
+ 		<form action="logIn.do" method="get">
  			<div>
 				<div>
 					ID :

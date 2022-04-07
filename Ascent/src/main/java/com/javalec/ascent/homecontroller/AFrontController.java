@@ -87,19 +87,19 @@ public class AFrontController extends HttpServlet {
 		
 		switch (domain) {
 			// signUp, 회원가입
-			case("/signin.do") :
+			case("/signIn.do") :
 				command = new ASigninCommand();
 				command.execute(request, response);
-				viewPage = "loginV.jsp";
+				viewPage = "logInV.jsp";
 				break;
 			// logIn
-			case ("/login.do"):
+			case ("/logIn.do"):
 				command = new ALoginCommand();
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
 				break;
 			// logOut
-			case("/logout.do"):
+			case("/logOut.do"):
 				command = new ALogoutCommand();
 				command.execute(request, response);
 				viewPage = "mainV.jsp";
@@ -118,7 +118,7 @@ public class AFrontController extends HttpServlet {
 				viewPage = "userDetail.do";
 				break;
 			// signOut, 회원탈퇴
-			case("/signout.do"):
+			case("/signOut.do"):
 				command = new ASignoutCommand();
 				command.execute(request, response);
 				viewPage = "mainV.jsp";
