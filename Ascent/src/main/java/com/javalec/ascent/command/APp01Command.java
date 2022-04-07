@@ -17,7 +17,7 @@ public class APp01Command implements ACommand {
 		ArrayList<ADtoP> dtos = dao.appList();
 		request.setAttribute("APp01list", dtos);
 		
-	System.out.println(dtos);
+//	System.out.println(dtos);
 	
 	}
 
