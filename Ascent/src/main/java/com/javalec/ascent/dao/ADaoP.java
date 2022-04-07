@@ -33,7 +33,7 @@ public class ADaoP {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query1 = "select productCode,productName,productPrice,productSize,productDetail,category_categoryCode from product";
+			String query1 = "select productCode,productName,productPrice,productSize,productDetail,category_categoryCode from product where productCode like 'P-%'";
 			ps = conn.prepareStatement(query1);
 			rs = ps.executeQuery();
 			

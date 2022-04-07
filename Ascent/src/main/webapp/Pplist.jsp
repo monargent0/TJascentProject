@@ -195,7 +195,7 @@
 			</tr>
 			<c:forEach items="${APp01list }" var="dto"><%--반복문,dto --%>
 				<tr>
-				<td>${dto.productDetail}</td>				
+				<td><img src="${dto.productDetail}" width="300"></td>				
 				<td>${dto.productName }</td>
 				<td>${dto.productPrice }</td>
 				<td>${dto.productSize }</td>			
