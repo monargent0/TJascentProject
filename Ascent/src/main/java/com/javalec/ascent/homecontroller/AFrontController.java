@@ -139,6 +139,95 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = "pPList.jsp";
 				break;
+				
+			// productList, 상품목록
+				
+			//floral
+			case("/sFList.do"):	
+				command = new ASflCommand() ;
+				command.execute(request, response);
+				viewPage = "sFLlist.jsp";
+				break;		
+			//citrus
+			case("/sCList.do"):	
+				command = new AScCommand() ;
+				command.execute(request, response);
+				viewPage = "sFLlist.jsp";
+				break;		
+			//Fresh
+			case("/sFRList.do"):	
+				command = new ASfrCommand() ;
+				command.execute(request, response);
+				viewPage = "sFLlist.jsp";
+				break;		
+			//Fruity
+			case("/sFTList.do"):	
+				command = new ASftCommand() ;
+				command.execute(request, response);
+				viewPage = "sFLlist.jsp";
+				break;		
+			//Woody
+			case("/sWList.do"):	
+				command = new ASwCommand() ;
+				command.execute(request, response);
+				viewPage = "sFLlist.jsp";
+				break;		
+			
+			//Oriental
+			case("/sOList.do"):	
+				command = new ASoCommand() ;
+				command.execute(request, response);
+				viewPage = "sFLlist.jsp";
+				break;		
+			//Perfume
+			case("/pPList.do"):	
+				command = new APpCommand() ;
+				command.execute(request, response);
+				viewPage = "pPList.jsp";
+				break;	
+			//toilette
+			case("/pTList.do"):	
+				command = new APtCommand() ;
+				command.execute(request, response);
+				viewPage = "pTList.jsp";
+				break;		
+			//cologne
+			case("/pCList.do"):	
+				command = new APcCommand() ;
+				command.execute(request, response);
+				viewPage = "pCList.jsp";
+				break;			
+			//bodyspray
+			case("/pBList.do"):	
+				command = new APbCommand() ;
+				command.execute(request, response);
+				viewPage = "pBList.jsp";
+				break;
+				
+				// counselList, 1대1문의 조회
+			case("/counselList.do") :
+				command = new ACounselListCommand();
+				command.execute(request, response);
+				viewPage = "counselListV.jsp";
+				break;
+			// counselWrite, 1대1문의 작성
+			case("/counselWrite.do"):
+				command = new ACounselWriteCommand();
+				command.execute(request, response);
+				viewPage = "counselList.do";
+				break;
+			// counselDetail, 1대1문의 상세
+			case("/counselDetail.do"):
+				command = new ACounselDetailCommand();
+				command.execute(request, response);
+				viewPage = "counselDetailV.jsp";
+				break;
+			// counselDelete, 1대1문의 삭제
+			case("/counselDelete.do"):
+				command = new ACounselDeleteCommand();
+				command.execute(request, response);
+				viewPage = "counselList.do";
+				break;
 			// 미완성	
 //			// orderList, 주문내역
 //			case("/orderList.do"):
@@ -205,30 +294,6 @@ public class AFrontController extends HttpServlet {
 //				command.execute(request, response);
 //				break;
 //				
-			// counselList, 1대1문의 조회
-			case("/counselList.do") :
-				command = new ACounselListCommand();
-				command.execute(request, response);
-				viewPage = "counselListV.jsp";
-				break;
-			// counselWrite, 1대1문의 작성
-			case("/counselWrite.do"):
-				command = new ACounselWriteCommand();
-				command.execute(request, response);
-				viewPage = "counselList.do";
-				break;
-			// counselDetail, 1대1문의 상세
-			case("/counselDetail.do"):
-				command = new ACounselDetailCommand();
-				command.execute(request, response);
-				viewPage = "counselDetailV.jsp";
-				break;
-			// counselDelete, 1대1문의 삭제
-			case("/counselDelete.do"):
-				command = new ACounselDeleteCommand();
-				command.execute(request, response);
-				viewPage = "counselList.do";
-				break;
 //				
 //			// categoryList, 카테고리
 //			case("/categoryList.do"):
