@@ -13,7 +13,6 @@ import com.javalec.ascent.command.ACartDeleteCommand;
 import com.javalec.ascent.command.ACartListCommand;
 import com.javalec.ascent.command.ACartModifyCommand;
 import com.javalec.ascent.command.ACartWriteCommand;
-import com.javalec.ascent.command.ACategoryListCommand;
 import com.javalec.ascent.command.ACommand;
 import com.javalec.ascent.command.ACounselDeleteCommand;
 import com.javalec.ascent.command.ACounselDetailCommand;
@@ -141,69 +140,69 @@ public class AFrontController extends HttpServlet {
 				break;
 				
 			// productList, 상품목록
-				
-			//floral
-			case("/sFList.do"):	
-				command = new ASflCommand() ;
-				command.execute(request, response);
-				viewPage = "sFLlist.jsp";
-				break;		
-			//citrus
-			case("/sCList.do"):	
-				command = new AScCommand() ;
-				command.execute(request, response);
-				viewPage = "sFLlist.jsp";
-				break;		
-			//Fresh
-			case("/sFRList.do"):	
-				command = new ASfrCommand() ;
-				command.execute(request, response);
-				viewPage = "sFLlist.jsp";
-				break;		
-			//Fruity
-			case("/sFTList.do"):	
-				command = new ASftCommand() ;
-				command.execute(request, response);
-				viewPage = "sFLlist.jsp";
-				break;		
-			//Woody
-			case("/sWList.do"):	
-				command = new ASwCommand() ;
-				command.execute(request, response);
-				viewPage = "sFLlist.jsp";
-				break;		
-			
-			//Oriental
-			case("/sOList.do"):	
-				command = new ASoCommand() ;
-				command.execute(request, response);
-				viewPage = "sFLlist.jsp";
-				break;		
-			//Perfume
-			case("/pPList.do"):	
-				command = new APpCommand() ;
-				command.execute(request, response);
-				viewPage = "pPList.jsp";
-				break;	
-			//toilette
-			case("/pTList.do"):	
-				command = new APtCommand() ;
-				command.execute(request, response);
-				viewPage = "pTList.jsp";
-				break;		
-			//cologne
-			case("/pCList.do"):	
-				command = new APcCommand() ;
-				command.execute(request, response);
-				viewPage = "pCList.jsp";
-				break;			
-			//bodyspray
-			case("/pBList.do"):	
-				command = new APbCommand() ;
-				command.execute(request, response);
-				viewPage = "pBList.jsp";
-				break;
-				
+//				
+//			//floral
+//			case("/sFList.do"):	
+//				command = new ASflCommand() ;
+//				command.execute(request, response);
+//				viewPage = "sFLlist.jsp";
+//				break;		
+//			//citrus
+//			case("/sCList.do"):	
+//				command = new AScCommand() ;
+//				command.execute(request, response);
+//				viewPage = "sFLlist.jsp";
+//				break;		
+//			//Fresh
+//			case("/sFRList.do"):	
+//				command = new ASfrCommand() ;
+//				command.execute(request, response);
+//				viewPage = "sFLlist.jsp";
+//				break;		
+//			//Fruity
+//			case("/sFTList.do"):	
+//				command = new ASftCommand() ;
+//				command.execute(request, response);
+//				viewPage = "sFLlist.jsp";
+//				break;		
+//			//Woody
+//			case("/sWList.do"):	
+//				command = new ASwCommand() ;
+//				command.execute(request, response);
+//				viewPage = "sFLlist.jsp";
+//				break;		
+//			
+//			//Oriental
+//			case("/sOList.do"):	
+//				command = new ASoCommand() ;
+//				command.execute(request, response);
+//				viewPage = "sFLlist.jsp";
+//				break;		
+//			//Perfume
+//			case("/pPList.do"):	
+//				command = new APpCommand() ;
+//				command.execute(request, response);
+//				viewPage = "pPList.jsp";
+//				break;	
+//			//toilette
+//			case("/pTList.do"):	
+//				command = new APtCommand() ;
+//				command.execute(request, response);
+//				viewPage = "pTList.jsp";
+//				break;		
+//			//cologne
+//			case("/pCList.do"):	
+//				command = new APcCommand() ;
+//				command.execute(request, response);
+//				viewPage = "pCList.jsp";
+//				break;			
+//			//bodyspray
+//			case("/pBList.do"):	
+//				command = new APbCommand() ;
+//				command.execute(request, response);
+//				viewPage = "pBList.jsp";
+//				break;
+//				
 				// counselList, 1대1문의 조회
 			case("/counselList.do") :
 				command = new ACounselListCommand();
@@ -315,12 +314,12 @@ public class AFrontController extends HttpServlet {
 //				viewPage = "productList.do";
 //				break;
 //				
-//			// productDetail, 상품상세
-//			case("/productDetail.do"):
-//				command = new AProductDetailCommand();
-//				command.execute(request, response);
-//				viewPage = "productDetailV.jsp";
-//				break;
+			// productDetail, 상품상세
+			case("/productDetail.do"):
+				command = new AProductDetailCommand();
+				command.execute(request, response);
+				viewPage = "productDetailV.jsp";
+				break;
 //			// productAskWrite, 상품문의 작성
 //			case("/productAskWrite.do"):
 //				command = new AProductAskWriteCommand();
