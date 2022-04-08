@@ -99,10 +99,11 @@
  .card-body {
          height:100px;
         }
- . div:hover {
+ .py-5 div:hover {
        border-color:#333;
       
        }
+     
   .col {
   padding:500px 0 0 100px;
   }     
@@ -214,14 +215,15 @@
 		  					<c:forEach items="${appList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
    									 <div class="card h-100">
-   									  <a class="card-image" href="/Pplist.view.do"><img class="card-img-top" src="${dto.productImages}" alt="" width="100%"/></a>
+   									  <a class="card-image" href="/Pplist.view.do"><img class="card-img-top" src="${dto.productImages}" alt="" width="50%"/></a>
      								 <div class="card-body">
      								  <div class="text-center">
                               	     <p class="pd.name">${dto.productName }</p>
                                     <!-- Product size-->
                              		<p class="pd.size">${dto.productSize }ml</p>
                                     <!-- Product price-->
-                             		<p class="pd.price">${dto.productPrice }원</p>
+                                	<p class="pd.price">${dto.productPrice }원</p>
+                             	
     				 		 </div>
     				 		 </div>
     				 		 </div>
