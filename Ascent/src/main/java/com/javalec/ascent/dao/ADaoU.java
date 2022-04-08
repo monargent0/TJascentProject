@@ -10,6 +10,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.javalec.ascent.dto.ADtoAD;
+import com.javalec.ascent.dto.ADtoU;
 
 public class ADaoU {
 DataSource dataSource;
@@ -189,5 +190,72 @@ DataSource dataSource;
 			} //finally
 			return pw;
 		} // find PW
+		
+		// user info
+		public ADtoU userinfo(String userID) {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultSet = null;
+			ADtoU dto = null;
+			
+			try {
+				connection = dataSource.getConnection();
+				String query = "select userName, userGender, userBirth, userPhone, userEmail from userinfo where userID =? and u_ResignDate is null";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, userID);
+				resultSet = preparedStatement.executeQuery();
+				
+				if(resultSet.next()) {
+					String userName = resultSet.getString("userName");
+					String userGender  = resultSet.getString("userGender");
+					String userBirth  = resultSet.getString("userBirth");
+					String userPhone  = resultSet.getString("userPhone");
+					String userEmail  = resultSet.getString("userEmail");
+					
+					dto = new ADtoU(userName, userGender, userBirth, userPhone, userEmail);
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally {
+				try {
+					if(resultSet != null) resultSet.close();
+					if(preparedStatement != null) preparedStatement.close();
+					if(connection != null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			} //finally
+			return dto;
+		} // user info
+		
+		// user info modify
+		public void modifyUser(String userName, String userEmail, String userPhone, String userID) {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			
+			try {
+				//DB연결메서드 불러오기
+				connection = dataSource.getConnection(); 
+				//pstmt 생성
+				String query = "update userinfo set userName = ?, userEmail = ?, userPhone = ? where userID = ?" ;
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, userName);
+				preparedStatement.setString(2, userEmail);
+				preparedStatement.setString(3, userPhone);
+				preparedStatement.setString(4, userID);
+				//실행 
+				preparedStatement.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally { 
+					try {
+						if(preparedStatement !=null) preparedStatement.close();
+						if(connection != null) connection.close();
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+			}
+		} // info modify
+
 		
 }

@@ -85,6 +85,7 @@ public class AFrontController extends HttpServlet {
 		String domain = uri.substring(comPath.length());
 		
 		switch (domain) {
+			//완성
 			// signUp, 회원가입
 			case("/signIn.do") :
 				command = new ASigninCommand();
@@ -97,6 +98,7 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
 				break;		
+				// 로그인하면 메인, 실패하면 다시로그인, 관리자계정은 관리자사이트로
 			// 아이디 찾기
 			case("/findID.do") :
 				command = new AFindIDCommand();
@@ -116,7 +118,7 @@ public class AFrontController extends HttpServlet {
 				viewPage = "userDetailV.jsp";
 				break;
 			// userModify, 개인정보 수정
-			case("/modify.do"):
+			case("/userModify.do"):
 				command = new AUserModifyCommand();
 				command.execute(request, response);
 				viewPage = "userDetail.do";
@@ -127,166 +129,168 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
 				break;
-			// orderList, 주문내역
-			case("/orderList.do"):
-				command = new AOrderListCommand();
-				command.execute(request, response);
-				viewPage = "orderListV.jsp";
-				break;	
-			// orderDetail, 주문상세 보기
-			case("/orderDetail.do"):
-				command = new AOrderDetailCommand();
-				command.execute(request, response);
-				viewPage = "orderDetailV.jsp";
-				break;
-			// refund, 환불
-			case("/refund.do"):
-				command = new ARefundCommand();
-				command.execute(request, response);
-				viewPage = "orderList.do";
-				break;
-			// reviewList, 리뷰 보기
-			case("/reviewList.do"):
-				command = new AReviewListCommand();
-				command.execute(request, response);
-				viewPage = "reviewListV.jsp";
-				break;
-			// reviewWrite, 리뷰 쓰기
-			case("/reviewWrite.do"):
-				command = new AReviewWriteCommand();
-				command.execute(request, response);
-				viewPage = "reviewList.do";
-				break;
-			// reviewDetail, 리뷰 상세
-			case("/reviewDetail.do"):
-				command = new AReviewDetailCommand();
-				command.execute(request, response);
-				viewPage = "reviewDetailV.jsp";
-				break;
-			// reviewModify, 리뷰 수정
-			case("/reviewModify.do"):
-				command = new AReviewModifyCommand();
-				command.execute(request, response);
-				viewPage = "reviewList.do";
-				break;
-			// reviewDelete, 리뷰 삭제
-			case("/reviewDelete.do"):
-				command = new AReviewDeleteCommand();
-				command.execute(request, response);
-				viewPage = "reviewList.do";
-				break;
-			// wishList, 찜 보기
-			case("/wishList.do"):
-				command = new AWishListCommand();
-				command.execute(request, response);
-				viewPage = "productList.do";
-				break;
-			// wishWrite, 찜 하기
-			case("/wishWrite.do"):
-				command = new AWishWriteCommand();
-				command.execute(request, response);
-				break;
-			// wishDelete, 찜 삭제
-			case("/wishDelete.do"):
-				command = new AWishDeleteCommand();
-				command.execute(request, response);
-				break;
 				
-			// counselList, 1대1문의 조회
-			case("/counselList.do") :
-				command = new ACounselListCommand();
-				command.execute(request, response);
-				viewPage = "counselListV.jsp";
-				break;
-			// counselWrite, 1대1문의 작성
-			case("/counselWrite.do"):
-				command = new ACounselWriteCommand();
-				command.execute(request, response);
-				viewPage = "counselList.do";
-				break;
-			// counselDetail, 1대1문의 상세
-			case("/counselDetail.do"):
-				command = new ACounselDetailCommand();
-				command.execute(request, response);
-				viewPage = "counselDetailV.jsp";
-				break;
-			// counselDelete, 1대1문의 삭제
-			case("/counselDelete.do"):
-				command = new ACounselDeleteCommand();
-				command.execute(request, response);
-				viewPage = "counselList.do";
-				break;
-				
-			// categoryList, 카테고리
-			case("/categoryList.do"):
-				command = new ACategoryListCommand();
-				command.execute(request, response);
-				viewPage = "productList.do";
-				break;
-				
-			// productList, 상품목록
-			case("/productList.do"):
-				command = new AProductListCommand();
-				command.execute(request, response);
-				viewPage = "productListV.jsp";
-				break;
-			// productSearch, 상품검색
-			case("/productSearch.do"):
-				command = new AProductSearchCommand();
-				command.execute(request, response);
-				viewPage = "productList.do";
-				break;
-				
-			// productDetail, 상품상세
-			case("/productDetail.do"):
-				command = new AProductDetailCommand();
-				command.execute(request, response);
-				viewPage = "productDetailV.jsp";
-				break;
-			// productAskWrite, 상품문의 작성
-			case("/productAskWrite.do"):
-				command = new AProductAskWriteCommand();
-				command.execute(request, response);
-				viewPage = "productDetail.do";
-				break;
-			
-			// cartWrite, 장바구니 담기
-			case("/cartWrite.do"):
-				command = new ACartWriteCommand();
-				command.execute(request, response);
-				break;
-			// cartList, 장바구니 보기
-			case("/cartList.do"):
-				command = new ACartListCommand();
-				command.execute(request, response);
-				viewPage = "cartListV.jsp";
-				break;
-			// cartDelete, 장바구니 선택삭제
-			case("/cartDelete.do"):
-				command = new ACartDeleteCommand();
-				command.execute(request, response);
-				viewPage = "cartList.do";
-				break;
-			//cartModify, 장바구니 수량수정	
-			case("/cartModify.do"):
-				command = new ACartModifyCommand();
-				command.execute(request, response);
-				viewPage = "cartList.do";
-				break;
-				
-			// orderWrite, 주문하기
-			case("/orderWrite.do"):
-				command = new AOrderWriteCommand();
-				command.execute(request, response);
-				viewPage = "order";
-				break;
-				
-			// noticeBoardList, 공지사항 목록
-			case("/noticeBoardList.do"):
-				command = new ANoticeBoardListCommand();
-				command.execute(request, response);
-				viewPage = "noticeBoardListV.jsp";
-				break;
+			// 미완성	
+//			// orderList, 주문내역
+//			case("/orderList.do"):
+//				command = new AOrderListCommand();
+//				command.execute(request, response);
+//				viewPage = "orderListV.jsp";
+//				break;	
+//			// orderDetail, 주문상세 보기
+//			case("/orderDetail.do"):
+//				command = new AOrderDetailCommand();
+//				command.execute(request, response);
+//				viewPage = "orderDetailV.jsp";
+//				break;
+//			// refund, 환불
+//			case("/refund.do"):
+//				command = new ARefundCommand();
+//				command.execute(request, response);
+//				viewPage = "orderList.do";
+//				break;
+//			// reviewList, 리뷰 보기
+//			case("/reviewList.do"):
+//				command = new AReviewListCommand();
+//				command.execute(request, response);
+//				viewPage = "reviewListV.jsp";
+//				break;
+//			// reviewWrite, 리뷰 쓰기
+//			case("/reviewWrite.do"):
+//				command = new AReviewWriteCommand();
+//				command.execute(request, response);
+//				viewPage = "reviewList.do";
+//				break;
+//			// reviewDetail, 리뷰 상세
+//			case("/reviewDetail.do"):
+//				command = new AReviewDetailCommand();
+//				command.execute(request, response);
+//				viewPage = "reviewDetailV.jsp";
+//				break;
+//			// reviewModify, 리뷰 수정
+//			case("/reviewModify.do"):
+//				command = new AReviewModifyCommand();
+//				command.execute(request, response);
+//				viewPage = "reviewList.do";
+//				break;
+//			// reviewDelete, 리뷰 삭제
+//			case("/reviewDelete.do"):
+//				command = new AReviewDeleteCommand();
+//				command.execute(request, response);
+//				viewPage = "reviewList.do";
+//				break;
+//			// wishList, 찜 보기
+//			case("/wishList.do"):
+//				command = new AWishListCommand();
+//				command.execute(request, response);
+//				viewPage = "productList.do";
+//				break;
+//			// wishWrite, 찜 하기
+//			case("/wishWrite.do"):
+//				command = new AWishWriteCommand();
+//				command.execute(request, response);
+//				break;
+//			// wishDelete, 찜 삭제
+//			case("/wishDelete.do"):
+//				command = new AWishDeleteCommand();
+//				command.execute(request, response);
+//				break;
+//				
+//			// counselList, 1대1문의 조회
+//			case("/counselList.do") :
+//				command = new ACounselListCommand();
+//				command.execute(request, response);
+//				viewPage = "counselListV.jsp";
+//				break;
+//			// counselWrite, 1대1문의 작성
+//			case("/counselWrite.do"):
+//				command = new ACounselWriteCommand();
+//				command.execute(request, response);
+//				viewPage = "counselList.do";
+//				break;
+//			// counselDetail, 1대1문의 상세
+//			case("/counselDetail.do"):
+//				command = new ACounselDetailCommand();
+//				command.execute(request, response);
+//				viewPage = "counselDetailV.jsp";
+//				break;
+//			// counselDelete, 1대1문의 삭제
+//			case("/counselDelete.do"):
+//				command = new ACounselDeleteCommand();
+//				command.execute(request, response);
+//				viewPage = "counselList.do";
+//				break;
+//				
+//			// categoryList, 카테고리
+//			case("/categoryList.do"):
+//				command = new ACategoryListCommand();
+//				command.execute(request, response);
+//				viewPage = "productList.do";
+//				break;
+//				
+//			// productList, 상품목록
+//			case("/productList.do"):
+//				command = new AProductListCommand();
+//				command.execute(request, response);
+//				viewPage = "productListV.jsp";
+//				break;
+//			// productSearch, 상품검색
+//			case("/productSearch.do"):
+//				command = new AProductSearchCommand();
+//				command.execute(request, response);
+//				viewPage = "productList.do";
+//				break;
+//				
+//			// productDetail, 상품상세
+//			case("/productDetail.do"):
+//				command = new AProductDetailCommand();
+//				command.execute(request, response);
+//				viewPage = "productDetailV.jsp";
+//				break;
+//			// productAskWrite, 상품문의 작성
+//			case("/productAskWrite.do"):
+//				command = new AProductAskWriteCommand();
+//				command.execute(request, response);
+//				viewPage = "productDetail.do";
+//				break;
+//			
+//			// cartWrite, 장바구니 담기
+//			case("/cartWrite.do"):
+//				command = new ACartWriteCommand();
+//				command.execute(request, response);
+//				break;
+//			// cartList, 장바구니 보기
+//			case("/cartList.do"):
+//				command = new ACartListCommand();
+//				command.execute(request, response);
+//				viewPage = "cartListV.jsp";
+//				break;
+//			// cartDelete, 장바구니 선택삭제
+//			case("/cartDelete.do"):
+//				command = new ACartDeleteCommand();
+//				command.execute(request, response);
+//				viewPage = "cartList.do";
+//				break;
+//			//cartModify, 장바구니 수량수정	
+//			case("/cartModify.do"):
+//				command = new ACartModifyCommand();
+//				command.execute(request, response);
+//				viewPage = "cartList.do";
+//				break;
+//				
+//			// orderWrite, 주문하기
+//			case("/orderWrite.do"):
+//				command = new AOrderWriteCommand();
+//				command.execute(request, response);
+//				viewPage = "order";
+//				break;
+//				
+//			// noticeBoardList, 공지사항 목록
+//			case("/noticeBoardList.do"):
+//				command = new ANoticeBoardListCommand();
+//				command.execute(request, response);
+//				viewPage = "noticeBoardListV.jsp";
+//				break;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
