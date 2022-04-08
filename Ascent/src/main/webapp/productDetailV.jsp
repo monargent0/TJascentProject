@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<div class="productdetil">
+	<div class="productdetail">
 			<h2>${dto.productName }</h2>
 
  	<colgroup>
