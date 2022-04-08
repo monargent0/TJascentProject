@@ -225,18 +225,18 @@ public class AFrontController extends HttpServlet {
 				viewPage = "counselList.do";
 				break;
 			// 미완성	
-//			// orderList, 주문내역
-//			case("/orderList.do"):
-//				command = new AOrderListCommand();
-//				command.execute(request, response);
-//				viewPage = "orderListV.jsp";
-//				break;	
-//			// orderDetail, 주문상세 보기
-//			case("/orderDetail.do"):
-//				command = new AOrderDetailCommand();
-//				command.execute(request, response);
-//				viewPage = "orderDetailV.jsp";
-//				break;
+			// orderList, 주문내역
+			case("/orderList.do"):
+				command = new AOrderListCommand();
+				command.execute(request, response);
+				viewPage = "orderListV.jsp";
+				break;	
+			// orderDetail, 주문상세 보기
+			case("/orderDetail.do"):
+				command = new AOrderDetailCommand();
+				command.execute(request, response);
+				viewPage = "orderDetailV.jsp";
+				break;
 //			// refund, 환불
 //			case("/refund.do"):
 //				command = new ARefundCommand();
@@ -324,36 +324,36 @@ public class AFrontController extends HttpServlet {
 //				viewPage = "productDetail.do";
 //				break;
 //			
-//			// cartWrite, 장바구니 담기
-//			case("/cartWrite.do"):
-//				command = new ACartWriteCommand();
-//				command.execute(request, response);
-//				break;
-//			// cartList, 장바구니 보기
-//			case("/cartList.do"):
-//				command = new ACartListCommand();
-//				command.execute(request, response);
-//				viewPage = "cartListV.jsp";
-//				break;
-//			// cartDelete, 장바구니 선택삭제
-//			case("/cartDelete.do"):
-//				command = new ACartDeleteCommand();
-//				command.execute(request, response);
-//				viewPage = "cartList.do";
-//				break;
-//			//cartModify, 장바구니 수량수정	
-//			case("/cartModify.do"):
-//				command = new ACartModifyCommand();
-//				command.execute(request, response);
-//				viewPage = "cartList.do";
-//				break;
-//				
-//			// orderWrite, 주문하기
-//			case("/orderWrite.do"):
-//				command = new AOrderWriteCommand();
-//				command.execute(request, response);
-//				viewPage = "order";
-//				break;
+			// cartWrite, 장바구니 담기
+			case("/cartWrite.do"):
+				command = new ACartWriteCommand();
+				command.execute(request, response);
+				break;
+			// cartList, 장바구니 보기
+			case("/cartList.do"):
+				command = new ACartListCommand();
+				command.execute(request, response);
+				viewPage = "cartListV.jsp";
+				break;
+			// cartDelete, 장바구니 선택삭제
+			case("/cartDelete.do"):
+				command = new ACartDeleteCommand();
+				command.execute(request, response);
+				viewPage = "cartList.do";
+				break;
+			//cartModify, 장바구니 수량수정	
+			case("/cartModify.do"):
+				command = new ACartModifyCommand();
+				command.execute(request, response);
+				viewPage = "cartList.do";
+				break;
+				
+			// orderWrite, 주문하기
+			case("/orderWrite.do"):
+				command = new AOrderWriteCommand();
+				command.execute(request, response);
+				viewPage = "order";
+				break;
 //				
 			// noticeBoardList, 공지사항 목록
 			case("/noticeBoardList.do"):
