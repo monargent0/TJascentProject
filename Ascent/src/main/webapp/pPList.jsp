@@ -108,7 +108,7 @@
   padding:500px 0 0 100px;
   }     
 </style>
-<body>
+<body bgcolor="#FFFAF6">
 <!-- 상단홈바 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -119,7 +119,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="mainV.do">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Scent</a>
@@ -129,7 +129,7 @@
            Perfume
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">eau de perfume</a></li>
+            <li><a class="dropdown-item" href="pPlist.do">eau de perfume</a></li>
             <li><a class="dropdown-item" href="#">eau de toillette</a></li>
             <li><a class="dropdown-item" href="#">eau de cologne</a></li>
             <li><hr class="dropdown-divider"></li>
