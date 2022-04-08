@@ -119,7 +119,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="mainV.do">Home</a>
+          <a class="nav-link active" aria-current="page" href="main.do">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Scent</a>
@@ -136,10 +136,10 @@
             <li><a class="dropdown-item" href="#">Body Spray</a></li>
           </ul>
           <li class="nav-item">
-         <a  class="nav-link px-2 text-white" href="#">FAQs</a>
+         <a  class="nav-link px-2 text-black" href="noticeBoardList.do">NOTICE</a>
          </li>
             <li  class="nav-item">
-            <a  class="nav-link px-2 text-white" href="#">About</a>
+            <a  class="nav-link px-2 text-black" href="#">About</a>
             </li>
       
        
@@ -153,7 +153,16 @@
       
       
        <div class="text-end">
-    	<i class="bi bi-person-fill"></i>
+       
+       <%
+					if(session.getAttribute("userID") == null){
+					%>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
+					<%
+					}else if(session.getAttribute("userID") != null){
+					%>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
+				  <% } %>
     	 </div>
     	
     	<j class="bi bi-bag-heart" style="font-size:2rem; cursor: pointer;"></j>

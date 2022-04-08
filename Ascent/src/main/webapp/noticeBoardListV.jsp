@@ -16,19 +16,22 @@
         padding: 5px;
        }
        
-      .address{
-        border: 10px solid lightblue;
-      	position: absolute;
-      	top : 50%;
-      	left : 50%;
-      	transform : translate(-50%,-50%);
-      }
+     	.contents{
+		position: absolute;
+		left : 50%;
+		transform : translate(-50%,0%);
+		padding: 50px ;
+	}
+
+
     
     </style>
 <meta charset="UTF-8">
 <title>ascent 공지사항</title>
 </head>
-<body>
+<body bgcolor="#FFFAF6">
+
+ <div class="contents">
 	<h2>공지사항</h2>
 	<table border="1">
 		<tr>
@@ -46,5 +49,6 @@
 			</tr>
 		</c:forEach>
 	</table>	
+	</div>
 </body>
 </html>

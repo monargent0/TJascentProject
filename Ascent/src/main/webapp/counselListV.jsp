@@ -31,6 +31,7 @@
 
  <div class="contents">
 	<h2>1대1 문의</h2>
+	<a href="mainV.jsp">main</a> &nbsp; <a href="logOutH.jsp">로그아웃</a><br>
 	<table border="1">
 		<tr>
 			<th>글번호</th>
@@ -41,7 +42,7 @@
 		</tr>
 		<c:forEach items="${list }" var="dto">
 			<tr>
-				<td><a href="counselDetail.do?counselCode=${dto.counselCode }"> ${dto.counselCode }</a></td>
+				<td style="text-align: center;"><a href="counselDetail.do?counselCode=${dto.counselCode }"> ${dto.counselCode }</a></td>
 				<td>${dto.counselType }</td>
 				<td>${dto.counselTitle}</td>						
 				<td>${dto.counselDate}</td>
