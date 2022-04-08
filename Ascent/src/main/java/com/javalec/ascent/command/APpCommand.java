@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.javalec.ascent.dao.ADaoP;
 import com.javalec.ascent.dto.ADtoP;
 
-public class APp01Command implements ACommand {
+public class APpCommand implements ACommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

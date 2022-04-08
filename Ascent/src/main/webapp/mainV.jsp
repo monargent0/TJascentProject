@@ -257,7 +257,7 @@
 					<li><a class="nav-link" href="#">Shop</a>
 						<ul>
 							
-							<li><a href="Pplist.do">Floral</a></li>
+							<li><a href="pplist.do">Floral</a></li>
 							<li><a href="#">Citrus</a></li>
 							<li><a href="#">Fresh</a></li>
 							<li><a href="#">Fruity</a></li>

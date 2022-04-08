@@ -26,7 +26,7 @@ import com.javalec.ascent.command.AOrderDetailCommand;
 import com.javalec.ascent.command.AOrderListCommand;
 import com.javalec.ascent.command.AOrderWriteCommand;
 import com.javalec.ascent.command.APayCommand;
-import com.javalec.ascent.command.APp01Command;
+import com.javalec.ascent.command.APpCommand;
 import com.javalec.ascent.command.AProductAskWriteCommand;
 import com.javalec.ascent.command.AProductDetailCommand;
 import com.javalec.ascent.command.AProductListCommand;
@@ -90,10 +90,10 @@ public class AFrontController extends HttpServlet {
 		case("/main.do"):
 			viewPage = "mainV.jsp";
 			break;
-		case("/Pplist.do"):	
-			command = new APp01Command() ;
+		case("/pplist.do"):	
+			command = new APpCommand() ;
 			command.execute(request, response);
-			viewPage = "Pplist.jsp";
+			viewPage = "pplist.jsp";
 			break;
 //			// signUp, 회원가입
 //			case("/signIn.do") :
