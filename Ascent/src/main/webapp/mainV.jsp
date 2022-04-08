@@ -257,7 +257,7 @@
 					<li><a class="nav-link" href="#">Scent</a>
 						<ul>
 							
-							<li><a href="pPlist.do">Floral</a></li>
+							<li><a href="pPList.do">Floral</a></li>
 							<li><a href="#">Citrus</a></li>
 							<li><a href="#">Fresh</a></li>
 							<li><a href="#">Fruity</a></li>

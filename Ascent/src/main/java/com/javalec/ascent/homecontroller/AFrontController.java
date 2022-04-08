@@ -229,68 +229,68 @@ public class AFrontController extends HttpServlet {
 				
 			// productList, 상품목록
 			
-			//floral
-			case("/sFList.do"):	
-				command = new ASflCommand() ;
-				command.execute(request, response);
-				viewPage = "sFLlist.jsp";
-				break;		
-			//citrus
-			case("/sCList.do"):	
-				command = new AScCommand() ;
-			command.execute(request, response);
-			viewPage = "sFLlist.jsp";
-			break;		
-			//Fresh
-			case("/sFRList.do"):	
-				command = new ASfrCommand() ;
-				command.execute(request, response);
-				viewPage = "sFLlist.jsp";
-			break;		
-			//Fruity
-			case("/sFTList.do"):	
-				command = new ASftCommand() ;
-				command.execute(request, response);
-				viewPage = "sFLlist.jsp";
-				break;		
-				
-			//Woody
-			case("/sWList.do"):	
-				command = new ASwCommand() ;
-				command.execute(request, response);
-				viewPage = "sFLlist.jsp";
-				break;		
-			
-			//Oriental
-			case("/sOList.do"):	
-				command = new ASoCommand() ;
-			command.execute(request, response);
-			viewPage = "sFLlist.jsp";
-			break;		
-			//Perfume
-			case("/pPList.do"):	
-				command = new APpCommand() ;
-				command.execute(request, response);
-				viewPage = "pPlist.jsp";
-				break;	
-			//toilette
-			case("/pTList.do"):	
-				command = new APtCommand() ;
-				command.execute(request, response);
-				viewPage = "pTList.jsp";
-				break;		
-			//cologne
-			case("/pCList.do"):	
-				command = new APcCommand() ;
-				command.execute(request, response);
-				viewPage = "pCList.jsp";
-				break;			
-			//bodyspray
-			case("/pBList.do"):	
-				command = new APbCommand() ;
-			command.execute(request, response);
-			viewPage = "pBList.jsp";
-			break;		
+//			//floral
+//			case("/sFList.do"):	
+//				command = new ASfCommand() ;
+//				command.execute(request, response);
+//				viewPage = "sFLlist.jsp";
+//				break;		
+//			//citrus
+//			case("/sCList.do"):	
+//				command = new AScCommand() ;
+//			command.execute(request, response);
+//			viewPage = "sFLlist.jsp";
+//			break;		
+//			//Fresh
+//			case("/sFRList.do"):	
+//				command = new ASfrCommand() ;
+//				command.execute(request, response);
+//				viewPage = "sFLlist.jsp";
+//			break;		
+//			//Fruity
+//			case("/sFTList.do"):	
+//				command = new ASftCommand() ;
+//				command.execute(request, response);
+//				viewPage = "sFLlist.jsp";
+//				break;		
+//				
+//			//Woody
+//			case("/sWList.do"):	
+//				command = new ASwCommand() ;
+//				command.execute(request, response);
+//				viewPage = "sFLlist.jsp";
+//				break;		
+//			
+//			//Oriental
+//			case("/sOList.do"):	
+//				command = new ASoCommand() ;
+//			command.execute(request, response);
+//			viewPage = "sFLlist.jsp";
+//			break;		
+//			//Perfume
+//			case("/pPList.do"):	
+//				command = new APpCommand() ;
+//				command.execute(request, response);
+//				viewPage = "pPlist.jsp";
+//				break;	
+//			//toilette
+//			case("/pTList.do"):	
+//				command = new APtCommand() ;
+//				command.execute(request, response);
+//				viewPage = "pTList.jsp";
+//				break;		
+//			//cologne
+//			case("/pCList.do"):	
+//				command = new APcCommand() ;
+//				command.execute(request, response);
+//				viewPage = "pCList.jsp";
+//				break;			
+//			//bodyspray
+//			case("/pBList.do"):	
+//				command = new APbCommand() ;
+//			command.execute(request, response);
+//			viewPage = "pBList.jsp";
+//			break;		
 	
 			// productSearch, 상품검색
 			case("/productSearch.do"):
