@@ -85,6 +85,10 @@ public class AFrontController extends HttpServlet {
 		
 		switch (domain) {
 			//완성
+			// main
+			case("/main.do") :
+				viewPage = "mainV.jsp";
+				break;
 			// signUp, 회원가입
 			case("/signIn.do") :
 				command = new ASigninCommand();
