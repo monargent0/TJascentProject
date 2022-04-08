@@ -26,7 +26,7 @@ public class ADaoP {
 	}
 	
 	// 향수종류 - 퍼퓸
-	public ArrayList<ADtoP> ppList() {
+	public ArrayList<ADtoP> appList() {
 		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();
 		Connection conn = null;
 		PreparedStatement ps = null;
