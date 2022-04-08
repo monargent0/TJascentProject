@@ -24,13 +24,13 @@ public class ALoginCommand implements ACommand {
 			
 		if(dtoAD.isEmpty()) {
 			session.setAttribute("alertTxt", "일치하는 아이디가 없습니다." );
-			request.setAttribute("viewPage", "loginV.jsp");	
+			request.setAttribute("viewPage", "logInV.jsp");	
 		} else if ( dtoAD.get(0).getAdminCheck().toString().equals("admin")) {
 			session.setAttribute("userID", dtoAD.get(0).getUserID().toString() );
 			request.setAttribute("viewPage", "admin.jsp");			
 		} else if ( dtoAD.get(0).getUserID() != null) {
 			session.setAttribute("userID", dtoAD.get(0).getUserID().toString() );
-			request.setAttribute("viewPage", "main.jsp");			
+			request.setAttribute("viewPage", "mainV.jsp");			
 		} 
 
 	}
