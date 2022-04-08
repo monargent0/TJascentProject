@@ -248,7 +248,7 @@
 						<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					
 					<ul id="nav">
-					<li><a class="nav-link" href="main.do">Shop</a>
+					<li><a class="nav-link" href="main.do">Scent</a>
 						<ul>
 							
 							<li><a href="sFList.do">Floral</a></li>
@@ -266,8 +266,8 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="pPlist.do">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="pTList.do">Eau de toillette</a></li>
+							<li><a class="dropdown-item" href="pPList.do">Eau de perfume</a></li>
+							<li><a class="dropdown-item" href="pTList.do">Eau de toilette</a></li>
 							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
 							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
 						</ul>
@@ -276,7 +276,7 @@
 					<li><a class="nav-link px-2" href="main.do">About</a>
 						<ul>
 							<li><a href="#">Notice</a></li>
-							<li><a href="#">Q&A</a></li>
+							<li><a href="counselList.do">Q&A</a></li>
 						</ul>
 						
 						
@@ -311,7 +311,16 @@
 						}
 					});
 				</script>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer; " href="#"></i>
+					<%
+					if(session.getAttribute("userID") == null){
+					%>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
+					<%
+					}else if(session.getAttribute("userID") != null){
+					%>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
+				  <% } %>
+				  
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href="#"></j>
 
 				<script>
