@@ -272,7 +272,7 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="pPlist.do">Eau de perfume</a></li>
+							<li><a class="dropdown-item" href="pPList.do">Eau de perfume</a></li>
 							<li><a class="dropdown-item" href="pTList.do">Eau de toilette</a></li>
 							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
 							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
