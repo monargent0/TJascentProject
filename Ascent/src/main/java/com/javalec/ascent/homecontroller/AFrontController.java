@@ -22,7 +22,6 @@ import com.javalec.ascent.command.ACounselWriteCommand;
 import com.javalec.ascent.command.AFindIDCommand;
 import com.javalec.ascent.command.AFindPWCommand;
 import com.javalec.ascent.command.ALoginCommand;
-import com.javalec.ascent.command.ALogoutCommand;
 import com.javalec.ascent.command.ANoticeBoardListCommand;
 import com.javalec.ascent.command.AOrderDetailCommand;
 import com.javalec.ascent.command.AOrderListCommand;
