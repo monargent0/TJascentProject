@@ -29,7 +29,7 @@ public class ADaoCounsel {
 
 	// 1대1 문의 게시판 불러오기
 	
-	public ArrayList<ADtoC> list(){
+	public ArrayList<ADtoC> list(String userID){
 		ArrayList<ADtoC> dtos = new ArrayList<ADtoC>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -37,8 +37,9 @@ public class ADaoCounsel {
 		
 			try {
 				connection = dataSource.getConnection();
-				String query ="select counselCode, counselType, counselTitle, counselContent, counselDate, c_ReplyCheck from counsel";
+				String query ="select counselCode, counselType, counselTitle, counselContent, counselDate, c_ReplyCheck from counsel where user_userID = ?";
 				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, userID);
 				resultSet = preparedStatement.executeQuery();
 				
 				while(resultSet.next()) {
@@ -66,17 +67,19 @@ public class ADaoCounsel {
 			return dtos;
 	}// List 불러오기
 	
-	public void write(String counselType, String counselTitle, String counselContent) {
+	// write
+	public void write(String counselType, String counselTitle, String counselContent , String userID) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into counsel (counselType, counselTitle, counselContent, counselDate) values (?,?,?,now())";
+			String query = "insert into counsel (counselType, counselTitle, counselContent, counselDate, user_userID , c_ReplyCheck ) values (?,?,?,now(),? ,'미답변' )";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, counselType);
 			preparedStatement.setString(2, counselTitle);
 			preparedStatement.setString(3, counselContent);
+			preparedStatement.setString(4, userID);
 			
 			preparedStatement.executeUpdate();
 			

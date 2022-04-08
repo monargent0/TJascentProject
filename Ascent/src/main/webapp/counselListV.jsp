@@ -16,19 +16,20 @@
         padding: 5px;
        }
        
-      .address{
-        border: 10px solid lightblue;
-      	position: absolute;
-      	top : 50%;
-      	left : 50%;
-      	transform : translate(-50%,-50%);
-      }
+      .contents{
+		position: absolute;
+		left : 50%;
+		transform : translate(-50%,0%);
+		padding: 50px ;
+	}
     
     </style>
 <meta charset="UTF-8">
 <title>ascent 1대1 문의</title>
 </head>
-<body>
+<body bgcolor="#FFFAF6">
+
+ <div class="contents">
 	<h2>1대1 문의</h2>
 	<table border="1">
 		<tr>
@@ -40,7 +41,7 @@
 		</tr>
 		<c:forEach items="${list }" var="dto">
 			<tr>
-				<td>${dto.counselCode }</td>
+				<td><a href="counselDetail.do?counselCode=${dto.counselCode }"> ${dto.counselCode }</a></td>
 				<td>${dto.counselType }</td>
 				<td>${dto.counselTitle}</td>						
 				<td>${dto.counselDate}</td>
@@ -48,8 +49,9 @@
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="5"><a href="counselWriteV.do">글작성</a></td>
+			<td align="right" colspan="5"><a href="counselWriteV.jsp">글작성</a></td>
 		</tr>
 	</table>	
+	</div>
 </body>
 </html>

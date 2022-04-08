@@ -281,11 +281,21 @@
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
 					<li><a class="nav-link px-2" href="#">About</a>
 						<ul>
-							<li><a href="#">Notice</a></li>
-							<li><a href="#">Q&A</a></li>
+							<li><a href="noticeBoardList.do">Notice</a></li>
+							<!-- <li><a href="counselList.do">Q&A</a></li> -->
+							<%
+							if(session.getAttribute("userID") == null){
+							%>
+							<li><a href="logInV.jsp">Q&A</a></li>
+							<%
+							}else if(session.getAttribute("userID") != null){
+							%>
+							<li><a href="counselList.do">Q&A</a></li>
+						  <% } %>
 						</ul>
-						
-						
+										
+
+
 					</li>
 				</ul>
 				</ul>

@@ -19,6 +19,6 @@ public class ACounselDetailCommand implements ACommand {
 		
 		dtoC = daoCounsel.detail(counselCode);
 		
-		request.setAttribute("counselCode", dtoC);
+		request.setAttribute("counselDetailV", dtoC);
 	}
 }

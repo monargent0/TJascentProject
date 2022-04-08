@@ -205,30 +205,30 @@ public class AFrontController extends HttpServlet {
 //				command.execute(request, response);
 //				break;
 //				
-//			// counselList, 1대1문의 조회
-//			case("/counselList.do") :
-//				command = new ACounselListCommand();
-//				command.execute(request, response);
-//				viewPage = "counselListV.jsp";
-//				break;
-//			// counselWrite, 1대1문의 작성
-//			case("/counselWrite.do"):
-//				command = new ACounselWriteCommand();
-//				command.execute(request, response);
-//				viewPage = "counselList.do";
-//				break;
-//			// counselDetail, 1대1문의 상세
-//			case("/counselDetail.do"):
-//				command = new ACounselDetailCommand();
-//				command.execute(request, response);
-//				viewPage = "counselDetailV.jsp";
-//				break;
-//			// counselDelete, 1대1문의 삭제
-//			case("/counselDelete.do"):
-//				command = new ACounselDeleteCommand();
-//				command.execute(request, response);
-//				viewPage = "counselList.do";
-//				break;
+			// counselList, 1대1문의 조회
+			case("/counselList.do") :
+				command = new ACounselListCommand();
+				command.execute(request, response);
+				viewPage = "counselListV.jsp";
+				break;
+			// counselWrite, 1대1문의 작성
+			case("/counselWrite.do"):
+				command = new ACounselWriteCommand();
+				command.execute(request, response);
+				viewPage = "counselList.do";
+				break;
+			// counselDetail, 1대1문의 상세
+			case("/counselDetail.do"):
+				command = new ACounselDetailCommand();
+				command.execute(request, response);
+				viewPage = "counselDetailV.jsp";
+				break;
+			// counselDelete, 1대1문의 삭제
+			case("/counselDelete.do"):
+				command = new ACounselDeleteCommand();
+				command.execute(request, response);
+				viewPage = "counselList.do";
+				break;
 //				
 //			// categoryList, 카테고리
 //			case("/categoryList.do"):
@@ -294,12 +294,12 @@ public class AFrontController extends HttpServlet {
 //				viewPage = "order";
 //				break;
 //				
-//			// noticeBoardList, 공지사항 목록
-//			case("/noticeBoardList.do"):
-//				command = new ANoticeBoardListCommand();
-//				command.execute(request, response);
-//				viewPage = "noticeBoardListV.jsp";
-//				break;
+			// noticeBoardList, 공지사항 목록
+			case("/noticeBoardList.do"):
+				command = new ANoticeBoardListCommand();
+				command.execute(request, response);
+				viewPage = "noticeBoardListV.jsp";
+				break;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
