@@ -132,7 +132,12 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
 				break;
-				
+			// 플로럴카테고리
+			case("/Pplist.do"):	
+				command = new APp01Command() ;
+				command.execute(request, response);
+				viewPage = "Pplist.jsp";
+				break;
 			// 미완성	
 //			// orderList, 주문내역
 //			case("/orderList.do"):
