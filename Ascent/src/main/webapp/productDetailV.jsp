@@ -351,17 +351,17 @@
 		<td>
 			<form name="form1" method="post" action="cartWrite.do">
 			<input type="hidden" name="productCode" value="${detail.productCode }" >
-			<select>
-			 <option>1 </option>
-			 <option>2 </option>
-			 <option>3 </option>
+			<select name="cartAmount">
+			 <option value="1">1 </option>
+			 <option value="2">2 </option>
+			 <option value="3">3 </option>
 			</select>
 			<%-- <select name="amount">
 				<c:forEach begin=1 end="10" var="i">
 					<option value="${i }">${i }</option>
 				</c:forEach>
 			</select>&nbsp;개  --%>
-			<a href="http://localhost:8080/Ascent/cartList.do?productCode=${detail.productCode }"><input type="submit" value="CART"></a>
+			<a href="cartWrite.do?productCode=${detail.productCode }&?cartAmount=1"><input type="submit" value="장바구니 담기"></a>
 			</form>
 		</td>
 	</tr>
