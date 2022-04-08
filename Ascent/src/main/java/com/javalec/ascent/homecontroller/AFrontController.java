@@ -132,12 +132,7 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
 				break;
-			// 플로럴카테고리
-			case("/pPlist.do"):	
-				command = new APpCommand();
-				command.execute(request, response);
-				viewPage = "pPList.jsp";
-				break;
+			
 				
 			// productList, 상품목록
 //				
@@ -177,13 +172,15 @@ public class AFrontController extends HttpServlet {
 //				command = new ASoCommand() ;
 //				command.execute(request, response);
 //				viewPage = "sFLlist.jsp";
-//				break;		
-//			//Perfume
-//			case("/pPList.do"):	
-//				command = new APpCommand() ;
-//				command.execute(request, response);
-//				viewPage = "pPList.jsp";
 //				break;	
+				// 플로럴카테고리
+						
+			//Perfume
+			case("/pPList.do"):	
+				command = new APpCommand() ;
+				command.execute(request, response);
+				viewPage = "pPList.jsp";
+				break;	
 //			//toilette
 //			case("/pTList.do"):	
 //				command = new APtCommand() ;
