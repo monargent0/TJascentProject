@@ -27,6 +27,7 @@ import com.javalec.ascent.command.AOrderDetailCommand;
 import com.javalec.ascent.command.AOrderListCommand;
 import com.javalec.ascent.command.AOrderWriteCommand;
 import com.javalec.ascent.command.APayCommand;
+import com.javalec.ascent.command.APpCommand;
 import com.javalec.ascent.command.AProductAskWriteCommand;
 import com.javalec.ascent.command.AProductDetailCommand;
 import com.javalec.ascent.command.AProductListCommand;
@@ -133,10 +134,10 @@ public class AFrontController extends HttpServlet {
 				viewPage = (String) request.getAttribute("viewPage");
 				break;
 			// 플로럴카테고리
-			case("/Pplist.do"):	
-				command = new APp01Command() ;
+			case("/pPlist.do"):	
+				command = new APpCommand();
 				command.execute(request, response);
-				viewPage = "Pplist.jsp";
+				viewPage = "pPList.jsp";
 				break;
 			// 미완성	
 //			// orderList, 주문내역
