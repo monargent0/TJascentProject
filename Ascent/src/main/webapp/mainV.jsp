@@ -254,28 +254,28 @@
 						<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					
 					<ul id="nav">
-					<li><a class="nav-link" href="#">Scent</a>
+					<li><a class="nav-link" href="main.do">Scent</a>
 						<ul>
 							
-							<li><a href="#">Floral</a></li>
-							<li><a href="#">Citrus</a></li>
-							<li><a href="#">Fresh</a></li>
-							<li><a href="#">Fruity</a></li>
-							<li><a href="#">Woody</a></li>
-							<li><a href="#">Oriental</a></li>
+							<li><a href="sFList.do">Floral</a></li>
+							<li><a href="sCList.do">Citrus</a></li>
+							<li><a href="sFRList.do">Fresh</a></li>
+							<li><a href="sFTList.do">Fruity</a></li>
+							<li><a href="sWList.do">Woody</a></li>
+							<li><a href="sOList.do">Oriental</a></li>
 						</ul>
 					</li>
 					
 						<!-- 상품별로 보여주기  -->
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="pPlist.do">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="#">Eau de toillette</a></li>
-							<li><a class="dropdown-item" href="#">Eau de cologne</a></li>
-							<li><a class="dropdown-item" href="#">Body Spray</a></li>
+							<li><a class="dropdown-item" href="pTList.do">Eau de toilette</a></li>
+							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
+							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
 						</ul>
 					</li>
 					<!-- 1:1문의 ,공지사항, 상품문의  -->

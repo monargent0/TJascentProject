@@ -248,7 +248,7 @@
 						<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					
 					<ul id="nav">
-					<li><a class="nav-link" href="main.do">Shop</a>
+					<li><a class="nav-link" href="main.do">Scent</a>
 						<ul>
 							
 							<li><a href="sFList.do">Floral</a></li>
@@ -267,7 +267,7 @@
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="pPlist.do">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="pTList.do">Eau de toillette</a></li>
+							<li><a class="dropdown-item" href="pTList.do">Eau de toilette</a></li>
 							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
 							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
 						</ul>
