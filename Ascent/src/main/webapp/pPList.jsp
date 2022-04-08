@@ -232,75 +232,8 @@
   height:300px;
   }   
 </style>
+
 <body>
-<!-- <!-- 상단홈바 -->
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">ascent</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           perfume
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">eau de perfume</a></li>
-            <li><a class="dropdown-item" href="#">eau de toillette</a></li>
-            <li><a class="dropdown-item" href="#">eau de cologne</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Body Spray</a></li>
-          </ul>
-          <li class="nav-item">
-         <a  class="nav-link px-2 text-white" href="#">FAQs</a>
-         </li>
-            <li  class="nav-item">
-            <a  class="nav-link px-2 text-white" href="#">About</a>
-            </li>
-      
-       
-      </ul>
-      
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="검색하기" aria-label="Search">
-        <i class="bi bi-search" ></i>
-      </form>
-    
-      
-      
-       <div class="text-end">
-    	<i class="bi bi-person-fill"></i>
-    	 </div>
-    	
-    	<j class="bi bi-bag-heart" style="font-size:2rem; cursor: pointer;"></j>
-
-    <script>
-
-        var j = 0;
-        $('j').on('click',function(){
-            if(j==0){
-                $(this).attr('class','bi-bag-fill');
-                j++;
-            }else if(j==1){
-                $(this).attr('class','bi-bag-heart');
-                j--;
-            }
-
-        });
-
-    </script>
-      
-    </div>
-  </div>
-</nav> -->
 <!-- 메인 홈바  -->
 <nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -315,32 +248,32 @@
 						<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					
 					<ul id="nav">
-					<li><a class="nav-link" href="#">Shop</a>
+					<li><a class="nav-link" href="main.do">Shop</a>
 						<ul>
 							
-							<li><a href="Pplist.do">Floral</a></li>
-							<li><a href="#">Citrus</a></li>
-							<li><a href="#">Fresh</a></li>
-							<li><a href="#">Fruity</a></li>
-							<li><a href="#">Woody</a></li>
-							<li><a href="#">Oriental</a></li>
+							<li><a href="sFList.do">Floral</a></li>
+							<li><a href="sCList.do">Citrus</a></li>
+							<li><a href="sFRList.do">Fresh</a></li>
+							<li><a href="sFTList.do">Fruity</a></li>
+							<li><a href="sWList.do">Woody</a></li>
+							<li><a href="sOList.do">Oriental</a></li>
 						</ul>
 					</li>
 					
 						<!-- 상품별로 보여주기  -->
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="#">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="#">Eau de toillette</a></li>
-							<li><a class="dropdown-item" href="#">Eau de cologne</a></li>
-							<li><a class="dropdown-item" href="#">Body Spray</a></li>
+							<li><a class="dropdown-item" href="pPlist.do">Eau de perfume</a></li>
+							<li><a class="dropdown-item" href="pTList.do">Eau de toillette</a></li>
+							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
+							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
 						</ul>
 					</li>
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="#">About</a>
+					<li><a class="nav-link px-2" href="main.do">About</a>
 						<ul>
 							<li><a href="#">Notice</a></li>
 							<li><a href="#">Q&A</a></li>

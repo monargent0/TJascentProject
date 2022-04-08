@@ -16,7 +16,7 @@
 	<col>
 	</colgroup>
 	<table>
-	<tr>	
+	<tr>	<!-- c:foreach는 dao arraylist 쓸때만   -->
 		<th>판매가</th>
 		<td><fmt:formatNumber value="${detail.productPrice }원" pattern="###,###,###"/></td>
 	</tr>
