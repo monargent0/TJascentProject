@@ -279,7 +279,7 @@
 						</ul>
 					</li>
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="#">About</a>
+					<li><a class="nav-link px-2" href="noticeBoardList.do">About</a>
 						<ul>
 							<li><a href="noticeBoardList.do">Notice</a></li>
 							<!-- <li><a href="counselList.do">Q&A</a></li> -->
@@ -302,7 +302,7 @@
 				<!--로고 -->
 			
       			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="#">
+   					 <a class="navbar-brand" href="main.do">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
@@ -367,7 +367,7 @@
 			<div class="jb-text">
       	  <p id="hyper1">가드니아의 여름</p>
     	  </div>
-		<a id="hyper2" href="#">More </a>		
+		<a id="hyper2" href="sFList.do">More </a>		
 		</ul>
 		
 	<!-- 상품 구현  -->

@@ -17,12 +17,21 @@
 </style>
 
 <body bgcolor="#FFFAF6">
+<%
+ 	String txt = "";
+ 	if(request.getAttribute("userPW") == null){
+ 		txt = "결과가 없습니다.";
+ 	}else{
+ 		txt = request.getAttribute("userPW") + "입니다.";
+ 	}
+ 
+ %>
 
 	<div class="contents">
 
 		<div>
 			<h3>
-				찾으신 비밀번호는 <%=request.getAttribute("userPW") %>입니다.
+				찾으시는 비밀번호는 <%= txt %>
 			</h3>
 		</div>
 

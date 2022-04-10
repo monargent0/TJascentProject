@@ -15,8 +15,7 @@ public class APpCommand implements ACommand {
 		ADaoP dao = new ADaoP();
 		ArrayList<ADtoP> dtos = dao.appList();
 		request.setAttribute("appList", dtos);
-		
-
+	
 
 	}
 
