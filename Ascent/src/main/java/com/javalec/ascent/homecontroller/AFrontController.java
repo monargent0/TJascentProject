@@ -100,8 +100,8 @@ public class AFrontController extends HttpServlet {
 				command = new ALoginCommand();
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
-				break;		
 				// 로그인하면 메인, 실패하면 다시로그인, 관리자계정은 관리자사이트로
+				break;		
 			// 아이디 찾기
 			case("/findID.do") :
 				command = new AFindIDCommand();
@@ -201,29 +201,29 @@ public class AFrontController extends HttpServlet {
 //				break;
 //				
 				// counselList, 1대1문의 조회
-			case("/counselList.do") :
-				command = new ACounselListCommand();
-				command.execute(request, response);
-				viewPage = "counselListV.jsp";
-				break;
-			// counselWrite, 1대1문의 작성
-			case("/counselWrite.do"):
-				command = new ACounselWriteCommand();
-				command.execute(request, response);
-				viewPage = "counselList.do";
-				break;
-			// counselDetail, 1대1문의 상세
-			case("/counselDetail.do"):
-				command = new ACounselDetailCommand();
-				command.execute(request, response);
-				viewPage = "counselDetailV.jsp";
-				break;
-			// counselDelete, 1대1문의 삭제
-			case("/counselDelete.do"):
-				command = new ACounselDeleteCommand();
-				command.execute(request, response);
-				viewPage = "counselList.do";
-				break;
+//			case("/counselList.do") :
+//				command = new ACounselListCommand();
+//				command.execute(request, response);
+//				viewPage = "counselListV.jsp";
+//				break;
+//			// counselWrite, 1대1문의 작성
+//			case("/counselWrite.do"):
+//				command = new ACounselWriteCommand();
+//				command.execute(request, response);
+//				viewPage = "counselList.do";
+//				break;
+//			// counselDetail, 1대1문의 상세
+//			case("/counselDetail.do"):
+//				command = new ACounselDetailCommand();
+//				command.execute(request, response);
+//				viewPage = "counselDetailV.jsp";
+//				break;
+//			// counselDelete, 1대1문의 삭제
+//			case("/counselDelete.do"):
+//				command = new ACounselDeleteCommand();
+//				command.execute(request, response);
+//				viewPage = "counselList.do";
+//				break;
 			// 미완성	
 			// orderList, 주문내역
 			case("/orderList.do"):
@@ -328,6 +328,7 @@ public class AFrontController extends HttpServlet {
 			case("/cartWrite.do"):
 				command = new ACartWriteCommand();
 				command.execute(request, response);
+				viewPage = "productDetail.do";
 				break;
 			// cartList, 장바구니 보기
 			case("/cartList.do"):

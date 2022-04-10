@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -360,21 +360,22 @@
 
                			   <section class="py-5">
                			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${appList }" var="dto"><%--반복문,dto --%>
- 								 <div class="col">
-   									 <div class="card h-100">
-   									  <a class="card-image" href="http://localhost:8080/Ascent/productDetail.do?productCode=${dto.productCode }"><img class="card-img-top" src="${dto.productImages}" alt="" width="100%" /></a>
-     								 <div class="card-body">
-     								  <div class="detail-text-center">
-                              	     <p class="pd.name">${dto.productName }</p>
-                                    <!-- Product size-->
-                             		<p class="pd.size">${dto.productSize }ml</p>
-                                    <!-- Product price-->
-                                	<p class="pd.price">${dto.productPrice }원</p>
-                             	
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
+		  			<c:forEach items="${appList }" var="dto"><%--반복문, 변수 dto --%>
+ 							<div class="col">
+   								<div class="card h-100">
+	   								<a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
+	   								<img class="card-img-top" src="${dto.productImages}" alt="" width="100%" />
+	   								</a>
+     								<div class="card-body">
+		     							<div class="detail-text-center">
+		     								<p class="pd.name">${dto.productName }</p>
+		     								<!-- Product size-->
+		                             		<p class="pd.size">${dto.productSize }ml</p>
+		                             		<!-- Product price-->
+		                             		<p class="pd.price">${dto.productPrice }원</p>
+		                                </div>
+    				 	 			</div>
+    				 		 	</div>
     				 		 </div>
                		 </c:forEach>
   				  </div>

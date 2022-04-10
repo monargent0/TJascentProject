@@ -209,71 +209,64 @@
 <body>
 <!-- 홈바  -->
 <nav id="navBar" class="navbar navbar-expand-lg navbar">
-		<div class="container-fluid">
-			<button class="navbar-toggler" type="button"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<div class="container-fluid">
+		<button class="navbar-toggler" type="button"
+		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					
 						<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					
 					<ul id="nav">
-					<li><a class="nav-link" href="main.do">Scent</a>
-						<ul>
-							
-							<li><a href="sFList.do">Floral</a></li>
-							<li><a href="sCList.do">Citrus</a></li>
-							<li><a href="sFRList.do">Fresh</a></li>
-							<li><a href="sFTList.do">Fruity</a></li>
-							<li><a href="sWList.do">Woody</a></li>
-							<li><a href="sOList.do">Oriental</a></li>
-						</ul>
-					</li>
+						<li><a class="nav-link" href="main.do">Scent</a>
+							<ul>
+								<li><a class="dropdown-item" href="sFList.do">Floral</a></li>
+								<li><a class="dropdown-item" href="sCList.do">Citrus</a></li>
+								<li><a class="dropdown-item" href="sFRList.do">Fresh</a></li>
+								<li><a class="dropdown-item" href="sFTList.do">Fruity</a></li>
+								<li><a class="dropdown-item" href="sWList.do">Woody</a></li>
+								<li><a class="dropdown-item" href="sOList.do">Oriental</a></li>
+							</ul>
+						</li>
 					
 						<!-- 상품별로 보여주기  -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Perfume </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="pPList.do">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="pTList.do">Eau de toilette</a></li>
-							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
-							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
-						</ul>
-					</li>
+						<li>
+							<a class="nav-link" href="main.do">Perfume</a>
+							<ul>
+								<li><a class="dropdown-item" href="pPList.do">Eau de perfume</a></li>
+								<li><a class="dropdown-item" href="pTList.do">Eau de toilette</a></li>
+								<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
+								<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
+							</ul>
+						</li>
+						
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="#">About</a>
-						<ul>
-							<li><a href="noticeBoardList.do">Notice</a></li>
-							<!-- <li><a href="counselList.do">Q&A</a></li> -->
-							<%
-							if(session.getAttribute("userID") == null){
-							%>
-							<li><a href="logInV.jsp">Q&A</a></li>
-							<%
-							}else if(session.getAttribute("userID") != null){
-							%>
-							<li><a href="counselList.do">Q&A</a></li>
-						  <% } %>
-						</ul>
-										
-
-
-					</li>
+						<li><a class="nav-link px-2" href="#">About</a>
+							<ul>
+								<li><a href="noticeBoardList.do">Notice</a></li>
+								<!-- <li><a href="counselList.do">Q&A</a></li> -->
+								<%
+								if(session.getAttribute("userID") == null){
+								%>
+								<li><a href="logInV.jsp">Q&A</a></li>
+								<%
+								}else if(session.getAttribute("userID") != null){
+								%>
+								<li><a href="counselList.do">Q&A</a></li>
+							  <% } %>
+							</ul>
+						</li>
+					</ul>
 				</ul>
-				</ul>
+				
 				<!--로고 -->
-			
-      			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="#">
-   					   <img src="assets/logo.png"  alt="" width="300" height="150">
-  					  </a>
-				  </div>
-      			  
+      			<div class="container col-12 col-lg-auto me-auto mb-2 mb-md-0">
+   					<a class="navbar-brand" href="main.do">
+   					<img src="assets/logo.png"  alt="" width="300" height="150">
+  					</a>
+				</div>
       			  
       			 <!--검색하기  -->
 				<form  class="d-flex">
@@ -293,9 +286,9 @@
 							k--;
 						}
 					});
-				</script>
+					</script>
 				
-				<%
+					<%
 					if(session.getAttribute("userID") == null){
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
@@ -303,9 +296,8 @@
 					}else if(session.getAttribute("userID") != null){
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
-				  <% } %>
-				
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href="#"></j>
+					<% } %>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="location.href='cartList.do?userID=<%=session.getAttribute("userID")%>'"></j>
 
 				<script>
 					var j = 0;
@@ -349,27 +341,35 @@
 	</tr>
 	<tr>
 		<td>
-			<form name="form1" method="post" action="cartWrite.do">
-			<input type="hidden" name="productCode" value="${detail.productCode }" >
-			<select name="cartAmount">
-			 <option value="1">1 </option>
-			 <option value="2">2 </option>
-			 <option value="3">3 </option>
-			</select>
-			<%-- <select name="amount">
-				<c:forEach begin=1 end="10" var="i">
-					<option value="${i }">${i }</option>
-				</c:forEach>
-			</select>&nbsp;개  --%>
-			<a href="cartWrite.do?productCode=${detail.productCode }&?cartAmount=1"><input type="submit" value="장바구니 담기"></a>
+			<form name="cartForm" method="get" action="cartWrite.do?userID=<%=session.getAttribute("userID")%>">
+				<input type="hidden" name="userID" value="<%=session.getAttribute("userID") %>" >
+				<input type="hidden" name="productCode" value="${detail.productCode }" >
+				<select name="cartAmount" >
+				 <option value="1">1 </option>
+				 <option value="2">2 </option>
+				 <option value="3">3 </option>
+				</select>
+				<input type="button" value="장바구니 담기" onclick="AcheckUser()">
 			</form>
 		</td>
 	</tr>
 	</table>
 
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 </body>
+<script>
+	var cartForm = document.cartForm;
+	var userID = <%=session.getAttribute("userID")%>;
+function AcheckUser() {
+	if (userID != 'null'){
+		cartForm.submit();
+		alert("장바구니에 담았습니다.")
+	}else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp';
+	}
+}
+</script>	
 </html>
