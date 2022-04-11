@@ -174,6 +174,10 @@ function sample6_execDaumPostcode() {
 				<td align="right">받는 사람</td>
 				<td><input type="text" name="orderReceiver" size="10"></td>
 			</tr>
+			<tr>
+				<td align="right">배송지 이름</td>
+				<td><input type="text" name="addressType" size="10"></td>
+			</tr>
 			<tr>	
 				<td align="right">우편 번호</td>
 				<td>
