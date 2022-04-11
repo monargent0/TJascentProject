@@ -195,7 +195,7 @@
 							<span class="glyphicon glyphicon-search"></span>
 							<a href="searchProductV.jsp"></a>
 						</button>
-					</div>
+					</div>	
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">번호</th>
 						<th style="background-color: #eeeeee; text-align: center;">제목</th>
@@ -207,14 +207,14 @@
 					<%
 						ADaoP dao = new ADaoP();
 						//System.out.println("here before getlist");
-						ArrayList<Bbs> list = bbsDAO.getSearchedList(pageNumber,searchWord);
+						ArrayList<ADtoP> list = daO.getSearchedList(pageNumber,searchWord);
 						//System.out.println("here after getlist" + list.get(0).getBbsDate().substring(0,11));
 						for(int i=0;i<list.size();i++){
 					%>
 					<tr>
-						<td><%=list.get(i).getBbsID()%></td>
-						<td><a href="view.jsp?userID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getBbsTitle().replaceAll(" ","&nbsp;").replaceAll("<","&lt;").replaceAll("<","&gt;").replaceAll("\n","<br>")%></a></td>
-						<td><%= list.get(i).getUserID()%></td>
+						<td><%=list.get(i).getuserID()%></td>
+						<td><a href="view.jsp?userID=<%=list.get(i).getuserID()%>"><%=list.get(i).getBbsTitle().replaceAll(" ","&nbsp;").replaceAll("<","&lt;").replaceAll("<","&gt;").replaceAll("\n","<br>")%></a></td>
+						<td><%= list.get(i).getuserID()%></td>
 						<td><%=	list.get(i).getBbsDate().substring(0, 11) + list.get(i).getBbsDate().substring(11,13) + "시" + list.get(i).getBbsDate().substring(14,16) + "분"%></td>
 					</tr>
 					<% 
