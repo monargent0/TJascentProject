@@ -70,7 +70,7 @@
 	</div>  
  
  	<div >
- 		<form action="logIn.do" method="post">
+ 		<form action="logIn.do" method="get">
  			<div>
 				<div style="float: right;">
 					<input type="text" name="userID" size="30" placeholder="아이디"

@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javalec.ascent.command.AAddressDeleteCommand;
+import com.javalec.ascent.command.AAddressLCommand;
+import com.javalec.ascent.command.AAddressWriteCommand;
 import com.javalec.ascent.command.ACartDeleteCommand;
 import com.javalec.ascent.command.ACartListCommand;
 import com.javalec.ascent.command.ACartModifyCommand;
@@ -20,6 +23,7 @@ import com.javalec.ascent.command.ACounselListCommand;
 import com.javalec.ascent.command.ACounselWriteCommand;
 import com.javalec.ascent.command.AFindIDCommand;
 import com.javalec.ascent.command.AFindPWCommand;
+import com.javalec.ascent.command.AIDCheckCommand;
 import com.javalec.ascent.command.ALoginCommand;
 import com.javalec.ascent.command.ANoticeBoardListCommand;
 import com.javalec.ascent.command.AOrderDetailCommand;
@@ -100,8 +104,8 @@ public class AFrontController extends HttpServlet {
 				command = new ALoginCommand();
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
-				// 로그인하면 메인, 실패하면 다시로그인, 관리자계정은 관리자사이트로
 				break;		
+				// 로그인하면 메인, 실패하면 다시로그인, 관리자계정은 관리자사이트로
 			// 아이디 찾기
 			case("/findID.do") :
 				command = new AFindIDCommand();
@@ -132,7 +136,33 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
 				break;
-			
+			// userModify, 개인정보 수정
+			case("/idDB.do"):
+				command = new AIDCheckCommand();
+				command.execute(request, response);
+				viewPage = "doubleR.jsp";
+				break;
+			// address list
+			case("/addressList.do"):
+				command = new AAddressLCommand();
+				command.execute(request, response);
+				viewPage = "addressListV.jsp";
+				break;
+			// address write
+			case("/addressWrite.do"):
+				command = new AAddressWriteCommand();
+				command.execute(request, response);
+				viewPage = "addressList.do";
+				break;
+			// address delete
+			case("/addressDelete.do"):
+				command = new AAddressDeleteCommand();
+				command.execute(request, response);
+				viewPage = "addressList.do";
+				break;
+				
+				
+				
 				
 			// productList, 상품목록
 //				
@@ -201,29 +231,29 @@ public class AFrontController extends HttpServlet {
 //				break;
 //				
 				// counselList, 1대1문의 조회
-//			case("/counselList.do") :
-//				command = new ACounselListCommand();
-//				command.execute(request, response);
-//				viewPage = "counselListV.jsp";
-//				break;
-//			// counselWrite, 1대1문의 작성
-//			case("/counselWrite.do"):
-//				command = new ACounselWriteCommand();
-//				command.execute(request, response);
-//				viewPage = "counselList.do";
-//				break;
-//			// counselDetail, 1대1문의 상세
-//			case("/counselDetail.do"):
-//				command = new ACounselDetailCommand();
-//				command.execute(request, response);
-//				viewPage = "counselDetailV.jsp";
-//				break;
-//			// counselDelete, 1대1문의 삭제
-//			case("/counselDelete.do"):
-//				command = new ACounselDeleteCommand();
-//				command.execute(request, response);
-//				viewPage = "counselList.do";
-//				break;
+			case("/counselList.do") :
+				command = new ACounselListCommand();
+				command.execute(request, response);
+				viewPage = "counselListV.jsp";
+				break;
+			// counselWrite, 1대1문의 작성
+			case("/counselWrite.do"):
+				command = new ACounselWriteCommand();
+				command.execute(request, response);
+				viewPage = "counselList.do";
+				break;
+			// counselDetail, 1대1문의 상세
+			case("/counselDetail.do"):
+				command = new ACounselDetailCommand();
+				command.execute(request, response);
+				viewPage = "counselDetailV.jsp";
+				break;
+			// counselDelete, 1대1문의 삭제
+			case("/counselDelete.do"):
+				command = new ACounselDeleteCommand();
+				command.execute(request, response);
+				viewPage = "counselList.do";
+				break;
 			// 미완성	
 			// orderList, 주문내역
 			case("/orderList.do"):
