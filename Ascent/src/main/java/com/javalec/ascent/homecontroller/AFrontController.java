@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javalec.ascent.command.AAddressDeleteCommand;
+import com.javalec.ascent.command.AAddressLCommand;
+import com.javalec.ascent.command.AAddressWriteCommand;
 import com.javalec.ascent.command.ACartDeleteCommand;
 import com.javalec.ascent.command.ACartListCommand;
 import com.javalec.ascent.command.ACartModifyCommand;
@@ -20,6 +23,7 @@ import com.javalec.ascent.command.ACounselListCommand;
 import com.javalec.ascent.command.ACounselWriteCommand;
 import com.javalec.ascent.command.AFindIDCommand;
 import com.javalec.ascent.command.AFindPWCommand;
+import com.javalec.ascent.command.AIDCheckCommand;
 import com.javalec.ascent.command.ALoginCommand;
 import com.javalec.ascent.command.ANoticeBoardListCommand;
 import com.javalec.ascent.command.AOrderDetailCommand;
@@ -132,7 +136,33 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
 				break;
-			
+			// userModify, 개인정보 수정
+			case("/idDB.do"):
+				command = new AIDCheckCommand();
+				command.execute(request, response);
+				viewPage = "doubleRV.jsp";
+				break;
+			// address list
+			case("/addressList.do"):
+				command = new AAddressLCommand();
+				command.execute(request, response);
+				viewPage = "addressListV.jsp";
+				break;
+			// address write
+			case("/addressWrite.do"):
+				command = new AAddressWriteCommand();
+				command.execute(request, response);
+				viewPage = "addressList.do";
+				break;
+			// address delete
+			case("/addressDelete.do"):
+				command = new AAddressDeleteCommand();
+				command.execute(request, response);
+				viewPage = "addressList.do";
+				break;
+				
+				
+				
 				
 			// productList, 상품목록
 //				

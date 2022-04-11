@@ -23,7 +23,9 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -49,7 +51,8 @@
 </style>
 </head>
 <body>
-<!-- 메인홈바 -->
+	
+	<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -139,7 +142,6 @@
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
-				  
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href="#"></j>
 					<script>	
 					var j = 0;
@@ -149,7 +151,7 @@
 							j++;
 						} else if (j == 1) {
 							$(this).attr('class', 'bi-bag-heart');
-							j--;
+							j—;
 						}
 					});
 					</script>
@@ -167,7 +169,7 @@
 			<div class="jb-text">
       	  <p id="hyper1">가드니아의 여름</p>
     	  </div>
-		<a id="hyper2" href="#">More </a>		
+		<a id="hyper2" href="sFList.do">More </a>		
 		</ul>
 		
 	<!-- 상품 구현  -->

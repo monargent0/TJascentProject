@@ -257,5 +257,34 @@ DataSource dataSource;
 			}
 		} // info modify
 
-		
+		// 중복체크
+		public String doubleID(String userID) {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultSet = null;
+			String id = null;
+			
+			try {
+				connection = dataSource.getConnection();
+				String query = "select userID from userinfo where userID = ?";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, userID);
+				resultSet = preparedStatement.executeQuery();
+				
+				if(resultSet.next()) {
+					id = resultSet.getString("userID");
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally {
+					try {
+						if(resultSet != null) resultSet.close();
+						if(preparedStatement != null) preparedStatement.close();
+						if(connection != null) connection.close();
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+			} //finally
+			return id;
+		} // doubleID
 }
