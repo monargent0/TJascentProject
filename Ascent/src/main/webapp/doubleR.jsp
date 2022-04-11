@@ -8,7 +8,7 @@
 </head>
 <script type="text/javascript">
 	
-	function ap(){
+	function apply(){
 		var txt = "check" ;
 		var id =  "<%=request.getParameter("userID")%>" ;
 		window.opener.document.signin.userID.value = id;
@@ -46,7 +46,7 @@
 			<% if( txt == "사용이 불가능한 아이디 입니다."){ %>
 			<button type="button" onclick= "javascript:history.back()" >다시검색</button>
 			<% }else if( txt == "사용 가능한 아이디 입니다."){ 	%>
-			<button type="button" onclick= "ap()" >사용하기</button>			
+			<button type="button" onclick= "apply()" >사용하기</button>			
   		    <% } %>
 		</div>	
 		
