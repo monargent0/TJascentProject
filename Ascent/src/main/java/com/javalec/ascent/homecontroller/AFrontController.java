@@ -140,40 +140,40 @@ public class AFrontController extends HttpServlet {
 //			case("/sFList.do"):	
 //				command = new ASflCommand() ;
 //				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
+//				viewPage = "sFList.jsp";
 //				break;		
 //			//citrus
 //			case("/sCList.do"):	
 //				command = new AScCommand() ;
 //				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
+//				viewPage = "sCList.jsp";
 //				break;		
 //			//Fresh
 //			case("/sFRList.do"):	
 //				command = new ASfrCommand() ;
 //				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
+//				viewPage = "sFRList.jsp";
 //				break;		
 //			//Fruity
 //			case("/sFTList.do"):	
 //				command = new ASftCommand() ;
 //				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
+//				viewPage = "sFTList.jsp";
 //				break;		
 //			//Woody
 //			case("/sWList.do"):	
 //				command = new ASwCommand() ;
 //				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
+//				viewPage = "sWList.jsp";
 //				break;		
 //			
 //			//Oriental
 //			case("/sOList.do"):	
 //				command = new ASoCommand() ;
 //				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
+//				viewPage = "sOList.jsp";
 //				break;	
-				// 플로럴카테고리
+//				// 플로럴카테고리
 						
 			//Perfume
 			case("/pPList.do"):	
