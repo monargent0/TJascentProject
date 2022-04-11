@@ -38,13 +38,13 @@
 			<h3>아이디 중복 체크 결과	</h3>
 		</div>
 		<div>
-			[ <%=  id %> ] 는 <br>
+			[ <%=  id %> ] 은/는 <br>
 			<%= txt %>
 		</div>
 		
 		<div style="float: left;">
 			<% if( txt == "사용이 불가능한 아이디 입니다."){ %>
-			<button type="button" onclick= "javascript:history.back()" >다시검색</button>
+			<button type="button" onclick= "javascript:history.back()" >돌아가기</button>
 			<% }else if( txt == "사용 가능한 아이디 입니다."){ 	%>
 			<button type="button" onclick= "apply()" >사용하기</button>			
   		    <% } %>
