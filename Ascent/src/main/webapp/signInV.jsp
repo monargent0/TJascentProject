@@ -182,27 +182,9 @@
 	
 	function doubleC(){
 		let id = document.getElementById("userID").value;
- 		window.open('double.jsp?userID='+id ,'popup','width=600,height=600'); 
+ 		window.open('doubleV.jsp?userID='+id ,'popup','width=600,height=600'); 
 	}
-	<%-- /* 아이디 중복 체크 */
-	let idtxt = '<%=(String)session.getAttribute("idtxt")%>' ;
-	let warning = document.getElementById("IDWarning");
 	
-	if( idtxt == "Nodouble"){
-		warning.innerHTML = '<p id="warning"> 아이디 사용이 불가능합니다. </p>';
-		document.getElementById("userID").value = "";
-		<%
-		session.invalidate();
-		%>
-		return document.signin.userID.focus();
-	}
-	if( idtxt == "Double"){
-		warning.innerHTML = '<p id="warning"> 아이디 사용이 가능합니다. </p>';
-		<%
-		session.invalidate();
-		%>
-		return document.signin.userEmail.focus();
-	} --%>
 </script>
 
 <style>
@@ -211,7 +193,10 @@
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px;
-		font-family: "나눔명조"
+		font-family: "나눔명조";
+	}
+	input{
+		margin-bottom: 10px;	
 	}
 	
 	#warning{
@@ -251,9 +236,9 @@
 				<div>
 					<input type="text" name="userID" placeholder="아이디를 입력해 주세요."
 					onBlur="checkID()" onkeydown="typingID()" id="userID" size="50">
-				</div>
-				<div>
 					<button type="button" onclick="doubleC() " >아이디 중복 확인</button>
+				</div>
+				<div style="">
 					<input type="hidden" id="idcheck" name="idcheck" value="uncheck">
 				</div>
 				<div id="IDWarning"></div>

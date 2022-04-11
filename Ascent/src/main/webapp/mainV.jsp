@@ -44,7 +44,7 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-</head>
+
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <%-- 아이콘 --%>
@@ -241,6 +241,7 @@
 </style>
 <body>
 	
+	<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -251,22 +252,22 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					
-						<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
-					
+				<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					<ul id="nav">
-					<li><a class="nav-link" href="main.do">Scent</a>
-						<ul>
-							
-							<li><a href="sFList.do">Floral</a></li>
-							<li><a href="sCList.do">Citrus</a></li>
-							<li><a href="sFRList.do">Fresh</a></li>
-							<li><a href="sFTList.do">Fruity</a></li>
-							<li><a href="sWList.do">Woody</a></li>
-							<li><a href="sOList.do">Oriental</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Scent </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="sFList.do">Floral</a></li>
+							<li><a class="dropdown-item" href="sCList.do">Citrus</a></li>
+							<li><a class="dropdown-item" href="sFRList.do">Fresh</a></li>
+							<li><a class="dropdown-item" href="sFTList.do">Fruity</a></li>
+							<li><a class="dropdown-item" href="sWList.do">Woody</a></li>
+							<li><a class="dropdown-item" href="sOList.do">Oriental</a></li>
 						</ul>
-					</li>
-					
-						<!-- 상품별로 보여주기  -->
+					</li> 
+				<!-- 상품별로 보여주기  -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -279,7 +280,7 @@
 						</ul>
 					</li>
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="noticeBoardList.do">About</a>
+					<li><a class="nav-link px-2" href="#">About</a>
 						<ul>
 							<li><a href="noticeBoardList.do">Notice</a></li>
 							<!-- <li><a href="counselList.do">Q&A</a></li> -->
@@ -293,21 +294,15 @@
 							<li><a href="counselList.do">Q&A</a></li>
 						  <% } %>
 						</ul>
-										
-
-
 					</li>
 				</ul>
 				</ul>
 				<!--로고 -->
-			
       			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
    					 <a class="navbar-brand" href="main.do">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
-      			  
-      			  
       			 <!--검색하기  -->
 				<form  class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="검색하기" aria-label="Search"> 
@@ -327,9 +322,8 @@
 						}
 					});
 				</script>
-				
-				<%
-					if(session.getAttribute("userID") == null){
+					<% 
+				 	 if(session.getAttribute("userID") == null){
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
 					<%
@@ -337,7 +331,6 @@
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
-				
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href="#"></j>
 
 				<script>
@@ -348,13 +341,12 @@
 							j++;
 						} else if (j == 1) {
 							$(this).attr('class', 'bi-bag-heart');
-							j--;
+							j—;
 						}
 					});
 				</script>
 				</div>
 			</div>
-			
 		</div>
 	</nav>
 	

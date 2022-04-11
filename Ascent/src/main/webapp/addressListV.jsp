@@ -34,6 +34,12 @@
 <meta charset="UTF-8">
 <title>주소록</title>
 </head>
+<script type="text/javascript">
+	function delAd(){
+		return confirm("삭제하시겠습니까?");
+	}
+
+</script>
 <body bgcolor="#FFFAF6">
 
  <div class="contents">
@@ -44,7 +50,6 @@
 			<th>주소이름</th>
 			<th>우편번호</th>
 			<th>주소</th>
-			<th>아이디</th>
 			<th>삭제</th>
 		</tr>
 		<c:forEach items="${address}" var="dto">
@@ -52,8 +57,8 @@
 				<td>${dto.addressType}</td>
 				<td>${dto.postcode }</td>
 				<td>${dto.mainAddress}, ${dto.detailAddress} ${dto.extraAddress}</td>						
-				<td>${dto.user_userID}</td>
-				<td><a id="hyper" href="addressDelete.do?addressCode=${dto.addressCode }">X</a></td>
+				<%-- <td>${dto.user_userID}</td> --%>
+				<td><a id="hyper" href="addressDelete.do?addressCode=${dto.addressCode }" onclick="return delAd();" >X</a></td>
 			</tr>
 		</c:forEach>
 		<tr>

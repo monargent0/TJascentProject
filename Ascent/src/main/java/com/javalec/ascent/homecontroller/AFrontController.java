@@ -140,7 +140,7 @@ public class AFrontController extends HttpServlet {
 			case("/idDB.do"):
 				command = new AIDCheckCommand();
 				command.execute(request, response);
-				viewPage = "doubleR.jsp";
+				viewPage = "doubleRV.jsp";
 				break;
 			// address list
 			case("/addressList.do"):
