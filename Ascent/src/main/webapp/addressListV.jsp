@@ -32,32 +32,37 @@
       }
     </style>
 <meta charset="UTF-8">
-<title>ascent 1대1 문의</title>
+<title>주소록</title>
 </head>
+<script type="text/javascript">
+	function delAd(){
+		return confirm("삭제하시겠습니까?");
+	}
+
+</script>
 <body bgcolor="#FFFAF6">
 
  <div class="contents">
-	<h2>1대1 문의</h2>
+	<h2>주소록</h2>
 
 	<table border="1">
 		<tr>
-			<th>글번호</th>
-			<th>문의종류</th>
-			<th>제목</th>
-			<th>게시일</th>
-			<th>답변여부</th>
+			<th>주소이름</th>
+			<th>우편번호</th>
+			<th>주소</th>
+			<th>삭제</th>
 		</tr>
-		<c:forEach items="${list }" var="dto">
+		<c:forEach items="${address}" var="dto">
 			<tr>
-				<td style="text-align: center;"> ${dto.counselCode }</td>
-				<td>${dto.counselType }</td>
-				<td><a id="hyper" href="counselDetail.do?counselCode=${dto.counselCode }">${dto.counselTitle}</a></td>						
-				<td>${dto.counselDate}</td>
-				<td>${dto.c_ReplyCheck}</td>
+				<td>${dto.addressType}</td>
+				<td>${dto.postcode }</td>
+				<td>${dto.mainAddress}, ${dto.detailAddress} ${dto.extraAddress}</td>						
+				<%-- <td>${dto.user_userID}</td> --%>
+				<td><a id="hyper" href="addressDelete.do?addressCode=${dto.addressCode }" onclick="return delAd();" >X</a></td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td align="right" colspan="5"><a id="hyper" href="counselWriteV.jsp">글작성</a></td>
+			<td align="right" colspan="5"><a id="hyper" href="addressWriteV.jsp">주소 추가</a></td>
 		</tr>
 	</table>	
 	

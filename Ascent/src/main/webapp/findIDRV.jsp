@@ -17,10 +17,18 @@
 
 <body bgcolor="#FFFAF6">
 <div class="contents">
-
+ <%
+ 	String txt = "";
+ 	if(request.getAttribute("userID") == null){
+ 		txt = "결과가 없습니다.";
+ 	}else{
+ 		txt = request.getAttribute("userID") + "입니다.";
+ 	}
+ 
+ %>
 		<div>
 			<h3>
-				찾으신 아이디는 <%=request.getAttribute("userID") %>입니다.
+				찾으시는 아이디는 <%=txt %>
 			</h3>
 		</div>
 		<div style="float: left;">

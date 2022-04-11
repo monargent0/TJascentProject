@@ -53,11 +53,6 @@
 		warning.innerHTML = "";
 	}
 	
-	/* 아이디중복검사 */
-	/* function doublecheck(){
-		let id = = document.getElementById("userID").value;
-	} */
-	
 	/* 이메일 유효성 검사 */
 	function checkEM(){
 		let email = document.getElementById("email").value;
@@ -129,6 +124,67 @@
 		warning.innerHTML = "";
 	}
 	
+	/* 필수 입력  */
+	function check(){
+		let name = document.getElementById("NAME").value;
+		let id = document.getElementById("userID").value;
+		let idc = document.getElementById("idcheck").value;
+		let pw = document.getElementById("userPW").value;
+		let cfpw = document.getElementById("cfPW").value;
+		let email = document.getElementById("email").value;
+		let phone = document.getElementById("phone").value;
+		let birth = document.getElementById("birth").value;
+
+		if(name == ""){
+			let warning = document.getElementById("NameWarning");
+			warning.innerHTML = '<p id="warning"> 이름을 입력해주세요 </p>';
+			return document.signin.userName.focus();
+		}
+		else if(id == ""){
+			let warning = document.getElementById("IDWarning");
+			warning.innerHTML = '<p id="warning"> 아이디를 입력해주세요 </p>';
+			return document.signin.userID.focus();
+		}
+		else if( idc == "uncheck"){
+			let warning = document.getElementById("IDWarning");
+			warning.innerHTML = '<p id="warning"> 아이디 중복확인을 해주세요 </p>';
+			return document.signin.userID.focus();
+		}
+		else if(email == ""){
+			let warning = document.getElementById("EMWarning");
+			warning.innerHTML = '<p id="warning"> 이메일을 입력해주세요 </p>';
+			return document.signin.userEmail.focus();
+		}
+		else if(phone == ""){
+			let warning = document.getElementById("PHWarning");
+			warning.innerHTML = '<p id="warning"> 전화번호를 입력해주세요 </p>';
+			return document.signin.userPhone.focus();
+		}
+		else if(pw == ""){
+			let warning = document.getElementById("PWWarning");
+			warning.innerHTML = '<p id="warning"> 비밀번호를 입력해주세요 </p>';
+			return document.signin.userPW.focus();
+		}
+		else if(cfpw == ""){
+			let warning = document.getElementById("CFWarning");
+			warning.innerHTML = '<p id="warning"> 비밀번호 확인을 입력해주세요 </p>';
+			return document.signin.confirmPW.focus();
+		}
+		else if(birth == ""){
+			let warning = document.getElementById("BDWarning");
+			warning.innerHTML = '<p id="warning"> 출생일을 입력해주세요 </p>';
+			return document.signin.userBirth.focus();
+		}
+		else{
+		 document.signin.submit();			
+		}
+	}
+	
+	function doubleC(){
+		let id = document.getElementById("userID").value;
+ 		window.open('doubleV.jsp?userID='+id ,'popup','width=600,height=600'); 
+	}
+	
 </script>
 
 <style>
@@ -137,6 +193,10 @@
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px;
+		font-family: "나눔명조";
+	}
+	input{
+		margin-bottom: 10px;	
 	}
 	
 	#warning{
@@ -144,6 +204,8 @@
 		font-size: 12px;
 		text-align: center;
 	}
+	
+	
 </style>
 
 <body bgcolor="#FFFAF6">
@@ -155,13 +217,13 @@
 	</div>
 	
 	<div>
-		<form action="signIn.do" method="post" name="signIn">
+		<form action="signIn.do" method="post" name="signin">
 			<div>
 				<div>
 					<label>Name</label>
 				</div>
 				<div>
-					<input type="text" name="userName" placeholder="이름을 입력해 주세요." required="required" 
+					<input type="text" name="userName" placeholder="이름을 입력해 주세요." 
 					id="NAME" onBlur="checkNAME()" onkeydown="typingNAME()" size="50" >
 				</div>
 				<div id="NameWarning"></div>
@@ -172,11 +234,12 @@
 					<label>ID</label>
 				</div>
 				<div>
-					<input type="text" name="userID" placeholder="아이디를 입력해 주세요." required="required" 
+					<input type="text" name="userID" placeholder="아이디를 입력해 주세요."
 					onBlur="checkID()" onkeydown="typingID()" id="userID" size="50">
+					<button type="button" onclick="doubleC() " >아이디 중복 확인</button>
 				</div>
-				<div>
-					<button formaction="중복확인.do?" onclick="doublecheck()">아이디 중복 확인</button>
+				<div style="">
+					<input type="hidden" id="idcheck" name="idcheck" value="uncheck">
 				</div>
 				<div id="IDWarning"></div>
 			</div>
@@ -186,7 +249,7 @@
 					<label>Email</label>
 				</div>
 				<div>
-					<input type="text" name="userEmail" placeholder="이메일을 입력해 주세요." required="required" size="50"
+					<input type="text" name="userEmail" placeholder="이메일을 입력해 주세요." size="50"
 					id="email" onBlur="checkEM()" onkeydown="typingEM()">
 				</div>
 				<div id="EMWarning"></div>
@@ -197,7 +260,7 @@
 					<label>Phone</label>
 				</div>
 				<div>
-					<input type="text"  name="userPhone" placeholder="핸드폰 번호를 입력해 주세요." required="required" size="50"
+					<input type="text"  name="userPhone" placeholder="핸드폰 번호를 입력해 주세요." size="50"
 					id="phone" onBlur="checkPH()" onkeydown="typingPH()">
 				</div>
 				<div id="PHWarning"></div>
@@ -208,7 +271,7 @@
 					<label>PW</label>
 				</div>
 				<div>
-					<input type="password" name="userPW" placeholder="비밀번호를 입력해 주세요." required="required" size="50"
+					<input type="password" name="userPW" placeholder="비밀번호를 입력해 주세요." size="50"
 					id="userPW" onBlur="checkPW()" onkeydown="typingPW()">
 				</div>
 				<div id="PWWarning"></div>
@@ -219,7 +282,7 @@
 					<label>PW Confirm</label>
 				</div>
 				<div>
-					<input type="password" name="confirmPW" placeholder="비밀번호를 다시 입력해 주세요." required="required" size="50"
+					<input type="password" name="confirmPW" placeholder="비밀번호를 다시 입력해 주세요." size="50"
 					id="cfPW" onBlur="checkCFPW()" onkeydown="typingCFPW()">
 				</div>
 				<div id="CFWarning"></div>
@@ -230,8 +293,9 @@
 					<label>Birth Date</label>
 				</div>
 				<div>
-					<input type="date" name="userBirth" required="required">
+					<input type="date" name="userBirth" id="birth">
 				</div>
+				<div id="BDWarning"></div>
 			</div>
 			
 			<div>
@@ -239,14 +303,14 @@
 					<label>Gender</label>
 				</div>
 				<div>
-					<input type="radio" name="userGender" value="female" > Female
-					<input type="radio" name="userGender" value="male" > Male
+					<input id="gender" type="radio" name="userGender" value="female" checked="checked"> Female
+					<input id="gender" type="radio" name="userGender" value="male" > Male
 				</div>
 			</div>
 			
 			
 			<div>
-				<button type="submit">회원가입</button>
+				<button type="button" onclick="check()">회원가입</button>
 			</div>
 			
 		</form>
