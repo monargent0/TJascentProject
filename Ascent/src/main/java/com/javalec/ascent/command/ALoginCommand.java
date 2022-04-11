@@ -27,7 +27,7 @@ public class ALoginCommand implements ACommand {
 			request.setAttribute("viewPage", "logInV.jsp");	
 		} else if ( dtoAD.get(0).getAdminCheck().toString().equals("admin")) {
 			session.setAttribute("userID", dtoAD.get(0).getUserID().toString() );
-			request.setAttribute("viewPage", "admin.jsp");			
+			request.setAttribute("viewPage", "adminV.jsp");			
 		} else if ( dtoAD.get(0).getUserID() != null) {
 			session.setAttribute("userID", dtoAD.get(0).getUserID().toString() );
 			request.setAttribute("viewPage", "mainV.jsp");			
