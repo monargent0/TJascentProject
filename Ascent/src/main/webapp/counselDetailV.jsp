@@ -22,9 +22,8 @@
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px ;
-	}
-    
-    </style>
+	}    
+</style>
 </head>
 <body bgcolor="#FFFAF6">
 
@@ -55,7 +54,13 @@
 				<td><a href="counselList.do">목록보기</a></td>
 				<td colspan="2" align="right"><input type="submit" value="삭제"></td>
 			</tr>
-	</table>	
-	</div>	
+	</table>
+	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+			<tr>
+				<td style="border-bottom:none;" valign="middle"><br><br></td>
+				<td><input type="text" style="height:50px;" class="form-control" name = "reply" value="${reply_view.c_ReplyContent }" readonly="readonly"></td>
+			</tr>
+ 	</table> <!-- 관리자페이지에서 입력 시 댓글 출력 양식 -->			
+</div>	
 </body>
 </html>
