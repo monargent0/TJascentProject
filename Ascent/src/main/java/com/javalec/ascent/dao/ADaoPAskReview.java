@@ -41,10 +41,10 @@ public class ADaoPAskReview {
 				int productPrice = rs.getInt("productPrice");
 				String productSize = rs.getString("productSize");
 				String productImages = rs.getString("productImages");
+				String productBrand = rs.getString("productBrand");
 				String category_categoryCode = rs.getString("category_categoryCode");
 			
-				dto = new ADtoPAR(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
-						
+				dto = new ADtoPAR(productCode, productName, productPrice, productSize, productImages, productBrand, category_categoryCode);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();

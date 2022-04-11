@@ -1,5 +1,6 @@
 package com.javalec.ascent.dto;
 
+
 public class ADtoP {
 	String productCode;
 	String productName;

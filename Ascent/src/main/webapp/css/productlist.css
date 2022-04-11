@@ -119,6 +119,18 @@
       	left : 50%;
       	transform : translate(-50%,-50%);  
       }
+ .container1{				/* class라서 ., 로고 아이디로 위치 수정 */
+      	position: absolute;
+      	top:0; 
+      	left : 50%;
+     transform : translate(-50%,+100%); 
+     
+      }
+ .container2{				/* class라서 ., 로고 아이디로 위치 수정 */
+      	position: absolute;
+      	left : 50%;
+     transform : translate(-50%,-50%);   
+      }
 #hyper1{				/*id는 샵, 동영상 가운데 제목  아이디로 위치 수정 */
       	position: absolute;
       	top : 60%;

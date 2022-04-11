@@ -8,16 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.javalec.ascent.dao.ADaoP;
 import com.javalec.ascent.dto.ADtoP;
 
-public class APpCommand implements ACommand {
+public class APtCommand implements ACommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		
 		ADaoP dao = new ADaoP();
-		ArrayList<ADtoP> dtos = dao.pPList();
-		request.setAttribute("pPList", dtos);
-	
-
+		ArrayList<ADtoP> dtos = dao.pTList();
+		request.setAttribute("pTList", dtos);
 	}
 
 }
