@@ -13,34 +13,32 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
     <!-- Bootstrap core CSS -->
 	<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 메인홈바  CSS -->
 	<link type="text/css" href="css/productlist.css" rel="stylesheet" >
-	  <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+	 
 	 <!-- Custom styles for this template -->
     <link href="headers.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
     rel="stylesheet" 
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
     crossorigin="anonymous">
-  </head>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
   <%-- 아이콘 --%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>ascent</title>
-
+<!-- 상품에 마우스 올릴때 및 위치 조정  -->
+<style>
+ .py-5 div:hover {
+  border-color:#333;     
+ }   
+  .col {
+  padding:70px 70px 0 70px;
+  }  
+  .detail-text-center {
+  height:150px;
+  }    
+ </style>
 </head>
 <!-- 메인 홈바  -->
 <body>
@@ -55,21 +53,22 @@
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					
 						<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
-					
 					<ul id="nav">
-					<li><a class="nav-link" href="main.do">Scent</a>
-						<ul>
-							
-							<li><a href="sFList.do">Floral</a></li>
-							<li><a href="sCList.do">Citrus</a></li>
-							<li><a href="sFRList.do">Fresh</a></li>
-							<li><a href="sFTList.do">Fruity</a></li>
-							<li><a href="sWList.do">Woody</a></li>
-							<li><a href="sOList.do">Oriental</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Scent </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="sFList.do">Floral</a></li>
+							<li><a class="dropdown-item" href="sCList.do">Citrus</a></li>
+							<li><a class="dropdown-item" href="sFRList.do">Fresh</a></li>
+							<li><a class="dropdown-item" href="sFTList.do">Fruity</a></li>
+							<li><a class="dropdown-item" href="sWList.do">Woody</a></li>
+							<li><a class="dropdown-item" href="sOList.do">Oriental</a></li>
 						</ul>
-					</li>
-					
+					</li> 
 						<!-- 상품별로 보여주기  -->
+
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,7 +79,7 @@
 							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
 							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
 						</ul>
-					</li>
+					</li> 
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
 					<li><a class="nav-link px-2" href="main.do">About</a>
 						<ul>
@@ -151,14 +150,14 @@
 	</nav>
 	
 <!-- Header-->
-        <header class="bg-dark py-5">
+     <!--    <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">shop</h1>
                     <p class="lead fw-normal text-white-50 mb-0">find your own scent</p>
                 </div>
             </div>
-        </header>
+        </header> -->
      
 <!-- 상품 -->
                			   <section class="py-5">
@@ -184,24 +183,9 @@
   				  </section>
                             <!-- Product actions-->
                            
-                            		 <!-- Product name-
-                            		  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <!-- 찜  
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">옵션 보기 </a></div>
-                                <br> -->
-                               <!--   <div class="text-center"><j class="text-center bi bi-heart" style="font-size:1.7rem;cursor: pointer;" href="#"></j></div>
-                        	        <script>
-                           		     var j = 0;
-            						$('j').on('click', function() {
-            						if (j == 0) {
-            							$(this).attr('class', 'bi-heart-fill');
-            							j++;
-            						} else if (j == 1) {
-            							$(this).attr('class', 'bi-heart');
-            							j--;
-            						}
-            					});
-                            	    </script> -->
+                            		
+                            		
+                               
                            
                  
            

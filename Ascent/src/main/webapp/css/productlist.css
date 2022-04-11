@@ -2,7 +2,7 @@
 
 #nav{				/*1단바 */
 	list-style:none; /* 불릿 없애기 */
-	height:10px;
+	height:40px;
 	padding:5px 1px;
 	margin:0;
 	background:#FFFAF6;
@@ -36,9 +36,9 @@
 	posiotion:absolute; /*고정위치에 표시 */
 	left:0;			/*부모 요소와 왼쪽 좌표값을 같게 한다 */
 	top:40px;
-	width:110px;	/*서브메뉴의 너비*/
+	width:180px;	/*서브메뉴의 너비*/
 	background:#FFFAF6;		/*서브 메뉴의 배경색*/
-	text-align:center;
+	text-align:left;
 	opacity:0;   /*평상시에 안보이게 */
 }
 #nav li:hover ul{ /*메인메뉴에 마우스 포인터를 올려놨을 떄 서브 메뉴 스타일*/
@@ -61,6 +61,19 @@
 	background:#FFFAF6;	
 	height:141px;
 }
+.bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+@media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+  }
+  }
+  
 
 .b-example-divider {
 	height: 3rem;
@@ -100,11 +113,11 @@
 	-moz-user-select: none;
 	user-select: none;
 }
-.container{				/*class라서 ., 로고 아이디로 위치 수정 */
+ .container{				/* class라서 ., 로고 아이디로 위치 수정 */
       	position: absolute;
       	top : 50%;
       	left : 50%;
-      	transform : translate(-50%,-50%);
+      	transform : translate(-50%,-50%);  
       }
 #hyper1{				/*id는 샵, 동영상 가운데 제목  아이디로 위치 수정 */
       	position: absolute;
@@ -131,6 +144,7 @@
 		font-size: 3.5rem;
 	}
 }
+
 
 <!--아이콘 -->
 .bi-search{		/*검색*/
@@ -169,20 +183,6 @@
   border-color: #fff;
   box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
 }
-</style>
-
-<!-- 상품에 마우스 올릴때 및 위치 조정  -->
-<style>
-
- .py-5 div:hover {
-       border-color:#333;     
- }   
-  .col {
-  padding:500px 0 0 100px;
-  }  
-  .detail-text-center {
-  height:300px;
-  }   
 
 
 

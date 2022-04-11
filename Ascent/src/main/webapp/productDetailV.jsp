@@ -11,32 +11,73 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
-<title>ascent</title>
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.1/examples/headers/">
-
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-
+ <!-- 메인홈바  CSS -->
+<link type="text/css" href="css/productlist.css" rel="stylesheet" >
 <link href="headers.css" rel="stylesheet">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-</head>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>ascent</title>
+<style>
+.product_view { 
+	position:relative;
+	padding: 0 0 0 730px;
+	width:1600px;
+	box-sizing:border-box;	
+}
+.product_view .img{
+	position: absolute;
+	padding:50px 0 0 0; 
+	left:200px;
+	top:0;	
+}
+.product_view h2 {
+margin:100px 0 15px;
+padding: 0 0 20px;
+border-bottom:1.5px solid #333;
+font-size:30px;
+color:#463D3D;
+line-height: 26px;
+}
+.product_view table th,
+.product_view table td {
+	padding:14px 0 ;
+	font-size: 20px;
+	color:#444;
+	text-align:left;
+}
+.product_view .btn {
+padding: 45px 0 0; 
+text-align:center;
+
+}
+.product_view .btn > button{
+left:200px;
+display:inline-block;
+width:126px;
+height:50px;
+font-size:20px;
+border-radius:2px;
+color:#999191;
+line-height: 42px;
+background:#1A0D35;
+} 
+</style>
 </head>
-<body>
 <!-- 홈바  -->
-<nav id="navBar" class="navbar navbar-expand-lg navbar">
+<body>
+	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -46,22 +87,22 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					
-						<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
-					
+				<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					<ul id="nav">
-					<li><a class="nav-link" href="main.do">Scent</a>
-						<ul>
-							
-							<li><a href="sFList.do">Floral</a></li>
-							<li><a href="sCList.do">Citrus</a></li>
-							<li><a href="sFRList.do">Fresh</a></li>
-							<li><a href="sFTList.do">Fruity</a></li>
-							<li><a href="sWList.do">Woody</a></li>
-							<li><a href="sOList.do">Oriental</a></li>
+				<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Scent </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="sFList.do">Floral</a></li>
+							<li><a class="dropdown-item" href="sCList.do">Citrus</a></li>
+							<li><a class="dropdown-item" href="sFRList.do">Fresh</a></li>
+							<li><a class="dropdown-item" href="sFTList.do">Fruity</a></li>
+							<li><a class="dropdown-item" href="sWList.do">Woody</a></li>
+							<li><a class="dropdown-item" href="sOList.do">Oriental</a></li>
 						</ul>
-					</li>
-					
-						<!-- 상품별로 보여주기  -->
+					</li> 
+				<!-- 상품별로 보여주기  -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -88,21 +129,15 @@
 							<li><a href="counselList.do">Q&A</a></li>
 						  <% } %>
 						</ul>
-										
-
-
 					</li>
 				</ul>
 				</ul>
 				<!--로고 -->
-			
-      			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="#">
+      			 <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0"> 
+   					 <a class="navbar-brand" href="main.do">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
-				  </div>
-      			  
-      			  
+				  </div> 
       			 <!--검색하기  -->
 				<form  class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="검색하기" aria-label="Search"> 
@@ -122,8 +157,7 @@
 						}
 					});
 				</script>
-				
-				<%
+					<%
 					if(session.getAttribute("userID") == null){
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
@@ -132,7 +166,6 @@
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
-				
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href="#"></j>
 
 				<script>
@@ -149,27 +182,26 @@
 				</script>
 				</div>
 			</div>
-			
 		</div>
 	</nav>
-	
-	
-
 <!--  상품상세  -->
- 	<colgroup>
- 	<col style="width:px;">
+	<div class="product_view">
+		<h2>${detail.productName }</h2>
+	<table>
+	<colgroup>
+ 	<col style="width:173px;">
 	<col>
 	</colgroup>
-	
-	
-	<table class="product_view">
-	<tr>
-		<td><img class="img" width="300px" src="${detail.productImages }"></td>
-	</tr>
+	<tbody>
 	<tr>	<!-- c:foreach는 dao arraylist 쓸때만   -->
-		<th>판매가</th>
-		<td>${detail.productPrice }원</td>
+		<th>브랜드</th>
+		<td>${detail.productBrand }</td>
 	</tr>
+	<tr>	
+		<th>가격</th>
+		<td>${detail.productPrice  }원</td>
+	</tr>
+	
 	<tr>
 		<th>상품명</th>
 		<td>${detail.productName }</td>
@@ -180,9 +212,10 @@
 	</tr>
 	<tr>
 		<td>
-			<form name="form1" method="post" action="cartWrite.do">
+			<form name="cartForm" method="post" action="cartWrite.do">
+			<input type="hidden" name="userID" value="<%=session.getAttribute("userID") %>" >
 			<input type="hidden" name="productCode" value="${detail.productCode }" >
-			<!-- <select name="cartAmount">
+			<select name="cartAmount">
 			 <option value="1">1 </option>
 			 <option value="2">2 </option>
 			 <option value="3">3 </option>
@@ -193,21 +226,20 @@
 			 <option value="8">8 </option>
 			 <option value="9">9 </option>
 			 <option value="10">10 </option>
-			</select> -->
-			<select name="amount">
-				<c:forEach begin=1 end="10" var="i">
-					<option value="${i }">${i }</option>
-				</c:forEach>
-			</select>
-			<a href="cartWrite.do?productCode=${detail.productCode }&?cartAmount=1"><input type="submit" value="장바구니 담기"></a>
+			</select> 
+			<div class="btn">  
+			<button class="btn1" type="button" onclick="AcheckUser()">장바구니</button>
+			</div>
 			</form>
 		</td>
 	</tr>
+	</tbody>
 	</table>
-
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
+			<div>
+				<img class="img" width="430px" src="${detail.productImages }">
+			</div>
+			
+	</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
