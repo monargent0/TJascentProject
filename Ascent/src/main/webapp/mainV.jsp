@@ -70,6 +70,7 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Scent </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="allList.do">All</a></li>
 							<li><a class="dropdown-item" href="sFList.do">Floral</a></li>
 							<li><a class="dropdown-item" href="sCList.do">Citrus</a></li>
 							<li><a class="dropdown-item" href="sFRList.do">Fresh</a></li>
@@ -84,6 +85,7 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="allList.do">All</a></li>
 							<li><a class="dropdown-item" href="pPList.do">Eau de perfume</a></li>
 							<li><a class="dropdown-item" href="pTList.do">Eau de toilette</a></li>
 							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
@@ -167,7 +169,7 @@
 			<source	src="assets/pexels-rose.mp4" type="video/mp4" >
 		</video>
 			<div class="jb-text">
-      	  <p id="hyper1">가드니아의 여름</p>
+      	  <p id="hyper1">Red in full bloom</p>
     	  </div>
 		<a id="hyper2" href="sFList.do">More </a>		
 		</ul>
