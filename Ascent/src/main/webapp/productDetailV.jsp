@@ -291,7 +291,7 @@
 					<%
 					if(session.getAttribute("userID") == null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'"></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp?productCode=${detail.productCode}'"></i>
 					<%
 					}else if(session.getAttribute("userID") != null){
 					%>
