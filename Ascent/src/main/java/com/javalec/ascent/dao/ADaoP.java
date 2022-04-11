@@ -26,7 +26,7 @@ public class ADaoP {
 	}
 	
 	// 향수종류 - 퍼퓸
-	public ArrayList<ADtoP> appList() {
+	public ArrayList<ADtoP> pPList() {
 		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -327,7 +327,7 @@ public class ADaoP {
 			
 			try {
 				conn = dataSource.getConnection();
-				String query1 = "select productCode,productName,productPrice,productSize,productImages,category_categoryCode from product where productCode like '%-fr-%'";
+				String query1 = "select productCode,productName,productPrice,productSize,productImages,category_categoryCode from product where productCode like '%-ft-%'";
 				ps = conn.prepareStatement(query1);
 				rs = ps.executeQuery();
 				

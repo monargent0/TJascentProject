@@ -38,7 +38,7 @@
 
   .detail-text-center {
  	padding:30px;
-  height:110px;
+  height:140px;
   text-align:center;
   }    
  </style>

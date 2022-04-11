@@ -14,11 +14,9 @@ public class ASfCommand implements ACommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		ADaoP dao = new ADaoP();
-		ArrayList<ADtoP> dtos = dao.appList();
+		ArrayList<ADtoP> dtos = dao.sFList();
 		request.setAttribute("sFList", dtos);
-		
 
-	
 	}
 
 
