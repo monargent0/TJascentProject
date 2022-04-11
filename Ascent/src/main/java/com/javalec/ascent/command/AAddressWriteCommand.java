@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.javalec.ascent.dao.ADaoUA;
+import com.javalec.ascent.dao.ADaoUAddress;
 
 public class AAddressWriteCommand implements ACommand {
 
@@ -18,7 +18,7 @@ public class AAddressWriteCommand implements ACommand {
 		String detailAddress = request.getParameter("detailAddress");
 		String extraAddress = request.getParameter("extraAddress");
 		
-		ADaoUA daoUA = new ADaoUA();
+		ADaoUAddress daoUA = new ADaoUAddress();
 		daoUA.addressWrite(addressType, postcode, mainAddress, detailAddress, extraAddress, userId);
 		
 
