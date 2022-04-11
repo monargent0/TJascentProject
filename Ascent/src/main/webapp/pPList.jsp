@@ -34,9 +34,12 @@
  }   
   .col {
   padding:70px 70px 0 70px;
-  }  
+  } 
+
   .detail-text-center {
-  height:150px;
+ 	padding:30px;
+  height:110px;
+  text-align:center;
   }    
  </style>
 </head>
@@ -165,7 +168,8 @@
 		  					<c:forEach items="${appList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
    									 <div class="card h-100">
-   									  <a class="card-image" href="http://localhost:8080/Ascent/productDetail.do?productCode=${dto.productCode }"><img class="card-img-top" src="${dto.productImages}" alt="" width="100%" /></a>
+   									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
+   									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
      								 <div class="card-body">
      								  <div class="detail-text-center">
                               	     <p class="pd.name">${dto.productName }</p>

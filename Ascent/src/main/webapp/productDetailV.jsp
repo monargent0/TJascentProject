@@ -73,10 +73,11 @@ color:#999191;
 line-height: 42px;
 background:#1A0D35;
 } 
+
 </style>
 </head>
 <!-- 홈바  -->
-<body>
+<body id="home">
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -215,7 +216,7 @@ background:#1A0D35;
 			<form name="cartForm" method="post" action="cartWrite.do">
 			<input type="hidden" name="userID" value="<%=session.getAttribute("userID") %>" >
 			<input type="hidden" name="productCode" value="${detail.productCode }" >
-			<select name="cartAmount">
+			<select name="cartAmount" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
 			 <option value="1">1 </option>
 			 <option value="2">2 </option>
 			 <option value="3">3 </option>
