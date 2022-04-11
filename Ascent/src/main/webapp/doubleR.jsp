@@ -10,8 +10,9 @@
 	
 	function ap(){
 		var txt = "check" ;
-		opener.document.getElementById("userID").value = <%=request.getParameter("userID")%>;
-		opener.document.signin.idcheck.value = txt ;
+		var id =  "<%=request.getParameter("userID")%>" ;
+		window.opener.document.signin.userID.value = id;
+		window.opener.document.signin.idcheck.value = txt ;
 		window.close();
 	}
 
@@ -40,9 +41,13 @@
 			[ <%=  id %> ] 는 <br>
 			<%= txt %>
 		</div>
+		
 		<div style="float: left;">
-			<button type="button" onclick= "window.close()" >닫기</button>
-			<button type="button" onclick= "ap()" >사용하기</button>
+			<% if( txt == "사용이 불가능한 아이디 입니다."){ %>
+			<button type="button" onclick= "javascript:history.back()" >다시검색</button>
+			<% }else if( txt == "사용 가능한 아이디 입니다."){ 	%>
+			<button type="button" onclick= "ap()" >사용하기</button>			
+  		    <% } %>
 		</div>	
 		
 

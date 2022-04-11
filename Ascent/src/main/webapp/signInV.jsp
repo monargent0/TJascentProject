@@ -140,36 +140,37 @@
 			warning.innerHTML = '<p id="warning"> 이름을 입력해주세요 </p>';
 			return document.signin.userName.focus();
 		}
-		if(id == ""){
+		else if(id == ""){
 			let warning = document.getElementById("IDWarning");
 			warning.innerHTML = '<p id="warning"> 아이디를 입력해주세요 </p>';
 			return document.signin.userID.focus();
 		}
-		if( idc == "uncheck"){
+		else if( idc == "uncheck"){
 			let warning = document.getElementById("IDWarning");
 			warning.innerHTML = '<p id="warning"> 아이디 중복확인을 해주세요 </p>';
+			return document.signin.userID.focus();
 		}
-		if(email == ""){
+		else if(email == ""){
 			let warning = document.getElementById("EMWarning");
 			warning.innerHTML = '<p id="warning"> 이메일을 입력해주세요 </p>';
 			return document.signin.userEmail.focus();
 		}
-		if(phone == ""){
+		else if(phone == ""){
 			let warning = document.getElementById("PHWarning");
 			warning.innerHTML = '<p id="warning"> 전화번호를 입력해주세요 </p>';
 			return document.signin.userPhone.focus();
 		}
-		if(pw == ""){
+		else if(pw == ""){
 			let warning = document.getElementById("PWWarning");
 			warning.innerHTML = '<p id="warning"> 비밀번호를 입력해주세요 </p>';
 			return document.signin.userPW.focus();
 		}
-		if(cfpw == ""){
+		else if(cfpw == ""){
 			let warning = document.getElementById("CFWarning");
 			warning.innerHTML = '<p id="warning"> 비밀번호 확인을 입력해주세요 </p>';
 			return document.signin.confirmPW.focus();
 		}
-		if(birth == ""){
+		else if(birth == ""){
 			let warning = document.getElementById("BDWarning");
 			warning.innerHTML = '<p id="warning"> 출생일을 입력해주세요 </p>';
 			return document.signin.userBirth.focus();
@@ -181,8 +182,7 @@
 	
 	function doubleC(){
 		let id = document.getElementById("userID").value;
-		window.open('double.jsp?userID='+id ,'popup','width=600,height=600'); 
-		
+ 		window.open('double.jsp?userID='+id ,'popup','width=600,height=600'); 
 	}
 	<%-- /* 아이디 중복 체크 */
 	let idtxt = '<%=(String)session.getAttribute("idtxt")%>' ;
@@ -232,7 +232,7 @@
 	</div>
 	
 	<div>
-		<form action="signin.do" method="post" name="signin">
+		<form action="signIn.do" method="post" name="signin">
 			<div>
 				<div>
 					<label>Name</label>

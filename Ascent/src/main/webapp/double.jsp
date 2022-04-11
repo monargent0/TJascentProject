@@ -43,7 +43,7 @@ function typingID(){
 			<div>
 				<div>
 					<input type="text" name="userID" value="<%= request.getParameter("userID" )%>" 
-					onBlur="checkID()" onkeydown="typingID()" size="50" readonly="readonly">
+					onBlur="checkID()" onkeydown="typingID()" size="50" >
 				</div>
 				<div id="IDWarning"></div>
 				<div>
