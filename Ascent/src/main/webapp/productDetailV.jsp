@@ -291,13 +291,13 @@
 					<%
 					if(session.getAttribute("userID") == null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'"></i>
 					<%
 					}else if(session.getAttribute("userID") != null){
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 					<% } %>
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="location.href='cartList.do?userID=<%=session.getAttribute("userID")%>'"></j>
+					<i class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="cartListCheckUser()"></i>
 
 				<script>
 					var j = 0;
@@ -341,7 +341,7 @@
 	</tr>
 	<tr>
 		<td>
-			<form name="cartForm" method="get" action="cartWrite.do?userID=<%=session.getAttribute("userID")%>">
+			<form name="cartForm" method="get" action="cartWrite.do">
 				<input type="hidden" name="userID" value="<%=session.getAttribute("userID") %>" >
 				<input type="hidden" name="productCode" value="${detail.productCode }" >
 				<select name="cartAmount" >
@@ -349,7 +349,7 @@
 				 <option value="2">2 </option>
 				 <option value="3">3 </option>
 				</select>
-				<input type="button" value="장바구니 담기" onclick="AcheckUser()">
+				<input type="button" value="장바구니 담기" onclick="cartWriteCheckUser()">
 			</form>
 		</td>
 	</tr>
@@ -361,15 +361,27 @@
 </body>
 <script>
 	var cartForm = document.cartForm;
-	var userID = <%=session.getAttribute("userID")%>;
-function AcheckUser() {
+	var userID = '<%=session.getAttribute("userID")%>';
+	var productCode1 = document.cartForm.productCode.value;
+function cartWriteCheckUser() {
+	
 	if (userID != 'null'){
 		cartForm.submit();
 		alert("장바구니에 담았습니다.")
-	}else{
+	}
+	else{
 		alert("로그인이 필요합니다.");
-		location.href='logInV.jsp';
+		location.href='logInV.jsp?productCode='+productCode1;
 	}
 }
-</script>	
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp?productCode='+productCode1;
+	}
+}
+</script>
 </html>

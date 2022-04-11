@@ -63,7 +63,6 @@
 
 <body bgcolor="#FFFAF6">
 
-
  <div class="contents">
 
 	<div>
@@ -90,6 +89,7 @@
 				<div  align="left" style="float: left;" ><button formaction="signInV.jsp">SING IN</button></div>
 				<div  align="right" style="float: right;"><button type="submit">LOGIN</button></div> 
 			</div>
+			<input type="text" value="<%=request.getParameter("productCode") %>" name="productCode" hidden="">
  		</form>
  	</div>
 

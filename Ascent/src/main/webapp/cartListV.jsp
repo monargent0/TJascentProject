@@ -88,7 +88,7 @@ function cartCodeCheckA() {
 				<th colspan="2">action</th>
 			</tr>
 			<c:forEach items="${cartList }" var="dto" varStatus="status">
-			<form>
+			<form name="cartList">
 			<tr>
 				<td align="center" hidden="">
 				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly" style="text-align:center; ">
@@ -103,22 +103,32 @@ function cartCodeCheckA() {
 				<input type="checkbox"  name="check" value="${dto.cartCode }">
 				</td>
 				<td align="center">
-				<input type="image" value="${dto.productImages }" name="productImages" readonly="readonly" onclick="prodctDetail.do?productCode=${dto.productCode }">
+				<a href="productDetail.do?productCode=${dto.productCode }"><img class="img" src="${dto.productImages }" width="150px" name="productImages"></a>
+				<input type="text" value="${dto.productImages }" name="productImages" readonly="readonly" hidden="">
 				</td>
-				<td align="center">
-				<input type="text" value="${dto.productName }" name="productName" readonly="readonly" size="50">
+				<td align="left">
+				<a href="productDetail.do?productCode=${dto.productCode }">${dto.productName }</a>
+				<input type="text" value="${dto.productName }" name="productName" readonly="readonly" hidden="">
 				</td>
 				<td align="center">
 				<input type="text" value="${dto.productSize }" name="productSize" readonly="readonly" size="3">
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productPrice }" name="productPrice" readonly="readonly" size="5">
+				<input type="text" value="${dto.productPrice }" id="productPrice" name="productPrice" readonly="readonly" size="10">
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.cartAmount }" name="cartAmount" readonly="readonly" size="3">
+					<select name="cartAmount" id="cartAmount">
+						<option value="${dto.cartAmount }" selected="selected">${dto.cartAmount }</option>
+						<option value="1" onselect="cartModify.do?cartCode=${dto.cartCode}&?cartAmount=1">1</option>
+						<option value="2" onselect="cartModify.do?cartCode=${dto.cartCode}&?cartAmount=2">2</option>
+						<option value="3" onselect="cartModify.do?cartCode=${dto.cartCode}&?cartAmount=3">3</option>
+					</select>
+					<%-- <input type="button" value="-" onclick="">
+					<input type="text" value="${dto.cartAmount }" name="cartAmount" id="cartAmount" readonly="readonly" size="3">
+					<input type="button" value="+" onclick="change_qty2('p')"> --%>
 				</td>
 				<td align="center">
-				<input type="text" value=${dto.cartSum } name="cartSum" readonly="readonly" size="5">
+				<input type="text" value=${dto.cartSum } name="cartSum" id="cartSum" readonly="readonly" size="10">
 				</td>
 				<td align="center">
 				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
