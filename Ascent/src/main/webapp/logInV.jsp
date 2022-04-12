@@ -250,6 +250,7 @@
  		<br><a id="hyper" href = "" target ="popup" onclick="window.open('findIDV.jsp','popup','width=600,height=600'); return false">아이디/비밀번호 찾기</a>
  		</div>
  </div>
+ 
  <%-- <script>
 var userID = <%=session.getAttribute("userID")%>;
 var productCode = <%=request.getParameter("productCode")%>;
