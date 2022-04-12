@@ -57,6 +57,7 @@ import com.javalec.ascent.command.AUserModifyCommand;
 import com.javalec.ascent.command.AWishDeleteCommand;
 import com.javalec.ascent.command.AWishListCommand;
 import com.javalec.ascent.command.AWishWriteCommand;
+import com.javalec.ascent.command.AmainproductCommand;
 import com.javalec.ascent.command.ApallCommand;
 
 /**
@@ -101,6 +102,8 @@ public class AFrontController extends HttpServlet {
 			//완성
 			// main
 			case("/main.do") :
+				command = new AmainproductCommand();
+				command.execute(request, response);
 				viewPage = "mainV.jsp";
 				break;
 			// signUp, 회원가입
@@ -175,7 +178,7 @@ public class AFrontController extends HttpServlet {
 				command = new AProductSearchCommand();
 				command.execute(request, response);
 				viewPage = "searchProductV.jsp";
-				break;		
+				break;
 			// productList, 상품목록
 			//all
 			case("/allList.do"):	

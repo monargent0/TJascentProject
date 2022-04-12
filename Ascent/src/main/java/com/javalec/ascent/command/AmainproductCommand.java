@@ -8,16 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.javalec.ascent.dao.ADaoP;
 import com.javalec.ascent.dto.ADtoP;
 
-public class AProductSearchCommand implements ACommand {
+public class AmainproductCommand implements ACommand {
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String txt = request.getParameter("searchText"); 	//main의 <form>
-		
-		System.out.println(txt);
-		ADaoP dao = new ADaoP();							//adaop의 searchList
-		ArrayList<ADtoP> dtos = dao.searchList(txt);
-		request.setAttribute("searchList", dtos);
-		
+		ADaoP dao = new ADaoP();
+		ArrayList<ADtoP> dtos = dao.mainList();
+		request.setAttribute("mainList", dtos);
 	}
-
 }

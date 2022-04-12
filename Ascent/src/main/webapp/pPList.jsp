@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,24 +107,27 @@
       			  
       			  
       			 <!--검색하기  -->
-				<form  class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="검색하기" aria-label="Search"> 
+				<!--검색내용  -->
+				<form  class="d-flex" method="post" action="searchProduct.do">
+				<div>
+					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
+				</div>
+					<div class="text-end">
+           
+					<div> 
+				<button type="submit" class="btn btn-outline-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
+				  <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
+ 				 <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
+				</svg>
+				<span class="visually-hidden"></span>
+                </button>
+				 </div> 
+				 </div>
 				</form>
-				<!--검색,마이페이지,장바구니 아이콘  -->
-				<div class="text-end">
-					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
-					<script>
-					var k = 0;
-					$('k').on('click', function() {
-						if (k == 0) {
-							$(this).attr('class', 'bi-search-heart');
-							k++;
-						} else if (k == 1) {
-							$(this).attr('class', 'bi-search');
-							k--;
-						}
-					});
-				</script>
+             
+				<!-- 마이페이지,장바구니 아이콘  -->
+				
 					<%
 					if(session.getAttribute("userID") == null){
 					%>
@@ -164,10 +168,16 @@
             </div>
         </header> -->
      
+
+
+<!--  검색 내용  -->
+
+
 <!-- 상품 -->
+               			  
                			   <section class="py-5">
                			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${pPList }" var="dto"><%--반복문,dto --%>
+		  					<c:forEach items="${pPList }" var="dto">
  								 <div class="col">
    									 <div class="card h-100">
    									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
@@ -186,11 +196,9 @@
     				 		 </div>
                		 </c:forEach>
   				  </div>
-  				  </section>
+  				  </section> 
                           
-                            		
-                            		
-                               
+                                           
                            
                  
            

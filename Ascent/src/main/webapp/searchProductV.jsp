@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+
+  <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -30,6 +32,20 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>ascent</title>
+<style>
+.py-5 div:hover {
+  border-color:#333;     
+ }   
+  .col {
+  padding:70px 70px 0 70px;
+  } 
+
+  .detail-text-center {
+ 	padding:30px;
+  height:140px;
+  text-align:center;
+  }    
+</style>
 </head>
 <body>
 <!-- 메인홈바 -->
@@ -98,43 +114,27 @@
 				  </div>
 				  
       			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProductV.jsp">
+				<form  class="d-flex" method="post" action="searchProduct.do">
 				<div>
-					<input type="text"  class="form-control me-2" placeholder="검색하기" aria-label="Search"> 
+					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
 					<div class="text-end">
-					<button type="submit" class="btn btn-success">검색</button>
-
+           
+					<div> 
+				<button type="submit" class="btn btn-outline-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
+				  <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
+ 				 <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
+				</svg>
+				<span class="visually-hidden"></span>
+                </button>
+				 </div> 
+				 </div>
+				</form>
+             
 
 					
-					<!-- <k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;"></k>
-					<script>
-					var k = 0;
-					$('k').on('click', function() {
-						if (k == 0) {
-							$(this).attr('class', 'bi-search-heart');
-							k++;
-						} else if (k == 1) {
-							$(this).attr('class', 'bi-search');
-							k--;
-						}
-					}); 
-				</script>
-				</form>
-				<!--검색 아이콘  -->
-				<!-- <div class="text-end">
-					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
-					<script>
-					var k = 0;
-					$('k').on('click', function() {
-						if (k == 0) {
-							$(this).attr('class', 'bi-search-heart');
-							k++;
-						} else if (k == 1) {
-							$(this).attr('class', 'bi-search');
-							k--;
-						}
-					}); -->
+					
 				
 				
 				<!-- 마이페이지 -->
@@ -148,7 +148,7 @@
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href="#"></j>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href=""></j>
 					<script>	
 					var j = 0;
 					$('j').on('click', function() {
@@ -165,37 +165,35 @@
 			</div>
 		</div>
 	</nav>
-	
+
+		<section class="py-5">
+               	 <div class="row row-cols-1 row-cols-md-4 g-4">
+		  					<c:forEach items="${searchList }" var="dto">
+ 								 <div class="col">
+   									 <div class="card h-100">
+   									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
+   									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
+     								 <div class="card-body">
+     								  <div class="detail-text-center">
+                              	     <p class="pd.name">${dto.productName }</p>
+                                    <!-- Product size-->
+                             		<p class="pd.size">${dto.productSize }ml</p>
+                                    <!-- Product price-->
+                                	<p class="pd.price">${dto.productPrice }원</p>
+                             	
+    				 		 </div>
+    				 		 </div>
+    				 		 </div>
+    				 		 </div>
+               		 </c:forEach>
+  				  </div>
+  				  </section> 
+				
 
 
 
 
 
-
-<div class="content">
-	 
-	<form action="" method="get">
-	
-	<input type="text" name="searchWord">
-	<input type="submit" value="Search">
-	</form>
-		<tr>
-			<th width="50%">제목</th>
-		</tr>
-		
-		<tr>
-			<td>${List.productName }</td>
-			<td>${List.productPrice }</td>
-			<td>${List.productImage }</td>
-		<%-- 	<td><%=dto.getProductPrice() %></td>
-			<td><%=dto.getProductSize() %></td>
-			<td><%=dto.getProductImages() %></td> --%>
-<%-- 			<td><%=dto.getProductPrice() %></td>
-			<td><%=dto.getProductSize() %></td>
-			<td><%=dto.getProductImages() %></td> --%>
-		</tr>
-		
-</div> 
 
     			
 	

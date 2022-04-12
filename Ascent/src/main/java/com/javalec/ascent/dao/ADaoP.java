@@ -4,15 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.sql.DataSource;
 
 import com.javalec.ascent.dto.ADtoP;
-import com.javalec.ascent.dto.ADtoPaging;
 
 public class ADaoP {
 
@@ -26,7 +23,8 @@ public class ADaoP {
 			e.printStackTrace();
 		}
 		
-	}
+	} 
+	//전체목록
 	public ArrayList<ADtoP> allList() {
 		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();
 		Connection conn = null;
@@ -46,10 +44,46 @@ public class ADaoP {
 				String productSize = rs.getString("productSize");
 				String productImages = rs.getString("productImages");
 				String category_categoryCode = rs.getString("category_categoryCode");
-				
 				ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
 				dtoPs.add(dtoP);
-				
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close(); //데이터가 있으면 close
+				if(ps!=null) ps.close();
+				if(conn!= null) conn.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dtoPs;
+		
+	}
+	//메인 화면 - 리스트 
+	public ArrayList<ADtoP> mainList() {
+		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String sql2 = "select * from product where productName like '%로즈%' order by productCode desc limit 4 ";
+			ps = conn.prepareStatement(sql2);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String productCode = rs.getString("productCode");
+				String productName = rs.getString("productName");
+				int productPrice = rs.getInt("productPrice");
+				String productSize = rs.getString("productSize");
+				String productImages = rs.getString("productImages");
+				String category_categoryCode = rs.getString("category_categoryCode");
+				ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
+				dtoPs.add(dtoP);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -69,16 +103,18 @@ public class ADaoP {
 	// product검색
 public ArrayList<ADtoP> searchList(String searchText){
 	ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>(); //return dtops 
-	String SQL = "select * from product where " +searchText + "like ?";
-	SQL +=" order by productCode desc";
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 				
 	try {  
 		conn = dataSource.getConnection();
-		ps = conn.prepareStatement(SQL);
-		ps.setString(1,"%"+ searchText+ "%");
+		String sql = "select * from product where productName like ? or productBrand like ? order by prouctCode desc";
+		ps = conn.prepareStatement(sql);
+		searchText = searchText.replaceAll(" " , "");
+		searchText = searchText.replaceAll("\\p{Z}", "");
+		ps.setString(1, "%"+searchText+"%");
+		ps.setString(2, "%"+searchText+"%");
 		rs = ps.executeQuery();
     
 	
@@ -92,9 +128,19 @@ public ArrayList<ADtoP> searchList(String searchText){
 			
 			ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
 			dtoPs.add(dtoP);
+			
+			
  }         
 } catch(Exception e) {
  e.printStackTrace();
+}finally {
+	try {
+		if(rs != null) rs.close(); //데이터가 있으면 close
+		if(ps!=null) ps.close();
+		if(conn!= null) conn.close();
+	}catch (Exception e) {
+		e.printStackTrace();
+	}
 }
 return dtoPs;//상품 리스트 반환
 }
