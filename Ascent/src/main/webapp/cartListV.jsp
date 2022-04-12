@@ -61,24 +61,21 @@ function checkBoxAll(event) {
 				<th>수량</th>
 				<th>합계</th>
 			</tr>
-			<form name="cartForm">
-			<c:forEach items="${cartList }" var="dto" varStatus="status">
+			<form name="cartForm" method="post">
+			<c:forEach items="${cartList }" var="dto">
 			<tr>
 				<td hidden="">
 				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly">
 				</td>
 				<td hidden="">
-				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly" >
-				</td>
-				<td hidden="">
-				<input type="text" value="${dto.productCode }" name="productCode" readonly="readonly">
+				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly">
 				</td>
 				<td>
 				<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
 				</td>
 				<td align="center">
 				<a href="productDetail.do?productCode=${dto.productCode }">
-				<img class="img" src="${dto.productImages }" width="150px" name="productImages">
+				<img class="img" src="${dto.productImages }" width="100px" name="productImages">
 				</a>
 				</td>
 				<td align="left">
@@ -105,9 +102,20 @@ function checkBoxAll(event) {
 			</tr>
 			</c:forEach>
 			</table><br>
+				<input type="button" value="선택상품 주문" onclick="checkUserCheck()">
 				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
-				<input type="submit" value="선택상품 주문" formaction="orderView.do">
 			</form>
 </div>
 </body>
+<script type="text/javascript">
+var cartForm1 = document.cartForm;
+function checkUserCheck() {
+	if (cartForm1.checkCart.length == 0){
+		alert("1개 이상의 목록을 선택해주세요.");
+	}else {
+		cartForm1.action='orderView.do';
+		cartForm1.submit();
+	}
+}
+</script>
 </html>

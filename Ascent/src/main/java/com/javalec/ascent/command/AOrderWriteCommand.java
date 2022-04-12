@@ -15,12 +15,10 @@ public class AOrderWriteCommand implements ACommand {
 		
 			String userID = request.getParameter("userID");
 			
-			System.out.println(request.getParameter("cartCode"));
-			String[] cartCode = request.getParameterValues("cartCode");
 			// cartCode string array로 받아서 int array로 바꿔주기
-			int[] cartCodeArray = null;
+			String[] cartCode = request.getParameterValues("cartCode");
+			int[] cartCodeArray = new int[cartCode.length];
 			if(cartCode!=null) {
-				cartCodeArray = new int[cartCode.length];
 				for(int i=0; i<cartCode.length; i++) {
 					cartCodeArray[i] =Integer.parseInt(cartCode[i]);
 				}

@@ -76,8 +76,8 @@ background:#1A0D35;
 
 </style>
 </head>
-<!-- 홈바  -->
 <body id="home">
+	<!-- 홈바  -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -187,7 +187,7 @@ background:#1A0D35;
 			</div>
 		</div>
 	</nav>
-<!--  상품상세  -->
+	<!--  상품상세  -->
 	<div class="product_view">
 		<h2>${detail.productName }</h2>
 	<table>

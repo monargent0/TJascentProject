@@ -93,7 +93,7 @@ function sample6_execDaumPostcode() {
 <body>
 <div class="list">
 	<h2>주문 하기</h2>
-	<form name="orderForm" method="get">
+	<form name="orderForm" method="post">
 		<table>
 			<tr>
 				<td>

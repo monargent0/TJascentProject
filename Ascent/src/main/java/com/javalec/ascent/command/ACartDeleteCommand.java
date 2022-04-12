@@ -12,9 +12,10 @@ public class ACartDeleteCommand implements ACommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
-		String[] cartCode = request.getParameterValues("cartCode");
 		// cartCode string array로 받아서 int array로 바꿔주기
-		int[] cartCodeArray = new int[cartCode.length];
+		String[] cartCode = request.getParameterValues("checkCart");
+		int[] cartCodeArray;
+		cartCodeArray = new int[cartCode.length];
 		for(int i=0; i<cartCode.length; i++) {
 			cartCodeArray[i] =Integer.parseInt(cartCode[i]);
 		}
