@@ -63,15 +63,16 @@ public class ADaoCounselReply {
 			
 		} // List
 			
-		public void write(String replyContent) {
+		public void write(String c_ReplyContent, String adminID) {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 			
 			try {
 				connection = dataSource.getConnection(); // DB연결 끝
-				String query = "insert into reply (replyContent, replyDate) values (?, now() )";
+				String query = "insert into reply (c_ReplyContent, replyDate) values (?, now() )";
 				preparedStatement = connection.prepareStatement(query);
-				preparedStatement.setString(1, replyContent);
+				preparedStatement.setString(1, c_ReplyContent);
+				preparedStatement.setString(2, adminID);
 				
 				preparedStatement.executeUpdate();
 				
@@ -114,15 +115,15 @@ public class ADaoCounselReply {
 
 		} // delete
 
-		public void modify(int replyCode, String replyContent) {
+		public void modify(int replyCode, String c_ReplyContent) {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 			
 			try {
 				connection = dataSource.getConnection(); // DB연결 끝
-				String query = "update reply set replyContent = ? where replyCode = ?";
+				String query = "update reply set c_ReplyContent = ? where replyCode = ?";
 				preparedStatement = connection.prepareStatement(query);
-				preparedStatement.setString(1, replyContent);			
+				preparedStatement.setString(1, c_ReplyContent);			
 				preparedStatement.executeUpdate();
 				
 			}catch(Exception e) {

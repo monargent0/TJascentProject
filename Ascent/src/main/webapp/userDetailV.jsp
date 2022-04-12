@@ -52,7 +52,7 @@
 					<td> <input name="userPhone" value="${uinfo.userPhone }" readonly="readonly" size="20"> </td>
 				</tr>
 			<tr>
-				<td> <button onclick="location=''">비밀번호 변경</button> </td>
+				<td> <button type="button" onclick="location='pwChangeV.jsp'">비밀번호 변경</button> </td>
 				<td align="right"> <button type="submit">개인정보 수정</button> </td>
 			</tr>
 			<tr>

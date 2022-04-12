@@ -33,7 +33,7 @@
  <div class="contents">
 	<h2>ascent 1대1 문의폼</h2>
 		<table border="1">
-		<form action="counselWrite.do" method="post">
+		<form action="counselWrite.do"  encType="multipart/form-data" method="post">
 			<tr>
 				<td>문의종류</td>
 				<td><select name="counselType">

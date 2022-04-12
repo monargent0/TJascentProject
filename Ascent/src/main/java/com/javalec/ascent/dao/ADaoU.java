@@ -3,6 +3,7 @@ package com.javalec.ascent.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -11,6 +12,7 @@ import javax.sql.DataSource;
 
 import com.javalec.ascent.dto.ADtoAD;
 import com.javalec.ascent.dto.ADtoU;
+import com.javalec.ascent.dto.DDtoU;
 
 public class ADaoU {
 DataSource dataSource;
@@ -287,4 +289,147 @@ DataSource dataSource;
 			} //finally
 			return id;
 		} // doubleID
+		
+		// 비밀번호 변경
+		public void pwChange(String newPW, String oldPW, String userID) {
+					
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			
+			try {
+				//DB연결메서드 불러오기
+				connection = dataSource.getConnection(); 
+				//pstmt 생성
+				String query = "update userinfo set userPW = ? where userID = ? and userPW = ?" ;
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, newPW);
+				preparedStatement.setString(2, userID);
+				preparedStatement.setString(3, oldPW);
+				//실행 
+				preparedStatement.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally { 
+					try {
+						if(preparedStatement !=null) preparedStatement.close();
+						if(connection != null) connection.close();
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+			}
+		}// 비밀번호 변경
+		
+		// 비밀번호 변경 확인
+				public String pwCheck(String userID) {
+					Connection connection = null;
+					PreparedStatement preparedStatement = null;
+					ResultSet resultSet = null;
+					String pw = null;
+					
+					try {
+						connection = dataSource.getConnection();
+						String query = "select userPW from userinfo where userID = ?";
+						preparedStatement = connection.prepareStatement(query);
+						preparedStatement.setString(1, userID);
+						resultSet = preparedStatement.executeQuery();
+						
+						if(resultSet.next()) {
+							pw = resultSet.getString("userPW");
+						}
+					}catch(Exception e){
+						e.printStackTrace();
+					}finally {
+							try {
+								if(resultSet != null) resultSet.close();
+								if(preparedStatement != null) preparedStatement.close();
+								if(connection != null) connection.close();
+							}catch (Exception e) {
+								e.printStackTrace();
+							}
+					} //finally
+					return pw;
+				} // confirmPW
+				
+				// 관리자 가입 회원조회
+				public ArrayList<DDtoU> signinList() {
+					ArrayList<DDtoU> dtoADs = new ArrayList<DDtoU>();
+					Connection connection = null;
+					PreparedStatement preparedStatement = null;
+					ResultSet resultSet = null;
+					
+					try {
+						connection = dataSource.getConnection();
+						String query = "select * from userinfo where u_ResignDate is null and adminCheck = '0' order by u_signDate desc";
+						preparedStatement = connection.prepareStatement(query);
+						resultSet = preparedStatement.executeQuery();
+						
+						
+						while(resultSet.next()) {
+							String userID = resultSet.getString("userID");
+							String userName = resultSet.getString("userName");
+							String userGender = resultSet.getString("userGender");
+							Timestamp userBirth = resultSet.getTimestamp("userBirth"); 
+							String userPhone = resultSet.getString("userPhone");
+							String userEmail = resultSet.getString("userEmail");
+							Timestamp u_SignDate  = resultSet.getTimestamp("u_SignDate"); 
+							Timestamp u_ResignDate  = resultSet.getTimestamp("u_ResignDate");
+							
+							DDtoU dtoU = new DDtoU(userID, userName, userGender, userBirth, userPhone, userEmail, u_SignDate, u_ResignDate);
+							dtoADs.add(dtoU);
+						}
+					}catch(Exception e){
+						e.printStackTrace();
+					}finally {
+							try {
+								if(resultSet != null) resultSet.close();
+								if(preparedStatement != null) preparedStatement.close();
+								if(connection != null) connection.close();
+							}catch (Exception e) {
+								e.printStackTrace();
+							}
+					} //finally
+					return dtoADs;
+				} // 가입회원조회	
+				
+				// 관리자 탈퇴 회원조회
+				public ArrayList<DDtoU> signoutList() {
+					ArrayList<DDtoU> dtoADs = new ArrayList<DDtoU>();
+					Connection connection = null;
+					PreparedStatement preparedStatement = null;
+					ResultSet resultSet = null;
+					
+					try {
+						connection = dataSource.getConnection();
+						String query = "select * from userinfo where u_ResignDate is not null and adminCheck = '0' order by u_ResignDate desc";
+						preparedStatement = connection.prepareStatement(query);
+						
+						resultSet = preparedStatement.executeQuery();
+						
+						while(resultSet.next()) {
+							String userID = resultSet.getString("userID");
+							String userName = resultSet.getString("userName");
+							String userGender = resultSet.getString("userGender");
+							Timestamp userBirth = resultSet.getTimestamp("userBirth"); 
+							String userPhone = resultSet.getString("userPhone");
+							String userEmail = resultSet.getString("userEmail");
+							Timestamp u_SignDate  = resultSet.getTimestamp("u_SignDate"); 
+							Timestamp u_ResignDate  = resultSet.getTimestamp("u_ResignDate");
+							
+							DDtoU dtoU = new DDtoU(userID, userName, userGender, userBirth, userPhone, userEmail, u_SignDate, u_ResignDate);
+							dtoADs.add(dtoU);
+						}
+					}catch(Exception e){
+						e.printStackTrace();
+					}finally {
+						try {
+							if(resultSet != null) resultSet.close();
+							if(preparedStatement != null) preparedStatement.close();
+							if(connection != null) connection.close();
+						}catch (Exception e) {
+							e.printStackTrace();
+						}
+					} //finally
+					return dtoADs;
+				} // 탈퇴회원조회	
 }

@@ -23,7 +23,7 @@
 <!-- 개인정보수정,회원탈퇴 -->
 <h2>ADMIN</h2>
 
-<button onclick="location='.jsp'" style="width: 200px;">회원관리</button> <br>
+<button onclick="location='memberList.do'" style="width: 200px;">회원관리</button> <br>
 <br>
 <button onclick="location='.jsp'" style="width: 200px;">상품관리</button> <br>
 <br>

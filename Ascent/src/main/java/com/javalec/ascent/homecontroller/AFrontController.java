@@ -16,6 +16,7 @@ import com.javalec.ascent.command.ACartDeleteCommand;
 import com.javalec.ascent.command.ACartListCommand;
 import com.javalec.ascent.command.ACartModifyCommand;
 import com.javalec.ascent.command.ACartWriteCommand;
+import com.javalec.ascent.command.AChangePWCommand;
 import com.javalec.ascent.command.ACommand;
 import com.javalec.ascent.command.ACounselDeleteCommand;
 import com.javalec.ascent.command.ACounselDetailCommand;
@@ -57,6 +58,7 @@ import com.javalec.ascent.command.AWishDeleteCommand;
 import com.javalec.ascent.command.AWishListCommand;
 import com.javalec.ascent.command.AWishWriteCommand;
 import com.javalec.ascent.command.ApallCommand;
+import com.javalec.ascent.command.DMemberListCommand;
 
 /**
  * Servlet implementation class AFrontController
@@ -138,6 +140,12 @@ public class AFrontController extends HttpServlet {
 				command = new AUserModifyCommand();
 				command.execute(request, response);
 				viewPage = "userDetail.do";
+				break;
+			// 비밀번호 변경
+			case("/pwChange.do"):
+				command = new AChangePWCommand();
+				command.execute(request, response);
+				viewPage = "pwChangeV.jsp";
 				break;
 			// signOut, 회원탈퇴
 			case("/signOut.do"):
@@ -261,7 +269,6 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = "counselList.do";
 				break;
-			// 미완성	
 			// orderList, 주문내역
 			case("/orderList.do"):
 				command = new AOrderListCommand();
@@ -404,6 +411,14 @@ public class AFrontController extends HttpServlet {
 				command = new ANoticeBoardListCommand();
 				command.execute(request, response);
 				viewPage = "noticeBoardListV.jsp";
+				break;
+				
+			// 관리자
+			// 회원 리스트
+			case("/memberList.do"):
+				command = new DMemberListCommand();
+				command.execute(request, response);
+				viewPage = "aMemberV.jsp";
 				break;
 		}
 		
