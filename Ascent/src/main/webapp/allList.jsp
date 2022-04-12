@@ -185,11 +185,11 @@ ArrayList<ADtoP> allList = new ADaoP().allList(pageNum);
   				  <%
   				  if(!pageNum.equals("1")){
   				  %>
-  				  	<a href="allList.do?pageNum<%=Integer.parseInt(pageNum -1)%>"  class="btn btn-success">이전</a>
+  				  	<a href="allList.do?pageNum=<%=Integer.parseInt(pageNum -1)%>"  class="btn btn-success">이전</a>
                    <%
   				  } if(ADaoP.nextPage(pageNum)) {
                     %>
-                    <a href="allList.do?pageNum<%=Integer.parseInt(pageNum +1)%>"  class="btn btn-success">다음</a>
+                    <a href="allList.do?pageNum=<%=Integer.parseInt(pageNum +1)%>"  class="btn btn-success">다음</a>
  					<%
   				  }
  					%>
