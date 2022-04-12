@@ -109,7 +109,7 @@ public ArrayList<ADtoP> searchList(String searchText){
 				
 	try {  
 		conn = dataSource.getConnection();
-		String sql = "select * from product where productName like ? or productBrand like ? order by prouctCode desc";
+		String sql = "select * from product where productName like ? or productBrand like ? order by productCode desc";
 		ps = conn.prepareStatement(sql);
 		searchText = searchText.replaceAll(" " , "");
 		searchText = searchText.replaceAll("\\p{Z}", "");
