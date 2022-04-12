@@ -96,13 +96,18 @@
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
+				  
       			 <!--검색내용  -->
 				<form  class="d-flex" method="post" action="searchProductV.jsp">
 				<div>
-					<input class="form-control me-2" type="search" placeholder="검색하기" aria-label="Search"> 
+					<input type="text"  class="form-control me-2" placeholder="검색하기" aria-label="Search"> 
 				</div>
 					<div class="text-end">
-					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;"></k>
+					<button type="submit" class="btn btn-success">검색</button>
+
+
+					
+					<!-- <k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;"></k>
 					<script>
 					var k = 0;
 					$('k').on('click', function() {
@@ -113,7 +118,7 @@
 							$(this).attr('class', 'bi-search');
 							k--;
 						}
-					});
+					}); 
 				</script>
 				</form>
 				<!--검색 아이콘  -->
@@ -160,98 +165,45 @@
 			</div>
 		</div>
 	</nav>
-	<%
-		String userID = null;
-		if(session.getAttribute("userID") != null) {
-			userID = (String) session.getAttribute("userID");
-		}
-		int pageNumber =1;
-		if(request.getParameter("pageNumber")!=null){
-			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-			System.out.println("pageNumber="+pageNumber);
-		}
-		String searchWord = null;
-		if(request.getParameter("searchWord")!=null){
-			searchWord = (String) request.getParameter("searchWord");
-			System.out.println("searchword from parameter is :" + searchWord);
-		}
-		if(session.getAttribute("searchWord")!=null){
-			searchWord = (String) session.getAttribute("searchWord");
-			System.out.println("searchword from session is :" + searchWord);
-		}
-	%>
 	
 
-	<div class="container">
-		<div class="row">
-			<table class="table table-striped"
-				style="text-align: center; border: 1px solid #dddddd">
-				<thead>
-					<div>
-						<div class=" col-lg-4">
-							<input type="text" class="form-control pull-right" placeholder="Search" id="txtSearch" />
-						</div>
-						<button class="btn btn-primary" type="submit">
-							<span class="glyphicon glyphicon-search"></span>
-							<a href="searchProductV.jsp"></a>
-						</button>
-					</div>	
-					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-						ADaoP dao = new ADaoP();
-						//System.out.println("here before getlist");
-						ArrayList<ADtoP> list = daO.getSearchedList(pageNumber,searchWord);
-						//System.out.println("here after getlist" + list.get(0).getBbsDate().substring(0,11));
-						for(int i=0;i<list.size();i++){
-					%>
-					<tr>
-						<td><%=list.get(i).getuserID()%></td>
-						<td><a href="view.jsp?userID=<%=list.get(i).getuserID()%>"><%=list.get(i).getBbsTitle().replaceAll(" ","&nbsp;").replaceAll("<","&lt;").replaceAll("<","&gt;").replaceAll("\n","<br>")%></a></td>
-						<td><%= list.get(i).getuserID()%></td>
-						<td><%=	list.get(i).getBbsDate().substring(0, 11) + list.get(i).getBbsDate().substring(11,13) + "시" + list.get(i).getBbsDate().substring(14,16) + "분"%></td>
-					</tr>
-					<% 
-					
-						}
-					
-					%>
 
-				</tbody>
-			</table>
 
-				<tr>
+
+
+
+<div class="content">
+	 
+	<form action="" method="get">
+	
+	<input type="text" name="searchWord">
+	<input type="submit" value="Search">
+	</form>
+		<tr>
+			<th width="50%">제목</th>
+		</tr>
+		
+		<tr>
+			<td>${List.productName }</td>
+			<td>${List.productPrice }</td>
+			<td>${List.productImage }</td>
+		<%-- 	<td><%=dto.getProductPrice() %></td>
+			<td><%=dto.getProductSize() %></td>
+			<td><%=dto.getProductImages() %></td> --%>
+<%-- 			<td><%=dto.getProductPrice() %></td>
+			<td><%=dto.getProductSize() %></td>
+			<td><%=dto.getProductImages() %></td> --%>
+		</tr>
+		
+</div> 
+
+    			
+	
+
 				
-					<td class = "pull-left">
-					
-						<% 
-				if(pageNumber != 1) {
-					session.setAttribute("searchWord",searchWord);
-			%> <a href="searchedBbs.jsp?pageNumber=<%=pageNumber-1%>"
-						class="btn btn-success btn-arrow-left">이전</a> <%		
-				} if(bbsDAO.searchedNextPage(pageNumber,searchWord)) {
-					session.setAttribute("searchWord",searchWord);
-			%> <a href="searchedBbs.jsp?pageNumber=<%=pageNumber+1%>"
-						class="btn btn-success btn-arrow-right">다음</a> <% 
-				}
-			%>
-					</td>
-					
-					<td><a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
-					</td>
-				</tr>
 
 			
-		</div>
-	</div>
-	
-	
+		
 	
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>	

@@ -117,12 +117,18 @@
   					  </a>
 				  </div>
       			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProductV.jsp">
+				<form  class="d-flex" method="post" action="searchProductV.jsp" >
 				<div>
-					<input class="form-control me-2" type="search" placeholder="검색하기" aria-label="Search"> 
+					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
 					<div class="text-end">
-					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
+					<button type="submit" class="btn btn-success">검색</button>
+
+				</div>
+				</form>
+					
+					<!-- 
+					<input type="submit" value="submit" class="bi bi-search" style="font-size:2.1rem; cursor: pointer;">
 					<script>
 					var k = 0;
 					$('k').on('click', function() {
@@ -134,8 +140,9 @@
 							k--;
 						}
 					});
-				</script>
-				</form>
+				</script> -->
+				
+	
 				<!--검색 아이콘  -->
 				<!-- <div class="text-end">
 					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
@@ -178,7 +185,7 @@
 					</script>
 				</div>
 			</div>
-		</div>
+			
 	</nav>
 	
 		<!-- 비디오1  -->
@@ -195,12 +202,18 @@
 		
 	<!-- 상품 구현  -->
 	    <!-- Section-->
-    <div>
+    <!-- <div>
     	<ul> Woody</ul>
    
-    </div>
-
-
+    </div> -->
+  <!-- Footer-->
+        <!-- <footer class="py-5 bg-dark">
+            <div class="conta2"><p class="m-0 text-center text-white">Copyright &copy; ascent 2022</p></div>
+        </footer> 
+        <!-- Bootstrap core JS-->
+       <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+     <!--   <script src="js/scripts.js"></script>-->
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>

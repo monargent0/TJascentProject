@@ -36,9 +36,6 @@ public class ADaoP {
 		try {
 			conn = dataSource.getConnection();
 			String sql = "select productCode,productName,productPrice,productSize,productImages,category_categoryCode from product order by productCode desc  ";
-					
-			
-			
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
@@ -69,51 +66,40 @@ public class ADaoP {
 		return dtoPs;
 		
 	}
-	// 검색
-public ArrayList<ADtoP> getSearchedList(int pageNumber, String searchWord){
+	// product검색
+public ArrayList<ADtoP> searchList(String searchText){
+	ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>(); //return dtops 
+	String SQL = "select * from product where " +searchText + "like ?";
+	SQL +=" order by productCode desc";
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-	
-		int no2=0;
-		
-		if(getNext()>pageNumber*10) {
-			no2 = pageNumber*10;
-		} else {
-		  no2 = getNext();
-		}
-		
-		int no1=(pageNumber -1)*10+1;
-		
-		String SQL = "select * from (select row_number() over (order by productCode desc) NUM, A.* from product where productName like '%"
-				+ searchWord
-				+ "%' order by productCode desc) where NUM between "
-				+ no1
-				+ " and "
-				+ no2;
 				
-		ArrayList<ADtoP> list = new ArrayList<ADtoP>();
-		try {
-
-			System.out.println("sql statement : "+SQL);
-			Statement stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL);
+	try {  
+		conn = dataSource.getConnection();
+		ps = conn.prepareStatement(SQL);
+		ps.setString(1,"%"+ searchText+ "%");
+		rs = ps.executeQuery();
+    
+	
+		while(rs.next()) {
+			String productCode = rs.getString("productCode");
+			String productName = rs.getString("productName");
+			int productPrice = rs.getInt("productPrice");
+			String productSize = rs.getString("productSize");
+			String productImages = rs.getString("productImages");
+			String category_categoryCode = rs.getString("category_categoryCode");
 			
-			while(rs.next()) {
-				ADtoP adtop = new ADtoP();
-				adtop.setproductCode(rs.getString(2));
-				adtop.setproductName(rs.getString(3));
-				adtop.setUserID(rs.getString(4));
-				adtop.setproductBrand(rs.getString(5));
-				list.add(adtop);
-			}
-		}catch(Exception e) {
-			System.out.println("Exception:search");
-			e.printStackTrace();
-		}
-		System.out.println(" resultset_return list:search");
-		return list;
-	}
+			ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
+			dtoPs.add(dtoP);
+ }         
+} catch(Exception e) {
+ e.printStackTrace();
+}
+return dtoPs;//상품 리스트 반환
+}
+
+			
 
 	// 향수종류 - 퍼퓸
 	public ArrayList<ADtoP> pPList() {

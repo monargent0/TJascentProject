@@ -170,6 +170,12 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = "addressList.do";
 				break;	
+			//	상품검색
+			case("/searchProduct.do"):
+				command = new AProductSearchCommand();
+				command.execute(request, response);
+				viewPage = "searchProductV.jsp";
+				break;		
 			// productList, 상품목록
 			//all
 			case("/allList.do"):	
@@ -238,7 +244,7 @@ public class AFrontController extends HttpServlet {
 				viewPage = "pBList.jsp";
 				break;
 				
-				// counselList, 1대1문의 조회
+			// counselList, 1대1문의 조회
 			case("/counselList.do") :
 				command = new ACounselListCommand();
 				command.execute(request, response);
