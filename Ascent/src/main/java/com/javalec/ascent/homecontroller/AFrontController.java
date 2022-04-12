@@ -61,6 +61,7 @@ import com.javalec.ascent.command.AWishWriteCommand;
 import com.javalec.ascent.command.AmainproductCommand;
 import com.javalec.ascent.command.ApallCommand;
 import com.javalec.ascent.command.DMemberListCommand;
+import com.javalec.ascent.command.DNoticeDeleteCommand;
 import com.javalec.ascent.command.DNoticeModifyCommand;
 import com.javalec.ascent.command.DNoticeWriteCommand;
 
@@ -456,6 +457,23 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = "noticeLAdmin.do";
 				break;
+			// 공지 삭제
+			case("/noticeDelete.do"):
+				command = new DNoticeDeleteCommand();
+				command.execute(request, response);
+				viewPage = "noticeLAdmin.do";
+				break;
+			// 상품 조회
+			case("/productAdmin.do"):
+				viewPage = "aProductV.jsp";
+				break;
+			// 상품 추가
+			// 개인 문의 조회
+			case("/counselAdmin.do"):
+				viewPage = "aCounselListV.jsp";
+				break;
+				
+		
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

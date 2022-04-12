@@ -26,7 +26,7 @@
 	    <a href="main.do"><img src="assets/logo.png"  width="130" height="70"  /></a>
 		 <button onclick="location='adminV.jsp'" class="hd-btn">관리자홈</button> 
 	     <button onclick="location='memberList.do'" class="hd-btn">회원관리</button>
-	     <button onclick="location='.do'" class="hd-btn">상품관리</button>
+	     <button onclick="location='productAdmin.do'" class="hd-btn">상품관리</button>
 		 <button onclick="location='noticeLAdmin.do'" class="hd-btn" >공지사항관리</button> 
 		 <button onclick="location='counselAdmin.do'" class="hd-btn" >개인문의관리</button> 
 		 <button onclick="location='logOutH.jsp'"  class="hd-btn">로그아웃</button> 
@@ -36,9 +36,7 @@
 	<div class="contents">
 	<h1>관리자 사이트</h1>
 	</div>
-    <!--  <button onclick="location='.jsp'" style="width: 80px;">상품관리</button>
-  	 <button onclick="location='.jsp'" style="width: 80px;" >주문내역관리</button> 
-	 <button onclick="location='.jsp'" style="width: 80px;" >통계</button>  -->
+  	 
 
 </body>
 </html>
