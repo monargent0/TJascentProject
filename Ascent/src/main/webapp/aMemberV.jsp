@@ -6,23 +6,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 가입/탈퇴 현황</title>
+<link type="text/css" href="css/admin.css" rel="stylesheet" >
+<title>ascent ADMIN</title>
 </head>
 
 <style>
-	.contents{
-		position: absolute;
-		left : 50%;
-		transform : translate(-50%,0%);
-		padding: 50px ;
-		font-family: "나눔명조";
-		color:#463D3D;
+	
+	table{
+	border-collapse: collapse;
+	}
+	th{
+	border-bottom: solid 1px #463D3D ;
 	}
 </style>
 
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
+ 	<header>
+	   <div >
+	    <a href="main.do"><img src="assets/logo.png"  width="130" height="70"  /></a>
+		 <button onclick="location='adminV.jsp'" class="hd-btn">관리자홈</button> 
+	     <button onclick="location='memberList.do'" class="hd-btn">회원관리</button>
+	     <button onclick="location='.do'" class="hd-btn">상품관리</button>
+		 <button onclick="location='noticeLAdmin.do'" class="hd-btn" >공지사항관리</button> 
+		 <button onclick="location='counselAdmin.do'" class="hd-btn" >개인문의관리</button> 
+		 <button onclick="location='logOutH.jsp'"  class="hd-btn">로그아웃</button>  
+	    </div>
+	 </header> 
+	 
 <div class="contents">
-<a href="adminV.jsp">main</a> 
 	<div>
 		<div> <h2>가입현황</h2> </div>
 		<div style= "overflow:auto; width:850px; height:200px;" >
@@ -45,6 +56,7 @@
 			</table>
 		</div>
 	</div>
+	
 	<div>
 		<div> <h2>탈퇴현황</h2> </div>
 		<div style="overflow:auto; width:850px; height:200px;" >

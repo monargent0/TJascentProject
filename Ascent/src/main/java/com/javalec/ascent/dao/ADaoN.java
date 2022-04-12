@@ -85,7 +85,7 @@ DataSource dataSource;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select * from notice where noticeCode = ?";
+			String query = "select * from noticeBoard where noticeCode = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, Integer.parseInt(AnoticeCode));
 			resultSet = preparedStatement.executeQuery();
@@ -186,5 +186,64 @@ DataSource dataSource;
 		}
 		return count; // 총 레코드 수 리턴
 	} // Paging
-
+	
+	// 관리자 공지사항 수정
+	public void modifyNotice(String noticeCode , String noticeType , String noticeTitle , String noticeContent ) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			//DB연결메서드 불러오기
+			connection = dataSource.getConnection(); 
+			//pstmt 생성
+			String query = "update noticeboard set noticeType = ?, noticeTitle = ?, noticeContent = ?  where noticeCode = ?" ;
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, noticeType);
+			preparedStatement.setString(2, noticeTitle);
+			preparedStatement.setString(3, noticeContent);
+			preparedStatement.setInt(4, Integer.parseInt(noticeCode));
+			//실행 
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { 
+				try {
+					if(preparedStatement !=null) preparedStatement.close();
+					if(connection != null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+	} // 공지사항 수정
+	
+	// 공지사항 추가
+	public void writeNotice(String noticeType , String noticeTitle , String noticeContent , String userID) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection(); // DB연결 끝
+			String query = "insert into noticeboard (noticeType, noticeTitle, noticeContent, noticeDate, user_userID) ";
+			query += "values (?,?,?,now(),?)";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, noticeType);
+			preparedStatement.setString(2, noticeTitle);
+			preparedStatement.setString(3, noticeContent);
+			preparedStatement.setString(4, userID);
+			
+			preparedStatement.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // finally 메모리 정리 ;
+		
+	} // 공지사항 추가
+	
 }

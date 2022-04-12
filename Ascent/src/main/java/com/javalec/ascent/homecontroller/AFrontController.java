@@ -26,6 +26,7 @@ import com.javalec.ascent.command.AFindIDCommand;
 import com.javalec.ascent.command.AFindPWCommand;
 import com.javalec.ascent.command.AIDCheckCommand;
 import com.javalec.ascent.command.ALoginCommand;
+import com.javalec.ascent.command.ANoticeBoardDetailCommand;
 import com.javalec.ascent.command.ANoticeBoardListCommand;
 import com.javalec.ascent.command.AOrderDetailCommand;
 import com.javalec.ascent.command.AOrderListCommand;
@@ -60,6 +61,8 @@ import com.javalec.ascent.command.AWishWriteCommand;
 import com.javalec.ascent.command.AmainproductCommand;
 import com.javalec.ascent.command.ApallCommand;
 import com.javalec.ascent.command.DMemberListCommand;
+import com.javalec.ascent.command.DNoticeModifyCommand;
+import com.javalec.ascent.command.DNoticeWriteCommand;
 
 /**
  * Servlet implementation class AFrontController
@@ -428,6 +431,30 @@ public class AFrontController extends HttpServlet {
 				command = new DMemberListCommand();
 				command.execute(request, response);
 				viewPage = "aMemberV.jsp";
+				break;
+			// 공지 리스트
+			case("/noticeLAdmin.do"):
+				command = new ANoticeBoardListCommand();
+				command.execute(request, response);
+				viewPage = "aNoticeListV.jsp";
+				break;
+			// 공지 detail
+			case("/noticeDAdmin.do"):
+				command = new ANoticeBoardDetailCommand();
+				command.execute(request, response);
+				viewPage = "aNoticeModifyV.jsp";
+				break;
+			// 공지 수정
+			case("/noticeMAdmin.do"):
+				command = new DNoticeModifyCommand();
+				command.execute(request, response);
+				viewPage = "noticeLAdmin.do";
+				break;
+			// 공지 작성
+			case("/noticeWAdmin.do"):
+				command = new DNoticeWriteCommand();
+				command.execute(request, response);
+				viewPage = "noticeLAdmin.do";
 				break;
 		}
 		
