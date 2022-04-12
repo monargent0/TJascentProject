@@ -233,7 +233,7 @@
 				<div id="Warning"></div>
  			<div>
 				<div  align="right"><button type="button" onclick="checkid()">LOGIN</button> <br> </div> 
-				<div  align="right" ><button type="button" onclick="location.href='signAgreeV.jsp'">SIGNIN</button></div>
+				<div  align="right"><button type="button" onclick="location.href='signAgreeV.jsp'">SIGNIN</button></div>
 			</div>
 			<input type="text" value="<%=request.getParameter("productCode") %>" name="productCode" hidden="">
  		</form>

@@ -386,11 +386,17 @@ public class AFrontController extends HttpServlet {
 				viewPage = "cartList.do";
 				break;
 				
+			// orderView, 주문하기에서 장바구니 보기
+			case("/orderView.do"):
+				command = new ACartListCommand();
+				command.execute(request, response);
+				viewPage = "orderWriteV.jsp";
+				break;
 			// orderWrite, 주문하기
 			case("/orderWrite.do"):
 				command = new AOrderWriteCommand();
 				command.execute(request, response);
-				viewPage = "order";
+				viewPage = "orderCompleteV.jsp";
 				break;
 //				
 			// noticeBoardList, 공지사항 목록

@@ -162,7 +162,7 @@ background:#1A0D35;
 					<%
 					if(session.getAttribute("userID") == null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp?productCode=${detail.productCode}'"></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "sendProductCodeLogin()"></i>
 					<%
 					}else if(session.getAttribute("userID") != null){
 					%>
@@ -230,7 +230,7 @@ background:#1A0D35;
 			 <option value="10">10 </option>
 			</select> 
 			<div class="btn">  
-			<button class="btn1" type="button" onclick="AcheckUser()">장바구니</button>
+			<button class="btn1" type="button" onclick="cartWriteCheckUser()">장바구니</button>
 			</div>
 			</form>
 		</td>
@@ -262,6 +262,15 @@ function cartWriteCheckUser() {
 function cartListCheckUser() {
 	if (userID != 'null'){
 		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp?productCode='+productCode1;
+	}
+}
+function sendProductCodeLogin() {
+	if (userID != 'null'){
+		location.href='myPage.jsp'
 	}
 	else{
 		alert("로그인이 필요합니다.");
