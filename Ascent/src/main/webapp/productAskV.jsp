@@ -26,14 +26,15 @@
 </style>
 </head>
 <body bgcolor="#FFFAF6">
+<h2>ascent 상품 상세문의</h2>
  <div class="contents">
 	<table border="1">
 			<tr>
-				<td>글번호</td>
+				<td>문의번호</td>
 				<td><input type="text" name="askCode" size="5" value="${productAskV.askCode}" readonly="readonly"></td>
 			</tr>			
 			<tr>
-				<td>제목</td>
+				<td>문의제목</td>
 				<td><input type="text" name="askTitle" size="61" value="${productAskV.askTitle }" readonly="readonly"></td>
 			</tr>			
 			</tr>

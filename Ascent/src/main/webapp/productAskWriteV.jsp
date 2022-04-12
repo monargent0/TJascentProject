@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 상세 문의</title>
+<title>상품 상세 문의 폼</title>
 <style>
 	  table {
         border-collapse: collapse;
@@ -31,11 +31,11 @@
 		<table border="1">
 		<form action="pAskWrite.do" method="post">
 			<tr>
-				<td>제목</td>
+				<td>문의제목</td>
 				<td><input type="text" name="askTitle" size="50"></td>
 			</tr>
 			<tr>
-				<td>내용</td>
+				<td>문의내용</td>
 				<td><textarea name="askContent" rows="10" cols="50" maxlength="100"></textarea></td>
 			</tr>
 			<tr>		

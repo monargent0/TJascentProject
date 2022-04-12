@@ -11,7 +11,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.javalec.ascent.dto.ADtoAsk;
-import com.javalec.ascent.dto.ADtoC;
 
 public class ADaoAsk {
 	
@@ -36,7 +35,7 @@ public class ADaoAsk {
 		
 			try {
 				connection = dataSource.getConnection();
-				String query ="select askTitle, askContent, askDate, user_userID, product_productCode, c_ReplyCheck, c_ReplyContent from productask where product_productCode = ?";
+				String query ="select askTitle, askContent, askDate, user_userID, product_productCode, a_ReplyCheck, a_ReplyContent from productask where product_productCode = ?";
 				preparedStatement = connection.prepareStatement(query);
 				preparedStatement.setString(1, userID);
 				preparedStatement.setString(2, productCode);
@@ -47,10 +46,10 @@ public class ADaoAsk {
 					String askTitle = resultSet.getString("askTitle");
 					String askContent = resultSet.getString("askContent");
 					Timestamp askDate = resultSet.getTimestamp("askDate");
-					String c_ReplyCheck = resultSet.getString("c_ReplyCheck");
-					String c_ReplyContent = resultSet.getString("c_ReplyContent");
+					String a_ReplyCheck = resultSet.getString("a_ReplyCheck");
+					String a_ReplyContent = resultSet.getString("a_ReplyContent");
 					
-					ADtoAsk dtoAsk = new ADtoAsk(askCode, askTitle, askContent, askDate, c_ReplyContent, c_ReplyCheck);
+					ADtoAsk dtoAsk = new ADtoAsk(askCode, askTitle, askContent, askDate, a_ReplyContent, a_ReplyCheck);
 					dtos.add(dtoAsk); 
 			}
 	}catch(Exception e) {
@@ -75,7 +74,7 @@ public class ADaoAsk {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into productask (askTitle, askContent, askDate, user_userID, product_productCode, c_ReplyCheck ) values (?,?,now(),?,?,'미답변' )";
+			String query = "insert into productask (askTitle, askContent, askDate, user_userID, product_productCode, a_ReplyCheck ) values (?,?,now(),?,?,'미답변' )";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, askTitle);
 			preparedStatement.setString(2, askContent);
@@ -96,4 +95,45 @@ public class ADaoAsk {
 		}// finally 메모리 정리 ; 이상 있거나 없거나 무조건 거친다.
 
 	}
+	
+	public ADtoAsk detail(String AaskCode) {
+		
+		ADtoAsk dto = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "select * from productask where askCode = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(AaskCode));
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				int askCode = resultSet.getInt("askCode");
+				String askTitle = resultSet.getString("askTitle");
+				String askContent = resultSet.getString("askContent");
+				Timestamp askDate = resultSet.getTimestamp("askDate");
+				String a_ReplyCheck = resultSet.getString("a_ReplyCheck");
+				String a_ReplyContent = resultSet.getString("a_ReplyContent");
+				
+				dto = new ADtoAsk(askCode, askTitle, askContent, askDate, a_ReplyContent, a_ReplyCheck);
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {	// finally :  이상이 있을 때나 없을 때나 무조건 finally 속으로 온다.
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+
+	} // Detail 상세보기
+
 }
