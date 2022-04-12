@@ -52,9 +52,8 @@
 </style>
 <!-- 상품에 마우스 올릴때 및 위치 조정  -->
 <style>
- .py-5 div:hover {
+  .py-5 div:hover {
   border-color:#333;
-  padding:0 0 100px 0 ;     
  }   
   .col {
   padding:70px 70px 0 70px;
