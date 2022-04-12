@@ -59,6 +59,7 @@ import com.javalec.ascent.command.AWishDeleteCommand;
 import com.javalec.ascent.command.AWishListCommand;
 import com.javalec.ascent.command.AWishWriteCommand;
 import com.javalec.ascent.command.ApallCommand;
+import com.javalec.ascent.command.DMemberListCommand;
 
 /**
  * Servlet implementation class AFrontController
@@ -404,6 +405,14 @@ public class AFrontController extends HttpServlet {
 				command = new ANoticeBoardListCommand();
 				command.execute(request, response);
 				viewPage = "noticeBoardListV.jsp";
+				break;
+				
+			// 관리자
+			// 회원 리스트
+			case("/memberList.do"):
+				command = new DMemberListCommand();
+				command.execute(request, response);
+				viewPage = "aMemberV.jsp";
 				break;
 		}
 		
