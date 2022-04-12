@@ -9,11 +9,11 @@ import com.javalec.ascent.dao.ADaoCart;
 public class ACartWriteCommand implements ACommand {
 
 	public void execute (HttpServletRequest request, HttpServletResponse response) {
-		int cartAmount = Integer.parseInt(request.getParameter("cartCode"));
+		int cartAmount = Integer.parseInt(request.getParameter("cartAmount"));
 		String productCode = request.getParameter("productCode");
 		String userID = request.getParameter("userID");
 		
 		ADaoCart dao = new ADaoCart();
-		dao.write(cartAmount, productCode, userID);;
+		dao.write(cartAmount, productCode, userID);
 	}
 }

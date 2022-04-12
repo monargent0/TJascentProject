@@ -12,10 +12,11 @@ public class APpCommand implements ACommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		ADaoP dao = new ADaoP();
-		ArrayList<ADtoP> dtos = dao.appList();
-		request.setAttribute("appList", dtos);
 		
+		ADaoP dao = new ADaoP();
+		ArrayList<ADtoP> dtos = dao.pPList();
+		request.setAttribute("pPList", dtos);
+	
 
 	}
 

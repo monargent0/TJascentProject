@@ -14,7 +14,7 @@ public class AScCommand implements ACommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		ADaoP dao = new ADaoP();
-		ArrayList<ADtoP> dtos = dao.appList();
+		ArrayList<ADtoP> dtos = dao.sCList();
 		request.setAttribute("sCList", dtos);
 		
 

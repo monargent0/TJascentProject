@@ -55,15 +55,16 @@ public class ADaoCart {
 	}
 	
 	// delete
-		public void delete(int cartCode) {
+		public void delete(int[] cartCodeArray) {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 
+			for(int i=0; i<cartCodeArray.length; i++) {
 				try {
 					connection = dataSource.getConnection(); // DB연결 끝
 					String query = "delete from cart where cartCode = ?";
 					preparedStatement = connection.prepareStatement(query);
-					preparedStatement.setInt(1, cartCode);
+					preparedStatement.setInt(1, cartCodeArray[i]);
 					
 					preparedStatement.executeUpdate();
 					
@@ -77,6 +78,7 @@ public class ADaoCart {
 						e.printStackTrace();
 					}
 				}// finally 메모리 정리 ; 이상 있거나 없거나 무조건 거친다.
+			}
 		} // delete
 		
 		public void modify(int cartAmount, int cartCode) {

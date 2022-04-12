@@ -23,10 +23,132 @@ public class ADaoP {
 			e.printStackTrace();
 		}
 		
+	} 
+	//전체목록
+	public ArrayList<ADtoP> allList() {
+		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String sql = "select productCode,productName,productPrice,productSize,productImages,category_categoryCode from product order by productCode desc  ";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String productCode = rs.getString("productCode");
+				String productName = rs.getString("productName");
+				int productPrice = rs.getInt("productPrice");
+				String productSize = rs.getString("productSize");
+				String productImages = rs.getString("productImages");
+				String category_categoryCode = rs.getString("category_categoryCode");
+				ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
+				dtoPs.add(dtoP);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close(); //데이터가 있으면 close
+				if(ps!=null) ps.close();
+				if(conn!= null) conn.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dtoPs;
+		
 	}
+	//메인 화면 - 리스트 
+	public ArrayList<ADtoP> mainList() {
+		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String sql2 = "select * from product where productName like '%로즈%' order by productCode desc limit 4 ";
+			ps = conn.prepareStatement(sql2);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String productCode = rs.getString("productCode");
+				String productName = rs.getString("productName");
+				int productPrice = rs.getInt("productPrice");
+				String productSize = rs.getString("productSize");
+				String productImages = rs.getString("productImages");
+				String category_categoryCode = rs.getString("category_categoryCode");
+				ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
+				dtoPs.add(dtoP);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close(); //데이터가 있으면 close
+				if(ps!=null) ps.close();
+				if(conn!= null) conn.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dtoPs;
+		
+	}
+	// product검색
+public ArrayList<ADtoP> searchList(String searchText){
+	ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>(); //return dtops 
+	Connection conn = null;
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+				
+	try {  
+		conn = dataSource.getConnection();
+		String sql = "select * from product where productName like ? or productBrand like ? order by productCode desc";
+		ps = conn.prepareStatement(sql);
+		searchText = searchText.replaceAll(" " , "");
+		searchText = searchText.replaceAll("\\p{Z}", "");
+		ps.setString(1, "%"+searchText+"%");
+		ps.setString(2, "%"+searchText+"%");
+		rs = ps.executeQuery();
+    
 	
+		while(rs.next()) {
+			String productCode = rs.getString("productCode");
+			String productName = rs.getString("productName");
+			int productPrice = rs.getInt("productPrice");
+			String productSize = rs.getString("productSize");
+			String productImages = rs.getString("productImages");
+			String category_categoryCode = rs.getString("category_categoryCode");
+			
+			ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
+			dtoPs.add(dtoP);
+			
+			
+ }         
+} catch(Exception e) {
+ e.printStackTrace();
+}finally {
+	try {
+		if(rs != null) rs.close(); //데이터가 있으면 close
+		if(ps!=null) ps.close();
+		if(conn!= null) conn.close();
+	}catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+return dtoPs;//상품 리스트 반환
+}
+
+			
+
 	// 향수종류 - 퍼퓸
-	public ArrayList<ADtoP> appList() {
+	public ArrayList<ADtoP> pPList() {
 		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -327,7 +449,7 @@ public class ADaoP {
 			
 			try {
 				conn = dataSource.getConnection();
-				String query1 = "select productCode,productName,productPrice,productSize,productImages,category_categoryCode from product where productCode like '%-fr-%'";
+				String query1 = "select productCode,productName,productPrice,productSize,productImages,category_categoryCode from product where productCode like '%-ft-%'";
 				ps = conn.prepareStatement(query1);
 				rs = ps.executeQuery();
 				
