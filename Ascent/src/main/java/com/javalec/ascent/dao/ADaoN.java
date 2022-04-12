@@ -11,7 +11,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.javalec.ascent.dto.ADtoC;
 import com.javalec.ascent.dto.ADtoN;
 
 public class ADaoN {

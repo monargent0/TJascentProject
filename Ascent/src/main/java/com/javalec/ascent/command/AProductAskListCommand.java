@@ -1,25 +1,28 @@
 package com.javalec.ascent.command;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.javalec.ascent.dao.ADaoAsk;
+import com.javalec.ascent.dto.ADtoAsk;
 
-public class AProductAskWriteCommand implements ACommand {
-	
+public class AProductAskListCommand implements ACommand {
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+
 		HttpSession session = request.getSession();
-		
-		String userId = (String) session.getAttribute("userID");
+		String userID = (String) session.getAttribute("userID");
 		String productCode = (String) session.getAttribute("productCode");
-		String askTitle = request.getParameter("askTitle");
-		String askContent = request.getParameter("askContent");
 		
 		ADaoAsk daoAsk = new ADaoAsk();
-		daoAsk.write(askTitle, askContent, userId, productCode);
+		ArrayList<ADtoAsk> dtos = daoAsk.list(userID, productCode);
+		request.setAttribute("list", dtos);
 	}
-
+	
 
 }

@@ -103,7 +103,7 @@
 <%									
 	}else{ // 현재 페이지가 아닌 경우 링크 설정
 %>
-		<a href="noticeBoardList.do?pageNum=<%=i%>">[<%=i %>]</a>
+		<a href="noticeBoardListV.do?pageNum=<%=i%>">[<%=i %>]</a>
 <%	
 	}
 } 
