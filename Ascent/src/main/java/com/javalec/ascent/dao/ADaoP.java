@@ -24,8 +24,8 @@ public class ADaoP {
 		}
 		
 	} 
-	//전체목록
-	public ArrayList<ADtoP> allList() {
+	//전체목록 -페이징
+	public ArrayList<ADtoP> allList(String pageNum) {
 		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -33,9 +33,12 @@ public class ADaoP {
 		
 		try {
 			conn = dataSource.getConnection();
-			String sql = "select productCode,productName,productPrice,productSize,productImages,category_categoryCode from product order by productCode desc  ";
+			String sql = "select *  from product where  productCode > (select max(productCode) from product ) - ? and productCode <= (select max(productCode) from product) - ? order by productCode   desc  ";
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(pageNum) * 10);
+			ps.setInt(2, (Integer.parseInt(pageNum) -1)* 10);
 			rs = ps.executeQuery();
+			
 			
 			while(rs.next()) {
 				String productCode = rs.getString("productCode");
@@ -62,6 +65,75 @@ public class ADaoP {
 		return dtoPs;
 		
 	}
+	//전체목록 -NEXT PAGE
+	public boolean nextPage (String pageNum) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String sql = "select * from product where producuCode >= ?  ";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(pageNum) * 10 );
+			rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				return true;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close(); //데이터가 있으면 close
+				if(ps!=null) ps.close();
+				if(conn!= null) conn.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	 return false;
+	}
+	
+	//전체목록
+//	public ArrayList<ADtoP> allList() {
+//		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();
+//		Connection conn = null;
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//		
+//		try {
+//			conn = dataSource.getConnection();
+//			String sql = "select productCode,productName,productPrice,productSize,productImages,category_categoryCode from product order by productCode desc  ";
+//			ps = conn.prepareStatement(sql);
+//			rs = ps.executeQuery();
+//			
+//			while(rs.next()) {
+//				String productCode = rs.getString("productCode");
+//				String productName = rs.getString("productName");
+//				int productPrice = rs.getInt("productPrice");
+//				String productSize = rs.getString("productSize");
+//				String productImages = rs.getString("productImages");
+//				String category_categoryCode = rs.getString("category_categoryCode");
+//				ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
+//				dtoPs.add(dtoP);
+//			}
+//		}catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			try {
+//				if(rs != null) rs.close(); //데이터가 있으면 close
+//				if(ps!=null) ps.close();
+//				if(conn!= null) conn.close();
+//			}catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		
+//		return dtoPs;
+		
+//	}
+	
 	//메인 화면 - 리스트 
 	public ArrayList<ADtoP> mainList() {
 		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>();

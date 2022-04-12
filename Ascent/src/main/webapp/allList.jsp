@@ -3,6 +3,21 @@
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<%
+String pageNum ="1";
+if(request.getParameter("pageNum") != null) {
+	pageNum = request.getParameter("pageNum");
+}
+try{
+	Integer.parseInt(pageNum);
+} catch (Exception e) {
+	session.setAttribute("messageType","오류 메시지");
+	session.setAttribute("messageContent","페이지 번호가 잘못되었습니다.");
+	response.sendRedirect("allList.jsp");
+	return;
+}
+ArrayList<ADtoP> allList = new ADaoP().allList(pageNum);
+%>
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -141,15 +156,7 @@
 			</div>
 	</nav>
 	
-<!-- Header-->
-     <!--    <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">shop</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">find your own scent</p>
-                </div>
-            </div>
-        </header> -->
+
      
 <!-- 상품 -->
                			   <section class="py-5">
@@ -174,8 +181,18 @@
                		 </c:forEach>
   				  </div>
   				  </section>
-                          
- 
+  				  
+  				  <%
+  				  if(!pageNum.equals("1")){
+  				  %>
+  				  	<a href="allList.do?pageNum<%=Integer.parseInt(pageNum -1)%>"  class="btn btn-success">이전</a>
+                   <%
+  				  } if(ADaoP.nextPage(pageNum)) {
+                    %>
+                    <a href="allList.do?pageNum<%=Integer.parseInt(pageNum +1)%>"  class="btn btn-success">다음</a>
+ 					<%
+  				  }
+ 					%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
