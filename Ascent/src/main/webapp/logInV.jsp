@@ -109,7 +109,17 @@
 		 document.log.submit();			
 		}
 	}
-
+	
+	function noblank(obj) { // 공백사용못하게
+	    var str_space = /\s/;  // 공백체크
+	    if(str_space.exec(obj.value)) { //공백 체크
+	        /* alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다."); */
+	        obj.focus();
+	        obj.value = obj.value.replace(' ',''); // 공백제거
+	        return false;
+	    }
+	 // onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"
+	}
 </script>
 
 <body bgcolor="#FFFAF6">
@@ -219,14 +229,12 @@
  		<form action="logIn.do" method="post" name="log">
  			<div>
 				<div style="float: right;">
-					<input type="text" name="userID" size="30" placeholder="아이디"
-					 id="userID">
+					<input type="text" name="userID" size="30" placeholder="아이디" id="userID" onkeyup="noblank(this)">
 				</div>
 			</div>
  			<div>
 				<div style="float: right;">
-					<input type="password" name="userPW" size="30" placeholder="비밀번호"
-					id="userPW" >
+					<input type="password" name="userPW" size="30" placeholder="비밀번호"	id="userPW" onkeyup="noblank(this)">
 				</div>
 			</div>
 				<div>&nbsp;</div>

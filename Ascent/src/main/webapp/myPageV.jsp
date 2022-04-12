@@ -33,6 +33,8 @@
 <br>
 <button onclick="location='counselList.do'" style="width: 200px;" >1대1문의조회</button> <br>
 <br>
+<button onclick="location='signOutV.jsp'" style="width: 200px;" >회원탈퇴</button> <br>
+<br>
 
 	<a href="mainV.jsp">main</a> &nbsp; <a href="logOutH.jsp">로그아웃</a><br>
 </div>

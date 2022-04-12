@@ -20,7 +20,9 @@
 	let alertTxt = '<%=(String)session.getAttribute("alertTxt")%>';
 	if(alertTxt!== "null"){
 		alert(alertTxt);
-		sessionStorage.removeItem(alertTxt);
+		<%
+		session.removeAttribute("alertTxt");
+		%>
 	}
 </script> 
 
