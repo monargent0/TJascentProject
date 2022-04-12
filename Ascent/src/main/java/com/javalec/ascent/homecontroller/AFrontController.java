@@ -31,24 +31,34 @@ import com.javalec.ascent.command.AOrderDetailCommand;
 import com.javalec.ascent.command.AOrderListCommand;
 import com.javalec.ascent.command.AOrderWriteCommand;
 import com.javalec.ascent.command.APayCommand;
+import com.javalec.ascent.command.APbCommand;
+import com.javalec.ascent.command.APcCommand;
 import com.javalec.ascent.command.APpCommand;
 import com.javalec.ascent.command.AProductAskWriteCommand;
 import com.javalec.ascent.command.AProductDetailCommand;
 import com.javalec.ascent.command.AProductListCommand;
 import com.javalec.ascent.command.AProductSearchCommand;
+import com.javalec.ascent.command.APtCommand;
 import com.javalec.ascent.command.ARefundCommand;
 import com.javalec.ascent.command.AReviewDeleteCommand;
 import com.javalec.ascent.command.AReviewDetailCommand;
 import com.javalec.ascent.command.AReviewListCommand;
 import com.javalec.ascent.command.AReviewModifyCommand;
 import com.javalec.ascent.command.AReviewWriteCommand;
+import com.javalec.ascent.command.AScCommand;
+import com.javalec.ascent.command.ASfCommand;
+import com.javalec.ascent.command.ASfrCommand;
+import com.javalec.ascent.command.ASftCommand;
 import com.javalec.ascent.command.ASigninCommand;
 import com.javalec.ascent.command.ASignoutCommand;
+import com.javalec.ascent.command.ASoCommand;
+import com.javalec.ascent.command.ASwCommand;
 import com.javalec.ascent.command.AUserDetailCommand;
 import com.javalec.ascent.command.AUserModifyCommand;
 import com.javalec.ascent.command.AWishDeleteCommand;
 import com.javalec.ascent.command.AWishListCommand;
 import com.javalec.ascent.command.AWishWriteCommand;
+import com.javalec.ascent.command.ApallCommand;
 
 /**
  * Servlet implementation class AFrontController
@@ -166,77 +176,75 @@ public class AFrontController extends HttpServlet {
 				command = new AAddressDeleteCommand();
 				command.execute(request, response);
 				viewPage = "addressList.do";
-				break;
-				
-				
-				
-				
+				break;	
 			// productList, 상품목록
-//				
-//			//floral
-//			case("/sFList.do"):	
-//				command = new ASflCommand() ;
-//				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
-//				break;		
-//			//citrus
-//			case("/sCList.do"):	
-//				command = new AScCommand() ;
-//				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
-//				break;		
-//			//Fresh
-//			case("/sFRList.do"):	
-//				command = new ASfrCommand() ;
-//				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
-//				break;		
-//			//Fruity
-//			case("/sFTList.do"):	
-//				command = new ASftCommand() ;
-//				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
-//				break;		
-//			//Woody
-//			case("/sWList.do"):	
-//				command = new ASwCommand() ;
-//				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
-//				break;		
-//			
-//			//Oriental
-//			case("/sOList.do"):	
-//				command = new ASoCommand() ;
-//				command.execute(request, response);
-//				viewPage = "sFLlist.jsp";
-//				break;	
-				// 플로럴카테고리
-						
+			//all
+			case("/allList.do"):	
+				command = new ApallCommand() ;
+				command.execute(request, response);	
+				viewPage = "allList.jsp";
+				break;		
+			//floral
+			case("/sFList.do"):	
+				command = new ASfCommand() ;
+				command.execute(request, response);
+				viewPage = "sFList.jsp";
+				break;		
+			//citrus
+			case("/sCList.do"):	
+				command = new AScCommand() ;
+				command.execute(request, response);
+				viewPage = "sCList.jsp";
+				break;		
+			//Fresh
+			case("/sFRList.do"):	
+				command = new ASfrCommand() ;
+				command.execute(request, response);
+				viewPage = "sFRList.jsp";
+				break;		
+			//Fruity
+			case("/sFTList.do"):	
+				command = new ASftCommand() ;
+				command.execute(request, response);
+				viewPage = "sFTList.jsp";
+				break;		
+			//Woody
+			case("/sWList.do"):	
+				command = new ASwCommand() ;
+				command.execute(request, response);
+				viewPage = "sWList.jsp";
+				break;		
+			//Oriental
+			case("/sOList.do"):	
+				command = new ASoCommand() ;
+				command.execute(request, response);
+				viewPage = "sOList.jsp";
+				break;	
 			//Perfume
 			case("/pPList.do"):	
 				command = new APpCommand() ;
 				command.execute(request, response);
 				viewPage = "pPList.jsp";
 				break;	
-//			//toilette
-//			case("/pTList.do"):	
-//				command = new APtCommand() ;
-//				command.execute(request, response);
-//				viewPage = "pTList.jsp";
-//				break;		
-//			//cologne
-//			case("/pCList.do"):	
-//				command = new APcCommand() ;
-//				command.execute(request, response);
-//				viewPage = "pCList.jsp";
-//				break;			
-//			//bodyspray
-//			case("/pBList.do"):	
-//				command = new APbCommand() ;
-//				command.execute(request, response);
-//				viewPage = "pBList.jsp";
-//				break;
-//				
+			//toilette
+			case("/pTList.do"):	
+				command = new APtCommand() ;
+				command.execute(request, response);
+				viewPage = "pTList.jsp";
+				break;		
+			//cologne
+			case("/pCList.do"):	
+				command = new APcCommand() ;
+				command.execute(request, response);
+				viewPage = "pCList.jsp";
+				break;			
+			//bodyspray
+			case("/pBList.do"):	
+				command = new APbCommand() ;
+				command.execute(request, response);
+				viewPage = "pBList.jsp";
+				break;
+				
 				// counselList, 1대1문의 조회
 			case("/counselList.do") :
 				command = new ACounselListCommand();

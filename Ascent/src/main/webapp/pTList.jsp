@@ -167,7 +167,7 @@
 <!-- 상품 -->
                			   <section class="py-5">
                			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${pPList }" var="dto"><%--반복문,dto --%>
+		  					<c:forEach items="${pTList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
    									 <div class="card h-100">
    									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">

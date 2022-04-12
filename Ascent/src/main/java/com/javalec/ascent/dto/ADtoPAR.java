@@ -7,10 +7,23 @@ public class ADtoPAR {
 	int productPrice;
 	String productSize;
 	String productImages;
+	String productBrand;
 	String category_categoryCode;
 	
 	public ADtoPAR(){
 		
+	}
+
+	public ADtoPAR(String productCode, String productName, int productPrice, String productSize, String productImages,
+			String productBrand, String category_categoryCode) {
+		super();
+		this.productCode = productCode;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productSize = productSize;
+		this.productImages = productImages;
+		this.productBrand = productBrand;
+		this.category_categoryCode = category_categoryCode;
 	}
 
 	public String getProductCode() {
@@ -53,6 +66,14 @@ public class ADtoPAR {
 		this.productImages = productImages;
 	}
 
+	public String getProductBrand() {
+		return productBrand;
+	}
+
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
+	}
+
 	public String getCategory_categoryCode() {
 		return category_categoryCode;
 	}
@@ -61,14 +82,5 @@ public class ADtoPAR {
 		this.category_categoryCode = category_categoryCode;
 	}
 
-	public ADtoPAR(String productCode, String productName, int productPrice, String productSize, String productImages,
-			String category_categoryCode) {
-		super();
-		this.productCode = productCode;
-		this.productName = productName;
-		this.productPrice = productPrice;
-		this.productSize = productSize;
-		this.productImages = productImages;
-		this.category_categoryCode = category_categoryCode;
-	}
+	
 }

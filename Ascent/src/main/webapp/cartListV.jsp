@@ -123,7 +123,6 @@ function cartCodeCheckA() {
 				<td align="center">
 				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
 				</td>
-				</td>
 				<td align="center">
 				<input type="submit" value="선택상품 주문" formaction="orderWriteV.jsp">
 				</td>
