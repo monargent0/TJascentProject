@@ -34,7 +34,6 @@ import com.javalec.ascent.command.APayCommand;
 import com.javalec.ascent.command.APbCommand;
 import com.javalec.ascent.command.APcCommand;
 import com.javalec.ascent.command.APpCommand;
-import com.javalec.ascent.command.AProductAskWriteCommand;
 import com.javalec.ascent.command.AProductDetailCommand;
 import com.javalec.ascent.command.AProductListCommand;
 import com.javalec.ascent.command.AProductSearchCommand;
@@ -382,6 +381,7 @@ public class AFrontController extends HttpServlet {
 			case("/cartWrite.do"):
 				command = new ACartWriteCommand();
 				command.execute(request, response);
+				viewPage = "productDetail.do";
 				break;
 			// cartList, 장바구니 보기
 			case("/cartList.do"):
@@ -402,11 +402,17 @@ public class AFrontController extends HttpServlet {
 				viewPage = "cartList.do";
 				break;
 				
+			// orderView, 주문하기에서 장바구니 보기
+			case("/orderView.do"):
+				command = new ACartListCommand();
+				command.execute(request, response);
+				viewPage = "orderWriteV.jsp";
+				break;
 			// orderWrite, 주문하기
 			case("/orderWrite.do"):
 				command = new AOrderWriteCommand();
 				command.execute(request, response);
-				viewPage = "order";
+				viewPage = "orderCompleteV.jsp";
 				break;
 //				
 			// noticeBoardList, 공지사항 목록

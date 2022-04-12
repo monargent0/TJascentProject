@@ -93,7 +93,7 @@ function sample6_execDaumPostcode() {
 <body>
 <div class="list">
 	<h2>주문 하기</h2>
-	<form method="get">
+	<form name="orderForm" method="get">
 		<table>
 			<tr>
 				<td>
@@ -112,33 +112,34 @@ function sample6_execDaumPostcode() {
 			<c:set var="orderSum" value="0" />
 			<c:set var="orderAmount" value="0" />
 			<c:forEach items="${cartList }" var="dto" varStatus="status">
-			<tr>
-				<td align="center" hidden="">
-				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly" style="text-align:center; ">
-				</td>
-				<td align="center" hidden="">
-				<input type="text" value="${dto.productCode }" name="productCode" readonly="readonly">
-				</td>
-				<td align="center">
-				<input type="image" value="${dto.productImages }" name="productImages" readonly="readonly">
-				</td>
-				<td align="center">
-				<input type="text" value="${dto.productName }" name="productName" readonly="readonly">
-				</td>
-				<td align="center">
-				<input type="text" value="${dto.productSize }" name="productSize" readonly="readonly">
-				</td>
-				<td align="center">
-				<input type="number" value="${dto.productPrice }" name="productPrice" readonly="readonly">
-				</td>
-				<td align="center">
-				<input type="number" value="${dto.cartAmount }" name="cartAmount" readonly="readonly"> 개
-				</td>
-				<td align="center">
-				<input type="number" value=${dto.cartSum } name="cartSum" readonly="readonly"> 원
-			</tr>
-			<c:set var= "total" value="${orderSum + dto.cartSum}"/>
-			<c:set var= "total" value="${orderAmount + dto.cartAmount}"/>
+				<tr>
+					<td hidden="">
+					<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly" >
+					</td>
+					<td hidden="">
+					<input type="text" value="${dto.productCode }" name="productCode" readonly="readonly">
+					</td>
+					<td align="center">
+					<img class="img" src="${dto.productImages }" width="150px" name="productImages">
+					</td>
+					<td align="left">
+					${dto.productName }
+					</td>
+					<td align="center">
+					${dto.productSize } ml
+					</td>
+					<td align="center">
+					${dto.productPrice } 원
+					</td>
+					<td align="center">
+					${dto.cartAmount } 개
+					</td>
+					<td align="center">
+					${dto.cartSum } 원
+					</td>
+				</tr>
+				<c:set var= "orderSum" value="${orderSum + dto.cartSum}"/>
+				<c:set var= "orderAmount" value="${orderAmount + dto.cartAmount}"/>
 			</c:forEach>
 		</table><br>
 		<table>
@@ -152,7 +153,8 @@ function sample6_execDaumPostcode() {
 				주문 총량
 				</td>
 				<td>
-				<input type="number" value="${orderAmount }" name="orderAmount" readonly="readonly"> 개
+				<input type="number" value="${orderAmount }" name="orderAmount" readonly="readonly" hidden="">
+				 ${orderAmount } 개
 				</td>
 			</tr>
 			<tr>
@@ -160,7 +162,8 @@ function sample6_execDaumPostcode() {
 				주문 총액
 				</td>
 				<td>
-				<input type="number" value="${orderSum }" name="orderSum" readonly="readonly"> 원
+				<input type="number" value="${orderSum }" name="orderSum" readonly="readonly" hidden="">
+				${orderSum } 원
 				</td>
 			</tr>
 			<tr>
@@ -174,6 +177,10 @@ function sample6_execDaumPostcode() {
 				<td align="right">받는 사람</td>
 				<td><input type="text" name="orderReceiver" size="10"></td>
 			</tr>
+			<!-- <tr>
+				<td align="right">배송지 이름</td>
+				<td><input type="text" name="addressType" size="10"></td>
+			</tr> -->
 			<tr>	
 				<td align="right">우편 번호</td>
 				<td>
@@ -198,18 +205,18 @@ function sample6_execDaumPostcode() {
 				</td>
 			</tr>
 		</table><br>
-		<table>
+		<!-- <table>
 			<tr>
 				<td>
 				일반 결제
 				</td>
 				<td>
 				<input type="radio" name="카카오페이" value="kakaopay">
-				<img alt="KakaoPay" src="img/payment_icon_yellow_small.png" height="10">
+				<img alt="KakaoPay" src="img/payment_icon_yellow_small.png" height="13">
 				</td>
 			</tr>
-		</table><br>
-		<input type="button" value="결제하기" formaction="pay.do" onclick="requestPay()">
+		</table><br> -->
+		<input type="submit" value="결제하기" formaction="orderWrite.do" onclick="requestPay()">
 	</form>
 </div>
 </body>
@@ -223,20 +230,19 @@ function requestPay() {
         pg: "kakaopay",
         pay_method: "kakaopay",
         merchant_uid: "ORD20180131-0000011",
-        name: "노르웨이 회전 의자",
+        name: "테스트",
         amount: 1,
-        buyer_email: "gildong@gmail.com",
-        buyer_name: "홍길동",
-        buyer_tel: "010-4242-4242",
-        buyer_addr: "서울특별시 강남구 신사동",
-        buyer_postcode: "01181"
+        buyer_name: document.orderForm.orderReceiver.value,
+        buyer_addr: document.orderForm.orderMainAddress.value,
+        buyer_postcode: document.orderForm.orderPostcode.value;
     }, function (rsp) { // callback
+            document.orderForm.submit();
         if (rsp.success) {
             // 결제 성공 시 로직,
-            alert('결제 성공')
+            alert('결제 성공');
         } else {
             // 결제 실패 시 로직,
-            alert('결제 취소')
+            alert('결제 취소');
         }
     });
   }

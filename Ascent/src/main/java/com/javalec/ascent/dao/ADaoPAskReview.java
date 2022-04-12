@@ -30,7 +30,7 @@ public class ADaoPAskReview {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query = "select * from product where productCode =?";
+			String query = "select * from product where productCode = ? ";
 			ps = conn.prepareStatement(query);
 			ps.setString(1,sproductCode);
 			rs = ps.executeQuery();

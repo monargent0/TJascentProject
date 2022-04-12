@@ -31,7 +31,7 @@
 <script>
 // all check
 function checkBoxAll(event) {
-	const query = 'input[name="check"]';
+	const query = 'input[name="checkCart"]';
 	const selectedEls = document.querySelectorAll(query);
 
 	if (event.target.checked) {
@@ -43,31 +43,6 @@ function checkBoxAll(event) {
 			el.checked = false;
 		});
 	}
-}
-// checked 값 받아오기
-function checkBoxAllValue() {
-	const query = 'input[name="check"]:checked';
-	const selectedEls = document.querySelectorAll(query);
-
-	// 선택된 목록에서 value 찾기
-	let result = '';
-	selectedEls.forEach((el) => {
-		result += el.value + ',';
-	});
-	alert(result);
-	
-}
-function cartCodeCheckA() {
-	
-	var check = document.getElementsByName('check');
-	var cartCodeCheck; // 여기에 선택된 값이 담기게 된다.
-	for(var i=0; i<check.length; i++) {
-	    if(check[i].checked) {
-	        cartCodeCheck += check[i].value + ',';
-	    }
-	}
-	alert(cartCodeCheck);
-	form.submit();
 }
 </script>
 <body>
@@ -85,57 +60,54 @@ function cartCodeCheckA() {
 				<th>가격</th>
 				<th>수량</th>
 				<th>합계</th>
-				<th colspan="2">action</th>
 			</tr>
+			<form name="cartForm">
 			<c:forEach items="${cartList }" var="dto" varStatus="status">
-			<form>
 			<tr>
-				<td align="center" hidden="">
-				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly" style="text-align:center; ">
+				<td hidden="">
+				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly">
 				</td>
-				<td align="center" hidden="">
-				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly" style="text-align:center; ">
+				<td hidden="">
+				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly" >
 				</td>
 				<td hidden="">
 				<input type="text" value="${dto.productCode }" name="productCode" readonly="readonly">
 				</td>
 				<td>
-				<input type="checkbox"  name="check" value="${dto.cartCode }">
+				<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
 				</td>
 				<td align="center">
-				<input type="image" value="${dto.productImages }" name="productImages" readonly="readonly" onclick="prodctDetail.do?productCode=${dto.productCode }">
+				<a href="productDetail.do?productCode=${dto.productCode }">
+				<img class="img" src="${dto.productImages }" width="150px" name="productImages">
+				</a>
+				</td>
+				<td align="left">
+				<a href="productDetail.do?productCode=${dto.productCode }">${dto.productName }</a>
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productName }" name="productName" readonly="readonly" size="50">
+				${dto.productSize } ml
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productSize }" name="productSize" readonly="readonly" size="3">
+				${dto.productPrice } 원
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productPrice }" name="productPrice" readonly="readonly" size="5">
+					<select name="cartAmount" id="cartAmount">
+						<option value="${dto.cartAmount }" selected="selected">${dto.cartAmount }</option>
+						<option value="1" onselect="cartModify.do?cartCode=${dto.cartCode}&?cartAmount=1">1</option>
+						<option value="2" onselect="cartModify.do?cartCode=${dto.cartCode}&?cartAmount=2">2</option>
+						<option value="3" onselect="cartModify.do?cartCode=${dto.cartCode}&?cartAmount=3">3</option>
+					</select>
+					개
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.cartAmount }" name="cartAmount" readonly="readonly" size="3">
-				</td>
-				<td align="center">
-				<input type="text" value=${dto.cartSum } name="cartSum" readonly="readonly" size="5">
-				</td>
-				<td align="center">
-				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
-				</td>
-				<td align="center">
-				<input type="submit" value="선택상품 주문" formaction="orderWriteV.jsp">
+				${dto.cartSum } 원
 				</td>
 			</tr>
-			</form>
 			</c:forEach>
-	</table><br>
-	<form name="cartDelete" action="cartDelete.do" hidden="">
-		<input type="button" value="선택 삭제" onclick="checkBoxAllValue()">
-	</form>
-	<form name="orderWrite" action="orderWrite.do?orderSum=" hidden="">
-		<input type="button" value="선택 주문" onclick="cartCodeCheckA()">
-	</form>
+			</table><br>
+				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
+				<input type="submit" value="선택상품 주문" formaction="orderView.do">
+			</form>
 </div>
 </body>
 </html>

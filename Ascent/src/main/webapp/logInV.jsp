@@ -241,16 +241,28 @@
 				<div id="Warning"></div>
  			<div>
 				<div  align="right"><button type="button" onclick="checkid()">LOGIN</button> <br> </div> 
-				<div  align="right" ><button type="button" onclick="location.href='signAgreeV.jsp'">SIGNIN</button></div>
+				<div  align="right"><button type="button" onclick="location.href='signAgreeV.jsp'">SIGNIN</button></div>
 			</div>
+			<input type="text" value="<%=request.getParameter("productCode") %>" name="productCode" hidden="">
  		</form>
  	</div>
-
  		<div style="float: right;">
  		<br><a id="hyper" href = "" target ="popup" onclick="window.open('findIDV.jsp','popup','width=600,height=600'); return false">아이디/비밀번호 찾기</a>
  		</div>
- 
  </div>
+ <%-- <script>
+var userID = <%=session.getAttribute("userID")%>;
+var productCode = <%=request.getParameter("productCode")%>;
 
+function CheckUser() {
+	if (userID != 'null'){
+		document.loginForm.submit();
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp?productCode='+productCode1;
+	}
+}
+ </script> --%>
 </body>
 </html>

@@ -25,50 +25,74 @@ public class ADaoPCart {
 		}
 	}
 	
-	public ArrayList<ADtoPCart> list(String userID) {
+	public ArrayList<ADtoPCart> list(String userID, int[] checkC) {
 		ArrayList<ADtoPCart> dtos = new ArrayList<ADtoPCart>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
-		try {
-			connection = dataSource.getConnection();
-			String queryA = "select c.cartCode, p.productCode, p.productImages, p.productName, p.productSize, c.cartAmount, p.productPrice ";
-			String queryB = "from cart c, userinfo u, product p where c.user_userID = u.userID and c.product_productCode = p.productCode and u.userID = ?";
-			preparedStatement = connection.prepareStatement(queryA+queryB);
-			preparedStatement.setString(1, userID);
-			
-			resultSet = preparedStatement.executeQuery();
-			
-			while (resultSet.next()) {
-				int cartCode = resultSet.getInt("cartCode");
-				String productCode = resultSet.getString("productCode");
-				String productImages = resultSet.getString("productImages");
-				String productName = resultSet.getString("productName");
-				String productSize = resultSet.getString("productSize");
-				int cartAmount = resultSet.getInt("cartAmount");
-				int productPrice = resultSet.getInt("productPrice");
-				int cartSum = cartAmount*productPrice;
-				
-				ADtoPCart dto = new ADtoPCart(cartCode, productCode, productImages, productName, productSize, cartAmount, productPrice, cartSum);
-				dtos.add(dto);
-			}
-		} 
-		catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		finally {
 			try {
-				if(resultSet != null)resultSet.close();
-				if(preparedStatement != null)preparedStatement.close();
-				if(connection != null)connection.close();
+				connection = dataSource.getConnection();
+				String queryA = "select c.cartCode, p.productCode, p.productImages, p.productName, p.productSize, c.cartAmount, p.productPrice ";
+				String queryB = "from cart c, userinfo u, product p where c.user_userID = u.userID and c.product_productCode = p.productCode and u.userID = ?";
+				if(checkC!=null) {
+					queryB = queryB + " and c.cartCode = ?";
+				}
+				preparedStatement = connection.prepareStatement(queryA+queryB);
+				preparedStatement.setString(1, userID);
+				if(checkC!=null) {
+					for(int j=0; j<checkC.length; j++) {
+						preparedStatement.setInt(2, checkC[j]);
+						
+						resultSet = preparedStatement.executeQuery();
+						
+						while (resultSet.next()) {
+							int cartCode = resultSet.getInt("cartCode");
+							String productCode = resultSet.getString("productCode");
+							String productImages = resultSet.getString("productImages");
+							String productName = resultSet.getString("productName");
+							String productSize = resultSet.getString("productSize");
+							int cartAmount = resultSet.getInt("cartAmount");
+							int productPrice = resultSet.getInt("productPrice");
+							int cartSum = cartAmount*productPrice;
+							
+							ADtoPCart dto = new ADtoPCart(cartCode, productCode, productImages, productName, productSize, cartAmount, productPrice, cartSum);
+							dtos.add(dto);
+						}
+					}
+				}else {
+					resultSet = preparedStatement.executeQuery();
+					
+					while (resultSet.next()) {
+						int cartCode = resultSet.getInt("cartCode");
+						String productCode = resultSet.getString("productCode");
+						String productImages = resultSet.getString("productImages");
+						String productName = resultSet.getString("productName");
+						String productSize = resultSet.getString("productSize");
+						int cartAmount = resultSet.getInt("cartAmount");
+						int productPrice = resultSet.getInt("productPrice");
+						int cartSum = cartAmount*productPrice;
+						
+						ADtoPCart dto = new ADtoPCart(cartCode, productCode, productImages, productName, productSize, cartAmount, productPrice, cartSum);
+						dtos.add(dto);
+					}
+				}
 			}
 			catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-		}
-		return dtos;
+			finally {
+				try {
+					if(resultSet != null)resultSet.close();
+					if(preparedStatement != null)preparedStatement.close();
+					if(connection != null)connection.close();
+				}
+				catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+			return dtos;
 	}
 }
