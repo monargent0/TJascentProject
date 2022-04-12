@@ -185,6 +185,16 @@
  		window.open('doubleV.jsp?userID='+id ,'popup','width=600,height=300'); 
 	}
 	
+	function noblank(obj) { // 공백사용못하게
+	    var str_space = /\s/;  // 공백체크
+	    if(str_space.exec(obj.value)) { //공백 체크
+	        /* alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다."); */
+	        obj.focus();
+	        obj.value = obj.value.replace(' ',''); // 공백제거
+	        return false;
+	    }
+	 // onkeyup="noblank(this);" onchange="noSpaceForm(this);"
+	}
 </script>
 
 <style>
@@ -224,7 +234,7 @@
 				</div>
 				<div>
 					<input type="text" name="userName" placeholder="이름을 입력해 주세요." 
-					id="NAME" onBlur="checkNAME()" onkeydown="typingNAME()" size="50" >
+					id="NAME" onBlur="checkNAME()" onkeydown="typingNAME()" size="50" onkeyup="noblank(this)" >
 				</div>
 				<div id="NameWarning"></div>
 			</div>
@@ -235,7 +245,7 @@
 				</div>
 				<div>
 					<input type="text" name="userID" placeholder="아이디를 입력해 주세요."
-					onBlur="checkID()" onkeydown="typingID()" id="userID" size="50">
+					onBlur="checkID()" onkeydown="typingID()" id="userID" size="50" onkeyup="noblank(this)">
 					<button type="button" onclick="doubleC() " >아이디 중복 확인</button>
 				</div>
 				<div style="">
@@ -250,7 +260,7 @@
 				</div>
 				<div>
 					<input type="text" name="userEmail" placeholder="이메일을 입력해 주세요." size="50"
-					id="email" onBlur="checkEM()" onkeydown="typingEM()">
+					id="email" onBlur="checkEM()" onkeydown="typingEM()" onkeyup="noblank(this)">
 				</div>
 				<div id="EMWarning"></div>
 			</div>
@@ -261,7 +271,7 @@
 				</div>
 				<div>
 					<input type="text"  name="userPhone" placeholder="핸드폰 번호를 입력해 주세요." size="50"
-					id="phone" onBlur="checkPH()" onkeydown="typingPH()">
+					id="phone" onBlur="checkPH()" onkeydown="typingPH()" onkeyup="noblank(this)">
 				</div>
 				<div id="PHWarning"></div>
 			</div>
@@ -272,7 +282,7 @@
 				</div>
 				<div>
 					<input type="password" name="userPW" placeholder="비밀번호를 입력해 주세요." size="50"
-					id="userPW" onBlur="checkPW()" onkeydown="typingPW()">
+					id="userPW" onBlur="checkPW()" onkeydown="typingPW()" onkeyup="noblank(this)">
 				</div>
 				<div id="PWWarning"></div>
 			</div>
@@ -283,7 +293,7 @@
 				</div>
 				<div>
 					<input type="password" name="confirmPW" placeholder="비밀번호를 다시 입력해 주세요." size="50"
-					id="cfPW" onBlur="checkCFPW()" onkeydown="typingCFPW()">
+					id="cfPW" onBlur="checkCFPW()" onkeydown="typingCFPW()" onkeyup="noblank(this)">
 				</div>
 				<div id="CFWarning"></div>
 			</div>

@@ -44,6 +44,17 @@ function typingPW(){
 	warning.innerHTML = "";
 }
 
+function noblank(obj) { // 공백사용못하게
+    var str_space = /\s/;  // 공백체크
+    if(str_space.exec(obj.value)) { //공백 체크
+        /* alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다."); */
+        obj.focus();
+        obj.value = obj.value.replace(' ',''); // 공백제거
+        return false;
+    }
+ // onkeyup="noblank(this)" onchange="noSpaceForm(this);"
+}
+
 </script>
 <style>
 	.contents{
@@ -103,10 +114,10 @@ function typingPW(){
  	<div class="contents">
  		<form action="pwChange.do" method="post" name="pwC">
 				<div>
-					<input type="password" size="30" placeholder="기존 비밀번호" name="oldPW" id="oldPW">
+					<input type="password" size="30" placeholder="기존 비밀번호" name="oldPW" id="oldPW" onkeyup="noblank(this)">
 				</div>
 				<div>
-					<input type="password" name="newPW" size="30" placeholder="새로운 비밀번호" id="newPW" onkeydown="typingPW()">
+					<input type="password" name="newPW" size="30" placeholder="새로운 비밀번호" id="newPW" onkeydown="typingPW()" onkeyup="noblank(this)">
 				</div>
 				<div>&nbsp;</div>
 				<div><button type="button" onclick="checkPW()">변경하기</button> <br> </div> 

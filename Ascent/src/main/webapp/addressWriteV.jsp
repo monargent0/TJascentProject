@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="addressWrite.do" method="get">
-<input type="text" placeholder="주소록 이름" name="addressType"><br>
+<input type="text" placeholder="주소록 이름" name="addressType" required="required"><br>
 <input type="text" id="sample6_postcode" placeholder="우편번호" name = "postcode">
 <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>
 <input type="text" id="sample6_address" placeholder="주소" name="mainAddress"><br>
