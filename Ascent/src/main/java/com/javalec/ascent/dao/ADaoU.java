@@ -287,4 +287,66 @@ DataSource dataSource;
 			} //finally
 			return id;
 		} // doubleID
+		
+		// 비밀번호 변경
+		public void pwChange(String newPW, String oldPW, String userID) {
+					
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			
+			try {
+				//DB연결메서드 불러오기
+				connection = dataSource.getConnection(); 
+				//pstmt 생성
+				String query = "update userinfo set userPW = ? where userID = ? and userPW = ?" ;
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, newPW);
+				preparedStatement.setString(2, userID);
+				preparedStatement.setString(3, oldPW);
+				//실행 
+				preparedStatement.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally { 
+					try {
+						if(preparedStatement !=null) preparedStatement.close();
+						if(connection != null) connection.close();
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+			}
+		}// 비밀번호 변경
+		
+		// 비밀번호 변경 확인
+				public String pwCheck(String userID) {
+					Connection connection = null;
+					PreparedStatement preparedStatement = null;
+					ResultSet resultSet = null;
+					String pw = null;
+					
+					try {
+						connection = dataSource.getConnection();
+						String query = "select userPW from userinfo where userID = ?";
+						preparedStatement = connection.prepareStatement(query);
+						preparedStatement.setString(1, userID);
+						resultSet = preparedStatement.executeQuery();
+						
+						if(resultSet.next()) {
+							pw = resultSet.getString("userPW");
+						}
+					}catch(Exception e){
+						e.printStackTrace();
+					}finally {
+							try {
+								if(resultSet != null) resultSet.close();
+								if(preparedStatement != null) preparedStatement.close();
+								if(connection != null) connection.close();
+							}catch (Exception e) {
+								e.printStackTrace();
+							}
+					} //finally
+					return pw;
+				} // confirmPW
+		
 }

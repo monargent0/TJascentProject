@@ -182,7 +182,7 @@
 	
 	function doubleC(){
 		let id = document.getElementById("userID").value;
- 		window.open('doubleV.jsp?userID='+id ,'popup','width=600,height=600'); 
+ 		window.open('doubleV.jsp?userID='+id ,'popup','width=600,height=300'); 
 	}
 	
 </script>
