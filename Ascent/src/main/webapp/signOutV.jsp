@@ -38,6 +38,27 @@
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px ;
+		font-family: "나눔명조";
+		color:#463D3D;
+	}
+	 .sub{
+	    background-color: #F7CCB6;
+	    color: #463D3D;
+	    border: 1px solid #999191;
+	    /* font-size: 1.0em; */
+	    letter-spacing: 0px;
+	    padding: 5px 0 0 0px;
+	    cursor: pointer;
+	    display: inline-block;
+	   	margin-bottom : 10px;
+	    transition: all 0.5s;    
+	    width:224px;
+	    height:32px;
+	}
+	.sub:hover{
+	    background: #241571;
+	    color: #FFFAF6;
+	    transition: all 0.5s;
 	}
 </style>
 
@@ -171,7 +192,8 @@
 				</div>
 			</div>
 			<div>
-				<button type="submit">회원탈퇴</button>
+			<br>
+				<button class="sub" type="submit">회원탈퇴</button>
 			</div>
 		</form>
 	</div>

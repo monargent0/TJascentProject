@@ -69,21 +69,31 @@
 <style>
 	  table {
         border-collapse: collapse;
-        border-top: 2px solid black;
         width: auto;
         height: auto;
+        width: 880px;
       }
       
       table, th, td {
         padding: 5px;
        }
-       
+       th{
+       border-bottom: 1px solid black;
+       }
      	.contents{
 		position: absolute;
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px ;
+		font-family:"나눔명조";  
+      	color: #463D3D;
 	}   
+	#hyper{				
+      	/* font-size: 20px; */
+      	TEXT-DECORATION:none;
+      	font-family:"나눔명조";  
+      	color: #463D3D;
+      }
     </style>
 <meta charset="UTF-8">
 <title>ascent 공지사항</title>
@@ -195,7 +205,7 @@
  <div class="contents">
 	<h2>공지사항</h2>
 	<%-- (공지사항 수 : <%=count %>)	 --%>
-	<table border="1">
+	<table >
 		<tr>
 			<th>글번호</th>
 			<th>종류</th>
@@ -206,7 +216,7 @@
 			<tr>
 				<td>${dto.noticeCode }</a></td>
 				<td>${dto.noticeType }</td>
-				<td><a style="color:#000000" id="hyper" href="noticeBoardDetail.do?noticeCode=${dto.noticeCode }">${dto.noticeTitle}</td>						
+				<td><a id="hyper" href="noticeBoardDetail.do?noticeCode=${dto.noticeCode }">${dto.noticeTitle}</td>						
 				<td>${dto.noticeDate}</td>
 			</tr>
 		</c:forEach>
