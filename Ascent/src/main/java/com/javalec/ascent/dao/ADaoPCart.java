@@ -25,7 +25,7 @@ public class ADaoPCart {
 		}
 	}
 	
-	public ArrayList<ADtoPCart> list(String userID, int[] checkC) {
+	public ArrayList<ADtoPCart> list(String userID, int[] checkCart) {
 		ArrayList<ADtoPCart> dtos = new ArrayList<ADtoPCart>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -35,14 +35,14 @@ public class ADaoPCart {
 				connection = dataSource.getConnection();
 				String queryA = "select c.cartCode, p.productCode, p.productImages, p.productName, p.productSize, c.cartAmount, p.productPrice ";
 				String queryB = "from cart c, userinfo u, product p where c.user_userID = u.userID and c.product_productCode = p.productCode and u.userID = ?";
-				if(checkC!=null) {
+				if(checkCart!=null) {
 					queryB = queryB + " and c.cartCode = ?";
 				}
 				preparedStatement = connection.prepareStatement(queryA+queryB);
 				preparedStatement.setString(1, userID);
-				if(checkC!=null) {
-					for(int j=0; j<checkC.length; j++) {
-						preparedStatement.setInt(2, checkC[j]);
+				if(checkCart!=null) {
+					for(int j=0; j<checkCart.length; j++) {
+						preparedStatement.setInt(2, checkCart[j]);
 						
 						resultSet = preparedStatement.executeQuery();
 						

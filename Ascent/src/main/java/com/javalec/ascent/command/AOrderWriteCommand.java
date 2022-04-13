@@ -4,6 +4,7 @@ package com.javalec.ascent.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javalec.ascent.dao.ADaoCart;
 import com.javalec.ascent.dao.ADaoO;
 
 
@@ -14,7 +15,6 @@ public class AOrderWriteCommand implements ACommand {
 		// TODO Auto-generated method stub
 		
 			String userID = request.getParameter("userID");
-			
 			// cartCode string array로 받아서 int array로 바꿔주기
 			String[] cartCode = request.getParameterValues("cartCode");
 			int[] cartCodeArray = new int[cartCode.length];
@@ -34,8 +34,12 @@ public class AOrderWriteCommand implements ACommand {
 			
 			ADaoO dao = new ADaoO();
 			dao.orderWrite(userID, cartCodeArray, orderSum, orderAmount, orderReceiver, orderPostcode, orderMainAddress, orderDetailAddress, orderExtraAddress);
+			
+			// 주문한 cart Delete하기
+			ADaoCart daoC = new ADaoCart();
+			System.out.println(cartCodeArray);
+			daoC.delete(cartCodeArray);
 	}
-	
 	
 
 }

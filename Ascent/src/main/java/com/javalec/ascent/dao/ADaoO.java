@@ -2,6 +2,8 @@ package com.javalec.ascent.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -54,25 +56,31 @@ public class ADaoO {
 			String orderReceiver, String orderPostcode, String orderMainAddress, String orderDetailAddress, String orderExtraAddress) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
+		LocalDateTime now = LocalDateTime.now();
+		String orderNumber = now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmm"));
+		System.out.println(orderNumber);
 		
-		for(int i=0; i<cartCodeArray.length; i++) {
 			try {
-				connection = dataSource.getConnection();
-				String query = "insert into aorder (user_userID, cart_cartCode, "
-						+ "orderSum, orderAmount, orderReceiver, orderPostcode, "
-						+ "orderMainAddress, orderDetailAddress, orderExtraAddress, orderNumber) values (?,?,?,?,?,?,?,?,?, now()+cartCode";
-				preparedStatement = connection.prepareStatement(query);
-				preparedStatement.setString(1, userID);
-				preparedStatement.setInt(2, cartCodeArray[i]);
-				preparedStatement.setInt(3, orderSum);
-				preparedStatement.setInt(4, orderAmount);
-				preparedStatement.setString(5, orderReceiver);
-				preparedStatement.setString(6, orderPostcode);
-				preparedStatement.setString(7, orderMainAddress);
-				preparedStatement.setString(8, orderDetailAddress);
-				preparedStatement.setString(9, orderExtraAddress);
-				
-				preparedStatement.executeUpdate();
+				for(int i=0; i<cartCodeArray.length; i++) {
+					connection = dataSource.getConnection();
+					String query = "insert into aorder (user_userID, cart_cartCode, "
+							+ "orderSum, orderAmount, orderDate, orderReceiver, orderPostcode, "
+							+ "orderMainAddress, orderDetailAddress, orderExtraAddress, orderNumber) "
+							+ "values (?,?,?,?,now(),?,?,?,?,?,'"+orderNumber+"') ";
+					
+					preparedStatement = connection.prepareStatement(query);
+					preparedStatement.setString(1, userID);
+					preparedStatement.setInt(2, cartCodeArray[i]);
+					preparedStatement.setInt(3, orderSum);
+					preparedStatement.setInt(4, orderAmount);
+					preparedStatement.setString(5, orderReceiver);
+					preparedStatement.setString(6, orderPostcode);
+					preparedStatement.setString(7, orderMainAddress);
+					preparedStatement.setString(8, orderDetailAddress);
+					preparedStatement.setString(9, orderExtraAddress);
+					
+					preparedStatement.executeUpdate();
+				}
 				
 			}catch(Exception e) {
 				e.printStackTrace();
@@ -84,6 +92,30 @@ public class ADaoO {
 					e.printStackTrace();
 				}
 			}// finally 메모리 정리 ; 이상 있거나 없거나 무조건 거친다.
-		}
 	}// addressWrite
+	
+		// delete
+			public void refund(String orderNumber) {
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+
+					try {
+						connection = dataSource.getConnection(); // DB연결 끝
+						String query = "delete from aorder where orderNumber = ?";
+						preparedStatement = connection.prepareStatement(query);
+						preparedStatement.setString(1, orderNumber);
+						
+						preparedStatement.executeUpdate();
+						
+					}catch(Exception e) {
+						e.printStackTrace();
+					}finally {
+						try {
+							if(preparedStatement != null) preparedStatement.close();
+							if(connection != null) connection.close();
+						}catch (Exception e) {
+							e.printStackTrace();
+						}
+					}// finally 메모리 정리 ; 이상 있거나 없거나 무조건 거친다.
+			} // delete
 }

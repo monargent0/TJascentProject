@@ -12,14 +12,12 @@ public class ADtoO {
 	String orderMainAddress;
 	String orderDetailAddress;
 	String orderExtraAddress;
-	
-	int cart_cartCode;
+	String product_productCode;
 	String user_userID;
 	
-
 	public ADtoO(int orderCode, int orderNumber, int orderSum, int orderAmount, String orderDate, String orderReceiver,
 			String orderPostcode, String orderMainAddress, String orderDetailAddress, String orderExtraAddress,
-			int cart_cartCode, String user_userID) {
+			String product_productCode, String user_userID) {
 		super();
 		this.orderCode = orderCode;
 		this.orderNumber = orderNumber;
@@ -31,16 +29,8 @@ public class ADtoO {
 		this.orderMainAddress = orderMainAddress;
 		this.orderDetailAddress = orderDetailAddress;
 		this.orderExtraAddress = orderExtraAddress;
-		this.cart_cartCode = cart_cartCode;
+		this.product_productCode = product_productCode;
 		this.user_userID = user_userID;
-	}
-
-	public int getCart_cartCode() {
-		return cart_cartCode;
-	}
-
-	public void setCart_cartCode(int cart_cartCode) {
-		this.cart_cartCode = cart_cartCode;
 	}
 
 	public int getOrderCode() {
@@ -121,6 +111,14 @@ public class ADtoO {
 
 	public void setOrderExtraAddress(String orderExtraAddress) {
 		this.orderExtraAddress = orderExtraAddress;
+	}
+
+	public String getProduct_productCode() {
+		return product_productCode;
+	}
+
+	public void setProduct_productCode(String product_productCode) {
+		this.product_productCode = product_productCode;
 	}
 
 	public String getUser_userID() {

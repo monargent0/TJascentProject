@@ -155,7 +155,7 @@
 					});
 				</script>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href="#"></j>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="location.href='cartList.do'"></j>
 
 				<script>
 					var j = 0;
@@ -175,8 +175,8 @@
 	</nav>
 <div class="contents">
 	<h2>주문이 완료되었습니다.</h2>
-	<button onclick="location.href='myPageV.jsp'"><h3>마이페이지 보기</h3></button>
-	<button onclick="location.href='main.do'"><h3>메인으로 가기</h3></button>
+	<button onclick="location.href='myPageV.jsp'">마이페이지 보기</button>
+	<button onclick="location.href='main.do'">메인으로 가기</button>
 </div>
 </body>
 </html>

@@ -13,68 +13,24 @@
 <meta name="generator" content="Hugo 0.88.1">
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.1/examples/headers/">
+
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
- <!-- 메인홈바  CSS -->
 <link type="text/css" href="css/productlist.css" rel="stylesheet" >
+<!-- Custom styles for this template -->
 <link href="headers.css" rel="stylesheet">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <%-- 아이콘 --%>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>ascent</title>
-<style>
-.product_view { 
-	position:relative;
-	padding: 0 0 0 730px;
-	width:1600px;
-	box-sizing:border-box;	
-}
-.product_view .img{
-	position: absolute;
-	padding:50px 0 0 0; 
-	left:200px;
-	top:0;	
-}
-.product_view h2 {
-margin:100px 0 15px;
-padding: 0 0 20px;
-border-bottom:1.5px solid #333;
-font-size:30px;
-color:#463D3D;
-line-height: 26px;
-}
-.product_view table th,
-.product_view table td {
-	padding:14px 0 ;
-	font-size: 20px;
-	color:#444;
-	text-align:left;
-}
-.product_view .btn {
-padding: 45px 0 0; 
-text-align:center;
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-}
-.product_view .btn > button{
-left:200px;
-display:inline-block;
-width:126px;
-height:50px;
-font-size:20px;
-border-radius:2px;
-color:#999191;
-line-height: 42px;
-background:#1A0D35;
-} 
-
-</style>
 <title>Order List</title>
 <style>
 	  table {
@@ -208,36 +164,37 @@ background:#1A0D35;
 				</div>
 			</div>
 	</nav>
-
+	
 <div class="list">
 	<h1>Order List</h1>
 		<table >
 			<tr>
 				<th hidden="">userID</th>
 				<th hidden="">orderCode</th>
-				<th>orderNumber</th>
-				<th>productCode</th>
-				<th>productDetail</th>
-				<th>productName</th>
-				<th>productSize</th>
-				<th>productPrice</th>
-				<th>orderAmount</th>
-				<th>orderSum</th>
+				<th>주문번호</th>
+				<th>이미지</th>
+				<th>이름</th>
+				<th>용량</th>
+				<th>가격</th>
+				<th>수량</th>
+				<th>합계</th>
+				<th>주문수량</th>
+				<th>주문총액</th>
 			</tr>
-			<form method="get" name="orderList">
+			<form method="post" name="orderList">
 			<c:forEach items="${orderList }" var="dto">
 			<tr>
-				<td align="center" hidden="">
-				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly" style="text-align:center; ">
+				<td hidden="">
+				<input type="text" value="<%=session.getAttribute("userID") %>" name="userID" readonly="readonly" >
 				</td>
-				<td align="center" hidden="">
-				<input type="text" value="${dto.orderCode }" name="orderCode" readonly="readonly" style="text-align:center; ">
+				<td hidden="">
+				<input type="text" value="${dto.orderCode }" name="orderCode" readonly="readonly">
 				</td>
 				<td align="center">
 				<a href="orderDetail.do?orderNumber=${dto.orderNumber }">${dto.orderNumber }</a>
 				</td>
 				<td align="center">
-				<input type="image" value="${dto.product }" name="productDetail" readonly="readonly">
+				<img class="img" src="${dto.productImages }" width="150px" name="productImages">
 				</td>
 				<td align="center">
 				<input type="text" value="${dto.productName }" name="productName" readonly="readonly">
@@ -247,6 +204,12 @@ background:#1A0D35;
 				</td>
 				<td align="center">
 				<input type="text" value="${dto.productPrice }" name="productPrice" readonly="readonly">
+				</td>
+				<td align="center">
+				${dto.cartAmount } 개
+				</td>
+				<td align="center">
+				${dto.cartSum } 원
 				</td>
 				<td align="center">
 				<input type="text" value="${dto.orderAmount }" name="orderAmount" readonly="readonly">
@@ -287,5 +250,4 @@ function sendProductCodeLogin() {
 	}
 }
 </script>
-
 </html>
