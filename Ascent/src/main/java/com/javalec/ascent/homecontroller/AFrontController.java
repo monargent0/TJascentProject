@@ -324,12 +324,12 @@ public class AFrontController extends HttpServlet {
 				viewPage = "reviewDetailV.jsp";
 				break;
 			// reviewModify, 리뷰 수정
-			case("/reviewModify.do"):
-				command = new AReviewModifyCommand();
-				command.execute(request, response);
-				viewPage = "reviewList.do";
-				break;
-			// reviewDelete, 리뷰 삭제
+//			case("/reviewModify.do"):
+//				command = new AReviewModifyCommand();
+//				command.execute(request, response);
+//				viewPage = "reviewList.do";
+//				break;
+//			// reviewDelete, 리뷰 삭제
 			case("/reviewDelete.do"):
 				command = new AReviewDeleteCommand();
 				command.execute(request, response);

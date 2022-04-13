@@ -10,7 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.javalec.ascent.dto.ADtoC;
 import com.javalec.ascent.dto.ADtoR;
 
 public class ADaoReview {
@@ -28,7 +27,7 @@ public class ADaoReview {
 
 	}	
 
-	public ArrayList<ADtoR> list(String userID, int orderCode){
+	public ArrayList<ADtoR> list(String userID){
 		ArrayList<ADtoR> dtos = new ArrayList<ADtoR>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -36,10 +35,9 @@ public class ADaoReview {
 		
 			try {
 				connection = dataSource.getConnection();
-				String query ="select reviewCode, reviewTitle, reviewContent, reviewImage from review where user_userID = ? and aOrder_orderCode = ?";
+				String query ="select reviewCode, reviewTitle, reviewContent, reviewImage from review where user_userID = ?";
 				preparedStatement = connection.prepareStatement(query);
 				preparedStatement.setString(1, userID);
-				preparedStatement.setInt(2, orderCode);
 				resultSet = preparedStatement.executeQuery();
 				
 				while(resultSet.next()) {
