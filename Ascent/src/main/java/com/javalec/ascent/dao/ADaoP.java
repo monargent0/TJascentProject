@@ -103,22 +103,21 @@ public class ADaoP {
 		
 	}
 	// product검색
-public ArrayList<ADtoP> searchList(String searchText){
-	ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>(); //return dtops 
-	Connection conn = null;
-	PreparedStatement ps = null;
-	ResultSet rs = null;
+	public ArrayList<ADtoP> searchList(String searchText){
+		ArrayList<ADtoP> dtoPs = new ArrayList<ADtoP>(); //return dtops 
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 				
 	try {  
 		conn = dataSource.getConnection();
-		String sql = "select * from product where productName like ? or productBrand like ? order by productCode desc";
+		String sql = "select * from product where replace(productName,' ','')like ? or replace(productBrand,' ','') like ? order by productCode desc";
 		ps = conn.prepareStatement(sql);
-		searchText = searchText.replaceAll(" " , "");
+		searchText = searchText.replaceAll(" " , "");	//공백 제거 
 		searchText = searchText.replaceAll("\\p{Z}", "");
 		ps.setString(1, "%"+searchText+"%");
 		ps.setString(2, "%"+searchText+"%");
 		rs = ps.executeQuery();
-    
 	
 		while(rs.next()) {
 			String productCode = rs.getString("productCode");
@@ -130,22 +129,20 @@ public ArrayList<ADtoP> searchList(String searchText){
 			
 			ADtoP dtoP = new ADtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode);
 			dtoPs.add(dtoP);
-			
-			
- }         
-} catch(Exception e) {
- e.printStackTrace();
-}finally {
-	try {
-		if(rs != null) rs.close(); //데이터가 있으면 close
-		if(ps!=null) ps.close();
-		if(conn!= null) conn.close();
-	}catch (Exception e) {
+			}         
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close(); //데이터가 있으면 close
+				if(ps!=null) ps.close();
+				if(conn!= null) conn.close();
+			}catch (Exception e) {
 		e.printStackTrace();
+			}
+		}	
+	return dtoPs;//상품 리스트 반환
 	}
-}
-return dtoPs;//상품 리스트 반환
-}
 
 			
 

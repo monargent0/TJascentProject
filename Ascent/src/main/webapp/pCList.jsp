@@ -145,7 +145,7 @@
      
 <!-- 상품 -->
                			   <section class="py-5">
-               			  <div class="row row-cols-1 row-cols-md-4 g-4">
+               			  <div class="row row-cols-1 row-cols-md-4 g-4"> <!-- 한줄에 4개씩  -->
 		  					<c:forEach items="${pCList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
    									 <div class="card h-100">
