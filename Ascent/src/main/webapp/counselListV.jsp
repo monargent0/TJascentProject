@@ -60,7 +60,7 @@
 
 <title>ascent 1대1 문의</title>
 </head>
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
