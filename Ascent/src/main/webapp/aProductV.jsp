@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,30 @@
 		 <button onclick="location='logOutH.jsp'"  class="hd-btn">로그아웃</button> 
 	    </div>
 	 </header>   
+<!-- productCode productName productPrice productSize productImages productBrand category_categoryCode -->
+<div class="contents" >
+		<div> <h2> 제품 현황 </h2> </div>
+		<div style= "overflow:auto; width:950px; height:800px;" >
+			<table style="width:900px;">
+			<tr>
+				<th> 제품사진 </th><th>제품코드</th> <th> 제품명 </th> <th> 가격 </th> 
+				<th> 용량 </th> <th> 브랜드 </th> 
+			</tr>
+			<c:forEach items="${pList }" var="all" >
+				<tr>
+					<td> <a class="" href="productDetail.do?productCode=${all.productCode }">
+						<img  src="${all.productImages}" alt="미리보기" width="90" height="90"/></a></td> 
+					<td> ${all.productCode} </td>
+					<td> ${all.productName} </td>
+					<td> ${all.productPrice} </td>
+					<td> ${all.productSize} </td>
+					<td> ${all.productBrand} </td>
+				</tr>
+			</c:forEach>
+			</table>
+		</div>
+		<div style="text-align: center;"><br><button class="sub" type="button" onclick="location='aProductAddV.jsp'">추가</button></div>
+</div>
 
 </body>
 </html>

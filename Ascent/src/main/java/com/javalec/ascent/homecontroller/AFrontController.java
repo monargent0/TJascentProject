@@ -64,6 +64,7 @@ import com.javalec.ascent.command.DMemberListCommand;
 import com.javalec.ascent.command.DNoticeDeleteCommand;
 import com.javalec.ascent.command.DNoticeModifyCommand;
 import com.javalec.ascent.command.DNoticeWriteCommand;
+import com.javalec.ascent.command.DProductListCommand;
 
 /**
  * Servlet implementation class AFrontController
@@ -465,6 +466,8 @@ public class AFrontController extends HttpServlet {
 				break;
 			// 상품 조회
 			case("/productAdmin.do"):
+				command = new DProductListCommand();
+				command.execute(request, response);
 				viewPage = "aProductV.jsp";
 				break;
 			// 상품 추가
