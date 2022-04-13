@@ -149,7 +149,7 @@
 					<% } %>
 					<i class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="cartListCheckUser()"></i>
 
-				<script>
+				<!-- <script>
 					var j = 0;
 					$('i').on('click', function() {
 						if (j == 0) {
@@ -160,7 +160,7 @@
 							j--;
 						}
 					});
-				</script>
+				</script> -->
 				</div>
 			</div>
 	</nav>
@@ -171,15 +171,15 @@
 			<tr>
 				<th hidden="">userID</th>
 				<th hidden="">orderCode</th>
-				<th>주문번호</th>
-				<th>이미지</th>
+				<th align="center">주문번호</th>
+				<th align="center">이미지</th>
 				<th>이름</th>
 				<th>용량</th>
 				<th>가격</th>
 				<th>수량</th>
 				<th>합계</th>
-				<th>주문수량</th>
-				<th>주문총액</th>
+				<!-- <th>주문수량</th>
+				<th>주문총액</th> -->
 			</tr>
 			<form method="post" name="orderList">
 			<c:forEach items="${orderList }" var="dto">
@@ -191,19 +191,22 @@
 				<input type="text" value="${dto.orderCode }" name="orderCode" readonly="readonly">
 				</td>
 				<td align="center">
-				<a href="orderDetail.do?orderNumber=${dto.orderNumber }">${dto.orderNumber }</a>
+				<a href="orderDetail.do?orderNumber=${dto.orderNumber }&userID=<%=session.getAttribute("userID")%>">${dto.orderNumber }</a>
 				</td>
 				<td align="center">
 				<img class="img" src="${dto.productImages }" width="150px" name="productImages">
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productName }" name="productName" readonly="readonly">
+				<input hidden="" type="text" value="${dto.productName }" name="productName" readonly="readonly">
+				${dto.productName }
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productSize }" name="productSize" readonly="readonly">
+				<input hidden="" type="text" value="${dto.productSize }" name="productSize" readonly="readonly">
+				${dto.productSize } ml
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productPrice }" name="productPrice" readonly="readonly">
+				<input hidden="" type="text" value="${dto.productPrice }" name="productPrice" readonly="readonly">
+				${dto.productPrice } 원
 				</td>
 				<td align="center">
 				${dto.cartAmount } 개
@@ -211,16 +214,12 @@
 				<td align="center">
 				${dto.cartSum } 원
 				</td>
-				<td align="center">
+				<%-- <td align="center">
 				<input type="text" value="${dto.orderAmount }" name="orderAmount" readonly="readonly">
 				</td>
 				<td align="center">
 				<input type="text" value="${dto.orderSum }" name="orderSum" readonly="readonly">
-				</td>
-				<td align="center">
-				<input type="submit" value="후기 작성" formaction="reviewWrite.do?orderCode=${dto.orderCode }">
-				<input type="submit" value="환불" formaction="refund.do?orderCode=${dto.orderCode }">	
-				</td>
+				</td> --%>
 			</tr>
 			</c:forEach>
 			</form>
@@ -230,7 +229,6 @@
 <script>
 	var cartForm = document.cartForm;
 	var userID = '<%=session.getAttribute("userID")%>';
-	var productCode1 = document.cartForm.productCode.value;
 function cartListCheckUser() {
 	if (userID != 'null'){
 		location.href='cartList.do?userID='+userID;

@@ -32,6 +32,28 @@
 
 <title>Order Detail</title>
 </head>
+<style>
+	  table {
+        border-collapse: collapse;
+        width: auto;
+        height: auto;
+      }
+      
+      table, th, td {
+        padding: 5px;
+       }
+       th{
+       border-top : 1px solid black;
+       border-bottom: 1px solid black;
+       }
+       
+      .list{
+      	position: absolute;
+      	top : 50%;
+      	left : 50%;
+      	transform : translate(-50%,-50%);
+      }
+</style>
 <body>
 	<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
@@ -126,7 +148,7 @@
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="cartListCheckUser()"></j>
-					<script>	
+					<!-- <script>	
 					var j = 0;
 					$('j').on('click', function() {
 						if (j == 0) {
@@ -134,9 +156,9 @@
 							j++;
 						} else if (j == 1) {
 							$(this).attr('class', 'bi-bag-heart');
-							j—;
+							j—-;
 						}
-					});
+					}); -->
 					</script>
 				</div>
 			</div>
@@ -144,9 +166,9 @@
 	</nav>
 
 	<div class="list">
-		<h1>Order List</h1>
+		<h1>Order Detail</h1>
 		<table >
-			<tr>
+			<tr >
 				<th hidden="">userID</th>
 				<th hidden="">orderCode</th>
 				<th>주문번호</th>
@@ -160,7 +182,7 @@
 				<!-- <th>주문수량</th>
 				<th>주문총액</th> -->
 			</tr>
-			<form method="post" name="orderDetail">
+			<form method="post" name="detailForm">
 			<c:forEach items="${orderDetail }" var="dto">
 			<tr>
 				<td hidden="">
@@ -179,13 +201,13 @@
 				<img class="img" src="${dto.productImages }" width="150px" name="productImages">
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productName }" name="productName" readonly="readonly">
+				${dto.productName }
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productSize }" name="productSize" readonly="readonly">
+				${dto.productSize } ml
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productPrice }" name="productPrice" readonly="readonly">
+				${dto.productPrice } 원
 				</td>
 				<td align="center">
 				${dto.cartAmount } 개

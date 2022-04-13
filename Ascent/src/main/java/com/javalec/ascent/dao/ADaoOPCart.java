@@ -34,11 +34,11 @@ public class ADaoOPCart {
 		
 		try {
 			connection = dataSource.getConnection();
-			String queryA = "select o.orderCode, o.orderNumber, o.orderDate, p.productImages, p.productName, p.productSize, p.productPrice, ";
-			String queryB = "c.cartAmount, o.orderAmount, o.orderSum, o.cart_cartCode, o.user_userID from userinfo u, cart c, aorder o, product p ";
-			String queryC = "where o.cart_cartCode = c.cartCode and o.user_userID = u.userID and o.user_userID = ? group by orderNumber";
+			String query = "select o.orderCode, o.orderNumber, o.orderDate, c.cartAmount, o.orderAmount, o.orderSum, o.cart_cartCode, o.user_userID, "
+					+ "p.productImages, p.productName, p.productSize, p.productPrice from userinfo u, cart c, aorder o, product p "
+					+ "where o.cart_cartCode = c.cartCode and o.user_userID = u.userID and p.productCode = c.product_productCode and c.user_userID = u.userID and userID = ? ;";
 			
-			preparedStatement = connection.prepareStatement(queryA+queryB+queryC);
+			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, userID);
 			
 			resultSet = preparedStatement.executeQuery();
@@ -81,7 +81,7 @@ public class ADaoOPCart {
 		return dtosL;
 	}
 	
-	public ArrayList<ADtoOPCart> orderDetail(String orderNumber, String userID) {
+	public ArrayList<ADtoOPCart> detail(String DetailOrderNumber, String LoginUserID) {
 		ArrayList<ADtoOPCart> dtosD = new ArrayList<ADtoOPCart>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -89,11 +89,11 @@ public class ADaoOPCart {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "select aorder, p.productImages, p.productName, p.productSize, p.productPrice, c.cartAmount, "
-					+ "from aorder o, cart c, product p, userinfo u where o.user_userID = u.userID and orderNumber = ? and userID = ?";
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, orderNumber);
-			preparedStatement.setString(2, userID);
+			String queryA = "select o.orderCode, o.orderDate, o.orderAmount, o.orderSum, o.user_userID, o.cart_cartCode, p.productImages, p.productName, p.productSize, p.productPrice, c.cartAmount from aorder o, cart c, product p, userinfo u "
+					+ "where o.user_userID = u.userID and o.cart_cartCode = c.cartCode and p.productCode = c.product_productCode and o.orderNumber = ? and u.userID = ? ;";
+			preparedStatement = connection.prepareStatement(queryA);
+			preparedStatement.setString(1, DetailOrderNumber);
+			preparedStatement.setString(2, LoginUserID);
 			
 			resultSet = preparedStatement.executeQuery();
 			
@@ -106,11 +106,13 @@ public class ADaoOPCart {
 				int productPrice = resultSet.getInt("productPrice");
 				int cartAmount = resultSet.getInt("cartAmount");
 				int cartSum = productPrice*cartAmount;
+				int	orderAmount = resultSet.getInt("orderAmount");
+				int	orderSum = resultSet.getInt("orderSum");
 				
-				int cart_cartCode = resultSet.getInt("cart_cartCode");
-				String user_userID = resultSet.getString("user_userID");
+				int cartCode = resultSet.getInt("cart_cartCode");
+				String userID = resultSet.getString("user_userID");
 				
-				ADtoOPCart dtoD = new ADtoOPCart(orderCode, orderNumber, orderDate, productImages, productName, productSize, productPrice, cartAmount, cartSum, cartAmount, orderCode, cart_cartCode, user_userID);
+				ADtoOPCart dtoD = new ADtoOPCart(orderCode, DetailOrderNumber, orderDate, productImages, productName, productSize, productPrice, cartAmount, cartSum, orderAmount, orderSum, cartCode, userID);
 				dtosD.add(dtoD);
 			}
 		} 

@@ -13,13 +13,13 @@ public class AOrderDetailCommand implements ACommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 	// TODO Auto-generated method stub
-	
+		
 		String orderNumber = request.getParameter("orderNumber");
 		String userID = request.getParameter("userID");
 		
 		ADaoOPCart dao = new ADaoOPCart();
-		ArrayList<ADtoOPCart> dtosD = dao.orderDetail(orderNumber, userID);
-		request.setAttribute("orderDetail", dtosD);
+		ArrayList<ADtoOPCart> dtos = dao.detail(orderNumber, userID);
+		request.setAttribute("orderDetail", dtos);
 
 	}
 
