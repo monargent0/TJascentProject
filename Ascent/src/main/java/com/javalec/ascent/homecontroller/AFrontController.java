@@ -64,6 +64,7 @@ import com.javalec.ascent.command.DMemberListCommand;
 import com.javalec.ascent.command.DNoticeDeleteCommand;
 import com.javalec.ascent.command.DNoticeModifyCommand;
 import com.javalec.ascent.command.DNoticeWriteCommand;
+import com.javalec.ascent.command.DProductAddCommand;
 import com.javalec.ascent.command.DProductListCommand;
 
 /**
@@ -471,6 +472,11 @@ public class AFrontController extends HttpServlet {
 				viewPage = "aProductV.jsp";
 				break;
 			// 상품 추가
+			case("/productAddAdmin.do"):
+				command = new DProductAddCommand();
+				command.execute(request, response);
+				viewPage = "productAdmin.do";
+				break;
 			// 개인 문의 조회
 			case("/counselAdmin.do"):
 				viewPage = "aCounselListV.jsp";

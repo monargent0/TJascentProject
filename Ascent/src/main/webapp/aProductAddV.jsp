@@ -31,12 +31,12 @@ input{
 <div class="contents">
 <div> <h2> 제품 등록 </h2> </div>
 	<div style="float: left;">
-
-		<table style="width:500px;">
-	<form action="productAddAdmin.do" method="get">
+		<table style="width:800px;">
+	<form action="productAddAdmin.do" method="post">
 		<tr>
 		<td>카테고리</td>
 		<td><input type="text" name="category_categoryCode" size="50px" placeholder="category" ></td>
+		<td rowspan="7"><img id="preview" src="" width="250" height="250" alt="사진 미리보기"> </td>
 		</tr>
 		<tr>
 		<td>제품코드</td>
@@ -69,7 +69,6 @@ input{
 	</form>
 		</table>
 	</div>
-		<div style="float: right;"><img id="preview" src="" width="250" height="250" alt="사진 미리보기"></div>
 </div>
 
 <script type="text/javascript">
