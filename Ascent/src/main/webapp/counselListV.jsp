@@ -33,9 +33,11 @@
 <style>
 	  table {
         border-collapse: collapse;
-        border-top: 2px solid black;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
         width: auto;
         height: auto;
+        width: 700px;
       }
       
       table, th, td {
@@ -47,20 +49,20 @@
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px ;
-		font-family:"나눔명조";
-      	color:#463D3D;
-	}
-    
+		font-family:"나눔명조";  
+      	color: #463D3D;
+	}    
 	#hyper{				
-      	font-size: 14px;
-      	font-family:"나눔명조";
-      	color:#463D3D;
+      	/* font-size: 20px; */
+      	TEXT-DECORATION:none;
+      	font-family:"나눔명조";  
+      	color: #463D3D;
       }
     </style>
 
 <title>ascent 1대1 문의</title>
 </head>
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -165,9 +167,9 @@
 	</nav>
 	
  <div class="contents">
-	<h2>1대1 문의</h2>
+	<h3>1대1 문의</h3>
 
-	<table border="1">
+	<table >
 		<tr>
 			<th>글번호</th>
 			<th>문의종류</th>
@@ -189,7 +191,7 @@
 		</tr>
 	</table>	
 	
-		<br><a id="hyper" href="mainV.jsp">main</a> &nbsp; <a id="hyper" href="logOutH.jsp">로그아웃</a>
+		<!-- <br><a id="hyper" href="mainV.jsp">main</a> &nbsp; <a id="hyper" href="logOutH.jsp">로그아웃</a> -->
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>

@@ -34,9 +34,11 @@
 <style>
 	  table {
         border-collapse: collapse;
-        border-top: 2px solid black;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
         width: auto;
         height: auto;
+        width: 700px;
       }
       
       table, th, td {
@@ -48,14 +50,36 @@
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px ;
-		font-family:"나눔명조";
-      	color:#463D3D;
+		font-family:"나눔명조";  
+      	color: #463D3D;
+	}    
+	
+      .sub{
+	    background-color: #F7CCB6;
+	    color: #463D3D;
+	    border: 1px solid #999191;
+	    letter-spacing: 0px;
+	   /*  padding: 5px 0 0 0px; */
+	    cursor: pointer;
+	    display: inline-block;
+	    transition: all 0.5s;    
+	    width:130px;
+	    height:25px;
+	    font-family: "나눔명조";
+		color:#463D3D;
+	    
+	}
+	.sub:hover{
+	    background: #241571;
+	    color: #FFFAF6;
+	    transition: all 0.5s;
 	}
     
 	#hyper{				
       	font-size: 14px;
       	font-family:"나눔명조";
       	color:#463D3D;
+      	TEXT-DECORATION:none;
       }
     </style>
 <meta charset="UTF-8">
@@ -67,7 +91,7 @@
 	}
 
 </script>
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -173,7 +197,7 @@
  <div class="contents">
 	<h2>주소록</h2>
 
-	<table border="1">
+	<table >
 		<tr>
 			<th>주소이름</th>
 			<th>우편번호</th>
@@ -194,7 +218,7 @@
 		</tr>
 	</table>	
 	
-		<br><a id="hyper" href="mainV.jsp">main</a> &nbsp; <a id="hyper" href="logOutH.jsp">로그아웃</a>
+		<!-- <br><a id="hyper" href="mainV.jsp">main</a> &nbsp; <a id="hyper" href="logOutH.jsp">로그아웃</a> -->
 	</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>

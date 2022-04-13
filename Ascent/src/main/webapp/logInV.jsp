@@ -51,6 +51,7 @@
       	font-size: 14px;
       	font-family:"나눔명조";
       	color:#463D3D;
+      	TEXT-DECORATION:none;
       }
    	
    	input{

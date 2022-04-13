@@ -33,7 +33,37 @@
 <meta charset="UTF-8">
 <title>주소록 작성</title>
 </head>
-<body>
+<style>
+ .contents{
+		position: absolute;
+		left : 50%;
+		transform : translate(-50%,0%);
+		padding: 50px ;
+		font-family:"나눔명조";  
+      	color: #463D3D;
+	}    
+	.sub{
+	    background-color: #F7CCB6;
+	    color: #463D3D;
+	    border: 1px solid #999191;
+	    letter-spacing: 0px;
+	   /*  padding: 5px 0 0 0px; */
+	    cursor: pointer;
+	    display: inline-block;
+	    transition: all 0.5s;    
+	    width:80px;
+	    height:25px;
+	    font-family: "나눔명조";
+		color:#463D3D;
+	    
+	}
+	.sub:hover{
+	    background: #241571;
+	    color: #FFFAF6;
+	    transition: all 0.5s;
+	}
+</style>
+<body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -136,6 +166,8 @@
 			</div>
 			
 	</nav>
+	<div class="contents">
+	
 <form action="addressWrite.do" method="get">
 <input type="text" placeholder="주소록 이름" name="addressType" required="required"><br>
 <input type="text" id="sample6_postcode" placeholder="우편번호" name = "postcode">
@@ -143,9 +175,9 @@
 <input type="text" id="sample6_address" placeholder="주소" name="mainAddress"><br>
 <input type="text" id="sample6_detailAddress" placeholder="상세주소" name="detailAddress">
 <input type="text" id="sample6_extraAddress" placeholder="참고항목" name="extraAddress">
-<input type="submit" value="확인">
+<input class="sub" type="submit" value="확인">
 </form>
-
+</div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
