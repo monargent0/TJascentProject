@@ -212,7 +212,7 @@ function sample6_execDaumPostcode() {
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
 					
 				</div>
 			</div>
@@ -382,5 +382,16 @@ function requestPay() {
         }
     });
   }
+  
+var userID = '<%=session.getAttribute("userID")%>';
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp';
+	}
+}
 </script>
 </html>
