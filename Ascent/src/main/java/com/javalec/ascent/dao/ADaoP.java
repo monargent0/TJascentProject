@@ -10,6 +10,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.javalec.ascent.dto.ADtoP;
+import com.javalec.ascent.dto.DDtoP;
 
 public class ADaoP {
 
@@ -565,5 +566,77 @@ return dtoPs;//상품 리스트 반환
 			
 			
 		}
-	
+		
+		//관리자 전체목록
+		public ArrayList<DDtoP> pListAdmin() {
+			ArrayList<DDtoP> dtoPs = new ArrayList<DDtoP>();
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = dataSource.getConnection();
+				String sql = "select * from product order by productCode desc  ";
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					String productCode = rs.getString("productCode");
+					String productName = rs.getString("productName");
+					int productPrice = rs.getInt("productPrice");
+					String productSize = rs.getString("productSize");
+					String productImages = rs.getString("productImages");
+					String productBrand = rs.getString("productBrand");
+					String category_categoryCode = rs.getString("category_categoryCode");
+					DDtoP dtoP = new DDtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode, productBrand);
+					dtoPs.add(dtoP);
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(rs != null) rs.close(); //데이터가 있으면 close
+					if(ps!=null) ps.close();
+					if(conn!= null) conn.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+			return dtoPs;
+			
+		}// 관리자 전체목록
+		
+		// 관리자 상품 추가
+		public void productAdd(String productCode,String productName ,int productPrice, String productSize, String productImages , String category_categoryCode , String productBrand ) {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			
+			try {
+				connection = dataSource.getConnection(); // DB연결 끝
+				String query = "insert into product (productCode, productName, productPrice, productSize, productImages, category_categoryCode, productBrand) ";
+				query += "values (?,?,?,?,?,?,?)";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, productCode);
+				preparedStatement.setString(2, productName);
+				preparedStatement.setInt(3, productPrice);
+				preparedStatement.setString(4, productSize);
+				preparedStatement.setString(5, productImages);
+				preparedStatement.setString(6, category_categoryCode);
+				preparedStatement.setString(7, productBrand);
+				
+				preparedStatement.executeUpdate();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(preparedStatement != null) preparedStatement.close();
+					if(connection != null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			} // finally 메모리 정리 ;
+			
+		} // 관리자 상품 추가
 }

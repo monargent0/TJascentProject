@@ -60,7 +60,7 @@
    	}
    	
     button{
-	    background-color: #FFFAF6;
+	    background-color: #F7CCB6;
 	    color: #463D3D;
 	    border: 1px solid #999191;
 	    /* font-size: 1.0em; */
@@ -122,7 +122,7 @@
 	}
 </script>
 
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
 
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
@@ -250,6 +250,7 @@
  		<br><a id="hyper" href = "" target ="popup" onclick="window.open('findIDV.jsp','popup','width=600,height=600'); return false">아이디/비밀번호 찾기</a>
  		</div>
  </div>
+ 
  <%-- <script>
 var userID = <%=session.getAttribute("userID")%>;
 var productCode = <%=request.getParameter("productCode")%>;

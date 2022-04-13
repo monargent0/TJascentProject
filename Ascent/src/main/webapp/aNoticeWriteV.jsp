@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,18 +7,6 @@
 <link type="text/css" href="css/admin.css" rel="stylesheet" >
 <title>ascent ADMIN</title>
 </head>
-
-<style>
-	.contents{
-		position: absolute;
-		top: 50%;
-		left : 50%;
-		transform : translate(-50%,-50%);
-		padding: 50px ;
-		font-family: "나눔명조";
-		color:#463D3D;
-	}
-</style>
 <body style="background-color:#FFFAF6">
 
 	 <header>
@@ -33,11 +20,27 @@
 		 <button onclick="location='logOutH.jsp'"  class="hd-btn">로그아웃</button> 
 	    </div>
 	 </header>   
-	
-	<div class="contents">
-	<h1>관리자 사이트</h1>
-	</div>
-  	 
 
+<div class="contents">
+	<table >	
+		<form action="noticeWAdmin.do" method="post">		
+			<tr>
+				<td>종류</td>
+				<td><input type="text" name="noticeType" size="61" ></td>
+			</tr>			
+			<tr>
+				<td>제목</td>
+				<td><input type="text" name="noticeTitle" size="61" ></td>
+			</tr>			
+			</tr>
+				<td>내용</td>
+				<td><textarea name="noticeContent" rows="10" cols="50" maxlength="3000" ></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="sub" type="submit">추가</button></td>
+			</tr>
+		</form>
+	</table>
+</div>	
 </body>
 </html>
