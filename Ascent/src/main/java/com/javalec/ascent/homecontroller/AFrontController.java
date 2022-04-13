@@ -30,8 +30,8 @@ import com.javalec.ascent.command.ANoticeBoardDetailCommand;
 import com.javalec.ascent.command.ANoticeBoardListCommand;
 import com.javalec.ascent.command.AOrderDetailCommand;
 import com.javalec.ascent.command.AOrderListCommand;
+import com.javalec.ascent.command.AOrderViewCommand;
 import com.javalec.ascent.command.AOrderWriteCommand;
-import com.javalec.ascent.command.APayCommand;
 import com.javalec.ascent.command.APbCommand;
 import com.javalec.ascent.command.APcCommand;
 import com.javalec.ascent.command.APpCommand;
@@ -296,42 +296,42 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = "orderDetailV.jsp";
 				break;
-//			// refund, 환불
-//			case("/refund.do"):
-//				command = new ARefundCommand();
-//				command.execute(request, response);
-//				viewPage = "orderList.do";
-//				break;
-//			// reviewList, 리뷰 보기
-//			case("/reviewList.do"):
-//				command = new AReviewListCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewListV.jsp";
-//				break;
-//			// reviewWrite, 리뷰 쓰기
-//			case("/reviewWrite.do"):
-//				command = new AReviewWriteCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewList.do";
-//				break;
-//			// reviewDetail, 리뷰 상세
-//			case("/reviewDetail.do"):
-//				command = new AReviewDetailCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewDetailV.jsp";
-//				break;
-//			// reviewModify, 리뷰 수정
-//			case("/reviewModify.do"):
-//				command = new AReviewModifyCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewList.do";
-//				break;
-//			// reviewDelete, 리뷰 삭제
-//			case("/reviewDelete.do"):
-//				command = new AReviewDeleteCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewList.do";
-//				break;
+			// refund, 환불
+			case("/refund.do"):
+				command = new ARefundCommand();
+				command.execute(request, response);
+				viewPage = "orderList.do";
+				break;
+			// reviewList, 리뷰 보기
+			case("/reviewList.do"):
+				command = new AReviewListCommand();
+				command.execute(request, response);
+				viewPage = "reviewListV.jsp";
+				break;
+			// reviewWrite, 리뷰 쓰기
+			case("/reviewWrite.do"):
+				command = new AReviewWriteCommand();
+				command.execute(request, response);
+				viewPage = "reviewList.do";
+				break;
+			// reviewDetail, 리뷰 상세
+			case("/reviewDetail.do"):
+				command = new AReviewDetailCommand();
+				command.execute(request, response);
+				viewPage = "reviewDetailV.jsp";
+				break;
+			// reviewModify, 리뷰 수정
+			case("/reviewModify.do"):
+				command = new AReviewModifyCommand();
+				command.execute(request, response);
+				viewPage = "reviewList.do";
+				break;
+			// reviewDelete, 리뷰 삭제
+			case("/reviewDelete.do"):
+				command = new AReviewDeleteCommand();
+				command.execute(request, response);
+				viewPage = "reviewList.do";
+				break;
 //			// wishList, 찜 보기
 //			case("/wishList.do"):
 //				command = new AWishListCommand();
@@ -410,7 +410,7 @@ public class AFrontController extends HttpServlet {
 				
 			// orderView, 주문하기에서 장바구니 보기
 			case("/orderView.do"):
-				command = new ACartListCommand();
+				command = new AOrderViewCommand();
 				command.execute(request, response);
 				viewPage = "orderWriteV.jsp";
 				break;

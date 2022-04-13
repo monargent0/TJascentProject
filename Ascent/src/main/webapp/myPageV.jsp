@@ -27,9 +27,12 @@
 <br>
 <button onclick="location='addressList.do'" style="width: 200px;">주소록</button> <br>
 <br>
-<button onclick="location='orderList.do'" style="width: 200px;" >주문내역</button> <br>
+<form method="get">
+<input type="text" value="<%=session.getAttribute("userID")%>" name="userID" readonly="readonly" hidden="">
+<input type="submit" formaction="orderList.do" style="width: 200px;" value="주문내역"> <br>
+</form>
 <br>
-<button onclick="location='reviewList.do'" style="width: 200px;" >후기 목록</button> <br>
+<button onclick="location='reviewList.do'" style="width: 200px;" >후기목록</button> <br>
 <br>
 <button onclick="location='counselList.do'" style="width: 200px;" >1대1문의조회</button> <br>
 <br>
