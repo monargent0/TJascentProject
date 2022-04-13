@@ -212,7 +212,7 @@ function sample6_execDaumPostcode() {
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
 					
 				</div>
 			</div>
@@ -221,7 +221,7 @@ function sample6_execDaumPostcode() {
 
 <div class="list">
 	<h2>주문 하기</h2>
-	<form name="orderForm" method="post">
+	<form name="orderForm" method="post" action="orderWrite.do">
 		<table>
 			<tr>
 				<td>
@@ -348,17 +348,17 @@ function sample6_execDaumPostcode() {
 				</td>
 			</tr>
 		</table><br> -->
-		<input type="submit" value="결제하기" formaction="orderWrite.do" onclick="requestPay()">
+		<input type="submit" value="결제하기" onclick="requestPay()">
 	</form>
 </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
 	crossorigin="anonymous"></script>
 </body>
-<script type="text/javascript">
+<script>
+var orderForm1 = document.orderForm;
 var IMP = window.IMP; // 생략 가능
 IMP.init("imp26081497"); // 예: imp00000000
-var orderForm1 = document.orderForm;
 
 function requestPay() {
     // IMP.request_pay(param, callback) 결제창 호출
@@ -372,15 +372,27 @@ function requestPay() {
         buyer_addr: document.orderForm.orderMainAddress.value,
         buyer_postcode: document.orderForm.orderPostcode.value;
     }, function (rsp) { // callback
-    		orderForm1.submit();
         if (rsp.success) {
             // 결제 성공 시 로직,
             alert('결제 성공');
+   	 orderForm1.submit();
         } else {
             // 결제 실패 시 로직,
+   	 orderForm1.submit();
             alert('결제 취소');
         }
     });
   }
+  
+var userID = '<%=session.getAttribute("userID")%>';
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp';
+	}
+}
 </script>
 </html>
