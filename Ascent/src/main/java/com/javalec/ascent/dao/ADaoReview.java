@@ -28,7 +28,7 @@ public class ADaoReview {
 
 	}	
 
-	public ArrayList<ADtoR> list(String userID){
+	public ArrayList<ADtoR> list(String userID, int orderCode){
 		ArrayList<ADtoR> dtos = new ArrayList<ADtoR>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -36,9 +36,10 @@ public class ADaoReview {
 		
 			try {
 				connection = dataSource.getConnection();
-				String query ="select reviewCode, reviewTitle, reviewContent, reviewImage from review where user_userID = ?";
+				String query ="select reviewCode, reviewTitle, reviewContent, reviewImage from review where user_userID = ? and aOrder_orderCode = ?";
 				preparedStatement = connection.prepareStatement(query);
 				preparedStatement.setString(1, userID);
+				preparedStatement.setInt(2, orderCode);
 				resultSet = preparedStatement.executeQuery();
 				
 				while(resultSet.next()) {
@@ -64,17 +65,18 @@ public class ADaoReview {
 			return dtos;
 	}// 리뷰 List(Review)
 
-	public void write(String reviewTitle, String reviewContent, String userID) {
+	public void write(String reviewTitle, String reviewContent, String userID, int orderCode) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();
-			String query = "insert into review (reviewTitle, reviewContent, user_userID) values (?,?,?)";
+			String query = "insert into review (reviewTitle, reviewContent, user_userID, aOrder_orderCode) values (?,?,?,?)";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, reviewTitle);
 			preparedStatement.setString(2, reviewContent);
 			preparedStatement.setString(3, userID);
+			preparedStatement.setInt(4, orderCode);
 			
 			preparedStatement.executeUpdate();
 			

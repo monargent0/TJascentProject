@@ -17,9 +17,10 @@ public class AReviewListCommand implements ACommand {
 
 		HttpSession session = request.getSession();
 		String userID = (String) session.getAttribute("userID");
-		System.out.println(userID);	
+		int orderCode = Integer.parseInt(request.getParameter("orderCode"));
+				
 		ADaoReview daoReview = new ADaoReview();
-		ArrayList<ADtoR> dtos = daoReview.list(userID);
+		ArrayList<ADtoR> dtos = daoReview.list(userID, orderCode);
 		request.setAttribute("list", dtos);
 	}
 
