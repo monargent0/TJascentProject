@@ -65,7 +65,10 @@ import com.javalec.ascent.command.DNoticeDeleteCommand;
 import com.javalec.ascent.command.DNoticeModifyCommand;
 import com.javalec.ascent.command.DNoticeWriteCommand;
 import com.javalec.ascent.command.DProductAddCommand;
+import com.javalec.ascent.command.DProductDeleteCommand;
+import com.javalec.ascent.command.DProductDetailCommand;
 import com.javalec.ascent.command.DProductListCommand;
+import com.javalec.ascent.command.DProductModifyCommand;
 
 /**
  * Servlet implementation class AFrontController
@@ -477,6 +480,24 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = "productAdmin.do";
 				break;
+			// 상품 상세
+			case("/pDetailAdmin.do"):
+				command = new DProductDetailCommand();
+				command.execute(request, response);
+				viewPage = "aProductModifyV.jsp";
+				break;	
+			// 상품 수정
+			case("/pModifyAdmin.do"):
+				command = new DProductModifyCommand();
+				command.execute(request, response);
+				viewPage = "pDetailAdmin.do";
+				break;	
+			// 상품 삭제
+			case("/pDeleteAdmin.do"):
+				command = new DProductDeleteCommand();
+				command.execute(request, response);
+				viewPage = "productAdmin.do";
+				break;	
 			// 개인 문의 조회
 			case("/counselAdmin.do"):
 				viewPage = "aCounselListV.jsp";

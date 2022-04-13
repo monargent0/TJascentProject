@@ -32,13 +32,13 @@
 			</tr>
 			<c:forEach items="${pList }" var="all" >
 				<tr>
-					<td> <a class="" href="productDetail.do?productCode=${all.productCode }">
+					<td> <a class="" href="pDetailAdmin.do?productCode=${all.productCode }">
 						<img  src="${all.productImages}" alt="미리보기" width="90" height="90"/></a></td> 
-					<td> ${all.productCode} </td>
-					<td> ${all.productName} </td>
-					<td> ${all.productPrice}원 </td>
-					<td> ${all.productSize}ml </td>
-					<td> ${all.productBrand} </td>
+					<td> <a id="hyper" href="pDetailAdmin.do?productCode=${all.productCode }"> ${all.productCode}</a> </td>
+					<td> <a id="hyper" href="pDetailAdmin.do?productCode=${all.productCode }">${all.productName} </a></td>
+					<td> <a id="hyper" href="pDetailAdmin.do?productCode=${all.productCode }">${all.productPrice}원 </a></td>
+					<td> <a id="hyper" href="pDetailAdmin.do?productCode=${all.productCode }">${all.productSize}ml </a></td>
+					<td> <a id="hyper" href="pDetailAdmin.do?productCode=${all.productCode }">${all.productBrand} </a></td>
 				</tr>
 			</c:forEach>
 			</table>
