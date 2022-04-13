@@ -24,6 +24,7 @@
     crossorigin="anonymous">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
   <%-- 아이콘 --%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>ascent</title>
@@ -40,7 +41,8 @@
  	padding:30px;
   height:140px;
   text-align:center;
-  }    
+  }
+  
  </style>
 </head>
 <!-- 메인 홈바  -->
@@ -140,19 +142,10 @@
 				</div>
 			</div>
 	</nav>
-	
-<!-- Header-->
-     <!--    <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">shop</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">find your own scent</p>
-                </div>
-            </div>
-        </header> -->
+
      
 <!-- 상품 -->
-               			   <section class="py-5">
+               			   <section id="mytable" class="py-5">
                			  <div class="row row-cols-1 row-cols-md-4 g-4">
 		  					<c:forEach items="${allList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
@@ -174,8 +167,29 @@
                		 </c:forEach>
   				  </div>
   				  </section>
-                          
- 
+  <!--  paging -->                      
+<!-- 			 <nav class="paging-nav" aria-label="Page navigation example">
+  					<ul class="pagination">
+   				 <li class="page-item">
+    			  <a class="page-link" href="#" aria-label="Previous">
+     			   <span aria-hidden="true">&laquo;</span>
+    			  </a>
+   				</li>
+   			 <li class="page-item"><a class="page-link" href="#">1</a></li>		
+    		<li class="page-item"><a class="page-link" href="#">2</a></li>
+    		<li class="page-item"><a class="page-link" href="#">3</a></li>
+    		<li class="page-item"><a class="page-link" href="#">4</a></li>
+    		<li class="page-item"><a class="page-link" href="#">5</a></li>
+   			 <li class="page-item">
+    		  <a class="page-link" href="#" aria-label="Next">
+      		  <span aria-hidden="true">&raquo;</span>
+     			 </a>
+    			</li>
+  				</ul>
+			</nav> -->
+	<!-- paging code -->
+	
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
