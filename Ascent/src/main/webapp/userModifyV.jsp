@@ -33,11 +33,52 @@
 <title>개인정보 수정</title>
 </head>
 <style>
-	.contents{
+	table {
+        border-collapse: collapse;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        width: auto;
+        height: auto;
+        width: 700px;
+      }
+      
+      table, th, td {
+        padding: 5px;
+       }
+       
+      .contents{
 		position: absolute;
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px ;
+		font-family:"나눔명조";  
+      	color: #463D3D;
+	}    
+	#hyper{				
+      	/* font-size: 20px; */
+      	TEXT-DECORATION:none;
+      	font-family:"나눔명조";  
+      	color: #463D3D;
+      }
+      .sub{
+	    background-color: #F7CCB6;
+	    color: #463D3D;
+	    border: 1px solid #999191;
+	    letter-spacing: 0px;
+	   /*  padding: 5px 0 0 0px; */
+	    cursor: pointer;
+	    display: inline-block;
+	    transition: all 0.5s;    
+	    width:130px;
+	    height:25px;
+	    font-family: "나눔명조";
+		color:#463D3D;
+	    
+	}
+	.sub:hover{
+	    background: #241571;
+	    color: #FFFAF6;
+	    transition: all 0.5s;
 	}
 	#warning{
 		color: blue;
@@ -245,7 +286,7 @@ function noblank(obj) { // 공백사용못하게
 				</tr>
 				<tr><td id="PHWarning"></td></tr>
 			<tr>
-				<td colspan="2" align="right"> <button type="submit">수정하기</button> </td>
+				<td colspan="2" align="right"> <button class="sub" type="submit">수정하기</button> </td>
 			</tr>
 
 </table>

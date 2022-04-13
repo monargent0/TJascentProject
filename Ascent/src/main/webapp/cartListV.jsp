@@ -71,7 +71,7 @@ function checkBoxAll(event) {
 	}
 }
 </script>
-<body>
+<body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
