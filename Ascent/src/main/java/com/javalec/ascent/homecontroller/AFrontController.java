@@ -30,8 +30,8 @@ import com.javalec.ascent.command.ANoticeBoardDetailCommand;
 import com.javalec.ascent.command.ANoticeBoardListCommand;
 import com.javalec.ascent.command.AOrderDetailCommand;
 import com.javalec.ascent.command.AOrderListCommand;
+import com.javalec.ascent.command.AOrderViewCommand;
 import com.javalec.ascent.command.AOrderWriteCommand;
-import com.javalec.ascent.command.APayCommand;
 import com.javalec.ascent.command.APbCommand;
 import com.javalec.ascent.command.APcCommand;
 import com.javalec.ascent.command.APpCommand;
@@ -65,7 +65,10 @@ import com.javalec.ascent.command.DNoticeDeleteCommand;
 import com.javalec.ascent.command.DNoticeModifyCommand;
 import com.javalec.ascent.command.DNoticeWriteCommand;
 import com.javalec.ascent.command.DProductAddCommand;
+import com.javalec.ascent.command.DProductDeleteCommand;
+import com.javalec.ascent.command.DProductDetailCommand;
 import com.javalec.ascent.command.DProductListCommand;
+import com.javalec.ascent.command.DProductModifyCommand;
 
 /**
  * Servlet implementation class AFrontController
@@ -348,28 +351,12 @@ public class AFrontController extends HttpServlet {
 //				command = new AWishDeleteCommand();
 //				command.execute(request, response);
 //				break;
-//				
-//				
 //			// categoryList, 카테고리
 //			case("/categoryList.do"):
 //				command = new ACategoryListCommand();
 //				command.execute(request, response);
 //				viewPage = "productList.do";
 //				break;
-//				
-//			// productList, 상품목록
-//			case("/productList.do"):
-//				command = new AProductListCommand();
-//				command.execute(request, response);
-//				viewPage = "productListV.jsp";
-//				break;
-//			// productSearch, 상품검색
-//			case("/productSearch.do"):
-//				command = new AProductSearchCommand();
-//				command.execute(request, response);
-//				viewPage = "productList.do";
-//				break;
-//				
 			// productDetail, 상품상세
 			case("/productDetail.do"):
 				command = new AProductDetailCommand();
@@ -410,7 +397,7 @@ public class AFrontController extends HttpServlet {
 				
 			// orderView, 주문하기에서 장바구니 보기
 			case("/orderView.do"):
-				command = new ACartListCommand();
+				command = new AOrderViewCommand();
 				command.execute(request, response);
 				viewPage = "orderWriteV.jsp";
 				break;
@@ -428,6 +415,13 @@ public class AFrontController extends HttpServlet {
 				viewPage = "noticeBoardListV.jsp";
 				break;
 				
+			// noticeBoard, 공지사항 상세 
+				case("/noticeBoardDetail.do"):
+				command = new ANoticeBoardDetailCommand();
+				command.execute(request, response);
+				viewPage = "noticeBoardV.jsp";
+				break;
+			
 			// 관리자
 			// 회원 리스트
 			case("/memberList.do"):
@@ -477,6 +471,24 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = "productAdmin.do";
 				break;
+			// 상품 상세
+			case("/pDetailAdmin.do"):
+				command = new DProductDetailCommand();
+				command.execute(request, response);
+				viewPage = "aProductModifyV.jsp";
+				break;	
+			// 상품 수정
+			case("/pModifyAdmin.do"):
+				command = new DProductModifyCommand();
+				command.execute(request, response);
+				viewPage = "pDetailAdmin.do";
+				break;	
+			// 상품 삭제
+			case("/pDeleteAdmin.do"):
+				command = new DProductDeleteCommand();
+				command.execute(request, response);
+				viewPage = "productAdmin.do";
+				break;	
 			// 개인 문의 조회
 			case("/counselAdmin.do"):
 				viewPage = "aCounselListV.jsp";

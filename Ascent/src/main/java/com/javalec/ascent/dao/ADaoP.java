@@ -10,6 +10,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.javalec.ascent.dto.ADtoP;
+import com.javalec.ascent.dto.ADtoU;
 import com.javalec.ascent.dto.DDtoP;
 
 public class ADaoP {
@@ -639,4 +640,102 @@ return dtoPs;//상품 리스트 반환
 			} // finally 메모리 정리 ;
 			
 		} // 관리자 상품 추가
+		
+		//관리자 상품상세
+		public DDtoP pDetailAdmin(String pproductCode) {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			ResultSet resultSet = null;
+			DDtoP dto = null;
+			
+			try {
+				connection = dataSource.getConnection();
+				String query = "select productCode, productName, productPrice, productSize, productImages, category_categoryCode, productBrand " ;
+					query += "from product where productCode =?";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, pproductCode);
+				resultSet = preparedStatement.executeQuery();
+					
+				if(resultSet.next()) {
+					String productCode =resultSet.getString("productCode");
+					String productName = resultSet.getString("productName");
+					int productPrice = resultSet.getInt("productPrice");
+					String productSize = resultSet.getString("productSize");
+					String productImages = resultSet.getString("productImages");
+					String productBrand = resultSet.getString("productBrand");
+					String category_categoryCode = resultSet.getString("category_categoryCode");
+							
+					dto = new DDtoP(productCode, productName, productPrice, productSize, productImages, category_categoryCode, productBrand);
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally {
+				try {
+					if(resultSet != null) resultSet.close();
+					if(preparedStatement != null) preparedStatement.close();
+					if(connection != null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			} //finally
+			return dto;
+		} //관리자상품상세
+		
+		// 관리자 상품 modify
+		public void modifyProduct(String productName, int productPrice, String productSize , String productBrand, String productCode ,String productImages) {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			
+			try {
+				//DB연결메서드 불러오기
+				connection = dataSource.getConnection(); 
+				//pstmt 생성
+				String query = "update product set productName = ?, productPrice = ?, productSize = ? , productBrand = ?, productImages = ? where productCode = ?" ;
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, productName);
+				preparedStatement.setInt(2, productPrice);
+				preparedStatement.setString(3, productSize);
+				preparedStatement.setString(4, productBrand);
+				preparedStatement.setString(5, productImages);
+				preparedStatement.setString(6, productCode);
+				//실행 
+				preparedStatement.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally { 
+					try {
+						if(preparedStatement !=null) preparedStatement.close();
+						if(connection != null) connection.close();
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+			}
+		} // 관리자 상품 modify		
+		
+		// 관리자 상품 delete 
+		public void deleteProduct(String productCode) {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			
+			try {
+				connection = dataSource.getConnection(); // DB연결 끝
+				String query = "delete from product where productCode = ?";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, productCode);
+				
+				preparedStatement.executeUpdate();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(preparedStatement != null) preparedStatement.close();
+					if(connection != null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}// finally 메모리 정리 ; 이상 있거나 없거나 무조건 거친다.
+
+		} // delete 삭제
+		
 }

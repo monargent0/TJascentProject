@@ -47,7 +47,7 @@
   }    
 </style>
 </head>
-<body>
+<body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -131,12 +131,7 @@
 				 </div> 
 				 </div>
 				</form>
-             
-
-					
-					
-				
-				
+    
 				<!-- 마이페이지 -->
 					<% 
 				 	 if(session.getAttribute("userID") == null){
@@ -148,24 +143,12 @@
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href=""></j>
-					<script>	
-					var j = 0;
-					$('j').on('click', function() {
-						if (j == 0) {
-							$(this).attr('class', 'bi-bag-check-fill');
-							j++;
-						} else if (j == 1) {
-							$(this).attr('class', 'bi-bag-heart');
-							j—;
-						}
-					});
-					</script>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					
 				</div>
 			</div>
-		</div>
 	</nav>
-
+<!-- 상품검색 -->
 		<section class="py-5">
                	 <div class="row row-cols-1 row-cols-md-4 g-4">
 		  					<c:forEach items="${searchList }" var="dto">
@@ -189,19 +172,6 @@
   				  </div>
   				  </section> 
 				
-
-
-
-
-
-
-    			
-	
-
-				
-
-			
-		
 	
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>	
