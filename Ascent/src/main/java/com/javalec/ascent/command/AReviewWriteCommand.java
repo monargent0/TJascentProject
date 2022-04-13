@@ -19,7 +19,7 @@ public class AReviewWriteCommand implements ACommand {
 		String reviewImage = request.getParameter("reviewImage");
 		
 		ADaoReview daoReview = new ADaoReview();
-		daoReview.write(reivewTitle, reviewContent, userId, 0);
+		daoReview.write(reivewTitle, reviewContent, userId);
 	
 	}
 

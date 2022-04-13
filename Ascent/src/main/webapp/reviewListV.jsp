@@ -16,18 +16,26 @@
         padding: 5px;
        }
        
-      .address{
-        border: 10px solid lightblue;
-      	position: absolute;
-      	top : 50%;
-      	left : 50%;
-      	transform : translate(-50%,-50%);
-      }   
-</style>
+      .contents{
+		position: absolute;
+		left : 50%;
+		transform : translate(-50%,0%);
+		padding: 50px ;
+		font-family:"나눔명조";
+      	color:#463D3D;
+	}
+    
+	#hyper{				
+      	font-size: 14px;
+      	font-family:"나눔명조";
+      	color:#463D3D;
+      }
+    </style>
 <meta charset="UTF-8">
 <title>ascent 상품 리뷰</title>
 </head>
-<body>
+<body bgcolor="#FFFAF6">
+<div class="contents">
 	<h2>후기</h2>
 	<table border="1">
 				<tr>
@@ -41,8 +49,9 @@
 			</tr>
 		</c:forEach>
 				<tr>
-			<td align="right" colspan="5"><a href="reviewWriteV.jsp">글작성</a></td>
+			<br><td align="right" colspan="5"><a id="hyper" href="reviewWriteV.jsp">글작성</a></td>
 		</tr>		
 	</table>
+	</div>
 </body>
 </html>
