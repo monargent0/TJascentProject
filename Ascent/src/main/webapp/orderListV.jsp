@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -153,7 +152,7 @@
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
 				</div>
 			</div>
 	</nav>
@@ -164,56 +163,81 @@
 			<tr>
 				<th hidden="">userID</th>
 				<th hidden="">orderCode</th>
-				<th>orderNumber</th>
-				<th>productCode</th>
-				<th>productDetail</th>
-				<th>productName</th>
-				<th>productSize</th>
-				<th>productPrice</th>
-				<th>orderAmount</th>
-				<th>orderSum</th>
+				<th align="center">주문번호</th>
+				<th align="center">이미지</th>
+				<th>이름</th>
+				<th>용량</th>
+				<th>가격</th>
+				<th>수량</th>
+				<th>합계</th>
+				<!-- <th>주문수량</th>
+				<th>주문총액</th> -->
 			</tr>
+			<form method="post" name="orderList">
 			<c:forEach items="${orderList }" var="dto">
-			<c:if test="dto=">
-			<form method="get" name="orderList">
 			<tr>
-				<td align="center" hidden="">
-				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly" style="text-align:center; ">
+				<td hidden="">
+				<input type="text" value="<%=session.getAttribute("userID") %>" name="userID" readonly="readonly" >
 				</td>
-				<td align="center" hidden="">
-				<input type="text" value="${dto.orderCode }" name="orderCode" readonly="readonly" style="text-align:center; ">
-				</td>
-				<td align="center">
-				<a href="orderDetail.do?orderNumber=${dto.orderNumber }">${dto.orderNumber }</a>
+				<td hidden="">
+				<input type="text" value="${dto.orderCode }" name="orderCode" readonly="readonly">
 				</td>
 				<td align="center">
-				<input type="image" value="${dto.productDetail }" name="productDetail" readonly="readonly">
+				<a href="orderDetail.do?orderNumber=${dto.orderNumber }&userID=<%=session.getAttribute("userID")%>">${dto.orderNumber }</a>
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productName }" name="productName" readonly="readonly">
+				<img class="img" src="${dto.productImages }" width="150px" name="productImages">
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productSize }" name="productSize" readonly="readonly">
+				<input hidden="" type="text" value="${dto.productName }" name="productName" readonly="readonly">
+				${dto.productName }
 				</td>
 				<td align="center">
-				<input type="text" value="${dto.productPrice }" name="productPrice" readonly="readonly">
+				<input hidden="" type="text" value="${dto.productSize }" name="productSize" readonly="readonly">
+				${dto.productSize } ml
 				</td>
 				<td align="center">
+				<input hidden="" type="text" value="${dto.productPrice }" name="productPrice" readonly="readonly">
+				${dto.productPrice } 원
+				</td>
+				<td align="center">
+				${dto.cartAmount } 개
+				</td>
+				<td align="center">
+				${dto.cartSum } 원
+				</td>
+				<%-- <td align="center">
 				<input type="text" value="${dto.orderAmount }" name="orderAmount" readonly="readonly">
 				</td>
 				<td align="center">
 				<input type="text" value="${dto.orderSum }" name="orderSum" readonly="readonly">
-				</td>
-				<td align="center">
-				<input type="submit" value="후기 작성" formaction="reviewWrite.do?orderCode=${dto.orderCode }">
-				<input type="submit" value="환불" formaction="refund.do?orderCode=${dto.orderCode }">	
-				</td>
+				</td> --%>
 			</tr>
-			</form>
-			</c:if>
 			</c:forEach>
+			</form>
 		</table>
 </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+<script>
+var userID = '<%=session.getAttribute("userID")%>';
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp';
+	}
+}
+function sendProductCodeLogin() {
+	if (userID != 'null'){
+		location.href='myPage.jsp'
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp?productCode='+productCode1;
+	}
+}
+</script>
 </html>

@@ -30,8 +30,8 @@ import com.javalec.ascent.command.ANoticeBoardDetailCommand;
 import com.javalec.ascent.command.ANoticeBoardListCommand;
 import com.javalec.ascent.command.AOrderDetailCommand;
 import com.javalec.ascent.command.AOrderListCommand;
+import com.javalec.ascent.command.AOrderViewCommand;
 import com.javalec.ascent.command.AOrderWriteCommand;
-import com.javalec.ascent.command.APayCommand;
 import com.javalec.ascent.command.APbCommand;
 import com.javalec.ascent.command.APcCommand;
 import com.javalec.ascent.command.APpCommand;
@@ -397,7 +397,7 @@ public class AFrontController extends HttpServlet {
 				
 			// orderView, 주문하기에서 장바구니 보기
 			case("/orderView.do"):
-				command = new ACartListCommand();
+				command = new AOrderViewCommand();
 				command.execute(request, response);
 				viewPage = "orderWriteV.jsp";
 				break;

@@ -161,7 +161,7 @@
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
 					
 				</div>
 			</div>
@@ -180,9 +180,12 @@
 <br>
 <button onclick="location='orderList.do'" style="width: 200px;" class="hd-btn">주문내역</button> <br>
 <br>
-<button onclick="location='reviewList.do'" style="width: 200px;" class="hd-btn">후기 목록</button> <br>
+<form method="get">
+<input type="text" value="<%=session.getAttribute("userID")%>" name="userID" readonly="readonly" hidden="">
+<input type="submit" formaction="orderList.do" style="width: 200px;" value="주문내역" class="hd-btn"> <br>
+</form>
 <br>
-<button onclick="location='counselList.do'" style="width: 200px;" class="hd-btn">1대1문의조회</button> <br>
+<button onclick="location='reviewList.do'" style="width: 200px;" class="hd-btn" >후기목록</button> <br>
 <br>
 <button onclick="location='signOutV.jsp'" style="width: 200px;" class="hd-btn">회원탈퇴</button> <br>
 <br>
@@ -192,4 +195,16 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>
+<script>
+var userID = '<%=session.getAttribute("userID")%>';
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp';
+	}
+}
+</script>
 </html>

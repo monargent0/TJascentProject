@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -169,7 +168,7 @@ function checkBoxAll(event) {
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
 					
 				</div>
 			</div>
@@ -191,24 +190,21 @@ function checkBoxAll(event) {
 				<th>수량</th>
 				<th>합계</th>
 			</tr>
-			<form name="cartForm">
-			<c:forEach items="${cartList }" var="dto" varStatus="status">
+			<form name="cartForm" method="post">
+			<c:forEach items="${cartList }" var="dto">
 			<tr>
 				<td hidden="">
 				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly">
 				</td>
 				<td hidden="">
-				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly" >
-				</td>
-				<td hidden="">
-				<input type="text" value="${dto.productCode }" name="productCode" readonly="readonly">
+				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly">
 				</td>
 				<td>
 				<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
 				</td>
 				<td align="center">
 				<a href="productDetail.do?productCode=${dto.productCode }">
-				<img class="img" src="${dto.productImages }" width="150px" name="productImages">
+				<img class="img" src="${dto.productImages }" width="100px" name="productImages">
 				</a>
 				</td>
 				<td align="left">
@@ -221,11 +217,11 @@ function checkBoxAll(event) {
 				${dto.productPrice } 원
 				</td>
 				<td align="center">
-					<select name="cartAmount" id="cartAmount">
+					<select name="cartAmount">
 						<option value="${dto.cartAmount }" selected="selected">${dto.cartAmount }</option>
-						<option value="1" onselect="cartModify.do?cartCode=${dto.cartCode}&?cartAmount=1">1</option>
-						<option value="2" onselect="cartModify.do?cartCode=${dto.cartCode}&?cartAmount=2">2</option>
-						<option value="3" onselect="cartModify.do?cartCode=${dto.cartCode}&?cartAmount=3">3</option>
+						<option value="1" onselect="">1</option>
+						<option value="2" onselect="">2</option>
+						<option value="3" onselect="">3</option>
 					</select>
 					개
 				</td>
@@ -235,10 +231,21 @@ function checkBoxAll(event) {
 			</tr>
 			</c:forEach>
 			</table><br>
+				<input type="button" value="선택상품 주문" onclick="checkUserCheck()">
 				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
-				<input type="submit" value="선택상품 주문" formaction="orderView.do">
 			</form>
 </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>
+<script type="text/javascript">
+var cartForm1 = document.cartForm;
+function checkUserCheck() {
+	if (cartForm1.checkCart.length == 0){
+		alert("1개 이상의 목록을 선택해주세요.");
+	}else {
+		cartForm1.action='orderView.do';
+		cartForm1.submit();
+	}
+}
+</script>
 </html>
