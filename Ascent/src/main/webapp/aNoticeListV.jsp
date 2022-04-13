@@ -37,9 +37,9 @@
 				<th>제목</th>
 				<th>게시일</th>
 			</tr>
-			<c:forEach items="${list }" var="dto">
+			<c:forEach items="${list }" var="dto" varStatus="dex">
 				<tr>
-					<td><a id="hyper" href="noticeDAdmin.do?noticeCode=${dto.noticeCode }">${dto.noticeCode }</a></td>
+					<td><a id="hyper" href="noticeDAdmin.do?noticeCode=${dto.noticeCode }">${dex.index+1 }</a></td>
 					<td><a id="hyper" href="noticeDAdmin.do?noticeCode=${dto.noticeCode }">${dto.noticeType }</a></td>
 					<td><a id="hyper" href="noticeDAdmin.do?noticeCode=${dto.noticeCode }">${dto.noticeTitle}</a></td>						
 					<td><a id="hyper" href="noticeDAdmin.do?noticeCode=${dto.noticeCode }">
