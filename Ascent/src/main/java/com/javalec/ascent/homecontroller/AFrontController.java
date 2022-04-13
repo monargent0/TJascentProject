@@ -302,36 +302,36 @@ public class AFrontController extends HttpServlet {
 //				command.execute(request, response);
 //				viewPage = "orderList.do";
 //				break;
-//			// reviewList, 리뷰 보기
-//			case("/reviewList.do"):
-//				command = new AReviewListCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewListV.jsp";
-//				break;
-//			// reviewWrite, 리뷰 쓰기
-//			case("/reviewWrite.do"):
-//				command = new AReviewWriteCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewList.do";
-//				break;
-//			// reviewDetail, 리뷰 상세
-//			case("/reviewDetail.do"):
-//				command = new AReviewDetailCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewDetailV.jsp";
-//				break;
-//			// reviewModify, 리뷰 수정
+			// reviewList, 리뷰 보기
+			case("/reviewList.do"):
+				command = new AReviewListCommand();
+				command.execute(request, response);
+				viewPage = "reviewListV.jsp";
+				break;
+			// reviewWrite, 리뷰 쓰기
+			case("/reviewWrite.do"):
+				command = new AReviewWriteCommand();
+				command.execute(request, response);
+				viewPage = "reviewList.do";
+				break;
+			// reviewDetail, 리뷰 상세
+			case("/reviewDetail.do"):
+				command = new AReviewDetailCommand();
+				command.execute(request, response);
+				viewPage = "reviewDetailV.jsp";
+				break;
+			// reviewModify, 리뷰 수정
 //			case("/reviewModify.do"):
 //				command = new AReviewModifyCommand();
 //				command.execute(request, response);
 //				viewPage = "reviewList.do";
 //				break;
 //			// reviewDelete, 리뷰 삭제
-//			case("/reviewDelete.do"):
-//				command = new AReviewDeleteCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewList.do";
-//				break;
+			case("/reviewDelete.do"):
+				command = new AReviewDeleteCommand();
+				command.execute(request, response);
+				viewPage = "reviewList.do";
+				break;
 //			// wishList, 찜 보기
 //			case("/wishList.do"):
 //				command = new AWishListCommand();
