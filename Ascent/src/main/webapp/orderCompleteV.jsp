@@ -78,7 +78,7 @@
 	    transition: all 0.5s;
 	}
 </style>
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -120,11 +120,19 @@
 						</ul>
 					</li>
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="#" style="width: 100px;">About</a>
+					<li><a class="nav-link px-2" href="#">About</a>
 						<ul>
-							<li><a href="noticeBoardList.do" style="width: 100px;">Notice</a></li>
+							<li><a href="noticeBoardList.do">Notice</a></li>
 							<!-- <li><a href="counselList.do">Q&A</a></li> -->
-							<li><a href="logInV.jsp" style="width: 100px;">Q&A</a></li>
+							<%
+							if(session.getAttribute("userID") == null){
+							%>
+							<li><a href="logInV.jsp">Q&A</a></li>
+							<%
+							}else if(session.getAttribute("userID") != null){
+							%>
+							<li><a href="counselList.do">Q&A</a></li>
+						  <% } %>
 						</ul>
 					</li>
 				</ul>
@@ -135,48 +143,49 @@
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
-      			 <!--검색하기  -->
-				<form  class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="검색하기" aria-label="Search"> 
+      			 <!--검색내용  -->
+				<form  class="d-flex" method="post" action="searchProduct.do" >
+				<div>
+					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
+				</div>
+				
+					<div class="text-end">
+					
+					<!--  검색 -->
+					<div> 
+				<button type="submit" class="btn text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
+				  <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
+ 				 <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
+				</svg>
+				<span class="visually-hidden"></span>
+                </button>
+				 </div> 
+				 </div>
 				</form>
-				<!--검색,마이페이지,장바구니 아이콘  -->
-				<div class="text-end">
-					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
-					<script>
-					var k = 0;
-					$('k').on('click', function() {
-						if (k == 0) {
-							$(this).attr('class', 'bi-search-heart');
-							k++;
-						} else if (k == 1) {
-							$(this).attr('class', 'bi-search');
-							k--;
-						}
-					});
-				</script>
+				
+				<!-- 마이페이지 -->
+					<% 
+				 	 if(session.getAttribute("userID") == null){
+					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href="#"></j>
-
-				<script>
-					var j = 0;
-					$('j').on('click', function() {
-						if (j == 0) {
-							$(this).attr('class', 'bi-bag-check-fill');
-							j++;
-						} else if (j == 1) {
-							$(this).attr('class', 'bi-bag-heart');
-							j—;
-						}
-					});
-				</script>
+					<%
+					}else if(session.getAttribute("userID") != null){
+					%>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
+				  <% } %>
+				  <!-- 장바구니 -->
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					
 				</div>
 			</div>
-		</div>
+			
 	</nav>
 <div class="contents">
 	<h2>주문이 완료되었습니다.</h2>
 	<button onclick="location.href='myPageV.jsp'"><h3>마이페이지 보기</h3></button>
 	<button onclick="location.href='main.do'"><h3>메인으로 가기</h3></button>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
