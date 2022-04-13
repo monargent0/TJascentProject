@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -29,8 +28,8 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <%-- 아이콘 --%>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <title>Order Write</title>
 <!-- jQuery -->
@@ -117,7 +116,7 @@ function sample6_execDaumPostcode() {
 }
 </script>
 <body>
-	<!-- 메인홈바 -->
+<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -181,25 +180,28 @@ function sample6_execDaumPostcode() {
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
-      			 <!--검색하기  -->
-				<form  class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="검색하기" aria-label="Search"> 
+      			 <!--검색내용  -->
+				<form  class="d-flex" method="post" action="searchProduct.do" >
+				<div>
+					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
+				</div>
+				
+					<div class="text-end">
+					
+					<!--  검색 -->
+					<div> 
+				<button type="submit" class="btn text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
+				  <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
+ 				 <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
+				</svg>
+				<span class="visually-hidden"></span>
+                </button>
+				 </div> 
+				 </div>
 				</form>
-				<!--검색,마이페이지,장바구니 아이콘  -->
-				<div class="text-end">
-					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
-					<script>
-					var k = 0;
-					$('k').on('click', function() {
-						if (k == 0) {
-							$(this).attr('class', 'bi-search-heart');
-							k++;
-						} else if (k == 1) {
-							$(this).attr('class', 'bi-search');
-							k--;
-						}
-					});
-				</script>
+				
+				<!-- 마이페이지 -->
 					<% 
 				 	 if(session.getAttribute("userID") == null){
 					%>
@@ -209,23 +211,14 @@ function sample6_execDaumPostcode() {
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="cartListCheckUser()"></j>
-					<script>	
-					var j = 0;
-					$('j').on('click', function() {
-						if (j == 0) {
-							$(this).attr('class', 'bi-bag-check-fill');
-							j++;
-						} else if (j == 1) {
-							$(this).attr('class', 'bi-bag-heart');
-							j—;
-						}
-					});
-					</script>
+				  <!-- 장바구니 -->
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					
 				</div>
 			</div>
-		</div>
+			
 	</nav>
+
 <div class="list">
 	<h2>주문 하기</h2>
 	<form name="orderForm" method="post">
@@ -358,6 +351,9 @@ function sample6_execDaumPostcode() {
 		<input type="submit" value="결제하기" formaction="orderWrite.do" onclick="requestPay()">
 	</form>
 </div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+	crossorigin="anonymous"></script>
 </body>
 <script type="text/javascript">
 var IMP = window.IMP; // 생략 가능
