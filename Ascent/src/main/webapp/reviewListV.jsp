@@ -55,14 +55,23 @@
       	font-family:"나눔명조";
       	color:#463D3D;
       }
-    </style>
+   
       .address{
         border: 10px solid lightblue;
       	position: absolute;
       	top : 50%;
       	left : 50%;
       	transform : translate(-50%,-50%);
-      }   
+      } 
+      .table{
+    	 position: absolute;
+		left : 50%;
+		transform : translate(-50%,0%);
+		padding: 50px ;
+		width:600px;
+		font-family:"나눔명조";
+      	color:#463D3D;
+      }  
 </style>
 <title>ascent 상품 리뷰</title>
 </head>
@@ -169,20 +178,21 @@
 				</div>
 			</div>
 	</nav>
-	<h2>후기</h2>
-	<table border="1">
+	
+	<table class="table" border="1">
 				<tr>
-			<th>글번호</th>
-			<th>제목</th>
+			<td>후기</td>
+			<td>글번호</td>
+			<td>제목</td>
 		</tr>
 		<c:forEach items="${list }" var="dto">
 			<tr>
-				<td style="text-align: center;"><a id="hyper" href="reviewDetail.do?reviewCode=${dto.reveiwCode }">${dto.reviewCode }</a></td>
+				<td class="table"><a id="hyper" href="reviewDetail.do?reviewCode=${dto.reveiwCode }">${dto.reviewCode }</a></td>
 				<td>${dto.reviewTitle }</td>
 			</tr>
 		</c:forEach>
 				<tr>
-			<td align="right" colspan="5"><a href="reviewWriteV.jsp">글작성</a></td>
+			<td align="right" colspan="5"><a style="color:#000000;" href="reviewWriteV.jsp">글작성</a></td>
 		</tr>		
 	</table>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
