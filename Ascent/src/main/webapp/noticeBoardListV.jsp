@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 
 
-<%
+<%-- <%
 	ADaoN daoN = new ADaoN();
 	int count = daoN.getCount();
 	int pageSize = 10; // 한 페이지에 출력할 게시글 수
@@ -36,7 +36,7 @@
 		list = dao.getList(startRow, endRow);
 	}
 	
-%>
+%> --%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -88,7 +88,7 @@
 <meta charset="UTF-8">
 <title>ascent 공지사항</title>
 </head>
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
 	<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -194,7 +194,7 @@
 	
  <div class="contents">
 	<h2>공지사항</h2>
-	(공지사항 수 : <%=count %>)	
+	<%-- (공지사항 수 : <%=count %>)	 --%>
 	<table border="1">
 		<tr>
 			<th>글번호</th>
@@ -204,15 +204,15 @@
 		</tr>
 		<c:forEach items="${list }" var="dto">
 			<tr>
-				<td><a id="hyper" href="noticeBoardDetail.do?noticeCode=${dto.noticeCode }">${dto.noticeCode }</a></td>
+				<td>${dto.noticeCode }</a></td>
 				<td>${dto.noticeType }</td>
-				<td>${dto.noticeTitle}</td>						
+				<td><a style="color:#000000" id="hyper" href="noticeBoardDetail.do?noticeCode=${dto.noticeCode }">${dto.noticeTitle}</td>						
 				<td>${dto.noticeDate}</td>
 			</tr>
 		</c:forEach>
 	</table>	
 	</div>
-<%	// 페이징 처리
+<%-- <%	// 페이징 처리
 	if(count > 0){
 	// 총 페이지의 수
 	int pageCount = count / pageSize + (count%pageSize == 0 ? 0 : 1);
@@ -240,7 +240,7 @@
 } 
 															
 }						
-%>
+%> --%>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

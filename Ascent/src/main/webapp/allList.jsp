@@ -46,7 +46,7 @@
  </style>
 </head>
 <!-- 메인 홈바  -->
-<body>
+<body style="background-color:#FFFAF6">
 <nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"

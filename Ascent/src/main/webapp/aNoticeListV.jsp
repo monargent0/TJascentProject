@@ -43,7 +43,7 @@
 					<td><a id="hyper" href="noticeDAdmin.do?noticeCode=${dto.noticeCode }">${dto.noticeType }</a></td>
 					<td><a id="hyper" href="noticeDAdmin.do?noticeCode=${dto.noticeCode }">${dto.noticeTitle}</a></td>						
 					<td><a id="hyper" href="noticeDAdmin.do?noticeCode=${dto.noticeCode }">
-					<fmt:formatDate pattern="yyyy년 MM월 dd일 yy:mm:ss" value="${dto.noticeDate}"/></a></td>
+					<fmt:formatDate pattern="yyyy년 MM월 dd일 hh:mm:ss" value="${dto.noticeDate}"/></a></td>
 				</tr>
 			</c:forEach>
 		</table>	

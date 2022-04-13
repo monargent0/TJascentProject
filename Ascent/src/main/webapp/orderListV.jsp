@@ -154,10 +154,8 @@
 				  <% } %>
 				  <!-- 장바구니 -->
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
-					
 				</div>
 			</div>
-			
 	</nav>
 
 <div class="list">

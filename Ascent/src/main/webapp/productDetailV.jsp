@@ -76,8 +76,8 @@ background:#1A0D35;
 
 </style>
 </head>
-<!-- 홈바  -->
-<body id="home">
+<body style="background-color:#FFFAF6">
+<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -90,7 +90,7 @@ background:#1A0D35;
 					
 				<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					<ul id="nav">
-				<li class="nav-item dropdown"><a
+					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Scent </a>
@@ -135,22 +135,23 @@ background:#1A0D35;
 					</li>
 				</ul>
 				</ul>
-				
 				<!--로고 -->
-      			 <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0"> 
+      			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
    					 <a class="navbar-brand" href="main.do">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
-				  </div> 
-      			  <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct.do">
+				  </div>
+      			 <!--검색내용  -->
+				<form  class="d-flex" method="post" action="searchProduct.do" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
+				
 					<div class="text-end">
-           
+					
+					<!--  검색 -->
 					<div> 
-				<button type="submit" class="btn btn-outline-secondary">
+				<button type="submit" class="btn text-white">
                   <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
 				  <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
  				 <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
@@ -160,32 +161,22 @@ background:#1A0D35;
 				 </div> 
 				 </div>
 				</form>
-					<%
-					if(session.getAttribute("userID") == null){
+				
+				<!-- 마이페이지 -->
+					<% 
+				 	 if(session.getAttribute("userID") == null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "sendProductCodeLogin()"></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
 					<%
 					}else if(session.getAttribute("userID") != null){
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
-					<% } %>
-					<i class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="cartListCheckUser()"></i>
-
-				<script>
-					var j = 0;
-					$('j').on('click', function() {
-						if (j == 0) {
-							$(this).attr('class', 'bi-bag-check-fill');
-							j++;
-						} else if (j == 1) {
-							$(this).attr('class', 'bi-bag-heart');
-							j--;
-						}
-					});
-				</script>
+				  <% } %>
+				  <!-- 장바구니 -->
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					
 				</div>
 			</div>
-		</div>
 	</nav>
 <!--  상품상세  -->
 	<div class="product_view">

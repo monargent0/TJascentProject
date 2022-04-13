@@ -302,36 +302,36 @@ public class AFrontController extends HttpServlet {
 //				command.execute(request, response);
 //				viewPage = "orderList.do";
 //				break;
-//			// reviewList, 리뷰 보기
-//			case("/reviewList.do"):
-//				command = new AReviewListCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewListV.jsp";
-//				break;
-//			// reviewWrite, 리뷰 쓰기
-//			case("/reviewWrite.do"):
-//				command = new AReviewWriteCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewList.do";
-//				break;
-//			// reviewDetail, 리뷰 상세
-//			case("/reviewDetail.do"):
-//				command = new AReviewDetailCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewDetailV.jsp";
-//				break;
-//			// reviewModify, 리뷰 수정
-//			case("/reviewModify.do"):
-//				command = new AReviewModifyCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewList.do";
-//				break;
-//			// reviewDelete, 리뷰 삭제
-//			case("/reviewDelete.do"):
-//				command = new AReviewDeleteCommand();
-//				command.execute(request, response);
-//				viewPage = "reviewList.do";
-//				break;
+			// reviewList, 리뷰 보기
+			case("/reviewList.do"):
+				command = new AReviewListCommand();
+				command.execute(request, response);
+				viewPage = "reviewListV.jsp";
+				break;
+			// reviewWrite, 리뷰 쓰기
+			case("/reviewWrite.do"):
+				command = new AReviewWriteCommand();
+				command.execute(request, response);
+				viewPage = "reviewList.do";
+				break;
+			// reviewDetail, 리뷰 상세
+			case("/reviewDetail.do"):
+				command = new AReviewDetailCommand();
+				command.execute(request, response);
+				viewPage = "reviewDetailV.jsp";
+				break;
+			// reviewModify, 리뷰 수정
+			case("/reviewModify.do"):
+				command = new AReviewModifyCommand();
+				command.execute(request, response);
+				viewPage = "reviewList.do";
+				break;
+			// reviewDelete, 리뷰 삭제
+			case("/reviewDelete.do"):
+				command = new AReviewDeleteCommand();
+				command.execute(request, response);
+				viewPage = "reviewList.do";
+				break;
 //			// wishList, 찜 보기
 //			case("/wishList.do"):
 //				command = new AWishListCommand();
@@ -348,28 +348,12 @@ public class AFrontController extends HttpServlet {
 //				command = new AWishDeleteCommand();
 //				command.execute(request, response);
 //				break;
-//				
-//				
 //			// categoryList, 카테고리
 //			case("/categoryList.do"):
 //				command = new ACategoryListCommand();
 //				command.execute(request, response);
 //				viewPage = "productList.do";
 //				break;
-//				
-//			// productList, 상품목록
-//			case("/productList.do"):
-//				command = new AProductListCommand();
-//				command.execute(request, response);
-//				viewPage = "productListV.jsp";
-//				break;
-//			// productSearch, 상품검색
-//			case("/productSearch.do"):
-//				command = new AProductSearchCommand();
-//				command.execute(request, response);
-//				viewPage = "productList.do";
-//				break;
-//				
 			// productDetail, 상품상세
 			case("/productDetail.do"):
 				command = new AProductDetailCommand();
@@ -428,6 +412,13 @@ public class AFrontController extends HttpServlet {
 				viewPage = "noticeBoardListV.jsp";
 				break;
 				
+			// noticeBoard, 공지사항 상세 
+				case("/noticeBoardDetail.do"):
+				command = new ANoticeBoardDetailCommand();
+				command.execute(request, response);
+				viewPage = "noticeBoardV.jsp";
+				break;
+			
 			// 관리자
 			// 회원 리스트
 			case("/memberList.do"):
