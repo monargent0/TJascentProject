@@ -16,7 +16,7 @@ public class DMemberListCommand implements ACommand {
 		ADaoU daoU = new ADaoU();
 		ArrayList<DDtoU> dtosi = daoU.signinList();
 		request.setAttribute("inList", dtosi);
-		System.out.println(dtosi.get(1).getUserID());
+//		System.out.println(dtosi.get(1).getUserID());
 		
 		ArrayList<DDtoU> dtoso = daoU.signoutList();
 		request.setAttribute("outList", dtoso);
