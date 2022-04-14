@@ -87,7 +87,7 @@
 	if(alertTxt !== "null"){
 		alert(alertTxt);
 		<%
-		session.invalidate();
+		session.removeAttribute("alertTxt");
 		%>
 	}
 	
@@ -188,33 +188,8 @@
 				<!--검색,마이페이지,장바구니 아이콘  -->
 				<div class="text-end">
 					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
-					<script>
-					var k = 0;
-					$('k').on('click', function() {
-						if (k == 0) {
-							$(this).attr('class', 'bi-search-heart');
-							k++;
-						} else if (k == 1) {
-							$(this).attr('class', 'bi-search');
-							k--;
-						}
-					});
-				</script>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href="#"></j>
-
-				<script>
-					var j = 0;
-					$('j').on('click', function() {
-						if (j == 0) {
-							$(this).attr('class', 'bi-bag-check-fill');
-							j++;
-						} else if (j == 1) {
-							$(this).attr('class', 'bi-bag-heart');
-							j—;
-						}
-					});
-				</script>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
 				</div>
 			</div>
 		</div>
@@ -227,7 +202,7 @@
 	</div>  
  
  	<div >
- 		<form action="logIn.do" method="post" name="log">
+ 		<form action="logIn.do" method="post" name="log" >
  			<div>
 				<div style="float: right;">
 					<input type="text" name="userID" size="30" placeholder="아이디" id="userID" onkeyup="noblank(this)">
@@ -244,28 +219,26 @@
 				<div  align="right"><button type="button" onclick="checkid()">LOGIN</button> <br> </div> 
 				<div  align="right"><button type="button" onclick="location.href='signAgreeV.jsp'">SIGNIN</button></div>
 			</div>
-			<input type="text" value="<%=request.getParameter("productCode") %>" name="productCode" hidden="">
  		</form>
  	</div>
  		<div style="float: right;">
  		<br><a id="hyper" href = "" target ="popup" onclick="window.open('findIDV.jsp','popup','width=600,height=600'); return false">아이디/비밀번호 찾기</a>
  		</div>
  </div>
+ <!-- login 후 productDetail 띄우기 위한 productCode를 저장하는 세션 -->
  
- <%-- <script>
-var userID = <%=session.getAttribute("userID")%>;
-var productCode = <%=request.getParameter("productCode")%>;
-
-function CheckUser() {
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+</body>
+<script type="text/javascript">
+var userID = '<%=session.getAttribute("userID")%>';
+function cartListCheckUser() {
 	if (userID != 'null'){
-		document.loginForm.submit();
+		location.href='cartList.do?userID='+userID;
 	}
 	else{
 		alert("로그인이 필요합니다.");
-		location.href='logInV.jsp?productCode='+productCode1;
+		location.href='logInV.jsp';
 	}
 }
- </script> --%>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
-</body>
+</script>
 </html>
