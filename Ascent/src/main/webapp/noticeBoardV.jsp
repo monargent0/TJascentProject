@@ -34,7 +34,8 @@
 <style>
 	  table {
         border-collapse: collapse;
-        border-top: 2px solid black;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
         width: auto;
         height: auto;
       }
@@ -48,10 +49,18 @@
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px ;
+		font-family:"나눔명조";  
+      	color: #463D3D;
 	}    
+	#hyper{				
+      	/* font-size: 20px; */
+      	TEXT-DECORATION:none;
+      	font-family:"나눔명조";  
+      	color: #463D3D;
+      }
 </style>
 </head>
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -155,7 +164,7 @@
 			
 	</nav>
  <div class="contents">
-	<table border="1">
+	<table >
 			<tr>
 				<td>글번호</td>
 				<td><input type="text" name="noticeCode" size="5" value="${noticeBoardV.noticeCode}" readonly="readonly"></td>
@@ -166,14 +175,14 @@
 			</tr>			
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="noticeTitle" size="61" value="${noticeBoardV.noticeTitle }" readonly="readonly"></td>
+				<td><input type="text" name="noticeTitle" size="50" value="${noticeBoardV.noticeTitle }" readonly="readonly"></td>
 			</tr>			
 			</tr>
 				<td>내용</td>
 				<td><textarea name="noticeContent" rows="10" cols="50" maxlength="100" readonly="readonly">${noticeBoardV.noticeContent } </textarea></td>
 			</tr>
 			<tr>
-				<td><a href="noitceBoardList.do">목록보기</a></td>
+				<td><a id="hyper" href="noticeBoardList.do">목록보기</a></td>
 			</tr>
 	</table>
 </div>

@@ -39,10 +39,32 @@
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px ;
+		font-family: "나눔명조";
+		color:#463D3D;
 	}
-
+	 .hd-btn{
+	    background-color: #FFFAF6;
+	    color: #463D3D;
+	    border: none;
+	    font-size: 1.0em;
+	    letter-spacing: 0px;
+	    padding: 5px 0 0 0px;
+	    cursor: pointer;
+	    display: inline-block;
+	    transition: all 0.5s;    
+	    width:100px;
+	    height:32px;
+	    font-family: "나눔명조";
+		color:#463D3D;
+	    
+	}
+	.hd-btn:hover{
+	    background: #F7CCB6;
+	    color: #FFFAF6;
+	    transition: all 0.5s;
+	}
 </style>
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -139,7 +161,7 @@
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
 					
 				</div>
 			</div>
@@ -150,23 +172,39 @@
 <div class="contents">
 
 <!-- 개인정보수정,회원탈퇴 -->
-<h2>MY PAGE</h2>
+<h4 align="center">MY PAGE</h4>
 
-<button onclick="location='userDetail.do'" style="width: 200px;">개인정보보기</button> <br>
+<button onclick="location='userDetail.do'" style="width: 200px;" class="hd-btn">개인정보보기</button> <br>
 <br>
-<button onclick="location='addressList.do'" style="width: 200px;">주소록</button> <br>
+<button onclick="location='addressList.do'" style="width: 200px;" class="hd-btn">주소록</button> <br>
 <br>
-<button onclick="location='orderList.do'" style="width: 200px;" >주문내역</button> <br>
+<button onclick="location='orderList.do'" style="width: 200px;" class="hd-btn">주문내역</button> <br>
 <br>
-<button onclick="location='reviewList.do'" style="width: 200px;" >후기 목록</button> <br>
+<form method="get">
+<input type="text" value="<%=session.getAttribute("userID")%>" name="userID" readonly="readonly" hidden="">
+<input type="submit" formaction="orderList.do" style="width: 200px;" value="주문내역" class="hd-btn"> <br>
+</form>
 <br>
-<button onclick="location='counselList.do'" style="width: 200px;" >1대1문의조회</button> <br>
+<button onclick="location='reviewList.do'" style="width: 200px;" class="hd-btn" >후기목록</button> <br>
 <br>
-<button onclick="location='signOutV.jsp'" style="width: 200px;" >회원탈퇴</button> <br>
+<button onclick="location='signOutV.jsp'" style="width: 200px;" class="hd-btn">회원탈퇴</button> <br>
+<br>
+<button onclick="location='logOutH.jsp'" style="width: 200px;" class="hd-btn">로그아웃</button> <br>
 <br>
 
-	<a href="mainV.jsp">main</a> &nbsp; <a href="logOutH.jsp">로그아웃</a><br>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>
+<script>
+var userID = '<%=session.getAttribute("userID")%>';
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp';
+	}
+}
+</script>
 </html>

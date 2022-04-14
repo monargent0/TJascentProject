@@ -17,7 +17,7 @@ public class ALoginCommand implements ACommand {
 		HttpSession session = request.getSession();
 		String userID = request.getParameter("userID");
 		String userPW = request.getParameter("userPW");
-		String productCode = (String)request.getParameter("productCode");
+		String productCode = request.getParameter("productCode");
 		
 		ADaoU daoU = new ADaoU();
 		ArrayList<ADtoAD> dtoAD = daoU.login(userID, userPW);
@@ -28,15 +28,17 @@ public class ALoginCommand implements ACommand {
 			request.setAttribute("viewPage", "logInV.jsp");	
 		} else if ( dtoAD.get(0).getAdminCheck().toString().equals("admin")) {
 			session.setAttribute("userID", dtoAD.get(0).getUserID().toString() );
-			request.setAttribute("viewPage", "admin.jsp");			
+			request.setAttribute("viewPage", "adminV.jsp");			
 		} else if ( dtoAD.get(0).getUserID().toString() != null) {
 			session.setAttribute("userID", dtoAD.get(0).getUserID().toString() );
-			if (productCode == null) {
-				request.setAttribute("viewPage", "mainV.jsp");
-			}
-			else {
-				request.setAttribute("viewPage", "productDetail.do?productCode="+productCode);
-			}
+			request.setAttribute("viewPage", "mainV.jsp");
+//			if(productCode != null){
+//				request.setAttribute("viewPage", "productDetail.do?productCode="+productCode);
+//			}else if(productCode == null){
+//				request.setAttribute("viewPage", "mainV.jsp");
+//			}
+			
 		} 
+
 	}
 }

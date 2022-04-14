@@ -5,38 +5,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ADMIN MAIN</title>
+<link type="text/css" href="css/admin.css" rel="stylesheet" >
+<title>ascent ADMIN</title>
 </head>
 
 <style>
 	.contents{
 		position: absolute;
+		top: 50%;
 		left : 50%;
-		transform : translate(-50%,0%);
+		transform : translate(-50%,-50%);
 		padding: 50px ;
+		font-family: "나눔명조";
+		color:#463D3D;
 	}
-
 </style>
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
 
-<div class="contents">
-
-<!-- 개인정보수정,회원탈퇴 -->
-<h2>ADMIN</h2>
-
-<button onclick="location='memberList.do'" style="width: 200px;">회원관리</button> <br>
-<br>
-<button onclick="location='.jsp'" style="width: 200px;">상품관리</button> <br>
-<br>
-<button onclick="location='.jsp'" style="width: 200px;" >주문내역관리</button> <br>
-<br>
-<button onclick="location='.jsp'" style="width: 200px;" >통계</button> <br>
-<br>
-<button onclick="location='.jsp'" style="width: 200px;" >게시판관리</button> <br>
-<br>
-
-	<a href="mainV.jsp">main</a> &nbsp; <a href="logOutH.jsp">로그아웃</a><br>
-</div>
+	 <header>
+	   <div >
+	    <a href="main.do"><img src="assets/logo.png"  width="130" height="70"  /></a>
+		 <button onclick="location='adminV.jsp'" class="hd-btn">관리자홈</button> 
+	     <button onclick="location='memberList.do'" class="hd-btn">회원관리</button>
+	     <button onclick="location='productAdmin.do'" class="hd-btn">상품관리</button>
+		 <button onclick="location='noticeLAdmin.do'" class="hd-btn" >공지사항관리</button> 
+		 <button onclick="location='counselAdmin.do'" class="hd-btn" >개인문의관리</button> 
+		 <button onclick="location='logOutH.jsp'"  class="hd-btn">로그아웃</button> 
+	    </div>
+	 </header>   
+	
+	<div class="contents">
+	<h1>관리자 사이트</h1>
+	</div>
+  	 
 
 </body>
 </html>

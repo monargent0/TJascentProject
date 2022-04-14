@@ -16,9 +16,9 @@ public class AOrderListCommand implements ACommand {
 		// TODO Auto-generated method stub
 	
 		String userID = request.getParameter("userID");
+		
 		ADaoOPCart dao = new ADaoOPCart();
 		ArrayList<ADtoOPCart> dtos = dao.list(userID);
 		request.setAttribute("orderList", dtos);
-		
 	}
 }
