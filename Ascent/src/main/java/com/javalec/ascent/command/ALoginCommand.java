@@ -18,7 +18,6 @@ public class ALoginCommand implements ACommand {
 		String userID = request.getParameter("userID");
 		String userPW = request.getParameter("userPW");
 		String productCode = (String) session.getAttribute("productCode");
-		System.out.println(productCode);
 		
 		ADaoU daoU = new ADaoU();
 		ArrayList<ADtoAD> dtoAD = daoU.login(userID, userPW);
@@ -32,10 +31,8 @@ public class ALoginCommand implements ACommand {
 		} else if ( dtoAD.get(0).getUserID().toString() != null) {
 			session.setAttribute("userID", dtoAD.get(0).getUserID().toString() );
 			if(productCode == null){
-				System.out.println("hi");
 				request.setAttribute("viewPage", "mainV.jsp");
 			}else if(productCode != null){
-				System.out.println("bye");
 				request.setAttribute("viewPage", "productDetail.do?productCode="+productCode);
 				session.removeAttribute("productCode");
 				productCode = null;
