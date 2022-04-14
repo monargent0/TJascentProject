@@ -213,13 +213,14 @@
 </body>
 <script type="text/javascript">
 var userID = '<%=session.getAttribute("userID")%>';
+var productCode1 = document.cartForm.productCode.value;
 function cartListCheckUser() {
 	if (userID != 'null'){
 		location.href='cartList.do?userID='+userID;
 	}
 	else{
 		alert("로그인이 필요합니다.");
-		location.href='logInV.jsp?productCode='+productCode1;
+		location.href='logInV.jsp';
 	}
 }
 </script>
