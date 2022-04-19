@@ -166,11 +166,13 @@
 						</ul>
 					</li>
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="#" style="width: 100px;">About</a>
-						<ul>
-							<li><a href="noticeBoardList.do" style="width: 100px;">Notice</a></li>
-							<!-- <li><a href="counselList.do">Q&A</a></li> -->
-							<li><a href="logInV.jsp" style="width: 100px;">Q&A</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							About </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="noticeBoardList.do">Notice</a></li>
+							<li><a class="dropdown-item" href="logInV.jsp">Q&A</a></li>
 						</ul>
 					</li>
 				</ul>
