@@ -2,6 +2,15 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,java,eclipse
 
+mybatis-config.xml
+log4j.xml
+
+lecture
+target
+pom.properties
+.classpath
+MANIFEST.MF
+
 ### Eclipse ###
 .metadata
 bin/
@@ -155,3 +164,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,java,eclipse
 
+*.properties
