@@ -18,6 +18,7 @@
 	th{
 	border-bottom: solid 1px #463D3D ;
 	}
+	
 </style>
 
 <body style="background-color:#FFFAF6">
@@ -34,14 +35,17 @@
 	 </header> 
 	 
 <div class="contents">
+
 	<div>
 		<div> <h2>가입현황</h2> </div>
-		<div style= "overflow:auto; width:850px; height:200px;" >
-			<table style="width:800px;">
+		<table style="width:830px;">
 			<tr>
-				<th>SignIn Date</th> <th> ID </th> <th> Name </th> <th> Gender </th> 
-				<th> Birth Date </th> <th> Phone </th> <th> Email </th>
+				<th style="width: 150px">SignIn Date</th> <th style="width:45px;"> ID </th> <th style="width:40px;"> Name </th> <th style="width:40px;"> Gender </th> 
+				<th style="width: 90px"> Birth Date </th> <th style="width: 90px"> Phone </th> <th style="width: 130px"> Email </th>
 			</tr>
+		</table>
+		<div style= "overflow:auto; width:850px; height:200px;" >
+			<table style="width:820px;">
 			<c:forEach items="${inList }" var="in" >
 				<tr>
 					<td> <fmt:formatDate pattern="yyyy년MM월dd일 yy:mm:ss" value="${in.u_SignDate}"/> </td>
@@ -59,12 +63,15 @@
 	
 	<div>
 		<div> <h2>탈퇴현황</h2> </div>
-		<div style="overflow:auto; width:850px; height:200px;" >
-			<table style="width:800px;">
+		<table style="width:830px;">
 			<tr>
-				<th>SignOut Date</th> <th> ID </th> <th> Name </th> <th> Gender </th> 
-				<th> Birth Date </th> <th> Phone </th> <th> Email </th>
+				<th style="width: 150px">SignOut Date</th> <th style="width:45px;"> ID </th> <th style="width:40px;"> Name </th> <th style="width:40px;"> Gender </th> 
+				<th style="width: 90px"> Birth Date </th> <th style="width: 90px"> Phone </th> <th style="width: 130px"> Email </th>
 			</tr>
+		</table>
+		
+		<div style="overflow:auto; width:850px; height:200px;" >
+			<table style="width:820px;">
 			<c:forEach items= "${ outList }" var="out">
 				<tr>
 				<td> <fmt:formatDate pattern="yyyy년MM월dd일 yy:mm:ss" value="${out.u_ResignDate}"/> </td>
