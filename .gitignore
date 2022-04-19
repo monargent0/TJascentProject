@@ -47,8 +47,8 @@ local.properties
 
 # STS (Spring Tool Suite)
 .springBeans
-pom.properties
-MANIFEST.MF
+Ascent_spring/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+*.properties
 .classpath
 .project
 
@@ -154,4 +154,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,java,eclipse
-Ascent_spring/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+
