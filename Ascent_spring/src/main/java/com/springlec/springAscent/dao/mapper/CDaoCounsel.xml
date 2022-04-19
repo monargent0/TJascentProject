@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="com.springlec.springAscent.dao.CDaoCounsel">
+    	<select id="list" resultType="com.springlec.springAscent.dto.CDtoCounsel">
+    		SELECT COUNSELCODE, COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, C_REPLYCHECK FROM COUNSEL WHERE USER_USERID = #{param1} ORDER BY MID DESC
+    	</select>
+    	<select id="write" resultType="com.springlec.springAscent.dto.CDtoCounsel">
+    		INSERT INTO COUNSEL (COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, USER_USERID , C_REPLYCHECK ) 
+    		VALUES (#{param1},#{param2},#{param3},NOW(),#{param4} ,'미답변' )"
+    	</select>
+    
+    
+    
+    
+    
+    
+    
+    </mapper>
