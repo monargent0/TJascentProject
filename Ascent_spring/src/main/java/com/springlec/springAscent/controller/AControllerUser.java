@@ -30,8 +30,7 @@ public class AControllerUser {
 	@RequestMapping("/logIn")
 	public String login(HttpServletRequest request, Model model) {
 		loginCommand.execute(request, sqlSession, model);
-		return (String)request.getAttribute("ret");
-//		return "main";
+		return (String)request.getAttribute("return");
 	}
 	
 }

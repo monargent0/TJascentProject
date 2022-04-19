@@ -24,16 +24,16 @@ public class LoginCommand implements ACommand {
 		
 		if(dto == null){
 			session.setAttribute("alertTxt", "일치하는 아이디가 없습니다." );
-			request.setAttribute("ret" , "logInV");
+			request.setAttribute("return" , "logInV");
 		} else if ( dto.getAdminCheck().toString().equals("admin")) {
 			session.setAttribute("userID", dto.getUserID().toString() );
-			request.setAttribute("ret", "adminV");			
+			request.setAttribute("return", "adminV");			
 		} else if ( dto.getUserID().toString() != null) {
 			session.setAttribute("userID", dto.getUserID().toString() );
 			if(productCode == null){
-				request.setAttribute("ret", "main");
+				request.setAttribute("return", "main");
 			}else if(productCode != null){
-				request.setAttribute("ret", "productDetail?productCode="+productCode);
+				request.setAttribute("return", "productDetail?productCode="+productCode);
 				session.removeAttribute("productCode");
 				productCode = null;
 			}
