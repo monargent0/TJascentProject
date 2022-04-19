@@ -1,6 +1,6 @@
 package com.springlec.springAscent.dto;
 
-public class ADtoP {
+public class PDto {
 	String productCode;
 	String productName;
 	int productPrice;
@@ -8,11 +8,11 @@ public class ADtoP {
 	String productImages;
 	String category_categoryCode;
 	
-	public ADtoP() {
+	public PDto() {
 		
 	}
 
-	public ADtoP(String productCode, String productName, int productPrice, String productSize, String productImages,
+	public PDto(String productCode, String productName, int productPrice, String productSize, String productImages,
 			String category_categoryCode) {
 		super();
 		this.productCode = productCode;
