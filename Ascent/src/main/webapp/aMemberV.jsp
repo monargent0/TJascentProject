@@ -6,31 +6,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 가입/탈퇴 현황</title>
+<link type="text/css" href="css/admin.css" rel="stylesheet" >
+<title>ascent ADMIN</title>
 </head>
 
 <style>
-	.contents{
-		position: absolute;
-		left : 50%;
-		transform : translate(-50%,0%);
-		padding: 50px ;
-		font-family: "나눔명조";
-		color:#463D3D;
+	
+	table{
+	border-collapse: collapse;
 	}
+	th{
+	border-bottom: solid 1px #463D3D ;
+	}
+	
 </style>
 
-<body bgcolor="#FFFAF6">
+<body style="background-color:#FFFAF6">
+ 	<header>
+	   <div >
+	    <a href="main.do"><img src="assets/logo.png"  width="130" height="70"  /></a>
+		 <button onclick="location='adminV.jsp'" class="hd-btn">관리자홈</button> 
+	     <button onclick="location='memberList.do'" class="hd-btn">회원관리</button>
+	     <button onclick="location='productAdmin.do'" class="hd-btn">상품관리</button>
+		 <button onclick="location='noticeLAdmin.do'" class="hd-btn" >공지사항관리</button> 
+		 <button onclick="location='counselAdmin.do'" class="hd-btn" >개인문의관리</button> 
+		 <button onclick="location='logOutH.jsp'"  class="hd-btn">로그아웃</button>  
+	    </div>
+	 </header> 
+	 
 <div class="contents">
-<a href="adminV.jsp">main</a> 
+
 	<div>
 		<div> <h2>가입현황</h2> </div>
-		<div style= "overflow:auto; width:850px; height:200px;" >
-			<table style="width:800px;">
+		<table style="width:830px;">
 			<tr>
-				<th>SignIn Date</th> <th> ID </th> <th> Name </th> <th> Gender </th> 
-				<th> Birth Date </th> <th> Phone </th> <th> Email </th>
+				<th style="width: 150px">SignIn Date</th> <th style="width:45px;"> ID </th> <th style="width:40px;"> Name </th> <th style="width:40px;"> Gender </th> 
+				<th style="width: 90px"> Birth Date </th> <th style="width: 90px"> Phone </th> <th style="width: 130px"> Email </th>
 			</tr>
+		</table>
+		<div style= "overflow:auto; width:850px; height:200px;" >
+			<table style="width:820px;">
 			<c:forEach items="${inList }" var="in" >
 				<tr>
 					<td> <fmt:formatDate pattern="yyyy년MM월dd일 yy:mm:ss" value="${in.u_SignDate}"/> </td>
@@ -45,14 +60,18 @@
 			</table>
 		</div>
 	</div>
+	
 	<div>
 		<div> <h2>탈퇴현황</h2> </div>
-		<div style="overflow:auto; width:850px; height:200px;" >
-			<table style="width:800px;">
+		<table style="width:830px;">
 			<tr>
-				<th>SignOut Date</th> <th> ID </th> <th> Name </th> <th> Gender </th> 
-				<th> Birth Date </th> <th> Phone </th> <th> Email </th>
+				<th style="width: 150px">SignOut Date</th> <th style="width:45px;"> ID </th> <th style="width:40px;"> Name </th> <th style="width:40px;"> Gender </th> 
+				<th style="width: 90px"> Birth Date </th> <th style="width: 90px"> Phone </th> <th style="width: 130px"> Email </th>
 			</tr>
+		</table>
+		
+		<div style="overflow:auto; width:850px; height:200px;" >
+			<table style="width:820px;">
 			<c:forEach items= "${ outList }" var="out">
 				<tr>
 				<td> <fmt:formatDate pattern="yyyy년MM월dd일 yy:mm:ss" value="${out.u_ResignDate}"/> </td>
@@ -69,5 +88,6 @@
 
 
 </div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>
 </html>

@@ -47,7 +47,7 @@
   }    
 </style>
 </head>
-<body>
+<body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -121,7 +121,7 @@
 					<div class="text-end">
            
 					<div> 
-				<button type="submit" class="btn btn-outline-secondary">
+				<button type="submit" class="btn text-white">
                   <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
 				  <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
  				 <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
@@ -131,12 +131,7 @@
 				 </div> 
 				 </div>
 				</form>
-             
-
-					
-					
-				
-				
+    
 				<!-- 마이페이지 -->
 					<% 
 				 	 if(session.getAttribute("userID") == null){
@@ -148,24 +143,12 @@
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" href=""></j>
-					<script>	
-					var j = 0;
-					$('j').on('click', function() {
-						if (j == 0) {
-							$(this).attr('class', 'bi-bag-check-fill');
-							j++;
-						} else if (j == 1) {
-							$(this).attr('class', 'bi-bag-heart');
-							j—;
-						}
-					});
-					</script>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
+					
 				</div>
 			</div>
-		</div>
 	</nav>
-
+<!-- 상품검색 -->
 		<section class="py-5">
                	 <div class="row row-cols-1 row-cols-md-4 g-4">
 		  					<c:forEach items="${searchList }" var="dto">
@@ -189,19 +172,6 @@
   				  </div>
   				  </section> 
 				
-
-
-
-
-
-
-    			
-	
-
-				
-
-			
-		
 	
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>	

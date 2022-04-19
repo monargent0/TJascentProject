@@ -17,25 +17,25 @@ public class ALoginCommand implements ACommand {
 		HttpSession session = request.getSession();
 		String userID = request.getParameter("userID");
 		String userPW = request.getParameter("userPW");
-		String productCode = (String)request.getParameter("productCode");
+		String productCode = (String) session.getAttribute("productCode");
 		
 		ADaoU daoU = new ADaoU();
 		ArrayList<ADtoAD> dtoAD = daoU.login(userID, userPW);
-		
 			
 		if(dtoAD.isEmpty()) {
 			session.setAttribute("alertTxt", "일치하는 아이디가 없습니다." );
 			request.setAttribute("viewPage", "logInV.jsp");	
 		} else if ( dtoAD.get(0).getAdminCheck().toString().equals("admin")) {
 			session.setAttribute("userID", dtoAD.get(0).getUserID().toString() );
-			request.setAttribute("viewPage", "admin.jsp");			
+			request.setAttribute("viewPage", "adminV.jsp");			
 		} else if ( dtoAD.get(0).getUserID().toString() != null) {
 			session.setAttribute("userID", dtoAD.get(0).getUserID().toString() );
-			if (productCode == null) {
+			if(productCode == null){
 				request.setAttribute("viewPage", "mainV.jsp");
-			}
-			else {
+			}else if(productCode != null){
 				request.setAttribute("viewPage", "productDetail.do?productCode="+productCode);
+				session.removeAttribute("productCode");
+				productCode = null;
 			}
 		} 
 	}

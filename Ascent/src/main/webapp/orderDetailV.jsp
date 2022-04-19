@@ -126,18 +126,7 @@
 				<!--검색,마이페이지,장바구니 아이콘  -->
 				<div class="text-end">
 					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
-					<script>
-					var k = 0;
-					$('k').on('click', function() {
-						if (k == 0) {
-							$(this).attr('class', 'bi-search-heart');
-							k++;
-						} else if (k == 1) {
-							$(this).attr('class', 'bi-search');
-							k--;
-						}
-					});
-				</script>
+
 					<% 
 				 	 if(session.getAttribute("userID") == null){
 					%>
@@ -148,18 +137,6 @@
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="cartListCheckUser()"></j>
-					<!-- <script>	
-					var j = 0;
-					$('j').on('click', function() {
-						if (j == 0) {
-							$(this).attr('class', 'bi-bag-check-fill');
-							j++;
-						} else if (j == 1) {
-							$(this).attr('class', 'bi-bag-heart');
-							j—-;
-						}
-					}); -->
-					</script>
 				</div>
 			</div>
 		</div>
@@ -233,14 +210,14 @@
 
 </body>
 <script>
-	var userID = '<%=session.getAttribute("userID")%>';
+var userID = '<%=session.getAttribute("userID")%>';
 function cartListCheckUser() {
 	if (userID != 'null'){
 		location.href='cartList.do?userID='+userID;
 	}
 	else{
 		alert("로그인이 필요합니다.");
-		location.href='logInV.jsp?productCode='+productCode1;
+		location.href='logInV.jsp';
 	}
 }
 function sendProductCodeLogin() {
