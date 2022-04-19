@@ -9,4 +9,5 @@ public class AControllerUser {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
 }
