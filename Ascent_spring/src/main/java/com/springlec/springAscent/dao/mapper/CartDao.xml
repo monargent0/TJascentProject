@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springlec.sprindAscent.dao.CartDao">
+	<select id="cartList" resultType="com.springlec.springAscent.dto.CartDtoPC" >
+		SELECT C.CARTCODE, P.PRODUCTCODE, P.PRODUCTIMAGES, P.PRODUCTNAME, P.PRODUCTSIZE, C.CARTAMOUNT, P.PRODUCTPRICE FROM CART C, USERINFO U, PRODUCT P WHERE C.USER_USERID = U.USERID AND C.PRODUCT_PRODUCTCODE = P.PRODUCTCODE AND U.USERID = #{param1} 
+		<if test="param2 != null">AND C.CARTCODE = #{param2}
+			<foreach collection=""></foreach>
+		</if>
+	</select>
+</mapper>
