@@ -26,6 +26,20 @@
 	
 	<context:component-scan base-package="com.springlec.springAscent" />
 	
+	<!--command -->
+	<beans:bean name="allList" class="com.springlec.springAscent.command.productAllListCommand" ></beans:bean>
+	<!-- <beans:bean name="Search" class="com.springlec.springAscent.command.productSearchCommand" ></beans:bean>
+	<beans:bean name="Main" class="com.springlec.springAscent.command.productMainCommand" ></beans:bean>
+	<beans:bean name="pPList" class="com.springlec.springAscent.command.productpPListCommand" ></beans:bean>
+	<beans:bean name="pTList" class="com.springlec.springAscent.command.productpTListCommand" ></beans:bean>
+	<beans:bean name="pCList" class="com.springlec.springAscent.command.productpCListCommand" ></beans:bean>
+	<beans:bean name="pBList" class="com.springlec.springAscent.command.productpBListCommand" ></beans:bean>
+	<beans:bean name="sFList" class="com.springlec.springAscent.command.productsFListCommand" ></beans:bean>
+	<beans:bean name="sCList" class="com.springlec.springAscent.command.productsCListCommand" ></beans:bean>
+	<beans:bean name="sFRList" class="com.springlec.springAscent.command.productsFRListCommand" ></beans:bean>
+	<beans:bean name="sFTList" class="com.springlec.springAscent.command.productsFTListCommand" ></beans:bean>
+	<beans:bean name="sOList" class="com.springlec.springAscent.command.productsOListCommand" ></beans:bean>
+	<beans:bean name="sWList" class="com.springlec.springAscent.command.productsWListCommand" ></beans:bean> -->
 	<!-- JDBC -->
 	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>

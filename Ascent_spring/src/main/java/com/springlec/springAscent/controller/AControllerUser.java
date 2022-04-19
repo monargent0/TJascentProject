@@ -7,6 +7,6 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class AControllerUser {
 	
-	@Autowired
-	private SqlSession sqlSession;
+//	@Autowired
+//	private SqlSession sqlSession;
 }

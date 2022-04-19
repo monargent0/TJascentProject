@@ -3,48 +3,48 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 
-<mapper namespace="com.springlec.springAscent.dao.ADaoP">
-<select id="allList" resultType="com.springlec.springAscent.dto.ADtoP">
+<mapper namespace="com.springlec.springAscent.dao.PDao">
+<select id="allList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT ORDER BY PRODUCTCODE DESC
 </select>
 
-<select id="mainList" resultType="com.springlec.springAscent.dto.ADtoP">
+<select id="mainList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT * FROM PRODUCT WHERE PRODUCTNAME LIKE '%로즈%' ORDER BY PRODUCTCODE DESC LIMIT 4 
 </select>
 
-<select id="searchList" resultType="com.springlec.springAscent.dto.ADtoP">
+<select id="searchList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT * FROM PRODUCT WHERE REPLACE(PRODUCTNAME,' ','')LIKE #{param1} OR REPLACE(PRODUCTBRAND,' ','') LIKE #{param2} ORDER BY PRODUCTCODE DESC
 </select>
 
-<select id="pPList" resultType="com.springlec.springAscent.dto.ADtoP">
+<select id="pPList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE 'P-%'
 </select>
 
-<select id="pTList" resultType="com.springlec.springAscent.dto.ADtoP">
+<select id="pTList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE 'T-%'
 </select>
 
-<select id="pCList" resultType="com.springlec.springAscent.dto.ADtoP">
+<select id="pCList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE 'C-%'
 </select>
 
-<select id="pBList" resultType="com.springlec.springAscent.dto.ADtoP">
+<select id="pBList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE 'B-%'
 </select>
 
-<select id="sFList" resultType="com.springlec.springAscent.dto.ADtoP">
+<select id="sFList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE '%-F-%'
 </select>
 
-<select id="sCList" resultType="com.springlec.springAscent.dto.ADtoP">
+<select id="sCList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE '%-C-%'
 </select>
 
-<select id="sFRList" resultType="com.springlec.springAscent.dto.ADtoP">
+<select id="sFRList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE '%-FR-%'
 </select>
 
-<select id="sFTList" resultType="com.springlec.springAscent.dto.ADtoP">
+<select id="sFTList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE '%-FT-%'
 </select>
 
