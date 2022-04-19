@@ -36,7 +36,7 @@
 	 
 <div class="contents">
 
-	<div>
+	<div style="margin-bottom: 150px;">
 		<div> <h2>가입현황</h2> </div>
 		<table style="width:830px;">
 			<tr>
