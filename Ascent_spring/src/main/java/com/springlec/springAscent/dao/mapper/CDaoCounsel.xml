@@ -7,16 +7,16 @@
     	<select id="list" resultType="com.springlec.springAscent.dto.CDtoCounsel">
     		SELECT COUNSELCODE, COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, C_REPLYCHECK FROM COUNSEL WHERE USER_USERID = #{param1} ORDER BY MID DESC
     	</select>
-    	<select id="write" resultType="com.springlec.springAscent.dto.CDtoCounsel">
+    	<insert id="write">
     		INSERT INTO COUNSEL (COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, USER_USERID , C_REPLYCHECK ) 
     		VALUES (#{param1},#{param2},#{param3},NOW(),#{param4} ,'미답변' )
-    	</select>
+    	</insert>
     	<select id="content" resultType="com.springlec.springAscent.dto.CDtoCounsel">
     		SELECT * FROM COUNSEL WHERE COUNSELCODE = #{param1}
     	</select>
-    	<select id="delete" resultType="com.springlec.springAscent.dto.CDtoCounsel">
+    	<delete id="delete">
     		DELETE FROM COUNSEL WHERE COUNSELCODE = #{param1}
-    	</select>
+    	</delete>
     
     
     
