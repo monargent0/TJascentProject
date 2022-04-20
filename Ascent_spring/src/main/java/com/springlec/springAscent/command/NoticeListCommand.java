@@ -10,7 +10,7 @@ import com.springlec.springAscent.dao.NDaoNotice;
 public class NoticeListCommand implements ACommand {
 
 	@Override
-	public void execute3(HttpServletRequest request, SqlSession sqlSession, Model model) {
+	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
 		
 		NDaoNotice dao = sqlSession.getMapper(NDaoNotice.class);
 		model.addAttribute("list", dao.list());
@@ -18,7 +18,7 @@ public class NoticeListCommand implements ACommand {
 	}
 
 	@Override
-	public void execute1(HttpServletRequest request, SqlSession sqlSession) {
+	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -29,4 +29,5 @@ public class NoticeListCommand implements ACommand {
 		
 	}
 
+	
 }

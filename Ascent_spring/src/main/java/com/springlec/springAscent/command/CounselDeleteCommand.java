@@ -10,7 +10,7 @@ import com.springlec.springAscent.dao.CDaoCounsel;
 public class CounselDeleteCommand implements ACommand {
 
 	@Override
-	public void execute1(HttpServletRequest request, SqlSession sqlSession) {
+	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
 		
 		CDaoCounsel dao = sqlSession.getMapper(CDaoCounsel.class);
 		dao.delete(Integer.parseInt(request.getParameter("counselCode")));
@@ -24,7 +24,7 @@ public class CounselDeleteCommand implements ACommand {
 	}
 
 	@Override
-	public void execute3(HttpServletRequest request, SqlSession sqlSession, Model model) {
+	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
 		// TODO Auto-generated method stub
 		
 	}

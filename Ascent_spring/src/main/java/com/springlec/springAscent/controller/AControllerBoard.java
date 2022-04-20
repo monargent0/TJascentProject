@@ -44,7 +44,7 @@ public class AControllerBoard {
 	// 1대1 문의 목록 출력
 	@RequestMapping("/counselList")
 	public String counselList(HttpServletRequest request, Model model) {
-		counselListCommand.execute3(request, sqlSession, model);
+		counselListCommand.execute3(sqlSession, request, model);
 		return "counselListV";
 	}
 	
@@ -58,21 +58,21 @@ public class AControllerBoard {
 	// 1대1 문의 입력
 	@RequestMapping("/counselWrite")
 	public String counselWrite(HttpServletRequest request, SqlSession session) {
-		counselWriteCommand.execute1(request, session);
+		counselWriteCommand.execute1(session, request);
 		return "redirect:counselList";
 	}
 	
 	// 1대1 문의 상세
 	@RequestMapping("/counselContent")
 	public String counselContent(HttpServletRequest request, SqlSession session, Model model) {
-		counselContentCommand.execute3(request, session, model);
+		counselContentCommand.execute3(session, request, model);
 		return "counselContentV";
 	}
 	
 	// 1대1 문의 삭제
 	@RequestMapping("/counselDelete")
 	public String counselDelete(HttpServletRequest request, SqlSession session) {
-		counselDeleteCommand.execute1(request, session);
+		counselDeleteCommand.execute1(session, request);
 		return "redirect:counselListV";
 		
 	}
@@ -80,14 +80,14 @@ public class AControllerBoard {
 	// 공지사항 목록
 	@RequestMapping("/noticelist")
 	public String noticeList(HttpServletRequest request, Model model) {
-		noticeListCommand.execute3(request, sqlSession, model);
+		noticeListCommand.execute3(sqlSession, request, model);
 		return "noticeListV";
 	}
 	
 	// 공지사항 상세	
 	@RequestMapping("/noticeContent")
 	public String noticeContent(HttpServletRequest request, SqlSession session, Model model) {
-		noticeContentCommand.execute3(request, session, model);
+		noticeContentCommand.execute3(session, request, model);
 		return "noticeContentV";
 	}
 	

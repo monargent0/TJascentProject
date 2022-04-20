@@ -10,7 +10,7 @@ import com.springlec.springAscent.dao.CDaoCounsel;
 public class CounselListCommand implements ACommand {
 
 	@Override
-	public void execute3(HttpServletRequest request, SqlSession sqlSession, Model model) {
+	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
 		// TODO Auto-generated method stub
 		String userID = request.getParameter("userID");
 		
@@ -20,7 +20,7 @@ public class CounselListCommand implements ACommand {
 	}
 
 	@Override
-	public void execute1(HttpServletRequest request, SqlSession sqlSession) {
+	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -30,5 +30,6 @@ public class CounselListCommand implements ACommand {
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 }
