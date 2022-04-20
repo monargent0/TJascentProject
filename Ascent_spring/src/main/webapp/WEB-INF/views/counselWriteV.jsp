@@ -213,7 +213,7 @@
 			</tr>
 			<tr>
 				<td>첨부파일</td>
-				<td><input type="file" name="image" accept="image/*" multiple></td>
+				<td><input type="file" id="upload" name="image" accept="image/*"></td>
 			</tr>			
 			<tr>
 				<td><a id="hyper" href="counselList">목록보기</a></td>
@@ -222,6 +222,7 @@
 		</form>
 	</table>	
 	</div>
+	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>
 </body>
