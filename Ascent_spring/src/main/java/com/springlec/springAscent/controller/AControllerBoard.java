@@ -9,9 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springlec.springAscent.command.ACommand;
-import com.springlec.springAscent.command.CounselContentCommand;
-import com.springlec.springAscent.command.CounselWriteCommand;
-import com.springlec.springAscent.command.NoticeContentCommand;
 
 @Controller
 public class AControllerBoard {
@@ -19,14 +16,13 @@ public class AControllerBoard {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	ACommand command = null;
-	ACommand counselListCommand = null; 
-	ACommand counselWriteCommand = null; 
-	ACommand counselContentCommand = null; 
-	ACommand counselDeleteCommand = null; 
+	private ACommand counselListCommand = null; 
+	private ACommand counselWriteCommand = null; 
+	private ACommand counselContentCommand = null; 
+	private ACommand counselDeleteCommand = null; 
 	
-	ACommand noticeListCommand = null;
-	ACommand noticeContentCommand = null;
+	private ACommand noticeListCommand = null;
+	private ACommand noticeContentCommand = null;
 	
 	
 	@Autowired
