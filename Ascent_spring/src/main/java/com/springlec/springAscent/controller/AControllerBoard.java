@@ -73,7 +73,7 @@ public class AControllerBoard {
 	@RequestMapping("/counselDelete")
 	public String counselDelete(HttpServletRequest request, SqlSession session) {
 		counselDeleteCommand.execute1(session, request);
-		return "redirect:counselListV";
+		return "redirect:counselList";
 		
 	}
 	
