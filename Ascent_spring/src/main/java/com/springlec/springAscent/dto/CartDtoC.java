@@ -1,6 +1,10 @@
 package com.springlec.springAscent.dto;
 
 public class CartDtoC {
+	
+public CartDtoC() {
+	// TODO Auto-generated constructor stub
+}	
 
 	int cartCode;
 	int cartAmount;

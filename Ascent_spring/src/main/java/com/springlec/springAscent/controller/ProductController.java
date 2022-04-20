@@ -9,46 +9,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.springlec.springAscent.command.ACommand;
 @Controller
 public class ProductController {
+	
 	@Autowired
 	private SqlSession sqlSession;
-	ACommand command = null;
-	
+
 	//servlet-context에서 new를 선언해준것 
 	private ACommand productAllListCommand = null;
-	private ACommand productMainCommand = null;
-	private ACommand productSearchCommand = null;
-	private ACommand productpPListCommand = null;
-	private ACommand productpTListCommand = null;
-	private ACommand productpCListCommand = null;
-	private ACommand productpWListCommand = null;
-	private ACommand productsFListCommand = null;
-	private ACommand productsCListCommand = null;
-	private ACommand productsFTListCommand = null;
-	private ACommand productsFRListCommand = null;
-	private ACommand productsWListCommand = null;
-	private ACommand productsOListCommand = null;
+//	private ACommand productMainCommand = null;
+//	private ACommand productSearchCommand = null;
+//	private ACommand productpPListCommand = null;
+//	private ACommand productpTListCommand = null;
+//	private ACommand productpCListCommand = null;
+//	private ACommand productpWListCommand = null;
+//	private ACommand productsFListCommand = null;
+//	private ACommand productsCListCommand = null;
+//	private ACommand productsFTListCommand = null;
+//	private ACommand productsFRListCommand = null;
+//	private ACommand productsWListCommand = null;
+//	private ACommand productsOListCommand = null;
 	
 	@Autowired
-	public void auto(SqlSession sqlSession, ACommand command, ACommand productAllListCommand,
-			ACommand productMainCommand, ACommand productSearchCommand, ACommand productpPListCommand,
-			ACommand productpTListCommand, ACommand productpCListCommand, ACommand productpWListCommand,
-			ACommand productsFListCommand, ACommand productsCListCommand, ACommand productsFTListCommand,
-			ACommand productsFRListCommand, ACommand productsWListCommand, ACommand productsOListCommand) {
-		this.sqlSession = sqlSession;
-		this.command = command;
-		this.productAllListCommand = productAllListCommand;
-		this.productMainCommand = productMainCommand;
-		this.productSearchCommand = productSearchCommand;
-		this.productpPListCommand = productpPListCommand;
-		this.productpTListCommand = productpTListCommand;
-		this.productpCListCommand = productpCListCommand;
-		this.productpWListCommand = productpWListCommand;
-		this.productsFListCommand = productsFListCommand;
-		this.productsCListCommand = productsCListCommand;
-		this.productsFTListCommand = productsFTListCommand;
-		this.productsFRListCommand = productsFRListCommand;
-		this.productsWListCommand = productsWListCommand;
-		this.productsOListCommand = productsOListCommand;
+	public void auto(ACommand productAllList,
+			ACommand productMain, ACommand productSearch, ACommand productpPList,
+			ACommand productpTList, ACommand productpCList, ACommand productpWList,
+			ACommand productsFList, ACommand productsCList, ACommand productsFTList,
+			ACommand productsFRList, ACommand productsWList, ACommand productsOList) {
+		this.productAllListCommand = productAllList;
+//		this.productMainCommand = productMain;
+//		this.productSearchCommand = productSearch;
+//		this.productpPListCommand = productpPList;
+//		this.productpTListCommand = productpTList;
+//		this.productpCListCommand = productpCList;
+//		this.productpWListCommand = productpWList;
+//		this.productsFListCommand = productsFList;
+//		this.productsCListCommand = productsCList;
+//		this.productsFTListCommand = productsFTList;
+//		this.productsFRListCommand = productsFRList;
+//		this.productsWListCommand = productsWList;
+//		this.productsOListCommand = productsOList;
 	}
 	
 //	@RequestMapping("/productlist")
@@ -58,7 +56,7 @@ public class ProductController {
 //	
 //	}
 	//상품카테고리에 해당하는 제품 한 주소에 부여주기 
-	@RequestMapping("/productperfumelist")
+	@RequestMapping("/productlist")
 	public String productCategoryList(Model model) {
 		productAllListCommand.execute2(sqlSession, model);
 		return "productList";
