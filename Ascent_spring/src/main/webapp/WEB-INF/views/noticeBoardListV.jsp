@@ -181,7 +181,7 @@
 			<tr>
 				<td>${dto.noticeCode }</a></td>
 				<td>${dto.noticeType }</td>
-				<td><a id="hyper" href="noticeBoardDetail.do?noticeCode=${dto.noticeCode }">${dto.noticeTitle}</td>						
+				<td><a id="hyper" href="noticeBoardContent?noticeCode=${dto.noticeCode }">${dto.noticeTitle}</td>						
 				<td>${dto.noticeDate}</td>
 			</tr>
 		</c:forEach>

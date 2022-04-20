@@ -74,17 +74,17 @@ public class AControllerBoard {
 	}
 	
 	// 공지사항 목록
-	@RequestMapping("/noticelist")
-	public String noticeList(HttpServletRequest request, Model model) {
+	@RequestMapping("/noticeBoardlist")
+	public String noticeBoardList(HttpServletRequest request, Model model) {
 		noticeListCommand.execute3(sqlSession, request, model);
-		return "noticeListV";
+		return "noticeBoardListV";
 	}
 	
 	// 공지사항 상세	
-	@RequestMapping("/noticeContent")
-	public String noticeContent(HttpServletRequest request, SqlSession session, Model model) {
+	@RequestMapping("/noticeBoardContent")
+	public String noticeBoardContent(HttpServletRequest request, SqlSession session, Model model) {
 		noticeContentCommand.execute3(session, request, model);
-		return "noticeContentV";
+		return "noticeBoardContentV";
 	}
 	
 }

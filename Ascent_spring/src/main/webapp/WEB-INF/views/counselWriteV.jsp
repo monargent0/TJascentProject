@@ -190,7 +190,7 @@
  <div class="contents">
 	<h3>ascent 1대1 문의</h3>
 		<table >
-		<form action="counselWrite.do"  encType="multipart/form-data" method="post">
+		<form action="counselWrite"  encType="multipart/form-data" method="post">
 			<tr>
 				<td>문의종류</td>
 				<td><select name="counselType">

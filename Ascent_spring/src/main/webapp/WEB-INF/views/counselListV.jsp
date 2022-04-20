@@ -187,7 +187,7 @@
 			</tr>
 		</c:forEach>
 		<tr>
-			<td align="right" colspan="5"><a id="hyper" href="counselWriteV.jsp">글작성</a></td>
+			<td align="right" colspan="5"><a id="hyper" href="counselWriteV">글작성</a></td>
 		</tr>
 	</table>	
 	
