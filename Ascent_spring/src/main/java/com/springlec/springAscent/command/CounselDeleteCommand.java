@@ -7,12 +7,14 @@ import org.springframework.ui.Model;
 
 import com.springlec.springAscent.dao.CDaoCounsel;
 
-public class CounselWriteCommand implements ACommand {
+public class CounselDeleteCommand implements ACommand {
 
 	@Override
 	public void execute1(HttpServletRequest request, SqlSession sqlSession) {
+		
 		CDaoCounsel dao = sqlSession.getMapper(CDaoCounsel.class);
-		dao.write(request.getParameter("counselType"), request.getParameter("counselTitle"), request.getParameter("counselContent"), request.getParameter("userID"));
+		dao.delete(Integer.parseInt(request.getParameter("counselCode")));
+
 	}
 
 	@Override

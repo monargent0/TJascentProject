@@ -7,15 +7,16 @@ import org.springframework.ui.Model;
 
 import com.springlec.springAscent.dao.CDaoCounsel;
 
-public class CounselListCommand implements ACommand {
+public class CounselContentCommand implements ACommand {
 
 	@Override
 	public void execute3(HttpServletRequest request, SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
-		String userID = request.getParameter("userID");
+
+		String counselCode = request.getParameter("counselCode");
 		
 		CDaoCounsel dao = sqlSession.getMapper(CDaoCounsel.class);
-		model.addAttribute("list", dao.list(userID));
+		
+		model.addAttribute("counselDetail", dao.content(counselCode));
 		
 	}
 
@@ -30,5 +31,6 @@ public class CounselListCommand implements ACommand {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+
 }

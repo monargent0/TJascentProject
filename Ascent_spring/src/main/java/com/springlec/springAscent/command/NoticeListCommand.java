@@ -5,17 +5,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.springlec.springAscent.dao.CDaoCounsel;
+import com.springlec.springAscent.dao.NDaoNotice;
 
-public class CounselListCommand implements ACommand {
+public class NoticeListCommand implements ACommand {
 
 	@Override
 	public void execute3(HttpServletRequest request, SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
-		String userID = request.getParameter("userID");
 		
-		CDaoCounsel dao = sqlSession.getMapper(CDaoCounsel.class);
-		model.addAttribute("list", dao.list(userID));
+		NDaoNotice dao = sqlSession.getMapper(NDaoNotice.class);
+		model.addAttribute("list", dao.list());
 		
 	}
 
@@ -30,5 +28,5 @@ public class CounselListCommand implements ACommand {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 }

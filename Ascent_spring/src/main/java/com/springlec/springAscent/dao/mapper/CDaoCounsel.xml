@@ -9,7 +9,13 @@
     	</select>
     	<select id="write" resultType="com.springlec.springAscent.dto.CDtoCounsel">
     		INSERT INTO COUNSEL (COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, USER_USERID , C_REPLYCHECK ) 
-    		VALUES (#{param1},#{param2},#{param3},NOW(),#{param4} ,'미답변' )"
+    		VALUES (#{param1},#{param2},#{param3},NOW(),#{param4} ,'미답변' )
+    	</select>
+    	<select id="content" resultType="com.springlec.springAscent.dto.CDtoCounsel">
+    		SELECT * FROM COUNSEL WHERE COUNSELCODE = #{param1}
+    	</select>
+    	<select id="delete" resultType="com.springlec.springAscent.dto.CDtoCounsel">
+    		DELETE FROM COUNSEL WHERE COUNSELCODE = #{param1}
     	</select>
     
     
