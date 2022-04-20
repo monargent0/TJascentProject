@@ -190,7 +190,7 @@
  <div class="contents">
 	<h3>ascent 1대1 문의</h3>
 		<table >
-		<form action="counselWrite"  encType="multipart/form-data" method="post">
+		<form action="counselWrite" method="post">
 			<tr>
 				<td>문의종류</td>
 				<td><select name="counselType">
@@ -216,7 +216,7 @@
 				<td><input type="file" name="image" accept="image/*" multiple></td>
 			</tr>			
 			<tr>
-				<td><a id="hyper" href="counselList.do">목록보기</a></td>
+				<td><a id="hyper" href="counselList">목록보기</a></td>
 				<td colspan="2" align="right"><input class="sub" type="submit" value="입력"></td>
 			</tr>
 		</form>

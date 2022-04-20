@@ -12,12 +12,12 @@ public class CounselContentCommand implements ACommand {
 	@Override
 	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
 
-		String counselCode = request.getParameter("counselCode");
-		
+		int counselCode = Integer.parseInt(request.getParameter("counselCode"));
+					
 		CDaoCounsel dao = sqlSession.getMapper(CDaoCounsel.class);
 		
-		model.addAttribute("counselDetail", dao.content(counselCode));
-		
+		model.addAttribute("counselContentV", dao.content(counselCode));
+		request.setAttribute("result", "counselContentV");
 	}
 
 	@Override

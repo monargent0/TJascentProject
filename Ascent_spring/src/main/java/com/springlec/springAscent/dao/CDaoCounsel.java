@@ -11,7 +11,7 @@ public interface CDaoCounsel {
 	
 	public void write(String counselType, String counselTitle, String counselContent, String userID);
 	
-	public CDtoCounsel content(String counselCode);
+	public CDtoCounsel content(int counselCode);
 	
 	public void delete(int counselCode);
 

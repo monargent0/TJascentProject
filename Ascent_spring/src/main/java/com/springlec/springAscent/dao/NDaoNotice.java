@@ -10,7 +10,7 @@ public interface NDaoNotice {
 	public ArrayList<NDtoNotice> list(); 
 	
 	// 공지사항 상세
-	public NDtoNotice content(String noticeCode);
+	public NDtoNotice content(int noticeCode);
 
 	
 }

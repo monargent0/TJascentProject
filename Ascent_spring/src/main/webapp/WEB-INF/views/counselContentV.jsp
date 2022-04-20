@@ -189,23 +189,23 @@
 		<form action="counselDelete.do" method="post">
 			<tr>
 				<td>글번호</td>
-				<td><input type="text" name="counselCode" size="5" value="${counselDetailV.counselCode}" readonly="readonly"></td>
+				<td><input type="text" name="counselCode" size="5" value="${counselContentV.counselCode}" readonly="readonly"></td>
 			</tr>			
 			<tr>
 				<td>문의종류</td>
-				<td><input type="text" name="counselType" size="15" value="${counselDetailV.counselType}" readonly="readonly"></td>
+				<td><input type="text" name="counselType" size="15" value="${counselContentV.counselType}" readonly="readonly"></td>
 			</tr>			
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="counselTitle" size="61" value="${counselDetailV.counselTitle }" readonly="readonly"></td>
+				<td><input type="text" name="counselTitle" size="61" value="${counselContentV.counselTitle }" readonly="readonly"></td>
 			</tr>			
 			</tr>
 				<td>문의내용</td>
-				<td><textarea name="counselContent" rows="10" cols="50" maxlength="100" readonly="readonly">${counselDetailV.counselContent } </textarea></td>
+				<td><textarea name="counselContent" rows="10" cols="50" maxlength="100" readonly="readonly">${counselContentV.counselContent } </textarea></td>
 			</tr>
 			<tr>
 				<td>게시일</td>
-				<td><input type="text" name="counselDate" size="25" value="${counselDetailV.counselDate}" readonly="readonly"></td>
+				<td><input type="text" name="counselDate" size="25" value="${counselContentV.counselDate}" readonly="readonly"></td>
 			</tr>						
 			<tr>
 				<td><a id="hyper" href="counselList.do">목록보기</a></td>
