@@ -95,19 +95,21 @@
 							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
 						</ul>
 					</li>
-					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="#">About</a>
-						<ul>
-							<li><a href="noticeBoardList.do">Notice</a></li>
-							<!-- <li><a href="counselList.do">Q&A</a></li> -->
+				<!-- 1:1문의 ,공지사항, 상품문의  -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							About </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="noticeBoardList.do">Notice</a></li>
 							<%
 							if(session.getAttribute("userID") == null){
 							%>
-							<li><a href="logInV.jsp">Q&A</a></li>
+							<li><a class="dropdown-item" href="logInV">Q&A</a></li>
 							<%
 							}else if(session.getAttribute("userID") != null){
 							%>
-							<li><a href="counselList.do">Q&A</a></li>
+							<li><a class="dropdown-item" href="counselList.do">Q&A</a></li>
 						  <% } %>
 						</ul>
 					</li>
