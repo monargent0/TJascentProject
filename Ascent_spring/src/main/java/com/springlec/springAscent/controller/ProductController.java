@@ -49,17 +49,13 @@ public class ProductController {
 //		this.productsOListCommand = productsOList;
 	}
 	
-//	@RequestMapping("/productlist")
-//	public String allList(Model model) {
-//		productAllListCommand.execute2(sqlSession, model);
-//		return "productAllList";
-//	
-//	}
-	//상품카테고리에 해당하는 제품 한 주소에 부여주기 
 	@RequestMapping("/productlist")
-	public String productCategoryList(Model model) {
+	public String allList(Model model) {
 		productAllListCommand.execute2(sqlSession, model);
-		return "productList";
+		return "productAllList";
 	
-}
+	}
+
+	
+
 }
