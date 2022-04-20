@@ -14,5 +14,7 @@ public interface CDaoCounsel {
 	public CDtoCounsel content(int counselCode);
 	
 	public void delete(int counselCode);
+	
+	public void modify(String counselType, String counselTitle, String counselContent, int counselCode);
 
 }

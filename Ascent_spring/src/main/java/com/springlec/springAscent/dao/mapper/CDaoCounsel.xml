@@ -17,7 +17,9 @@
     	<delete id="delete">
     		DELETE FROM COUNSEL WHERE COUNSELCODE = #{param1}
     	</delete>
-    
+    	 <update id="modify">
+  			UPDATE COUNSEL SET COUNSELTYPE = #{param1}, COUNSELTITLE = #{param2}, COUNSELCONTENT = #{param3} WHERE COUNSELCODE = #{param4}
+  		</update>
     
     
     

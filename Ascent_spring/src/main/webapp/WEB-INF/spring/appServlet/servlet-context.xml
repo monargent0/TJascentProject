@@ -51,6 +51,7 @@
 	<beans:bean name="counselWrite" class="com.springlec.springAscent.command.CounselWriteCommand"></beans:bean>
 	<beans:bean name="counselContent" class="com.springlec.springAscent.command.CounselContentCommand"></beans:bean>
 	<beans:bean name="counselDelete" class="com.springlec.springAscent.command.CounselDeleteCommand"></beans:bean>
+	<beans:bean name="counselModify" class="com.springlec.springAscent.command.CounselModifyCommand"></beans:bean>	
 	<beans:bean name="noticeList" class="com.springlec.springAscent.command.NoticeListCommand"></beans:bean>
 	<beans:bean name="noticeContent" class="com.springlec.springAscent.command.NoticeContentCommand"></beans:bean>
 	

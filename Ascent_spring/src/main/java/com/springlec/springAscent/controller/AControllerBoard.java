@@ -20,17 +20,19 @@ public class AControllerBoard {
 	private ACommand counselWriteCommand = null; 
 	private ACommand counselContentCommand = null; 
 	private ACommand counselDeleteCommand = null; 
+	private ACommand counselModifyCommand = null; 
 	
 	private ACommand noticeListCommand = null;
 	private ACommand noticeContentCommand = null;
 	
 	
 	@Autowired
-	private void auto(ACommand counselList, ACommand counselWrite, ACommand counselContent, ACommand counselDelete, ACommand noticeList, ACommand noticeContent) {
+	private void auto(ACommand counselList, ACommand counselWrite, ACommand counselContent, ACommand counselDelete, ACommand counselModify, ACommand noticeList, ACommand noticeContent) {
 		this.counselListCommand = counselList;
 		this.counselWriteCommand = counselWrite;
 		this.counselContentCommand = counselContent;
 		this.counselDeleteCommand = counselDelete;
+		this.counselModifyCommand = counselModify;
 		
 		this.noticeListCommand = noticeList;
 		this.noticeContentCommand = noticeContent;
@@ -64,6 +66,17 @@ public class AControllerBoard {
 		counselContentCommand.execute3(sqlSession, request, model);
 		return (String)request.getAttribute("result");
 	}
+	
+	// 1대1 문의 수정
+	@RequestMapping("/counselModify")
+	public String counselModify(HttpServletRequest request) {
+		String counselCode = request.getParameter("counselCode");
+		counselModifyCommand.execute1(sqlSession, request);
+		return "redirect:counselContent?counselCode="+counselCode;
+		
+	}
+	
+	
 	
 	// 1대1 문의 삭제
 	@RequestMapping("/counselDelete")

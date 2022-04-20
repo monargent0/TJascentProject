@@ -186,7 +186,7 @@
 	</nav>
  <div class="contents">
 	<table >
-		<form action="counselDelete.do" method="post">
+		<form action="counselDelete" method="post">
 			<tr>
 				<td>글번호</td>
 				<td><input type="text" name="counselCode" size="5" value="${counselContentV.counselCode}" readonly="readonly"></td>
@@ -197,19 +197,20 @@
 			</tr>			
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="counselTitle" size="61" value="${counselContentV.counselTitle }" readonly="readonly"></td>
+				<td><input type="text" name="counselTitle" size="61" value="${counselContentV.counselTitle }"></td>
 			</tr>			
 			</tr>
 				<td>문의내용</td>
-				<td><textarea name="counselContent" rows="10" cols="50" maxlength="100" readonly="readonly">${counselContentV.counselContent } </textarea></td>
+				<td><textarea name="counselContent" rows="10" cols="50" maxlength="100">${counselContentV.counselContent } </textarea></td>
 			</tr>
 			<tr>
 				<td>게시일</td>
 				<td><input type="text" name="counselDate" size="25" value="${counselContentV.counselDate}" readonly="readonly"></td>
 			</tr>						
 			<tr>
-				<td><a id="hyper" href="counselList.do">목록보기</a></td>
-				<td colspan="2" align="right"><input class="sub" type="submit" value="삭제"></td>
+				<td><a id="hyper" href="counselList">목록보기</a></td>
+				<td colspan="2" align="right"><input class="sub" type="submit" value="삭제">
+				<input class="sub" type="submit" value="수정" formaction="counselModify"></td>
 			</tr>
 	</table>
 	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
