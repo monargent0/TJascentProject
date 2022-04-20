@@ -82,7 +82,7 @@
 				<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					<ul id="nav">
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
+						class="nav-link dropdown-toggle" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Scent </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -97,7 +97,7 @@
 					</li> 
 				<!-- 상품별로 보여주기  -->
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
+						class="nav-link dropdown-toggle" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -108,19 +108,21 @@
 							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
 						</ul>
 					</li>
-					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="#">About</a>
-						<ul>
-							<li><a href="noticeBoardList.do">Notice</a></li>
-							<!-- <li><a href="counselList.do">Q&A</a></li> -->
+				<!-- 1:1문의 ,공지사항, 상품문의  -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							About </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="noticeBoardList.do">Notice</a></li>
 							<%
 							if(session.getAttribute("userID") == null){
 							%>
-							<li><a href="logInV.jsp">Q&A</a></li>
+							<li><a class="dropdown-item" href="logInV">Q&A</a></li>
 							<%
 							}else if(session.getAttribute("userID") != null){
 							%>
-							<li><a href="counselList.do">Q&A</a></li>
+							<li><a class="dropdown-item" href="counselList.do">Q&A</a></li>
 						  <% } %>
 						</ul>
 					</li>
@@ -157,11 +159,11 @@
 					<% 
 				 	 if(session.getAttribute("userID") == null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV'" ></i>
 					<%
 					}else if(session.getAttribute("userID") != null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
@@ -220,7 +222,7 @@ function cartListCheckUser() {
 	}
 	else{
 		alert("로그인이 필요합니다.");
-		location.href='logInV.jsp';
+		location.href='logInV';
 	}
 }
 </script>
