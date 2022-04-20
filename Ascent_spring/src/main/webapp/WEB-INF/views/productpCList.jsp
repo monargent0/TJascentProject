@@ -104,7 +104,8 @@
   					  </a>
 				  </div>
       			  
-      			<!--검색내용  -->
+      			  
+      			 <!--검색내용  -->
 				<form  class="d-flex" method="post" action="searchProduct.do" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
@@ -139,12 +140,13 @@
 				</div>
 			</div>
 	</nav>
+	
 
-
+     
 <!-- 상품 -->
                			   <section class="py-5">
-               			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${pBList }" var="dto"><%--반복문,dto --%>
+               			  <div class="row row-cols-1 row-cols-md-4 g-4"> <!-- 한줄에 4개씩  -->
+		  					<c:forEach items="${pCList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
    									 <div class="card h-100">
    									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
@@ -166,7 +168,8 @@
   				  </section>
                           
                             		
-       
+                            		
+                               
                            
                  
            

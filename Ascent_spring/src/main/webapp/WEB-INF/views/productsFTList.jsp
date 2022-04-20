@@ -104,7 +104,7 @@
   					  </a>
 				  </div>
       			  
-      			<!--검색내용  -->
+      			   <!--검색내용  -->
 				<form  class="d-flex" method="post" action="searchProduct.do" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
@@ -139,12 +139,22 @@
 				</div>
 			</div>
 	</nav>
-
-
+	
+	
+<!-- Header-->
+     <!--    <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">shop</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">find your own scent</p>
+                </div>
+            </div>
+        </header> -->
+     
 <!-- 상품 -->
                			   <section class="py-5">
                			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${pBList }" var="dto"><%--반복문,dto --%>
+		  					<c:forEach items="${sFTList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
    									 <div class="card h-100">
    									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
@@ -166,7 +176,8 @@
   				  </section>
                           
                             		
-       
+                            		
+                               
                            
                  
            
@@ -182,11 +193,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <script type="text/javascript">
-var userID1 = '<%=session.getAttribute("userID")%>';
-// 따옴표 주의
 function cartListCheckUser() {
-	if (userID1 != 'null'){
-		location.href='cartList.do?userID='+userID1;
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
 	}
 	else{
 		alert("로그인이 필요합니다.");

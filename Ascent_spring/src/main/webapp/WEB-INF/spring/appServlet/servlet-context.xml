@@ -71,6 +71,8 @@
 	<beans:bean name="productsFRList" class="com.springlec.springAscent.command.productsFRListCommand" ></beans:bean>
 	<beans:bean name="productsFTList" class="com.springlec.springAscent.command.productsFTListCommand" ></beans:bean>
 	<beans:bean name="productsOList" class="com.springlec.springAscent.command.productsOListCommand" ></beans:bean>
-	<beans:bean name="productsWList" class="com.springlec.springAscent.command.productsWListCommand" ></beans:bean> -->
+
+	<beans:bean name="productsWList" class="com.springlec.springAscent.command.productsWListCommand" ></beans:bean> 
+
 
 </beans:beans>
