@@ -10,15 +10,7 @@ import com.springlec.springAscent.dao.CartDao;
 public class CartModifyCommand implements ACommand {
 
 	@Override
-	public void execute1(HttpServletRequest request, SqlSession sqlSession, Model model) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void execute2(HttpServletRequest request, SqlSession sqlSession) {
-		// TODO Auto-generated method stub
-
+	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
 		String[] cartAmount = request.getParameterValues("cartAmount");
 		String[] cartCode = request.getParameterValues("cartCode");
 		int[] cartAmountArray = new int[cartAmount.length]; 
@@ -31,6 +23,17 @@ public class CartModifyCommand implements ACommand {
 		
 		CartDao dao = sqlSession.getMapper(CartDao.class);
 		dao.cartModify(cartAmountArray, cartCodeArray);
+		
+	}
+
+	@Override
+	public void execute2(SqlSession sqlSession, Model model) {
+		
+	}
+
+	@Override
+	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
+		
 	}
 
 }

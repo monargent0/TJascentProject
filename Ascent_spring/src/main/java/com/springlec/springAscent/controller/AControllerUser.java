@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springlec.springAscent.command.ACommand;
@@ -28,8 +27,8 @@ public class AControllerUser {
 		return "logInV";
 	}
 	@RequestMapping("/logIn")
-	public String login(HttpServletRequest request, Model model) {
-		loginCommand.execute(request, sqlSession, model);
+	public String login(HttpServletRequest request) {
+		loginCommand.execute1(sqlSession, request);
 		return (String)request.getAttribute("return");
 	}
 	

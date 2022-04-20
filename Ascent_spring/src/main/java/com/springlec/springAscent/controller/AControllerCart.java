@@ -46,7 +46,7 @@ public class AControllerCart {
 	public String productDetail(HttpServletRequest request, Model model) {
 		
 		model.addAttribute("request", request);
-		productDetailCommand.execute1(request, sqlSession, model);
+		productDetailCommand.execute3(sqlSession, request, model);
 		
 		return "productDetailV";
 	}
@@ -55,7 +55,7 @@ public class AControllerCart {
 	public String cartList(HttpServletRequest request, Model model) {
 		
 		model.addAttribute("request", request);
-		cartListCommand.execute1(request, sqlSession, model);
+		cartListCommand.execute3(sqlSession, request, model);
 		
 		return "cartListV";
 	}
@@ -64,7 +64,7 @@ public class AControllerCart {
 	public String cartWrite(HttpServletRequest request, Model model) {
 
 		model.addAttribute("request", request);
-		cartWriteCommand.execute2(request, sqlSession);
+		cartWriteCommand.execute1(sqlSession, request);
 		
 		return "redirect:productDetail";
 	}
@@ -73,7 +73,7 @@ public class AControllerCart {
 	public String cartModify(HttpServletRequest request, Model model) {
 		
 		model.addAttribute("request", request);
-		cartModifyCommand.execute2(request, sqlSession);
+		cartModifyCommand.execute1(sqlSession, request);
 		
 		return "redirect:cartList";
 	}
