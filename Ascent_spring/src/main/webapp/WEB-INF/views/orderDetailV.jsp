@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -28,46 +27,34 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <%-- 아이콘 --%>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>ascent</title>
-<!-- 비디오 -->
-<style>
-#videobcg {
-	position: relative;
-	top:0px;
-	left:-15px;
-	min-width:100%;
-	min-height:100%;
-	padding-bottom:70px;
-	height:auto;
-	margin:0;
-	z-index:-1000;
-}
-/*상품구현 위치 */
-#container1 {
-		position: relative;
-		top:300px;
-}
-</style>
-<!-- 상품에 마우스 올릴때 및 위치 조정  -->
-<style>
-  .py-5 div:hover {
-  border-color:#333;
- }   
-  .col {
-  padding:70px 70px 0 70px;
-  } 
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-  .detail-text-center {
- 	padding:30px;
-  height:140px;
-  text-align:center;
-  }    
- </style>
+<title>Order Detail</title>
 </head>
-<body style="background-color:#FFFAF6">
-	
+<style>
+	  table {
+        border-collapse: collapse;
+        width: auto;
+        height: auto;
+      }
+      
+      table, th, td {
+        padding: 5px;
+       }
+       th{
+       border-top : 1px solid black;
+       border-bottom: 1px solid black;
+       }
+       
+      .list{
+      	position: absolute;
+      	top : 50%;
+      	left : 50%;
+      	transform : translate(-50%,-50%);
+      }
+</style>
+<body>
 	<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -132,28 +119,14 @@
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
-      			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct.do" >
-				<div>
-					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
-				</div>
-				
-					<div class="text-end">
-					
-					<!--  검색 -->
-					<div> 
-				<button type="submit" class="btn text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
-				  <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
- 				 <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
-				</svg>
-				<span class="visually-hidden"></span>
-                </button>
-				 </div> 
-				 </div>
+      			 <!--검색하기  -->
+				<form  class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="검색하기" aria-label="Search"> 
 				</form>
-				
-				<!-- 마이페이지 -->
+				<!--검색,마이페이지,장바구니 아이콘  -->
+				<div class="text-end">
+					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
+
 					<% 
 				 	 if(session.getAttribute("userID") == null){
 					%>
@@ -163,57 +136,81 @@
 					%>
 					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
-				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
-					
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="cartListCheckUser()"></j>
 				</div>
 			</div>
+		</div>
 	</nav>
-	
-		<!-- 비디오1  -->
-		<!-- 비디오에 하이퍼링크 띄우기  -->
-		<ul>
-		<video id="videobcg" width="100%" height="480"  autoplay loop muted>
-			<source	src="assets/pexels-rose.mp4" type="video/mp4" >
-		</video>
-			<div class="jb-text">
-      	  <p id="hyper1">Red in full bloom</p>
-    	  </div>
-		<a id="hyper2" href="sFList.do">More </a>		
-		</ul>
-		
-	<!-- 상품 구현  -->
 
-    <section class="py-5">
-               			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${mainList }" var="dto"><%--반복문,dto --%>
- 								 <div class="col">
-   									 <div class="card h-100">
-   									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
-   									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
-     								 <div class="card-body">
-     								  <div class="detail-text-center">
-                              	     <p class="pd.name">${dto.productName }</p> 
-                                    <!-- Product size-->
-                             		<p class="pd.size">${dto.productSize }ml</p>
-                                    <!-- Product price-->
-                                	<p class="pd.price">${dto.productPrice }원</p>
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
-               		 </c:forEach>
-  				  </div>
-  				  </section>
- 
+	<div class="list">
+		<h1>Order Detail</h1>
+		<table >
+			<tr >
+				<th hidden="">userID</th>
+				<th hidden="">orderCode</th>
+				<th>주문번호</th>
+				<th>주문일</th>
+				<th>이미지</th>
+				<th>이름</th>
+				<th>용량</th>
+				<th>가격</th>
+				<th>수량</th>
+				<th>합계</th>
+				<!-- <th>주문수량</th>
+				<th>주문총액</th> -->
+			</tr>
+			<form method="post" name="detailForm">
+			<c:forEach items="${orderDetail }" var="dto">
+			<tr>
+				<td hidden="">
+				<input type="text" value="<%=session.getAttribute("userID") %>" name="userID" readonly="readonly" >
+				</td>
+				<td hidden="">
+				<input type="text" value="${dto.orderCode }" name="orderCode" readonly="readonly">
+				</td>
+				<td align="center">
+				<h3>${dto.orderNumber }</h3>
+				</td>
+				<td align="center">
+				${dto.orderDate }
+				</td>
+				<td align="center">
+				<img class="img" src="${dto.productImages }" width="150px" name="productImages">
+				</td>
+				<td align="center">
+				${dto.productName }
+				</td>
+				<td align="center">
+				${dto.productSize } ml
+				</td>
+				<td align="center">
+				${dto.productPrice } 원
+				</td>
+				<td align="center">
+				${dto.cartAmount } 개
+				</td>
+				<td align="center">
+				${dto.cartSum } 원
+				</td>
+			<%-- 	<td align="center">
+				<input type="text" value="${dto.orderAmount }" name="orderAmount" readonly="readonly">
+				</td>
+				<td align="center">
+				<input type="text" value="${dto.orderSum }" name="orderSum" readonly="readonly">
+				</td> --%>
+				<td align="center">
+				<input type="submit" value="후기 작성" formaction="reviewWrite.do?orderCode=${dto.orderCode }">
+				<input type="submit" value="환불" formaction="refund.do?orderCode=${dto.orderCode }">	
+				</td>
+			</tr>
+			</c:forEach>
+			</form>
+		</table>
+	</div>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
-	crossorigin="anonymous"></script>
 </body>
-<script type="text/javascript">
+<script>
 var userID = '<%=session.getAttribute("userID")%>';
-var productCode1 = document.cartForm.productCode.value;
 function cartListCheckUser() {
 	if (userID != 'null'){
 		location.href='cartList.do?userID='+userID;
@@ -221,6 +218,15 @@ function cartListCheckUser() {
 	else{
 		alert("로그인이 필요합니다.");
 		location.href='logInV.jsp';
+	}
+}
+function sendProductCodeLogin() {
+	if (userID != 'null'){
+		location.href='myPage.jsp'
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp?productCode='+productCode1;
 	}
 }
 </script>

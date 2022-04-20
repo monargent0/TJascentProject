@@ -15,8 +15,8 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/css/**" location="/resources/css/" />
-	<!-- <resources mapping="/img/**" location="/assets/productdetail/" /> -->
-	<resources mapping="/img/**" location="/assets/" />
+	<resources mapping="/assets/**" location="/assets/" />
+	<resources mapping="/assets/productdetail/**" location="/assets/img/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,6 +25,9 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.springlec.springAscent" />
+	
+	<!-- command -->
+	<beans:bean name="logIn" class="com.springlec.springAscent.command.LoginCommand" ></beans:bean>
 	
 	<!-- JDBC -->
 	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -46,5 +49,9 @@
 	<!-- command -->
 	<beans:bean name="counselList" class="com.springlec.springAscent.command.CounselListCommand"></beans:bean>
 	<beans:bean name="counselWrite" class="com.springlec.springAscent.command.CounselWriteCommand"></beans:bean>
+	<beans:bean name="productDetail" class="com.springlec.springAscent.command.ProductDetailCommand"/>
+	<beans:bean name="cartList" class="com.springlec.springAscent.command.CartListCommand"/>
+	<beans:bean name="cartWrite" class="com.springlec.springAscent.command.CartWriteCommand"/>
+	<beans:bean name="cartModify" class="com.springlec.springAscent.command.CartModifyCommand"/>
 	
 </beans:beans>

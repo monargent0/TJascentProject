@@ -11,10 +11,17 @@ public class ACartModifyCommand implements ACommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
-		int cartAmount = Integer.parseInt(request.getParameter("cartAmount"));
-		int cartCode = Integer.parseInt(request.getParameter("cartCode"));
+		String[] cartAmount = request.getParameterValues("cartAmount");
+		String[] cartCode = request.getParameterValues("cartCode");
+		int[] cartAmountArray = new int[cartAmount.length]; 
+		int[] cartCodeArray = new int[cartCode.length];
+		
+		for(int i=0; i<cartCode.length; i++) {
+			cartAmountArray[i] = Integer.parseInt(cartAmount[i]);
+			cartCodeArray[i] = Integer.parseInt(cartCode[i]);
+		}
 		
 		ADaoCart dao = new ADaoCart();
-		dao.modify(cartAmount, cartCode);;
+		dao.modify(cartAmountArray, cartCodeArray);
 	}
 }
