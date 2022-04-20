@@ -89,7 +89,7 @@ public class AControllerUser {
 		return "duplicateIDV";
 	}
 	// 아이디 중복 체크
-	@RequestMapping("/idDpC")
+	@RequestMapping("/duplicateResult")
 	public String duplicateCheck(HttpServletRequest request) {
 		duplicateIDCommand.execute1(sqlSession, request);
 		return "duplicateIDRV";

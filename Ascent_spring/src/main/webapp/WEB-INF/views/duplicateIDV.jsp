@@ -96,7 +96,7 @@ function noblank(obj) { // 공백사용못하게
 
 
 	<div align="center">
-		<form action="idDpC" method="post" name=db >
+		<form action="duplicateResult" method="post" name=db >
 			<div>
 				<div>
 					<input type="text" name="userID" value="<%= request.getParameter("userID" )%>" 
