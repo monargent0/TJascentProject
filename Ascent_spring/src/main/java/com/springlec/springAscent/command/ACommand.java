@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 public interface ACommand {
-	
+
 	void execute1(SqlSession sqlSession, HttpServletRequest request);
 	
 	void execute2(SqlSession sqlSession,  Model model);

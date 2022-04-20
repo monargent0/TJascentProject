@@ -1,6 +1,11 @@
 package com.springlec.springAscent.dto;
 
 public class ADtoPaging {
+	
+	public ADtoPaging() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	//paging
 	private int listSize = 20; // 한 페이지 목록의 개수
 	private int rangeSize = 10; //초기값으로 페이지범위를 10으로 셋팅

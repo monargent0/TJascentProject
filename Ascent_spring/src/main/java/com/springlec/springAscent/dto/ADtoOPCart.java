@@ -1,6 +1,10 @@
 package com.springlec.springAscent.dto;
 
 public class ADtoOPCart {
+	
+	public ADtoOPCart() {
+		// TODO Auto-generated constructor stub
+	}
 
 	int orderCode;
 	String orderNumber;

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:beans="http://www.springframework.org/schema/beans"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+      http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -63,4 +62,21 @@
 	<beans:bean name="cartWrite" class="com.springlec.springAscent.command.CartWriteCommand"/>
 	<beans:bean name="cartModify" class="com.springlec.springAscent.command.CartModifyCommand"/>
 	
+	<!--jy product command -->
+	<beans:bean name="productAllList" class="com.springlec.springAscent.command.productAllListCommand" ></beans:bean>
+	<beans:bean name="productSearch" class="com.springlec.springAscent.command.productSearchCommand" ></beans:bean>
+	<beans:bean name="productMain" class="com.springlec.springAscent.command.productMainCommand" ></beans:bean>
+	<beans:bean name="productpPList" class="com.springlec.springAscent.command.productpPListCommand" ></beans:bean>
+	<beans:bean name="productpTList" class="com.springlec.springAscent.command.productpTListCommand" ></beans:bean>
+	<beans:bean name="productpCList" class="com.springlec.springAscent.command.productpCListCommand" ></beans:bean>
+	<beans:bean name="productpBList" class="com.springlec.springAscent.command.productpBListCommand" ></beans:bean>
+	<beans:bean name="productsFList" class="com.springlec.springAscent.command.productsFListCommand" ></beans:bean>
+	<beans:bean name="productsCList" class="com.springlec.springAscent.command.productsCListCommand" ></beans:bean>
+	 <beans:bean name="productsFRList" class="com.springlec.springAscent.command.productsFRListCommand" ></beans:bean>
+	<beans:bean name="productsFTList" class="com.springlec.springAscent.command.productsFTListCommand" ></beans:bean>
+	<beans:bean name="productsOList" class="com.springlec.springAscent.command.productsOListCommand" ></beans:bean>
+
+	<beans:bean name="productsWList" class="com.springlec.springAscent.command.productsWListCommand" ></beans:bean> 
+
+
 </beans:beans>

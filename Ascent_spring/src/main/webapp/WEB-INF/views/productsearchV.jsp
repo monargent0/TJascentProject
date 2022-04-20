@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
-<!DOCTYPE html>
+	pageEncoding="UTF-8"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+
+  <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -30,37 +31,21 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>ascent</title>
 <style>
-	  table {
-        border-collapse: collapse;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        width: auto;
-        height: auto;
-        width: 700px;
-      }
-      
-      table, th, td {
-        padding: 5px;
-       }
-       
-      .contents{
-		position: absolute;
-		left : 50%;
-		transform : translate(-50%,0%);
-		padding: 50px ;
-		font-family:"나눔명조";  
-      	color: #463D3D;
-	}    
-	#hyper{				
-      	/* font-size: 20px; */
-      	TEXT-DECORATION:none;
-      	font-family:"나눔명조";  
-      	color: #463D3D;
-      }
-    </style>
+.py-5 div:hover {
+  border-color:#333;     
+ }   
+  .col {
+  padding:70px 70px 0 70px;
+  } 
 
-<title>ascent 1대1 문의</title>
+  .detail-text-center {
+ 	padding:30px;
+  height:140px;
+  text-align:center;
+  }    
+</style>
 </head>
 <body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
@@ -127,15 +112,14 @@
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
+				  
       			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct.do" >
+				<form  class="d-flex" method="post" action="searchProduct.do">
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
-				
 					<div class="text-end">
-					
-					<!--  검색 -->
+           
 					<div> 
 				<button type="submit" class="btn text-white">
                   <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
@@ -147,7 +131,7 @@
 				 </div> 
 				 </div>
 				</form>
-				
+    
 				<!-- 마이페이지 -->
 					<% 
 				 	 if(session.getAttribute("userID") == null){
@@ -163,36 +147,33 @@
 					
 				</div>
 			</div>
-			
 	</nav>
+<!-- 상품검색 -->
+		<section class="py-5">
+               	 <div class="row row-cols-1 row-cols-md-4 g-4">
+		  					<c:forEach items="${searchList }" var="dto">
+ 								 <div class="col">
+   									 <div class="card h-100">
+   									  <a class="card-image" href="productDetailV.?productCode=${dto.productCode }">
+   									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
+     								 <div class="card-body">
+     								  <div class="detail-text-center">
+                              	     <p class="pd.name">${dto.productName }</p>
+                                    <!-- Product size-->
+                             		<p class="pd.size">${dto.productSize }ml</p>
+                                    <!-- Product price-->
+                                	<p class="pd.price">${dto.productPrice }원</p>
+                             	
+    				 		 </div>
+    				 		 </div>
+    				 		 </div>
+    				 		 </div>
+               		 </c:forEach>
+  				  </div>
+  				  </section> 
+				
 	
- <div class="contents">
-	<h3>1대1 문의</h3>
-
-	<table >
-		<tr>
-			<th>글번호</th>
-			<th>문의종류</th>
-			<th>제목</th>
-			<th>게시일</th>
-			<th>답변여부</th>
-		</tr>
-		<c:forEach items="${list }" var="dto">
-			<tr>
-				<td style="text-align: center;"> ${dto.counselCode }</td>
-				<td>${dto.counselType }</td>
-				<td><a id="hyper" href="counselDetail.do?counselCode=${dto.counselCode }">${dto.counselTitle}</a></td>						
-				<td>${dto.counselDate}</td>
-				<td>${dto.c_ReplyCheck}</td>
-			</tr>
-		</c:forEach>
-		<tr>
-			<td align="right" colspan="5"><a id="hyper" href="counselWriteV.jsp">글작성</a></td>
-		</tr>
-	</table>	
 	
-		<!-- <br><a id="hyper" href="mainV.jsp">main</a> &nbsp; <a id="hyper" href="logOutH.jsp">로그아웃</a> -->
-	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>	
 </body>
 </html>
