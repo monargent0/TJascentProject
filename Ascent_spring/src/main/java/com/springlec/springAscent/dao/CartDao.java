@@ -10,5 +10,7 @@ public interface CartDao {
 	
 	public void cartWrite(int cartAmount, String productCode, String userID);
 	
-	public void cartModify(int[] cartAmountArray, int[] cartCodeArray);
+	public void cartModify(int cartAmount, int cartCode);
+	
+	public void cartDelete(int[] cartCodeArray);
 }

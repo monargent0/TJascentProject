@@ -1,6 +1,10 @@
 package com.javalec.ascent.dto;
 
 public class ADtoCart {
+	
+	public ADtoCart() {
+		// TODO Auto-generated constructor stub
+	}
 
 	int cartCode;
 	int cartAmount;

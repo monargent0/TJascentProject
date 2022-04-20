@@ -48,5 +48,6 @@
 	<beans:bean name="cartList" class="com.springlec.springAscent.command.CartListCommand"/>
 	<beans:bean name="cartWrite" class="com.springlec.springAscent.command.CartWriteCommand"/>
 	<beans:bean name="cartModify" class="com.springlec.springAscent.command.CartModifyCommand"/>
+	<beans:bean name="cartDelete" class="com.springlec.springAscent.command.CartDeleteCommand"/>
 	
 </beans:beans>

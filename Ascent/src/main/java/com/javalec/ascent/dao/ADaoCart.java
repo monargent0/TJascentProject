@@ -81,22 +81,20 @@ public class ADaoCart {
 				}// finally 메모리 정리 ; 이상 있거나 없거나 무조건 거친다.
 		} // delete
 		
-		public void modify(int[] cartAmountArray, int[] cartCodeArray) {
+		public void modify(int cartAmount, int cartCode) {
 			
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 			
 			try {
-				for(int i=0; i<cartCodeArray.length; i++) {
 					
 				connection = dataSource.getConnection();
 				String query = "update cart set cartAmount = ?, cartDate = now() where cartCode = ?;";
 				preparedStatement = connection.prepareStatement(query);
-				preparedStatement.setInt(1, cartAmountArray[i]);
-				preparedStatement.setInt(2, cartCodeArray[i]);
+				preparedStatement.setInt(1, cartAmount);
+				preparedStatement.setInt(2, cartCode);
 				
 				preparedStatement.executeUpdate();
-				}
 			} 
 			catch (Exception e) {
 				e.printStackTrace();

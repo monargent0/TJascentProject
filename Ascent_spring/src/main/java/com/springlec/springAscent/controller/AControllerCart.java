@@ -21,21 +21,21 @@ public class AControllerCart {
 	private ACommand cartListCommand = null;
 	private ACommand cartWriteCommand = null;
 	private ACommand cartModifyCommand = null;
-//	private ACommand cartDeleteCommand = null;
+	private ACommand cartDeleteCommand = null;
 	
 //	private ACommand orderListCommand = null;
 //	private ACommand orderWriteCommand = null;
 //	private ACommand orderContentCommand = null;
 	
 	@Autowired
-	public void auto(ACommand productDetail, ACommand cartList, ACommand cartWrite, ACommand cartModify) {
+	public void auto(ACommand productDetail, ACommand cartList, ACommand cartWrite, ACommand cartModify, ACommand cartDelete) {
 		
 		this.productDetailCommand = productDetail;
 		
 		this.cartListCommand = cartList;
 		this.cartWriteCommand = cartWrite;
 		this.cartModifyCommand = cartModify;
-//		this.cartDeleteCommand = cartDelete;
+		this.cartDeleteCommand = cartDelete;
 		
 //		this.orderListCommand = orderList;
 //		this.orderWriteCommand = orderWrite;
@@ -46,7 +46,7 @@ public class AControllerCart {
 	public String productDetail(HttpServletRequest request, Model model) {
 		
 		model.addAttribute("request", request);
-		productDetailCommand.execute1(request, sqlSession, model);
+		productDetailCommand.execute3(sqlSession, request, model);
 		
 		return "productDetailV";
 	}
@@ -55,7 +55,7 @@ public class AControllerCart {
 	public String cartList(HttpServletRequest request, Model model) {
 		
 		model.addAttribute("request", request);
-		cartListCommand.execute1(request, sqlSession, model);
+		cartListCommand.execute3(sqlSession, request, model);
 		
 		return "cartListV";
 	}
@@ -64,7 +64,7 @@ public class AControllerCart {
 	public String cartWrite(HttpServletRequest request, Model model) {
 
 		model.addAttribute("request", request);
-		cartWriteCommand.execute2(request, sqlSession);
+		cartWriteCommand.execute1(sqlSession, request);
 		
 		return "redirect:productDetail";
 	}
@@ -73,17 +73,17 @@ public class AControllerCart {
 	public String cartModify(HttpServletRequest request, Model model) {
 		
 		model.addAttribute("request", request);
-		cartModifyCommand.execute2(request, sqlSession);
+		cartModifyCommand.execute1(sqlSession, request);
 		
 		return "redirect:cartList";
 	}
-//	
-//	@RequestMapping("/cartDelete")
-//	public String cartDelete(HttpServletRequest request, Model model) {
-//		
-//		model.addAttribute("request", request);
-//		cartDeleteCommand.execute2(request, sqlSession);
-//		
-//		return "redirect:cartList";
-//	}
+	
+	@RequestMapping("/cartDelete")
+	public String cartDelete(HttpServletRequest request, Model model) {
+		
+		model.addAttribute("request", request);
+		cartDeleteCommand.execute1(sqlSession, request);
+		
+		return "redirect:cartList";
+	}
 }

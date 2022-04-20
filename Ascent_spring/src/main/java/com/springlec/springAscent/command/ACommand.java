@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 
 public interface ACommand {
 	
-	void execute1(HttpServletRequest request, SqlSession sqlSession , Model model);
+	void execute1(SqlSession sqlSession, HttpServletRequest request);
 	
-	void execute2(HttpServletRequest request, SqlSession sqlSession);
+	void execute2(SqlSession sqlSession,  Model model);
+	
+	void execute3(SqlSession sqlSession , HttpServletRequest request, Model model);
 	
 }
