@@ -1,5 +1,7 @@
 package com.springlec.springAscent.controller;
 
+
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springlec.springAscent.command.ACommand;
 @Controller
-public class ProductController {
+public class AControllerProduct {
 	
 	@Autowired
 	private SqlSession sqlSession;
