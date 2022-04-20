@@ -13,8 +13,7 @@ import com.springlec.springAscent.dto.UDtoLogin;
 public class LoginCommand implements ACommand {
 
 	@Override
-	public void execute(HttpServletRequest request, SqlSession sqlSession, Model model) {
-		
+	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String productCode = (String) session.getAttribute("productCode");
 		
@@ -38,7 +37,17 @@ public class LoginCommand implements ACommand {
 				productCode = null;
 			}
 		} 
+		
+	}
 
+	@Override
+	public void execute2(SqlSession sqlSession, Model model) {
+		
+	}
+
+	@Override
+	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
+		
 	}
 
 }
