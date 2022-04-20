@@ -18,12 +18,15 @@ public class AControllerUser {
 	private ACommand loginCommand = null;
 	private ACommand signinCommand = null;
 	private ACommand signoutCommand = null;
+	private ACommand duplicateIDCommand = null;
+	
 	
 	@Autowired
-	public void auto(ACommand logIn, ACommand signIn, ACommand signOut) {
+	public void auto(ACommand logIn, ACommand signIn, ACommand signOut, ACommand duplicateID) {
 		this.loginCommand = logIn;
 		this.signinCommand = signIn;
 		this.signoutCommand = signOut;
+		this.duplicateIDCommand = duplicateID;
 		
 		
 	}
@@ -80,5 +83,15 @@ public class AControllerUser {
 	public String mypageV() {
 		return "myPageV";
 	}
-	
+	// 아이디 중복 체크 화면
+	@RequestMapping("/duplicateIDV")
+	public String duplicateIDV() {
+		return "duplicateIDV";
+	}
+	// 아이디 중복 체크
+	@RequestMapping("/idDpC")
+	public String duplicateCheck(HttpServletRequest request) {
+		duplicateIDCommand.execute1(sqlSession, request);
+		return "duplicateIDRV";
+	}
 }

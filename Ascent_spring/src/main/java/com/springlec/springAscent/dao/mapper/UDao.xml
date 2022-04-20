@@ -7,12 +7,15 @@
 	<select id="logIn" resultType="com.springlec.springAscent.dto.UDtoLogin">
 		SELECT USERID, ADMINCHECK FROM USERINFO WHERE USERID = #{param1} AND USERPW = #{param2} AND U_RESIGNDATE IS NULL
 	</select>
-	<insert id="singin">
+	<insert id="signin">
 		INSERT INTO USERINFO (USERNAME, USERID, USEREMAIL, USERPHONE, USERPW, USERBIRTH, USERGENDER, U_SIGNDATE, ADMINCHECK) 
 		VALUES (#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},NOW(),'0')
 	</insert>
 	<update id="signout">
 		UPDATE USERINFO SET U_RESIGNDATE = NOW() WHERE USERID = #{userID} AND USERPW = #{userPW}
 	</update>
-
+	<select id="doubleID" resultType="String" >
+		SELECT USERID FROM USERINFO WHERE USERID = #{param1}
+	</select>
+	
 </mapper>
