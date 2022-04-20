@@ -2,6 +2,10 @@ package com.springlec.springAscent.dto;
 
 public class CartDtoPC {
 
+	public CartDtoPC() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	int cartCode;
 	String productCode;
 	
@@ -10,7 +14,7 @@ public class CartDtoPC {
 	String productSize;
 	int cartAmount;
 	int productPrice;
-	int cartSum;
+	int cartSum = cartAmount * productPrice;
 
 
 	public CartDtoPC(int cartCode, String productCode, String productImages, String productName, String productSize,

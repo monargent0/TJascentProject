@@ -1,6 +1,6 @@
 package com.springlec.springAscent.dto;
 
-public class ADtoPAR {
+public class PDtoAR {
 	
 	String productCode;
 	String productName;
@@ -10,11 +10,11 @@ public class ADtoPAR {
 	String productBrand;
 	String category_categoryCode;
 	
-	public ADtoPAR(){
+	public PDtoAR(){
 		
 	}
 
-	public ADtoPAR(String productCode, String productName, int productPrice, String productSize, String productImages,
+	public PDtoAR(String productCode, String productName, int productPrice, String productSize, String productImages,
 			String productBrand, String category_categoryCode) {
 		super();
 		this.productCode = productCode;

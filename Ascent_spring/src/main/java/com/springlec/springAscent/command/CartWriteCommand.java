@@ -7,20 +7,25 @@ import org.springframework.ui.Model;
 
 import com.springlec.springAscent.dao.CartDao;
 
-public class CartListCommand implements ACommand{
+public class CartWriteCommand implements ACommand {
 
 	@Override
 	public void execute1(HttpServletRequest request, SqlSession sqlSession, Model model) {
 		// TODO Auto-generated method stub
-		
-		String userID = request.getParameter("userID");
-		
-		CartDao dao = sqlSession.getMapper(CartDao.class);
-		model.addAttribute("cartList", dao.cartList(userID));
+
 	}
+
 	@Override
 	public void execute2(HttpServletRequest request, SqlSession sqlSession) {
 		// TODO Auto-generated method stub
 		
+		int cartAmount = Integer.parseInt(request.getParameter("cartAmount"));
+		String productCode = request.getParameter("productCode");
+		String userID = request.getParameter("userID");
+		System.out.println(cartAmount+productCode+userID);
+		CartDao dao = sqlSession.getMapper(CartDao.class);
+		dao.cartWrite(cartAmount, productCode, userID);
+
 	}
+
 }
