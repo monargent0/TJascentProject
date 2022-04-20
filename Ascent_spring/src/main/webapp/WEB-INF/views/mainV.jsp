@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,50 +30,45 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<title>Cart List</title>
+<title>ascent</title>
+<!-- 비디오 -->
 <style>
-	  table {
-        border-collapse: collapse;
-        width: auto;
-        height: auto;
-      }
-      
-      table, th, td {
-        padding: 5px;
-       }
-       th{
-       border-top : 1px solid black;
-       border-bottom: 1px solid black;
-       }
-       
-      .list{
-      	position: absolute;
-      	top : 50%;
-      	left : 50%;
-      	transform : translate(-50%,-50%);
-      }
-</style>
-</head>
-<script>
-// all check
-function checkBoxAll(event) {
-	const query = 'input[name="checkCart"]';
-	const selectedEls = document.querySelectorAll(query);
-
-	if (event.target.checked) {
-		selectedEls.forEach((el) => {
-			el.checked = true;
-		});
-	} else {
-		selectedEls.forEach((el) => {
-			el.checked = false;
-		});
-	}
+#videobcg {
+	position: relative;
+	top:0px;
+	left:-15px;
+	min-width:100%;
+	min-height:100%;
+	padding-bottom:70px;
+	height:auto;
+	margin:0;
+	z-index:-1000;
 }
-</script>
+/*상품구현 위치 */
+#container1 {
+		position: relative;
+		top:300px;
+}
+</style>
+<!-- 상품에 마우스 올릴때 및 위치 조정  -->
+<style>
+  .py-5 div:hover {
+  border-color:#333;
+ }   
+  .col {
+  padding:70px 70px 0 70px;
+  } 
+
+  .detail-text-center {
+ 	padding:30px;
+  height:140px;
+  text-align:center;
+  }    
+ </style>
+</head>
 <body style="background-color:#FFFAF6">
-<!-- 메인홈바 -->
+	
+	<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -172,85 +168,60 @@ function checkBoxAll(event) {
 					
 				</div>
 			</div>
-			
 	</nav>
+	
+		<!-- 비디오1  -->
+		<!-- 비디오에 하이퍼링크 띄우기  -->
+		<ul>
+		<video id="videobcg" width="100%" height="480"  autoplay loop muted>
+			<source	src="assets/pexels-rose.mp4" type="video/mp4" >
+		</video>
+			<div class="jb-text">
+      	  <p id="hyper1">Red in full bloom</p>
+    	  </div>
+		<a id="hyper2" href="sFList.do">More </a>		
+		</ul>
+		
+	<!-- 상품 구현  -->
 
-<div class="list">
-	<h1>장바구니</h1>
-	<table border="1">
-			<tr>
-				<th hidden="">userID</th>
-				<th hidden="">cartCode</th>
-				<th hidden="">productCode</th>
-				<th><input type="checkbox" name="checkAll" id="allCheck" onclick="checkBoxAll(event)"></th>
-				<th>이미지</th>
-				<th>이름</th>
-				<th>용량</th>
-				<th>가격</th>
-				<th>수량</th>
-				<th>합계</th>
-			</tr>
-			<form name="cartForm" method="post">
-			<c:forEach items="${cartList }" var="dto">
-			<tr>
-				<td hidden="">
-				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly">
-				</td>
-				<td hidden="">
-				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly">
-				</td>
-				<td>
-				<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
-				</td>
-				<td align="center">
-				<a href="productDetail.do?productCode=${dto.productCode }">
-				<img class="img" src="${dto.productImages }" width="100px" name="productImages">
-				</a>
-				</td>
-				<td align="left">
-				<a href="productDetail.do?productCode=${dto.productCode }">${dto.productName }</a>
-				</td>
-				<td align="center">
-				${dto.productSize } ml
-				</td>
-				<td align="center">
-				${dto.productPrice } 원
-				</td>
-				<td align="center">
-					<select name="cartAmount" onchange="cartM()">
-						<option value="${dto.cartAmount }" selected="selected">${dto.cartAmount }</option>
-						<option value="1" onselect="">1</option>
-						<option value="2" onselect="">2</option>
-						<option value="3" onselect="">3</option>
-					</select>
-					개
-				</td>
-				<td align="center">
-				${dto.cartSum } 원
-				</td>
-			</tr>
-			</c:forEach>
-			</table><br>
-				<input type="button" value="선택상품 주문" onclick="checkUserCheck()">
-				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
-			</form>
-</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+    <section class="py-5">
+               			  <div class="row row-cols-1 row-cols-md-4 g-4">
+		  					<c:forEach items="${mainList }" var="dto"><%--반복문,dto --%>
+ 								 <div class="col">
+   									 <div class="card h-100">
+   									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
+   									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
+     								 <div class="card-body">
+     								  <div class="detail-text-center">
+                              	     <p class="pd.name">${dto.productName }</p> 
+                                    <!-- Product size-->
+                             		<p class="pd.size">${dto.productSize }ml</p>
+                                    <!-- Product price-->
+                                	<p class="pd.price">${dto.productPrice }원</p>
+    				 		 </div>
+    				 		 </div>
+    				 		 </div>
+    				 		 </div>
+               		 </c:forEach>
+  				  </div>
+  				  </section>
+ 
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+	crossorigin="anonymous"></script>
 </body>
 <script type="text/javascript">
-var cartForm1 = document.cartForm;
-
-function checkUserCheck() {
-	if (cartForm1.checkCart.length == 0){
-		alert("1개 이상의 목록을 선택해주세요.");
-	}else {
-		cartForm1.action='orderView.do';
-		cartForm1.submit();
+var userID = '<%=session.getAttribute("userID")%>';
+var productCode1 = document.cartForm.productCode.value;
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
 	}
-}
-function cartM(){
-	cartForm1.action='cartModify.do';
-	cartForm1.submit();
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp';
+	}
 }
 </script>
 </html>

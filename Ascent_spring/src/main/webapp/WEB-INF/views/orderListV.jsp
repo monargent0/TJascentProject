@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -29,8 +30,7 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<title>Cart List</title>
+<title>Order List</title>
 <style>
 	  table {
         border-collapse: collapse;
@@ -54,25 +54,9 @@
       }
 </style>
 </head>
-<script>
-// all check
-function checkBoxAll(event) {
-	const query = 'input[name="checkCart"]';
-	const selectedEls = document.querySelectorAll(query);
+<body>
 
-	if (event.target.checked) {
-		selectedEls.forEach((el) => {
-			el.checked = true;
-		});
-	} else {
-		selectedEls.forEach((el) => {
-			el.checked = false;
-		});
-	}
-}
-</script>
-<body style="background-color:#FFFAF6">
-<!-- 메인홈바 -->
+	<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -169,88 +153,91 @@ function checkBoxAll(event) {
 				  <% } %>
 				  <!-- 장바구니 -->
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
-					
 				</div>
 			</div>
-			
 	</nav>
 
 <div class="list">
-	<h1>장바구니</h1>
-	<table border="1">
+	<h1>Order List</h1>
+		<table >
 			<tr>
 				<th hidden="">userID</th>
-				<th hidden="">cartCode</th>
-				<th hidden="">productCode</th>
-				<th><input type="checkbox" name="checkAll" id="allCheck" onclick="checkBoxAll(event)"></th>
-				<th>이미지</th>
+				<th hidden="">orderCode</th>
+				<th align="center">주문번호</th>
+				<th align="center">이미지</th>
 				<th>이름</th>
 				<th>용량</th>
 				<th>가격</th>
 				<th>수량</th>
 				<th>합계</th>
+				<!-- <th>주문수량</th>
+				<th>주문총액</th> -->
 			</tr>
-			<form name="cartForm" method="post">
-			<c:forEach items="${cartList }" var="dto">
+			<form method="post" name="orderList">
+			<c:forEach items="${orderList }" var="dto">
 			<tr>
 				<td hidden="">
-				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly">
+				<input type="text" value="<%=session.getAttribute("userID") %>" name="userID" readonly="readonly" >
 				</td>
 				<td hidden="">
-				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly">
-				</td>
-				<td>
-				<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
+				<input type="text" value="${dto.orderCode }" name="orderCode" readonly="readonly">
 				</td>
 				<td align="center">
-				<a href="productDetail.do?productCode=${dto.productCode }">
-				<img class="img" src="${dto.productImages }" width="100px" name="productImages">
-				</a>
-				</td>
-				<td align="left">
-				<a href="productDetail.do?productCode=${dto.productCode }">${dto.productName }</a>
+				<a href="orderDetail.do?orderNumber=${dto.orderNumber }&userID=<%=session.getAttribute("userID")%>">${dto.orderNumber }</a>
 				</td>
 				<td align="center">
+				<img class="img" src="${dto.productImages }" width="150px" name="productImages">
+				</td>
+				<td align="center">
+				<input hidden="" type="text" value="${dto.productName }" name="productName" readonly="readonly">
+				${dto.productName }
+				</td>
+				<td align="center">
+				<input hidden="" type="text" value="${dto.productSize }" name="productSize" readonly="readonly">
 				${dto.productSize } ml
 				</td>
 				<td align="center">
+				<input hidden="" type="text" value="${dto.productPrice }" name="productPrice" readonly="readonly">
 				${dto.productPrice } 원
 				</td>
 				<td align="center">
-					<select name="cartAmount" onchange="cartM()">
-						<option value="${dto.cartAmount }" selected="selected">${dto.cartAmount }</option>
-						<option value="1" onselect="">1</option>
-						<option value="2" onselect="">2</option>
-						<option value="3" onselect="">3</option>
-					</select>
-					개
+				${dto.cartAmount } 개
 				</td>
 				<td align="center">
 				${dto.cartSum } 원
 				</td>
+				<%-- <td align="center">
+				<input type="text" value="${dto.orderAmount }" name="orderAmount" readonly="readonly">
+				</td>
+				<td align="center">
+				<input type="text" value="${dto.orderSum }" name="orderSum" readonly="readonly">
+				</td> --%>
 			</tr>
 			</c:forEach>
-			</table><br>
-				<input type="button" value="선택상품 주문" onclick="checkUserCheck()">
-				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
 			</form>
+		</table>
 </div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-<script type="text/javascript">
-var cartForm1 = document.cartForm;
-
-function checkUserCheck() {
-	if (cartForm1.checkCart.length == 0){
-		alert("1개 이상의 목록을 선택해주세요.");
-	}else {
-		cartForm1.action='orderView.do';
-		cartForm1.submit();
+<script>
+var userID = '<%=session.getAttribute("userID")%>';
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp';
 	}
 }
-function cartM(){
-	cartForm1.action='cartModify.do';
-	cartForm1.submit();
+function sendProductCodeLogin() {
+	if (userID != 'null'){
+		location.href='myPage.jsp'
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp?productCode='+productCode1;
+	}
 }
 </script>
 </html>
