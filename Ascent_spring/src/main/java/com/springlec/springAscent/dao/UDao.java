@@ -1,5 +1,10 @@
 package com.springlec.springAscent.dao;
 
-public interface UDao {
 
+import com.springlec.springAscent.dto.UDtoLogin;
+
+
+public interface UDao {
+	public UDtoLogin logIn(String userID, String userPW);
+	
 }

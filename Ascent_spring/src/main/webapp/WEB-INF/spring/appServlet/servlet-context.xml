@@ -15,8 +15,8 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/css/**" location="/resources/css/" />
-	<resources mapping="/assets/productdetail/**" location="/assets/img/" />
 	<resources mapping="/assets/**" location="/assets/" />
+	<resources mapping="/assets/productdetail/**" location="/assets/img/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -40,6 +40,7 @@
 	<beans:bean name="sFTList" class="com.springlec.springAscent.command.productsFTListCommand" ></beans:bean>
 	<beans:bean name="sOList" class="com.springlec.springAscent.command.productsOListCommand" ></beans:bean>
 	<beans:bean name="sWList" class="com.springlec.springAscent.command.productsWListCommand" ></beans:bean> -->
+	<beans:bean name="logIn" class="com.springlec.springAscent.command.LoginCommand" ></beans:bean>
 	<!-- JDBC -->
 	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
@@ -56,5 +57,8 @@
 	<beans:bean name="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg index="0" ref="sqlSessionFactory"/>
 	</beans:bean>
+	
+	
+	
 	
 </beans:beans>
