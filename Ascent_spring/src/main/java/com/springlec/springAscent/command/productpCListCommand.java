@@ -9,8 +9,9 @@ import com.springlec.springAscent.dao.PDao;
 
 public class productpCListCommand implements ACommand {
 
+	
 	@Override
-	public void execute1(HttpServletRequest request, SqlSession sqlSession) {
+	public void execute1(SqlSession sqlSession,HttpServletRequest request) {
 		// TODO Auto-generated method stub
 
 	}
@@ -23,10 +24,10 @@ public class productpCListCommand implements ACommand {
 
 	}
 
+
 	@Override
-	public void execute3(HttpServletRequest request, SqlSession sqlSession, Model model) {
+	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
 		// TODO Auto-generated method stub
 
 	}
-
 }
