@@ -13,7 +13,7 @@ SELECT * FROM PRODUCT WHERE PRODUCTNAME LIKE '%로즈%' ORDER BY PRODUCTCODE DES
 </select>
 
 <select id="searchList" resultType="com.springlec.springAscent.dto.PDto">
-SELECT * FROM PRODUCT WHERE REPLACE(PRODUCTNAME,' ','') LIKE #{param1} OR REPLACE(PRODUCTBRAND,' ','') LIKE #{param2} ORDER BY PRODUCTCODE DESC
+SELECT * FROM PRODUCT WHERE REPLACE(PRODUCTNAME,' ','') LIKE '%${param1}%' OR REPLACE(PRODUCTBRAND,' ','') LIKE '%${param2}%' ORDER BY PRODUCTCODE DESC
 </select>
 
 <select id="pPList" resultType="com.springlec.springAscent.dto.PDto">

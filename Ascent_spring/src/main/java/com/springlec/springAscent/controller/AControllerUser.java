@@ -31,10 +31,10 @@ public class AControllerUser {
 		
 	}
 	// 임시 메인화면
-	@RequestMapping("/main")
-	public String main() {
-		return "mainV";
-	}
+//	@RequestMapping("/main")
+//	public String main() {
+//		return "mainV";
+//	}
 	// 로그인 화면
 	@RequestMapping("/logInV")
 	public String loginV() {
