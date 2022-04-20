@@ -14,7 +14,7 @@ public interface PDao {
 	public ArrayList<PDto> pCList();	//perfume-cologne
 	public ArrayList<PDto> pBList();	//perfume-bodyspray
 	public ArrayList<PDto> sFList();	//scent-floral
-	public ArrayList<PDto> sCList();	//scent-citus
+	public ArrayList<PDto> sCList();	//scent-citrus
 	public ArrayList<PDto> sFRList();	//scent-fresh
 	public ArrayList<PDto> sFTList();	//scent-fruity
 	public ArrayList<PDto> sWList();	//scent-woody

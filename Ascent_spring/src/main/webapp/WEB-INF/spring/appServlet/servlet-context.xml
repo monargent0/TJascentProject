@@ -68,11 +68,11 @@
 	<beans:bean name="productpBList" class="com.springlec.springAscent.command.productpBListCommand" ></beans:bean>
 	<beans:bean name="productsFList" class="com.springlec.springAscent.command.productsFListCommand" ></beans:bean>
 	<beans:bean name="productsCList" class="com.springlec.springAscent.command.productsCListCommand" ></beans:bean>
-	<beans:bean name="productsFRList" class="com.springlec.springAscent.command.productsFRListCommand" ></beans:bean>
+	<!-- <beans:bean name="productsFRList" class="com.springlec.springAscent.command.productsFRListCommand" ></beans:bean>
 	<beans:bean name="productsFTList" class="com.springlec.springAscent.command.productsFTListCommand" ></beans:bean>
 	<beans:bean name="productsOList" class="com.springlec.springAscent.command.productsOListCommand" ></beans:bean>
 
 	<beans:bean name="productsWList" class="com.springlec.springAscent.command.productsWListCommand" ></beans:bean> 
 
-
+ -->
 </beans:beans>
