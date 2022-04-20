@@ -2,23 +2,21 @@ package com.springlec.springAscent.dto;
 
 import java.sql.Timestamp;
 
-public class ADtoC {
+public class CDtoCounsel {
 	
-	// Field
-	int counselCode;
-	String counselType;
-	String counselTitle;
-	String counselContent;
-	Timestamp counselDate;
-	String c_ReplyCheck;
+	private int counselCode;
+	private String counselType;
+	private String counselTitle;
+	private String counselContent;
+	private Timestamp counselDate;
+	private String c_ReplyCheck;
 	
-	// Counstructor
-	public ADtoC() {
-			
+	public CDtoCounsel() {
+		
 	}
 
-	public ADtoC(int counselCode, String counselType, String counselTitle, String counselContent, Timestamp counselDate,
-			String c_ReplyCheck) {
+	public CDtoCounsel(int counselCode, String counselType, String counselTitle, String counselContent,
+			Timestamp counselDate, String c_ReplyCheck) {
 		super();
 		this.counselCode = counselCode;
 		this.counselType = counselType;
@@ -28,7 +26,6 @@ public class ADtoC {
 		this.c_ReplyCheck = c_ReplyCheck;
 	}
 
-	// Method
 	public int getCounselCode() {
 		return counselCode;
 	}
@@ -76,8 +73,6 @@ public class ADtoC {
 	public void setC_ReplyCheck(String c_ReplyCheck) {
 		this.c_ReplyCheck = c_ReplyCheck;
 	}
-	
-	
 	
 	
 

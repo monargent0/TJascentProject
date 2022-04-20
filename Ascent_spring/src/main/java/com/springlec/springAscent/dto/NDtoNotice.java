@@ -2,21 +2,20 @@ package com.springlec.springAscent.dto;
 
 import java.sql.Timestamp;
 
-public class ADtoN {
+public class NDtoNotice {
 
-	// Field
-	int noticeCode;
-	String noticeType;
-	String noticeTitle;
-	String noticeContent;
-	Timestamp noticeDate;
+	private int noticeCode;
+	private String noticeType;
+	private String noticeTitle;
+	private String noticeContent;
+	private Timestamp noticeDate;
 	
-	// Constructor
-	public ADtoN() {
+	public NDtoNotice() {
 		
 	}
 
-	public ADtoN(int noticeCode, String noticeType, String noticeTitle, String noticeContent, Timestamp noticeDate) {
+	public NDtoNotice(int noticeCode, String noticeType, String noticeTitle, String noticeContent,
+			Timestamp noticeDate) {
 		super();
 		this.noticeCode = noticeCode;
 		this.noticeType = noticeType;
@@ -25,7 +24,6 @@ public class ADtoN {
 		this.noticeDate = noticeDate;
 	}
 
-	// Method
 	public int getNoticeCode() {
 		return noticeCode;
 	}
@@ -65,9 +63,6 @@ public class ADtoN {
 	public void setNoticeDate(Timestamp noticeDate) {
 		this.noticeDate = noticeDate;
 	}
-	
-	
-	
 	
 	
 }

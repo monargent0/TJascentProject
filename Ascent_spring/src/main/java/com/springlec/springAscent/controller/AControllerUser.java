@@ -22,6 +22,10 @@ public class AControllerUser {
 		this.loginCommand = logIn;
 	}
 	
+	@RequestMapping("/main")
+	public String main() {
+		return "mainV";
+	}
 	@RequestMapping("/logInV")
 	public String loginV() {
 		return "logInV";

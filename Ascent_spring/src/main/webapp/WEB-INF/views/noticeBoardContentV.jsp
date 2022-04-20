@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,45 +29,39 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>ascent</title>
-<!-- 비디오 -->
-<style>
-#videobcg {
-	position: relative;
-	top:0px;
-	left:-15px;
-	min-width:100%;
-	min-height:100%;
-	padding-bottom:70px;
-	height:auto;
-	margin:0;
-	z-index:-1000;
-}
-/*상품구현 위치 */
-#container1 {
-		position: relative;
-		top:300px;
-}
-</style>
-<!-- 상품에 마우스 올릴때 및 위치 조정  -->
-<style>
-  .py-5 div:hover {
-  border-color:#333;
- }   
-  .col {
-  padding:70px 70px 0 70px;
-  } 
 
-  .detail-text-center {
- 	padding:30px;
-  height:140px;
-  text-align:center;
-  }    
- </style>
+<title>공지사항</title>
+<style>
+	  table {
+        border-collapse: collapse;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        width: auto;
+        height: auto;
+      }
+      
+      table, th, td {
+        padding: 5px;
+       }
+       
+      .contents{
+		position: absolute;
+		left : 50%;
+		transform : translate(-50%,0%);
+		padding: 50px ;
+		font-family:"나눔명조";  
+      	color: #463D3D;
+	}    
+	#hyper{				
+      	/* font-size: 20px; */
+      	TEXT-DECORATION:none;
+      	font-family:"나눔명조";  
+      	color: #463D3D;
+      }
+</style>
 </head>
 <body style="background-color:#FFFAF6">
-	
-	<!-- 메인홈바 -->
+<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -82,7 +75,7 @@
 				<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					<ul id="nav">
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
+						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Scent </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -97,7 +90,7 @@
 					</li> 
 				<!-- 상품별로 보여주기  -->
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
+						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -108,21 +101,19 @@
 							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
 						</ul>
 					</li>
-				<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							About </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="noticeBoardList.do">Notice</a></li>
+					<!-- 1:1문의 ,공지사항, 상품문의  -->
+					<li><a class="nav-link px-2" href="#">About</a>
+						<ul>
+							<li><a href="noticeBoardList.do">Notice</a></li>
+							<!-- <li><a href="counselList.do">Q&A</a></li> -->
 							<%
 							if(session.getAttribute("userID") == null){
 							%>
-							<li><a class="dropdown-item" href="logInV">Q&A</a></li>
+							<li><a href="logInV.jsp">Q&A</a></li>
 							<%
 							}else if(session.getAttribute("userID") != null){
 							%>
-							<li><a class="dropdown-item" href="counselList.do">Q&A</a></li>
+							<li><a href="counselList.do">Q&A</a></li>
 						  <% } %>
 						</ul>
 					</li>
@@ -159,71 +150,42 @@
 					<% 
 				 	 if(session.getAttribute("userID") == null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
 					<%
 					}else if(session.getAttribute("userID") != null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
 					
 				</div>
 			</div>
+			
 	</nav>
-	
-		<!-- 비디오1  -->
-		<!-- 비디오에 하이퍼링크 띄우기  -->
-		<ul>
-		<video id="videobcg" width="100%" height="480"  autoplay loop muted>
-			<source	src="assets/pexels-rose.mp4" type="video/mp4" >
-		</video>
-			<div class="jb-text">
-      	  <p id="hyper1">Red in full bloom</p>
-    	  </div>
-		<a id="hyper2" href="sFList.do">More </a>		
-		</ul>
-		
-	<!-- 상품 구현  -->
-
-    <section class="py-5">
-               			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${mainList }" var="dto"><%--반복문,dto --%>
- 								 <div class="col">
-   									 <div class="card h-100">
-   									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
-   									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
-     								 <div class="card-body">
-     								  <div class="detail-text-center">
-                              	     <p class="pd.name">${dto.productName }</p> 
-                                    <!-- Product size-->
-                             		<p class="pd.size">${dto.productSize }ml</p>
-                                    <!-- Product price-->
-                                	<p class="pd.price">${dto.productPrice }원</p>
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
-               		 </c:forEach>
-  				  </div>
-  				  </section>
- 
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
-	crossorigin="anonymous"></script>
+ <div class="contents">
+	<table >
+			<tr>
+				<td>글번호</td>
+				<td><input type="text" name="noticeCode" size="5" value="${noticeContentV.noticeCode}" readonly="readonly"></td>
+			</tr>			
+			<tr>
+				<td>종류</td>
+				<td><input type="text" name="noiticeType" size="15" value="${noticeContentV.noticeType}" readonly="readonly"></td>
+			</tr>			
+			<tr>
+				<td>제목</td>
+				<td><input type="text" name="noticeTitle" size="50" value="${noticeContentV.noticeTitle }" readonly="readonly"></td>
+			</tr>			
+			</tr>
+				<td>내용</td>
+				<td><textarea name="noticeContent" rows="10" cols="50" maxlength="100" readonly="readonly">${noticeContentV.noticeContent } </textarea></td>
+			</tr>
+			<tr>
+				<td><a id="hyper" href="noticeBoardList.do">목록보기</a></td>
+			</tr>
+	</table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>	
 </body>
-<script type="text/javascript">
-var userID = '<%=session.getAttribute("userID")%>';
-var productCode1 = document.cartForm.productCode.value;
-function cartListCheckUser() {
-	if (userID != 'null'){
-		location.href='cartList.do?userID='+userID;
-	}
-	else{
-		alert("로그인이 필요합니다.");
-		location.href='logInV';
-	}
-}
-</script>
 </html>
