@@ -193,7 +193,15 @@
 			</tr>			
 			<tr>
 				<td>문의종류</td>
-				<td><input type="text" name="counselType" size="15" value="${counselContentV.counselType}" readonly="readonly"></td>
+				<td><select name="counselType">
+					<option value= "환불">환불</option>
+					<option value= "배송">배송</option>
+					<option value= "주문/결제">주문/결제</option>
+					<option value= "회원">회원 관련</option>
+					<option value= "상품">상품 관련</option>				
+					<option value= "사이트 이용">사이트 이용</option>				
+					<option value= "기타">기타</option>				
+				</select></td>
 			</tr>			
 			<tr>
 				<td>제목</td>
