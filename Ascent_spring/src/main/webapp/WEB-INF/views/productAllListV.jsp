@@ -24,6 +24,7 @@
     crossorigin="anonymous">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
   <%-- 아이콘 --%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>ascent</title>
@@ -40,7 +41,8 @@
  	padding:30px;
   height:140px;
   text-align:center;
-  }    
+  }
+  
  </style>
 </head>
 <!-- 메인 홈바  -->
@@ -55,36 +57,35 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					
-						<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
+					<!-- 상품 센트별로   보여주기  -->
 					<ul id="nav">
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
+						class="nav-link dropdown-toggle" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Scent </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="allList.do">All</a></li>
-							<li><a class="dropdown-item" href="sFList.do">Floral</a></li>
-							<li><a class="dropdown-item" href="sCList.do">Citrus</a></li>
-							<li><a class="dropdown-item" href="sFRList.do">Fresh</a></li>
-							<li><a class="dropdown-item" href="sFTList.do">Fruity</a></li>
-							<li><a class="dropdown-item" href="sWList.do">Woody</a></li>
-							<li><a class="dropdown-item" href="sOList.do">Oriental</a></li>
+							<li><a class="dropdown-item" href="allList">All</a></li>
+							<li><a class="dropdown-item" href="productscentfloralList">Floral</a></li>
+							<li><a class="dropdown-item" href="productscentcitruslist">Citrus</a></li>
+							<li><a class="dropdown-item" href="productscentfreshlist">Fresh</a></li>
+							<li><a class="dropdown-item" href="productscentfruitylist">Fruity</a></li>
+							<li><a class="dropdown-item" href="productscentwoodylist">Woody</a></li>
+							<li><a class="dropdown-item" href="productscentoritentallist">Oriental</a></li>
 						</ul>
 					</li> 
-						<!-- 상품별로 보여주기  -->
-
+				<!-- 부향로 보여주기  -->
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
+						class="nav-link dropdown-toggle" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="allList.do">All</a></li>
-							<li><a class="dropdown-item" href="pPList.do">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="pTList.do">Eau de toilette</a></li>
-							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
-							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
+							<li><a class="dropdown-item" href="allList">All</a></li>
+							<li><a class="dropdown-item" href="productperfumelist">Eau de perfume</a></li>
+							<li><a class="dropdown-item" href="producttotilettelist">Eau de toilette</a></li>
+							<li><a class="dropdown-item" href="productcolongelist">Eau de cologne</a></li>
+							<li><a class="dropdown-item" href="productbodyspraylist">Body Spray</a></li>
 						</ul>
-					</li> 
+					</li>
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
 					<li><a class="nav-link px-2" href="main.do">About</a>
 						<ul>
@@ -104,7 +105,8 @@
   					  </a>
 				  </div>
       			  
-      			<!--검색내용  -->
+      		
+				 <!--검색내용  -->
 				<form  class="d-flex" method="post" action="searchProduct.do" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
@@ -140,13 +142,14 @@
 			</div>
 	</nav>
 
+     
 <!-- 상품 -->
-               			   <section class="py-5">
+               			   <section id="mytable" class="py-5">
                			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${pBList }" var="dto"><%--반복문,dto --%>
+		  					<c:forEach items="${allList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
    									 <div class="card h-100">
-   									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
+   									  <a class="card-image" href="productDetailV.?productCode=${dto.productCode }">
    									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
      								 <div class="card-body">
      								  <div class="detail-text-center">
@@ -163,29 +166,36 @@
                		 </c:forEach>
   				  </div>
   				  </section>
-                          
-                            		
-       
-                           
-                 
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
+  <!--  paging -->                      
+<!-- 			 <nav class="paging-nav" aria-label="Page navigation example">
+  					<ul class="pagination">
+   				 <li class="page-item">
+    			  <a class="page-link" href="#" aria-label="Previous">
+     			   <span aria-hidden="true">&laquo;</span>
+    			  </a>
+   				</li>
+   			 <li class="page-item"><a class="page-link" href="#">1</a></li>		
+    		<li class="page-item"><a class="page-link" href="#">2</a></li>
+    		<li class="page-item"><a class="page-link" href="#">3</a></li>
+    		<li class="page-item"><a class="page-link" href="#">4</a></li>
+    		<li class="page-item"><a class="page-link" href="#">5</a></li>
+   			 <li class="page-item">
+    		  <a class="page-link" href="#" aria-label="Next">
+      		  <span aria-hidden="true">&raquo;</span>
+     			 </a>
+    			</li>
+  				</ul>
+			</nav> -->
+	<!-- paging code -->
+	
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <script type="text/javascript">
-var userID1 = '<%=session.getAttribute("userID")%>';
-// 따옴표 주의
+var userID = '<%=session.getAttribute("userID")%>';
 function cartListCheckUser() {
-	if (userID1 != 'null'){
-		location.href='cartList.do?userID='+userID1;
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
 	}
 	else{
 		alert("로그인이 필요합니다.");

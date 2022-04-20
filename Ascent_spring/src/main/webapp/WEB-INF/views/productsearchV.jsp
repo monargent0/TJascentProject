@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<!DOCTYPE html>
+	pageEncoding="UTF-8"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+
+  <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -30,33 +31,24 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>Order List</title>
+<title>ascent</title>
 <style>
-	  table {
-        border-collapse: collapse;
-        width: auto;
-        height: auto;
-      }
-      
-      table, th, td {
-        padding: 5px;
-       }
-       th{
-       border-top : 1px solid black;
-       border-bottom: 1px solid black;
-       }
-       
-      .list{
-      	position: absolute;
-      	top : 50%;
-      	left : 50%;
-      	transform : translate(-50%,-50%);
-      }
+.py-5 div:hover {
+  border-color:#333;     
+ }   
+  .col {
+  padding:70px 70px 0 70px;
+  } 
+
+  .detail-text-center {
+ 	padding:30px;
+  height:140px;
+  text-align:center;
+  }    
 </style>
 </head>
-<body>
-
-	<!-- 메인홈바 -->
+<body style="background-color:#FFFAF6">
+<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -96,21 +88,19 @@
 							<li><a class="dropdown-item" href="productbodyspraylist">Body Spray</a></li>
 						</ul>
 					</li>
-				<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							About </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="noticeBoardList.do">Notice</a></li>
+					<!-- 1:1문의 ,공지사항, 상품문의  -->
+					<li><a class="nav-link px-2" href="#">About</a>
+						<ul>
+							<li><a href="noticeBoardList.do">Notice</a></li>
+							<!-- <li><a href="counselList.do">Q&A</a></li> -->
 							<%
 							if(session.getAttribute("userID") == null){
 							%>
-							<li><a class="dropdown-item" href="logInV">Q&A</a></li>
+							<li><a href="logInV.jsp">Q&A</a></li>
 							<%
 							}else if(session.getAttribute("userID") != null){
 							%>
-							<li><a class="dropdown-item" href="counselList.do">Q&A</a></li>
+							<li><a href="counselList.do">Q&A</a></li>
 						  <% } %>
 						</ul>
 					</li>
@@ -122,15 +112,14 @@
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
+				  
       			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct.do" >
+				<form  class="d-flex" method="post" action="searchProduct.do">
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
-				
 					<div class="text-end">
-					
-					<!--  검색 -->
+           
 					<div> 
 				<button type="submit" class="btn text-white">
                   <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
@@ -142,105 +131,49 @@
 				 </div> 
 				 </div>
 				</form>
-				
+    
 				<!-- 마이페이지 -->
 					<% 
 				 	 if(session.getAttribute("userID") == null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
 					<%
 					}else if(session.getAttribute("userID") != null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
+					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
 					
 				</div>
 			</div>
 	</nav>
+<!-- 상품검색 -->
+		<section class="py-5">
+               	 <div class="row row-cols-1 row-cols-md-4 g-4">
+		  					<c:forEach items="${searchList }" var="dto">
+ 								 <div class="col">
+   									 <div class="card h-100">
+   									  <a class="card-image" href="productDetailV.?productCode=${dto.productCode }">
+   									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
+     								 <div class="card-body">
+     								  <div class="detail-text-center">
+                              	     <p class="pd.name">${dto.productName }</p>
+                                    <!-- Product size-->
+                             		<p class="pd.size">${dto.productSize }ml</p>
+                                    <!-- Product price-->
+                                	<p class="pd.price">${dto.productPrice }원</p>
+                             	
+    				 		 </div>
+    				 		 </div>
+    				 		 </div>
+    				 		 </div>
+               		 </c:forEach>
+  				  </div>
+  				  </section> 
+				
 	
-<div class="list">
-	<h1>Order List</h1>
-		<table >
-			<tr>
-				<th hidden="">userID</th>
-				<th hidden="">orderCode</th>
-				<th align="center">주문번호</th>
-				<th align="center">이미지</th>
-				<th>이름</th>
-				<th>용량</th>
-				<th>가격</th>
-				<th>수량</th>
-				<th>합계</th>
-				<!-- <th>주문수량</th>
-				<th>주문총액</th> -->
-			</tr>
-			<form method="post" name="orderList">
-			<c:forEach items="${orderList }" var="dto">
-			<tr>
-				<td hidden="">
-				<input type="text" value="<%=session.getAttribute("userID") %>" name="userID" readonly="readonly" >
-				</td>
-				<td hidden="">
-				<input type="text" value="${dto.orderCode }" name="orderCode" readonly="readonly">
-				</td>
-				<td align="center">
-				<a href="orderDetail.do?orderNumber=${dto.orderNumber }&userID=<%=session.getAttribute("userID")%>">${dto.orderNumber }</a>
-				</td>
-				<td align="center">
-				<img class="img" src="${dto.productImages }" width="150px" name="productImages">
-				</td>
-				<td align="center">
-				<input hidden="" type="text" value="${dto.productName }" name="productName" readonly="readonly">
-				${dto.productName }
-				</td>
-				<td align="center">
-				<input hidden="" type="text" value="${dto.productSize }" name="productSize" readonly="readonly">
-				${dto.productSize } ml
-				</td>
-				<td align="center">
-				<input hidden="" type="text" value="${dto.productPrice }" name="productPrice" readonly="readonly">
-				${dto.productPrice } 원
-				</td>
-				<td align="center">
-				${dto.cartAmount } 개
-				</td>
-				<td align="center">
-				${dto.cartSum } 원
-				</td>
-				<%-- <td align="center">
-				<input type="text" value="${dto.orderAmount }" name="orderAmount" readonly="readonly">
-				</td>
-				<td align="center">
-				<input type="text" value="${dto.orderSum }" name="orderSum" readonly="readonly">
-				</td> --%>
-			</tr>
-			</c:forEach>
-			</form>
-		</table>
-</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>	
 </body>
-<script>
-var userID = '<%=session.getAttribute("userID")%>';
-function cartListCheckUser() {
-	if (userID != 'null'){
-		location.href='cartList.do?userID='+userID;
-	}
-	else{
-		alert("로그인이 필요합니다.");
-		location.href='logInV';
-	}
-}
-function sendProductCodeLogin() {
-	if (userID != 'null'){
-		location.href='myPageV'
-	}
-	else{
-		alert("로그인이 필요합니다.");
-		location.href='logInV?productCode='+productCode1;
-	}
-}
-</script>
 </html>
