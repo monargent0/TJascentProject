@@ -26,14 +26,14 @@ public class AControllerBoard {
 	
 	
 	@Autowired
-	private void auto(ACommand clist, ACommand cwrite, ACommand ccontent, ACommand cdelete, ACommand nlist, ACommand ncontent) {
-		this.counselListCommand = clist;
-		this.counselWriteCommand = cwrite;
-		this.counselContentCommand = ccontent;
-		this.counselDeleteCommand = cdelete;
+	private void auto(ACommand counselList, ACommand counselWrite, ACommand counselContent, ACommand counselDelete, ACommand noticeList, ACommand noticeContent) {
+		this.counselListCommand = counselList;
+		this.counselWriteCommand = counselWrite;
+		this.counselContentCommand = counselContent;
+		this.counselDeleteCommand = counselDelete;
 		
-		this.noticeListCommand = nlist;
-		this.noticeContentCommand = ncontent;
+		this.noticeListCommand = noticeList;
+		this.noticeContentCommand = noticeContent;
 	}
 
 	

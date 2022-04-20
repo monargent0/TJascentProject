@@ -26,7 +26,6 @@
 	
 	<context:component-scan base-package="com.springlec.springAscent" />
 	
-	
 	<!-- JDBC -->
 	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
@@ -44,17 +43,18 @@
 		<beans:constructor-arg index="0" ref="sqlSessionFactory"/>
 	</beans:bean>
 	
-	<!-- command -->
+	<!-- je command -->
 	<beans:bean name="logIn" class="com.springlec.springAscent.command.LoginCommand" ></beans:bean>
+	
+	<!-- jh command -->
 	<beans:bean name="counselList" class="com.springlec.springAscent.command.CounselListCommand"></beans:bean>
 	<beans:bean name="counselWrite" class="com.springlec.springAscent.command.CounselWriteCommand"></beans:bean>
 	<beans:bean name="counselContent" class="com.springlec.springAscent.command.CounselContentCommand"></beans:bean>
 	<beans:bean name="counselDelete" class="com.springlec.springAscent.command.CounselDeleteCommand"></beans:bean>
-	
 	<beans:bean name="noticeList" class="com.springlec.springAscent.command.NoticeListCommand"></beans:bean>
 	<beans:bean name="noticeContent" class="com.springlec.springAscent.command.NoticeContentCommand"></beans:bean>
 	
-		
+	<!-- sw command -->
 	<beans:bean name="productDetail" class="com.springlec.springAscent.command.ProductDetailCommand"/>
 	<beans:bean name="cartList" class="com.springlec.springAscent.command.CartListCommand"/>
 	<beans:bean name="cartWrite" class="com.springlec.springAscent.command.CartWriteCommand"/>
