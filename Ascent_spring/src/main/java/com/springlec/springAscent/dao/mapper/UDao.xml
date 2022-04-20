@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.springlec.springAscent.dao.UDao">
+	<select id="logIn" resultType="com.springlec.springAscent.dto.UDtoLogin">
+		SELECT USERID, ADMINCHECK FROM USERINFO WHERE USERID = #{param1} AND USERPW = #{param2} AND U_RESIGNDATE IS NULL
+	</select>
+
+
+</mapper>

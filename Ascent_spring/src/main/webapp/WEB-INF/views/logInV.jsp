@@ -179,7 +179,7 @@
 				</ul>
 				<!--로고 -->
       			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="main.do">
+   					 <a class="navbar-brand" href="main">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
@@ -190,7 +190,7 @@
 				<!--검색,마이페이지,장바구니 아이콘  -->
 				<div class="text-end">
 					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV'" ></i>
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
 				</div>
 			</div>
@@ -204,7 +204,7 @@
 	</div>  
  
  	<div >
- 		<form action="logIn.do" method="post" name="log" >
+ 		<form action="logIn" method="post" name="log" >
  			<div>
 				<div style="float: right;">
 					<input type="text" name="userID" size="30" placeholder="아이디" id="userID" onkeyup="noblank(this)">
