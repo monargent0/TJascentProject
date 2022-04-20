@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +45,9 @@
 </head>
 <!-- 메인 홈바  -->
 <body style="background-color:#FFFAF6">
-<nav id="navBar" class="navbar navbar-expand-lg navbar">
+	
+	<!-- 메인홈바 -->
+	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -55,7 +57,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					
-						<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
+				<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
 					<ul id="nav">
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
@@ -71,8 +73,7 @@
 							<li><a class="dropdown-item" href="sOList.do">Oriental</a></li>
 						</ul>
 					</li> 
-						<!-- 상품별로 보여주기  -->
-
+				<!-- 상품별로 보여주기  -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="main.do" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -84,34 +85,40 @@
 							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
 							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
 						</ul>
-					</li> 
+					</li>
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="main.do">About</a>
+					<li><a class="nav-link px-2" href="#">About</a>
 						<ul>
-							<li><a href="#">Notice</a></li>
+							<li><a href="noticeBoardList.do">Notice</a></li>
+							<!-- <li><a href="counselList.do">Q&A</a></li> -->
+							<%
+							if(session.getAttribute("userID") == null){
+							%>
+							<li><a href="logInV.jsp">Q&A</a></li>
+							<%
+							}else if(session.getAttribute("userID") != null){
+							%>
 							<li><a href="counselList.do">Q&A</a></li>
+						  <% } %>
 						</ul>
-						
-						
 					</li>
 				</ul>
 				</ul>
 				<!--로고 -->
-			
       			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
    					 <a class="navbar-brand" href="main.do">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
-      			  
-      			  
-      			  <!--검색내용  -->
+      			 <!--검색내용  -->
 				<form  class="d-flex" method="post" action="searchProduct.do" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
-				<!--  검색 -->
+				
 					<div class="text-end">
+					
+					<!--  검색 -->
 					<div> 
 				<button type="submit" class="btn text-white">
                   <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
@@ -140,40 +147,12 @@
 				</div>
 			</div>
 	</nav>
-	
-
-
-
-
-
+<!-- Header-->
+     
 <!-- 상품 -->
-               			  
                			   <section class="py-5">
                			  <div class="row row-cols-1 row-cols-md-4 g-4">
-               	<%-- 		  <c:set var="list" value="0"/> --%>
-               		<%-- 	  <c:choose> --%>
-               			  <%-- <c:when test="${list eq pPList  }" > --%>
-		  					<c:forEach 	items="${pPList }" var="dto">
- 								 <div class="col">
-   									 <div class="card h-100">
-   									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
-   									  <!-- Product Image -->
-   									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
-     								 <div class="card-body">
-     								  <div class="detail-text-center">
-                              	     <p class="pd.name">${dto.productName }</p>
-                                    <!-- Product size-->
-                             		<p class="pd.size">${dto.productSize }ml</p>
-                                    <!-- Product price-->
-                                	<p class="pd.price">${dto.productPrice }원</p>
-    				 				 </div>
-    				 				 </div>
-    				 			 </div>
-    				 			 </div>
-               		 </c:forEach>
-             <%--   		 </c:when> --%>
-               		 <%-- <c:when test="${list eq pCList }">
-               		 <c:forEach items="${pCList }" var="dto">반복문,dto
+		  					<c:forEach items="${pTList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
    									 <div class="card h-100">
    									  <a class="card-image" href="productDetail.do?productCode=${dto.productCode }">
@@ -191,18 +170,32 @@
     				 		 </div>
     				 		 </div>
                		 </c:forEach>
-               		 </c:when>
-               		 </c:choose>
-  				  </div> --%>
-  				  </section> 
-
+  				  </div>
+  				  </section>
+                          
+                            		
+                            		
+                               
+                           
+                 
+           
+           
+           
+           
+           
+           
+           
+           
+           
            
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <script type="text/javascript">
+var userID1 = '<%=session.getAttribute("userID")%>';
+// 따옴표 주의
 function cartListCheckUser() {
-	if (userID != 'null'){
-		location.href='cartList.do?userID='+userID;
+	if (userID1 != 'null'){
+		location.href='cartList.do?userID='+userID1;
 	}
 	else{
 		alert("로그인이 필요합니다.");
