@@ -217,7 +217,7 @@ function checkBoxAll(event) {
 				${dto.productPrice } 원
 				</td>
 				<td align="center">
-					<select name="cartAmount">
+					<select name="cartAmount" onchange="cartM()">
 						<option value="${dto.cartAmount }" selected="selected">${dto.cartAmount }</option>
 						<option value="1" onselect="">1</option>
 						<option value="2" onselect="">2</option>
@@ -239,6 +239,7 @@ function checkBoxAll(event) {
 </body>
 <script type="text/javascript">
 var cartForm1 = document.cartForm;
+
 function checkUserCheck() {
 	if (cartForm1.checkCart.length == 0){
 		alert("1개 이상의 목록을 선택해주세요.");
@@ -246,6 +247,10 @@ function checkUserCheck() {
 		cartForm1.action='orderView.do';
 		cartForm1.submit();
 	}
+}
+function cartM(){
+	cartForm1.action='cartModify.do';
+	cartForm1.submit();
 }
 </script>
 </html>
