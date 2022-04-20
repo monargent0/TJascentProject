@@ -83,33 +83,33 @@ function checkBoxAll(event) {
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					
-				<!-- 상품 카테고리 한눈에 차라락 보여주기  -->
+				<!-- 상품 센트별로 보여주기  -->
 					<ul id="nav">
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Scent </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="allList.do">All</a></li>
-							<li><a class="dropdown-item" href="sFList.do">Floral</a></li>
-							<li><a class="dropdown-item" href="sCList.do">Citrus</a></li>
-							<li><a class="dropdown-item" href="sFRList.do">Fresh</a></li>
-							<li><a class="dropdown-item" href="sFTList.do">Fruity</a></li>
-							<li><a class="dropdown-item" href="sWList.do">Woody</a></li>
-							<li><a class="dropdown-item" href="sOList.do">Oriental</a></li>
+							<li><a class="dropdown-item" href="allList">All</a></li>
+							<li><a class="dropdown-item" href="productscentfloralList">Floral</a></li>
+							<li><a class="dropdown-item" href="productscentcitruslist">Citrus</a></li>
+							<li><a class="dropdown-item" href="productscentfreshlist">Fresh</a></li>
+							<li><a class="dropdown-item" href="productscentfruitylist">Fruity</a></li>
+							<li><a class="dropdown-item" href="productscentwoodylist">Woody</a></li>
+							<li><a class="dropdown-item" href="productscentoritentallist">Oriental</a></li>
 						</ul>
 					</li> 
-				<!-- 상품별로 보여주기  -->
+				<!-- 부향로 보여주기  -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="allList.do">All</a></li>
-							<li><a class="dropdown-item" href="pPList.do">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="pTList.do">Eau de toilette</a></li>
-							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
-							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
+							<li><a class="dropdown-item" href="allList">All</a></li>
+							<li><a class="dropdown-item" href="productperfumelist">Eau de perfume</a></li>
+							<li><a class="dropdown-item" href="producttotilettelist">Eau de toilette</a></li>
+							<li><a class="dropdown-item" href="productcolongelist">Eau de cologne</a></li>
+							<li><a class="dropdown-item" href="productbodyspraylist">Body Spray</a></li>
 						</ul>
 					</li>
 				<!-- 1:1문의 ,공지사항, 상품문의  -->

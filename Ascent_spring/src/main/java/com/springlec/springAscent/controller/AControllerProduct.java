@@ -22,37 +22,37 @@ public class AControllerProduct {
 	private ACommand productpPListCommand = null;
 	private ACommand productpTListCommand = null;
 	private ACommand productpCListCommand = null;
-	private ACommand productpWListCommand = null;
+	private ACommand productpBListCommand = null;
 	private ACommand productsFListCommand = null;
 	private ACommand productsCListCommand = null;
-//	private ACommand productsFTListCommand = null;
-//	private ACommand productsFRListCommand = null;
-//	private ACommand productsWListCommand = null;
-//	private ACommand productsOListCommand = null;
+	private ACommand productsFTListCommand = null;
+	private ACommand productsFRListCommand = null;
+	private ACommand productsWListCommand = null;
+	private ACommand productsOListCommand = null;
 	
 	@Autowired
 	public void auto(ACommand productAllList,
 			ACommand productMain, ACommand productSearch, ACommand productpPList,
-			ACommand productpTList, ACommand productpCList, ACommand productpWList,
-			ACommand productsFList, ACommand productsCList) {
+			ACommand productpTList, ACommand productpCList, ACommand productpBList,
+			ACommand productsFList, ACommand productsCList,ACommand productsFTList,
+			ACommand productsFRList, ACommand productsWList, ACommand productsOList	) {
 		this.productAllListCommand = productAllList;
 		this.productMainCommand = productMain;
 		this.productSearchCommand = productSearch;
 		this.productpPListCommand = productpPList;
 		this.productpTListCommand = productpTList;
 		this.productpCListCommand = productpCList;
-		this.productpWListCommand = productpWList;
+		this.productpBListCommand = productpBList;
 		this.productsFListCommand = productsFList;
 		this.productsCListCommand = productsCList;
-//		this.productsFTListCommand = productsFTList;
-//		this.productsFRListCommand = productsFRList;
-//		this.productsWListCommand = productsWList;
-//		this.productsOListCommand = productsOList;
-	//	ACommand productsFTList,
-	//	ACommand productsFRList, ACommand productsWList, ACommand productsOList	
+		this.productsFTListCommand = productsFTList;
+		this.productsFRListCommand = productsFRList;
+		this.productsWListCommand = productsWList;
+		this.productsOListCommand = productsOList;
+		
 	}
 	//모든 상품 
-	@RequestMapping("/productalllist")
+	@RequestMapping("/allList")
 	public String allList(Model model) {
 		productAllListCommand.execute2(sqlSession, model);
 		return "productAllListV"; //jsp 
@@ -61,78 +61,78 @@ public class AControllerProduct {
 	//메인화면 상품 
 	@RequestMapping("/main")
 	public String mainList(Model model) {
-		productAllListCommand.execute2(sqlSession, model);
+		productMainCommand.execute2(sqlSession, model);
 		return "mainV";
 		
 	}
 	//검색 
-	@RequestMapping("/productsearchlist")
+	@RequestMapping("/productsearch")
 	public String searchList(Model model) {
-		productAllListCommand.execute2(sqlSession, model);
+		productSearchCommand.execute2(sqlSession, model);
 		return "productsearchListV";
 		
 	}
 	@RequestMapping("/productperfumelist")
 	public String pPList(Model model) {
-		productAllListCommand.execute2(sqlSession, model);
-		return "productpPList";
+		productpPListCommand.execute2(sqlSession, model);
+		return "productpPListV";
 		
 	}
-	@RequestMapping("/productotilettealllist")
+	@RequestMapping("/producttotilettelist")
 	public String pTList(Model model) {
-		productAllListCommand.execute2(sqlSession, model);
-		return "productpTList";
+		productpTListCommand.execute2(sqlSession, model);
+		return "productpTListV";
 		
 	}
 	@RequestMapping("/productcolongelist")
 	public String pCList(Model model) {
-		productAllListCommand.execute2(sqlSession, model);
-		return "productpCList";
+		productpCListCommand.execute2(sqlSession, model);
+		return "productpCListV";
 		
 	}
 	@RequestMapping("/productbodyspraylist")
 	public String pBList(Model model) {
-		productAllListCommand.execute2(sqlSession, model);
-		return "productpBList";
+		productpBListCommand.execute2(sqlSession, model);
+		return "productpBListV";
 		
 	}
 	@RequestMapping("/productscentfloralList")
 	public String sFList(Model model) {
-		productAllListCommand.execute2(sqlSession, model);
-		return "productsFList";
+		productsFListCommand.execute2(sqlSession, model);
+		return "productsFListV";
 		
 	}
 	@RequestMapping("/productscentcitruslist")
 	public String sCList(Model model) {
-		productAllListCommand.execute2(sqlSession, model);
-		return "productsCList";
+		productsCListCommand.execute2(sqlSession, model);
+		return "productsCListV";
 		
 	}
-//	@RequestMapping("/productalllist")
-//	public String allList(Model model) {
-//		productAllListCommand.execute2(sqlSession, model);
-//		return "productAllList";
-//		
-//	}
-//	@RequestMapping("/productalllist")
-//	public String allList(Model model) {
-//		productAllListCommand.execute2(sqlSession, model);
-//		return "productAllList";
-//		
-//	}
-//	@RequestMapping("/productalllist")
-//	public String allList(Model model) {
-//		productAllListCommand.execute2(sqlSession, model);
-//		return "productAllList";
-//		
-//	}
-//	@RequestMapping("/productalllist")
-//	public String allList(Model model) {
-//		productAllListCommand.execute2(sqlSession, model);
-//		return "productAllList";
-//		
-//	}
-//
-//	
+	@RequestMapping("/productscentfreshlist")
+	public String sFRList(Model model) {
+		productsFRListCommand.execute2(sqlSession, model);
+		return "productsFRListV";
+		
+	}
+	@RequestMapping("/productscentfruitylist")
+	public String sFTList(Model model) {
+		productsFTListCommand.execute2(sqlSession, model);
+		return "productsFTListV";
+		
+	}
+	@RequestMapping("/productscentwoodylist")
+	public String sWList(Model model) {
+		productsWListCommand.execute2(sqlSession, model);
+		return "productsWListV";
+		
+	}
+	@RequestMapping("/productscentoritentallist")
+	public String sOList(Model model) {
+		productsOListCommand.execute2(sqlSession, model);
+		return "productsOListV";
+		
+	}
+
+	
 
 }
