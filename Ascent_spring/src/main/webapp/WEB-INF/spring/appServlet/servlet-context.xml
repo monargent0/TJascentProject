@@ -45,6 +45,8 @@
 	
 	<!-- je command -->
 	<beans:bean name="logIn" class="com.springlec.springAscent.command.LoginCommand" ></beans:bean>
+	<beans:bean name="signIn" class="com.springlec.springAscent.command.SignInCommand" ></beans:bean>
+	<beans:bean name="signOut" class="com.springlec.springAscent.command.SignOutCommand" ></beans:bean>
 	
 	<!-- jh command -->
 	<beans:bean name="counselList" class="com.springlec.springAscent.command.CounselListCommand"></beans:bean>
