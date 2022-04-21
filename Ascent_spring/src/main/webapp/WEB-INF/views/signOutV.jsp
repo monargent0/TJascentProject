@@ -29,94 +29,19 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<meta charset="UTF-8">
 <title>ascent</title>
 </head>
-<script type="text/javascript">
 
-let resultTxt = '<%=(String)request.getAttribute("resultTxt")%>';
-if(resultTxt !== "null"){
-	if(resultTxt == "기존 비밀번호를 확인해 주세요."){
-		alert(resultTxt);
-	}else if(resultTxt == "비밀번호 변경이 완료되었습니다."){
-		window.location.href = 'myPWModifyH';		
-	}
-}
-
-/* 비밀번호 유효성 검사 */
-function checkPW(){
-	let pw = document.getElementById("newPW").value;
-	let oldpw = document.getElementById("oldPW").value;
-	let cfpw = document.getElementById("cfPW").value;
-	let warning = document.getElementById("Warning");
-	var regExpPW = /^[0-9a-zA-Z]*$/
-	
-	if(!regExpPW.test(pw)){
-		warning.innerHTML = '<p id="warning"> 영어 대소문자와 숫자만 입력 가능합니다. </p>';
-	}else if(pw.length < 3){
-		warning.innerHTML = '<p id="warning"> 비밀번호를 3자 이상 입력해주세요 </p>';
-	}else if(pw.length > 16){
-		warning.innerHTML = '<p id="warning"> 15자 이하로 입력해주세요 </p>';
-	}else if(pw == oldpw){
-		warning.innerHTML = '<p id="warning"> 기존 비밀번호와 새로운 비밀번호가 같습니다. </p>';
-	}else if(pw != cfpw){
-		warning.innerHTML = '<p id="warning"> 새로운 비밀번호가 일치하지 않습니다 </p>';
-	}else{
-		document.pwC.submit();
-	}
-}
-
-function typingPW(){
-	let warning = document.getElementById("Warning");
-	warning.innerHTML = "";
-}
-
-function noblank(obj) { // 공백사용못하게
-    var str_space = /\s/;  // 공백체크
-    if(str_space.exec(obj.value)) { //공백 체크
-        /* alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다."); */
-        obj.focus();
-        obj.value = obj.value.replace(' ',''); // 공백제거
-        return false;
-    }
- // onkeyup="noblank(this)" onchange="noSpaceForm(this);"
-}
-
-</script>
 <style>
-	table {
-        border-collapse: collapse;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        width: auto;
-        height: auto;
-        width: 400px;
-      }
-      
-      table, th, td {
-        padding: 5px;
-       }
-      
 	.contents{
 		position: absolute;
 		left : 50%;
 		transform : translate(-50%,0%);
-		padding: 20px ;
+		padding: 50px ;
 		font-family: "나눔명조";
 		color:#463D3D;
 	}
-	
-	#warning{
-		font-size: 12px;
-		text-align: center;
-	}
-	input{
-   		margin:7px 0px;
-   		width:220px;
-	    height:25px;
-   	}
-   	
-    #button{
+	 .sub{
 	    background-color: #F7CCB6;
 	    color: #463D3D;
 	    border: 1px solid #999191;
@@ -127,20 +52,35 @@ function noblank(obj) { // 공백사용못하게
 	    display: inline-block;
 	   	margin-bottom : 10px;
 	    transition: all 0.5s;    
-	    width:177px;
-	    height:28px;
+	    width:224px;
+	    height:32px;
 	}
-	#button:hover{
+	.sub:hover{
 	    background: #241571;
 	    color: #FFFAF6;
 	    transition: all 0.5s;
 	}
-	form{
-		display:inline;
-		float: center;
-		}
+</style>
+
+ <script type="text/javascript">
+	let alertTxt = '<%=(String)session.getAttribute("alertTxt")%>';
+	if(alertTxt!== "null"){
+		alert(alertTxt);
+		<%
+		session.removeAttribute("alertTxt");
+		%>
+	}
 	
-</style>	
+	function check() {
+		if(confirm("회원 탈퇴하시겠습니까?") == true){
+			document.signOut.submit();
+		}else{
+			return;
+		}
+		
+	}
+</script> 
+
 <body style="background-color:#FFFAF6">
 	
 	<!-- 메인홈바 -->
@@ -246,30 +186,30 @@ function noblank(obj) { // 공백사용못하게
 				</div>
 			</div>
 	</nav>
-	
 
- 
- 	<div class="contents">
- 		<form action="myPWModify.do" method="post" name="pwC">
- 			<table>
- 			<tr><td><h2>비밀번호 변경</h2></td></tr>
-				<tr><td align="center">
-					<input type="password" placeholder="기존 비밀번호" name="oldPW" id="oldPW" onkeyup="noblank(this)">
-				</td></tr>
-				<tr><td align="center">
-					<input type="password" name="newPW" placeholder="새로운 비밀번호" id="newPW" onkeydown="typingPW()" onkeyup="noblank(this)">
-				</td></tr>
-				<tr><td align="center">
-					<input type="password" name="confirmPW" placeholder="새로운 비밀번호 확인" id="cfPW" onkeydown="typingPW()" onkeyup="noblank(this)">
-				</td></tr>
-				<tr><td><div id="Warning" ></div> &nbsp; </td></tr> 
- 			</table>
- 		</form>
- 		&nbsp;<br>
-		<div align="right" ><button id="button" type="button" onclick="checkPW()">변경하기</button> </div>
- 	</div>
+<div class="contents">
+	<div>
+		<h1>SIGN OUT</h1>
+	</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+	<div>
+		<form action="signOut.do" method="post" name="signOut">
+			<div>
+				<!-- <div>
+					<label>비밀번호 확인</label>
+				</div> -->
+				<div>
+					<input type="password" name="userPW" placeholder="비밀번호를 입력해 주세요." required="required" size="23" >
+				</div>
+			</div>
+			<div>
+			<br>
+				<button class="sub" type="button" onclick="check()">회원탈퇴</button>
+			</div>
+		</form>
+	</div>
+</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
 	crossorigin="anonymous"></script>
 </body>

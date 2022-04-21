@@ -156,4 +156,9 @@ public class AControllerUser {
 		modifyPWCommand.execute3(sqlSession, request, model);
 		return "myPWModifyV";
 	}
+	// 비밀번호 변경성공
+	@RequestMapping("/myPWModifyH")
+	public String pwmodifyH() {
+		return "myPWModifyH";
+	}
 }
