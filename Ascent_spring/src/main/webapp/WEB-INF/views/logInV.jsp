@@ -30,7 +30,7 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>Log In</title>
+<title>ascent</title>
 </head>
 <style>
 	.contents{

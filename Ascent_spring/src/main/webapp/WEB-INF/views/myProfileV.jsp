@@ -32,7 +32,7 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>My Profile</title>
+<title>ascent</title>
 </head>
 
 <style>
@@ -231,4 +231,16 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
 	crossorigin="anonymous"></script>
 </body>
+<script>
+var userID = '<%=session.getAttribute("userID")%>';
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV';
+	}
+}
+</script>
 </html>

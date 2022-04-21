@@ -50,7 +50,6 @@
 </head>
 <!-- 메인 홈바  -->
 <body style="background-color:#FFFAF6">
-	
 	<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
@@ -91,19 +90,21 @@
 							<li><a class="dropdown-item" href="productbodyspraylist">Body Spray</a></li>
 						</ul>
 					</li>
-					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="#">About</a>
-						<ul>
-							<li><a href="noticeBoardList.do">Notice</a></li>
-							<!-- <li><a href="counselList.do">Q&A</a></li> -->
+				<!-- 1:1문의 ,공지사항, 상품문의  -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							About </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="noticeBoardList.do">Notice</a></li>
 							<%
 							if(session.getAttribute("userID") == null){
 							%>
-							<li><a href="logInV.jsp">Q&A</a></li>
+							<li><a class="dropdown-item" href="logInV">Q&A</a></li>
 							<%
 							}else if(session.getAttribute("userID") != null){
 							%>
-							<li><a href="counselList.do">Q&A</a></li>
+							<li><a class="dropdown-item" href="counselList.do">Q&A</a></li>
 						  <% } %>
 						</ul>
 					</li>
@@ -111,12 +112,12 @@
 				</ul>
 				<!--로고 -->
       			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="main.do">
+   					 <a class="navbar-brand" href="main">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
       			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct.do" >
+				<form  class="d-flex" method="post" action="productsearch" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
@@ -140,11 +141,11 @@
 					<% 
 				 	 if(session.getAttribute("userID") == null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV'" ></i>
 					<%
 					}else if(session.getAttribute("userID") != null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
@@ -204,7 +205,7 @@ function cartListCheckUser() {
 	}
 	else{
 		alert("로그인이 필요합니다.");
-		location.href='logInV.jsp';
+		location.href='logInV';
 	}
 }
 </script>

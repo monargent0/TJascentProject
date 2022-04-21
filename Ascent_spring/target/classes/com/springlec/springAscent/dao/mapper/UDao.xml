@@ -36,4 +36,5 @@
 		SELECT USERPW FROM USERINFO WHERE USERID = #{param1}
 	</select>
 	
+	
 </mapper>

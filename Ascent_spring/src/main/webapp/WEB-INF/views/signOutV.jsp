@@ -213,4 +213,17 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
 	crossorigin="anonymous"></script>
 </body>
+<script type="text/javascript">
+var userID = '<%=session.getAttribute("userID")%>';
+var productCode1 = document.cartForm.productCode.value;
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV';
+	}
+}
+</script>
 </html>
