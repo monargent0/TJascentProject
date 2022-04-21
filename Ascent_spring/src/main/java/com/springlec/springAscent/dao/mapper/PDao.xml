@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT ORDER BY PRODUCTCODE DESC
 </select>
 <!-- paging total = product counting  -->
-<select id="getTotal" resultType="int">
+<select id="total" resultType="int">
 SELECT COUNT(*) FROM PRODUCT
 </select>
 
@@ -24,7 +24,7 @@ from
         product
     where rownum<= 20
     )
-where rn > 10
+where rn > 5
     ]]>
 </select>
 

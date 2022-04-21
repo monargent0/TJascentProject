@@ -2,6 +2,9 @@ package com.springlec.springAscent.controller;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,8 +56,9 @@ public class AControllerProduct {
 		
 	}
 	//모든 상품 (페이징 구현 )
-	@RequestMapping("/allList")
+	@RequestMapping("/productallList")
 	public String allList(Model model,Criteria cri) {
+
 		
 		System.out.println("전체 페이징 ");
 		productAllListCommand.execute2(sqlSession, model);

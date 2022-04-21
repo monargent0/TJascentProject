@@ -19,12 +19,11 @@ public class ADtoPageMaker {
 		this.cri = cri;
         this.total = total;
         
+        // 시작 페이지 
+        this.startPage = 1;
         //마지막 페이지 
         // 보여주는 페이지를 5개로 설정 
         this.endPage = (int)(Math.ceil(cri.getPageNum()/5.0))*5;
-        // 시작 페이지 
-        this.startPage = this.endPage - 4;
-        
         // 전체 마지막 페이지 
         int realEnd = (int)(Math.ceil(total * 1.0/cri.getAmount()));
         
@@ -35,7 +34,7 @@ public class ADtoPageMaker {
         
         // 시작 페이지(startPage)값이 1보다 큰 경우 true 
         this.prev = this.startPage > 1;
-        
+       
         // 마지막 페이지(endPage)값이 1보다 큰 경우 true 
         this.next = this.endPage < realEnd;
         
