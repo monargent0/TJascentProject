@@ -17,13 +17,11 @@
 	</insert>
 	
 	<update id="cartModify">
-			UPDATE CART SET CARTAMOUNT = #{param1}, CARTDATE = NOW() WHERE CARTCODE = #{param2};
+		UPDATE CART SET CARTAMOUNT = #{param1}, CARTDATE = NOW() WHERE CARTCODE = #{param2}
 	</update>
 	
 	<delete id="cartDelete">
-		DELETE FROM CART 
-		WHERE CARTCODE = 
-		<foreach collection="array" item="cartCodeArray" separator=" or ">#{cartCodeArray}</foreach>
+		DELETE FROM CART WHERE CARTCODE = #{param1}
 	</delete>
 	  
 </mapper>

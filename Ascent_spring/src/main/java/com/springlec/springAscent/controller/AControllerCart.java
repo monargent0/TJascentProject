@@ -23,12 +23,13 @@ public class AControllerCart {
 	private ACommand cartModifyCommand = null;
 	private ACommand cartDeleteCommand = null;
 	
-//	private ACommand orderListCommand = null;
-//	private ACommand orderWriteCommand = null;
-//	private ACommand orderContentCommand = null;
+	private ACommand orderListCommand = null;
+	private ACommand orderWriteViewCommand = null;
+	private ACommand orderWriteCommand = null;
 	
 	@Autowired
-	public void auto(ACommand productDetail, ACommand cartList, ACommand cartWrite, ACommand cartModify, ACommand cartDelete) {
+	public void auto(ACommand productDetail, ACommand cartList, ACommand cartWrite, ACommand cartModify, ACommand cartDelete
+			, ACommand orderList, ACommand orderWriteView, ACommand orderWrite) {
 		
 		this.productDetailCommand = productDetail;
 		
@@ -37,9 +38,9 @@ public class AControllerCart {
 		this.cartModifyCommand = cartModify;
 		this.cartDeleteCommand = cartDelete;
 		
-//		this.orderListCommand = orderList;
-//		this.orderWriteCommand = orderWrite;
-//		this.orderContentCommand = orderContent;
+		this.orderListCommand = orderList;
+		this.orderWriteViewCommand = orderWriteView;
+		this.orderWriteCommand = orderWrite;
 	}
 	
 	@RequestMapping("/productDetail")
@@ -86,4 +87,33 @@ public class AControllerCart {
 		
 		return "redirect:cartList";
 	}
+	
+	@RequestMapping("/orderList")
+	public String orderList(HttpServletRequest request, Model model) {
+		
+		model.addAttribute("request", request);
+		orderListCommand.execute3(sqlSession, request, model);
+		
+		return "orderListV";
+	}
+	
+	@RequestMapping("/orderWriteView")
+	public String orderWriteView(HttpServletRequest request, Model model) {
+		
+		model.addAttribute("request", request);
+		orderWriteViewCommand.execute3(sqlSession, request, model);
+		
+		return "orderWriteV";
+	}
+	
+	@RequestMapping("/orderWrite")
+	public String orderWrite(HttpServletRequest request, Model model) {
+		
+		model.addAttribute("request", request);
+		orderWriteCommand.execute1(sqlSession, request);
+		
+		return "orderCompleteV";
+		
+	}
+	
 }

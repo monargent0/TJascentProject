@@ -190,7 +190,7 @@ function checkBoxAll(event) {
 				<th>수량</th>
 				<th>합계</th>
 			</tr>
-			<form name="cartForm" method="post">
+			<form name="cartForm" method="get">
 			<c:forEach items="${cartList }" var="dto" varStatus="status" >
 			<tr>
 				<td hidden="">
@@ -264,7 +264,7 @@ function orderCheckCart() {
 	if (selectedEls.length == 0){
 		alert("1개 이상의 목록을 선택해주세요.");
 	}else {
-		cartForm.action='orderView';
+		cartForm.action='orderWriteView';
 		cartForm.submit();
 	}
 }

@@ -97,13 +97,13 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Scent </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<li><a class="dropdown-item" href="allList.do">All</a></li>
-							<li><a class="dropdown-item" href="sFList.do">Floral</a></li>
-							<li><a class="dropdown-item" href="sCList.do">Citrus</a></li>
-							<li><a class="dropdown-item" href="sFRList.do">Fresh</a></li>
-							<li><a class="dropdown-item" href="sFTList.do">Fruity</a></li>
-							<li><a class="dropdown-item" href="sWList.do">Woody</a></li>
-							<li><a class="dropdown-item" href="sOList.do">Oriental</a></li>
+						<li><a class="dropdown-item" href="allList">All</a></li>
+							<li><a class="dropdown-item" href="sFList">Floral</a></li>
+							<li><a class="dropdown-item" href="sCList">Citrus</a></li>
+							<li><a class="dropdown-item" href="sFRList">Fresh</a></li>
+							<li><a class="dropdown-item" href="sFTList">Fruity</a></li>
+							<li><a class="dropdown-item" href="sWList">Woody</a></li>
+							<li><a class="dropdown-item" href="sOList">Oriental</a></li>
 						</ul>
 					</li> 
 				<!-- 상품별로 보여주기  -->
@@ -112,26 +112,26 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="allList.do">All</a></li>
-							<li><a class="dropdown-item" href="pPList.do">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="pTList.do">Eau de toilette</a></li>
-							<li><a class="dropdown-item" href="pCList.do">Eau de cologne</a></li>
-							<li><a class="dropdown-item" href="pBList.do">Body Spray</a></li>
+							<li><a class="dropdown-item" href="allList">All</a></li>
+							<li><a class="dropdown-item" href="pPList">Eau de perfume</a></li>
+							<li><a class="dropdown-item" href="pTList">Eau de toilette</a></li>
+							<li><a class="dropdown-item" href="pCList">Eau de cologne</a></li>
+							<li><a class="dropdown-item" href="pBList">Body Spray</a></li>
 						</ul>
 					</li>
 					<!-- 1:1문의 ,공지사항, 상품문의  -->
 					<li><a class="nav-link px-2" href="#">About</a>
 						<ul>
-							<li><a href="noticeBoardList.do">Notice</a></li>
-							<!-- <li><a href="counselList.do">Q&A</a></li> -->
+							<li><a href="noticeBoardList">Notice</a></li>
+							<!-- <li><a href="counselList">Q&A</a></li> -->
 							<%
 							if(session.getAttribute("userID") == null){
 							%>
-							<li><a href="logInV.jsp">Q&A</a></li>
+							<li><a href="logInV">Q&A</a></li>
 							<%
 							}else if(session.getAttribute("userID") != null){
 							%>
-							<li><a href="counselList.do">Q&A</a></li>
+							<li><a href="counselList">Q&A</a></li>
 						  <% } %>
 						</ul>
 					</li>
@@ -139,12 +139,12 @@
 				</ul>
 				<!--로고 -->
       			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="main.do">
+   					 <a class="navbar-brand" href="main">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
       			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct.do" >
+				<form  class="d-flex" method="post" action="searchProduct" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
@@ -168,11 +168,11 @@
 					<% 
 				 	 if(session.getAttribute("userID") == null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV'" ></i>
 					<%
 					}else if(session.getAttribute("userID") != null){
 					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
+					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV'" ></i>
 				  <% } %>
 				  <!-- 장바구니 -->
 					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartListCheckUser()"></j>
@@ -183,20 +183,20 @@
 	</nav>
 <div class="contents">
 	<h2>주문이 완료되었습니다.</h2>
-	<button onclick="location.href='myPageV.jsp'">마이페이지 보기</button>
-	<button onclick="location.href='main.do'">메인으로 가기</button>
+	<button onclick="location.href='myPageV'">마이페이지 보기</button>
+	<button onclick="location.href='main'">메인으로 가기</button>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 <script type="text/javascript">
 var userID = '<%=session.getAttribute("userID")%>';
 function cartListCheckUser() {
-	if (userID != 'null'){
-		location.href='cartList.do?userID='+userID;
+	if (userID != null){
+		location.href='cartList?userID='+userID;
 	}
 	else{
 		alert("로그인이 필요합니다.");
-		location.href='logInV.jsp';
+		location.href='logInV';
 	}
 }
 </script>

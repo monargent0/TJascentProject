@@ -58,7 +58,6 @@ public class ADaoO {
 		PreparedStatement preparedStatement = null;
 		LocalDateTime now = LocalDateTime.now();
 		String orderNumber = now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmm"));
-		System.out.println(orderNumber);
 		
 			try {
 				for(int i=0; i<cartCodeArray.length; i++) {

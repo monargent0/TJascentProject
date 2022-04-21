@@ -221,22 +221,14 @@
 </body>
 <script>
 var userID = '<%=session.getAttribute("userID")%>';
+
 function cartListCheckUser() {
-	if (userID != 'null'){
+	if (userID != null){
 		location.href='cartList.do?userID='+userID;
 	}
 	else{
 		alert("로그인이 필요합니다.");
 		location.href='logInV.jsp';
-	}
-}
-function sendProductCodeLogin() {
-	if (userID != 'null'){
-		location.href='myPage.jsp'
-	}
-	else{
-		alert("로그인이 필요합니다.");
-		location.href='logInV.jsp?productCode='+productCode1;
 	}
 }
 </script>

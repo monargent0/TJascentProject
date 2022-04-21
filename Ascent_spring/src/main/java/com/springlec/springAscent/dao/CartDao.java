@@ -12,5 +12,5 @@ public interface CartDao {
 	
 	public void cartModify(int cartAmount, int cartCode);
 	
-	public void cartDelete(int[] cartCodeArray);
+	public void cartDelete(int cartCodeArray);
 }

@@ -1,9 +1,13 @@
 package com.springlec.springAscent.dto;
 
 public class ADtoO {
+	
+	public ADtoO() {
+		// TODO Auto-generated constructor stub
+	}
 
 	int orderCode;
-	int orderNumber;
+	String orderNumber;
 	int	orderSum;
 	int	orderAmount;
 	String orderDate;
@@ -15,7 +19,7 @@ public class ADtoO {
 	String product_productCode;
 	String user_userID;
 	
-	public ADtoO(int orderCode, int orderNumber, int orderSum, int orderAmount, String orderDate, String orderReceiver,
+	public ADtoO(int orderCode, String orderNumber, int orderSum, int orderAmount, String orderDate, String orderReceiver,
 			String orderPostcode, String orderMainAddress, String orderDetailAddress, String orderExtraAddress,
 			String product_productCode, String user_userID) {
 		super();
@@ -41,11 +45,13 @@ public class ADtoO {
 		this.orderCode = orderCode;
 	}
 
-	public int getOrderNumber() {
+	
+
+	public String getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(int orderNumber) {
+	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 

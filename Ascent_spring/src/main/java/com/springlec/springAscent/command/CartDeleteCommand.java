@@ -18,10 +18,13 @@ public class CartDeleteCommand implements ACommand {
 		
 		for(int i=0; i<cartCode.length; i++) {
 			cartCodeArray[i] =Integer.parseInt(cartCode[i]);
+			System.out.println(cartCodeArray[i]);
 		}
 		
 		CartDao dao = sqlSession.getMapper(CartDao.class);
-		dao.cartDelete(cartCodeArray);
+		for(int i=0; i<cartCodeArray.length; i++) {
+			dao.cartDelete(cartCodeArray[i]);
+		}
 		
 	}
 
