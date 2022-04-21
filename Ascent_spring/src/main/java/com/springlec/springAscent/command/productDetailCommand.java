@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 
 import com.springlec.springAscent.dao.PDaoAR;
 
-public class ProductDetailCommand implements ACommand {
+public class productDetailCommand implements ACommand {
 
 	@Override
 	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
@@ -25,6 +25,11 @@ public class ProductDetailCommand implements ACommand {
 		
 		PDaoAR dao = sqlSession.getMapper(PDaoAR.class);
 		model.addAttribute("detail", dao.productDetail(productCode));
+		
+	
+		
+		
+		
 		
 	}
 

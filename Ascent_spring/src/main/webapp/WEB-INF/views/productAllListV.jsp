@@ -162,7 +162,7 @@
 		  					<c:forEach items="${allList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
    									 <div class="card h-100">
-   									  <a class="card-image" href="productDetailV.?productCode=${dto.productCode }">
+   									  <a class="card-image" href="productDetailV?productCode=${dto.productCode }">
    									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
      								 <div class="card-body">
      								  <div class="detail-text-center">
@@ -179,29 +179,29 @@
                		 </c:forEach>
   				  </div>
   				  </section>
-  <!--  paging --> 
+ <!--  paging --> 
   	<div class="pageInfo_wrap" >
         <div class="pageInfo_area">
 			 <nav class="paging-nav" aria-label="Page navigation example">
   			<div>
   			<ul class="pagination" id="pagination">
  			<!--  이전 페이지 -->
-  				<c:if test="${pageMaker.prev  }">
+  				<c:if test="${prev }">
    				 <li class="page-item">
-    			  	<a class="page-link" href="${pageMaker.startPage - 1 }" aria-label="Previous">
+    			  	<a class="page-link" href="${startPageNum - 1 }" aria-label="Previous">
      			   <span aria-hidden="true">&laquo;</span>
     			  </a>
    				</li>
    				</c:if>
    			<!-- 1부터 5까지 화면상 보여주는 페이지  -->	
-   			<c:forEach var="num" begin="${pageMaker.startPage  }" end="${pageMaker.endPage  }">
+   			<c:forEach var="num" begin="${startPageNum  }" end="${endPageNum  }">
    			 <li class="page-item">
-   			 <a class="page-link" href="${num }">${num }</a></li>		
+   			 <a class="page-link" href="/allList?num=${num }">${num }</a></li>		
    			 </c:forEach>	
    			 <!-- 다음 페이지  -->
-   			 <c:if test="${pageMaker.next + 1}">
+   			 <c:if test="${next }">
    			 <li class="page-item">
-    		  <a class="page-link" href="${pageMaker.endPage + 1 }" aria-label="Next">
+    			  <a class="page-link" href="${endPageNum + 1 }" aria-label="Next">
       		  <span aria-hidden="true">&raquo;</span>
      			 </a>
     			</li>
@@ -215,7 +215,7 @@
   	
   	
   	
-	 <!-- paging move  form  -->
+	<%--  <!-- paging move  form  -->
 	<form id="moveForm" action="get">
 		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 		<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
@@ -234,7 +234,20 @@
 				}
 			});
 	</script>
-
+ 
+ <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav> --%>
 	
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

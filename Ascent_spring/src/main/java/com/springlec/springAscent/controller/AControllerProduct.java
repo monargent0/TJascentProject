@@ -2,8 +2,9 @@ package com.springlec.springAscent.controller;
 
 
 
-import java.util.HashMap;
-import java.util.Map;
+
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class AControllerProduct {
 	private ACommand productAllListCommand = null;
 	private ACommand productMainCommand = null;
 	private ACommand productSearchCommand = null;
+	private ACommand productDetailCommand = null;
 	private ACommand productpPListCommand = null;
 	private ACommand productpTListCommand = null;
 	private ACommand productpCListCommand = null;
@@ -36,13 +38,14 @@ public class AControllerProduct {
 	
 	@Autowired
 	public void auto(ACommand productAllList,
-			ACommand productMain, ACommand productSearch, ACommand productpPList,
+			ACommand productMain, ACommand productSearch, ACommand productDetail,	ACommand productpPList,
 			ACommand productpTList, ACommand productpCList, ACommand productpBList,
 			ACommand productsFList, ACommand productsCList,ACommand productsFTList,
 			ACommand productsFRList, ACommand productsWList, ACommand productsOList	) {
 		this.productAllListCommand = productAllList;
 		this.productMainCommand = productMain;
 		this.productSearchCommand = productSearch;
+		this.productDetailCommand = productDetail;
 		this.productpPListCommand = productpPList;
 		this.productpTListCommand = productpTList;
 		this.productpCListCommand = productpCList;
@@ -55,12 +58,9 @@ public class AControllerProduct {
 		this.productsOListCommand = productsOList;
 		
 	}
-	//모든 상품 (페이징 구현 )
-	@RequestMapping("/productallList")
+	//모든 상품 
+	@RequestMapping("/allList")
 	public String allList(Model model,Criteria cri) {
-
-		
-		System.out.println("전체 페이징 ");
 		productAllListCommand.execute2(sqlSession, model);
 		return "productAllListV"; //jsp 
 	
@@ -80,6 +80,18 @@ public class AControllerProduct {
 		return "productsearchListV";
 		
 	}
+	
+	//상세페이지
+	@RequestMapping("/productDetailV")
+	public String productdetail(HttpServletRequest request,	Model model) {
+		System.out.println("상세페이지 ");
+		productDetailCommand.execute3(sqlSession, request, model); 
+		
+		return "productDetailV";
+		
+	}
+	
+	
 	@RequestMapping("/productperfumelist")
 	public String pPList(Model model) {
 		productpPListCommand.execute2(sqlSession, model);
