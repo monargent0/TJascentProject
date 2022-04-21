@@ -15,7 +15,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/assets/**" location="/assets/" />
-	<resources mapping="/assets/productdetail/**" location="/assets/img/" />
+	<resources mapping="/assets/productdetail/**" location="/assets/productdetail/"/>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -44,6 +44,14 @@
 	
 	<!-- je command -->
 	<beans:bean name="logIn" class="com.springlec.springAscent.command.LoginCommand" ></beans:bean>
+	<beans:bean name="signIn" class="com.springlec.springAscent.command.SignInCommand" ></beans:bean>
+	<beans:bean name="signOut" class="com.springlec.springAscent.command.SignOutCommand" ></beans:bean>
+	<beans:bean name="duplicateID" class="com.springlec.springAscent.command.DuplicateIDCommand" ></beans:bean>
+	<beans:bean name="findID" class="com.springlec.springAscent.command.FindIDCommand" ></beans:bean>
+	<beans:bean name="findPW" class="com.springlec.springAscent.command.FindPWCommand" ></beans:bean>
+	<beans:bean name="profile" class="com.springlec.springAscent.command.ProfileCommand" ></beans:bean>
+	<beans:bean name="profileModify" class="com.springlec.springAscent.command.ProfileModifyCommand" ></beans:bean>
+	<beans:bean name="modifyPW" class="com.springlec.springAscent.command.ModifyPWCommand" ></beans:bean>
 	
 	<!-- jh command -->
 	<beans:bean name="counselList" class="com.springlec.springAscent.command.CounselListCommand"></beans:bean>
@@ -80,7 +88,7 @@
 	<beans:bean name="productpBList" class="com.springlec.springAscent.command.productpBListCommand" ></beans:bean>
 	<beans:bean name="productsFList" class="com.springlec.springAscent.command.productsFListCommand" ></beans:bean>
 	<beans:bean name="productsCList" class="com.springlec.springAscent.command.productsCListCommand" ></beans:bean>
-	 <beans:bean name="productsFRList" class="com.springlec.springAscent.command.productsFRListCommand" ></beans:bean>
+	<beans:bean name="productsFRList" class="com.springlec.springAscent.command.productsFRListCommand" ></beans:bean>
 	<beans:bean name="productsFTList" class="com.springlec.springAscent.command.productsFTListCommand" ></beans:bean>
 	<beans:bean name="productsOList" class="com.springlec.springAscent.command.productsOListCommand" ></beans:bean>
 

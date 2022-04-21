@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,12 +59,16 @@
   .col {
   padding:70px 70px 0 70px;
   } 
-
-  .detail-text-center {
- 	padding:30px;
+ .detail-text-center {
+  padding:15px;
   height:140px;
   text-align:center;
-  }    
+  }
+  .card-img-top{
+  width: 100%;
+  height: 22rem;
+  object-fit: cover;
+  }
  </style>
 </head>
 <body style="background-color:#FFFAF6">
@@ -135,7 +140,7 @@
   					  </a>
 				  </div>
       			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct.do" >
+				<form  class="d-flex" method="post" action="productsearch" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
@@ -185,21 +190,21 @@
 		</ul>
 		
 	<!-- 상품 구현  -->
-
+    
     <section class="py-5">
                			  <div class="row row-cols-1 row-cols-md-4 g-4">
 		  					<c:forEach items="${mainList }" var="dto"><%--반복문,dto --%>
  								 <div class="col">
    									 <div class="card h-100">
    									  <a class="card-image" href="productDetailV.?productCode=${dto.productCode }">
-   									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
+   									  <img class="card-img-top" src="${dto.productImages }" alt="" /></a>
      								 <div class="card-body">
      								  <div class="detail-text-center">
-                              	     <p class="pd.name">${dto.productName }</p> 
+                              	     <p style="font-size: 15px;" class="pd.name">${dto.productName }</p> 
                                     <!-- Product size-->
-                             		<p class="pd.size">${dto.productSize }ml</p>
+                             		<p style="font-size: 13px;" class="pd.size">${dto.productSize }ml</p>
                                     <!-- Product price-->
-                                	<p class="pd.price">${dto.productPrice }원</p>
+                                	<p style="font-size: 16px;" class="pd.price">${dto.productPrice }원</p>
     				 		 </div>
     				 		 </div>
     				 		 </div>

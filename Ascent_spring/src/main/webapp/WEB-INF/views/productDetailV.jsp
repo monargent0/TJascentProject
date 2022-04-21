@@ -88,7 +88,7 @@ background:#1A0D35;
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					
-				<!-- 상품 센트별로  보여주기  -->
+				<!-- 상품 센트별로 보여주기  -->
 					<ul id="nav">
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdown"
@@ -139,12 +139,12 @@ background:#1A0D35;
 				</ul>
 				<!--로고 -->
       			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="main.do">
+   					 <a class="navbar-brand" href="main">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
       			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct" >
+				<form  class="d-flex" method="post" action="productsearch" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
