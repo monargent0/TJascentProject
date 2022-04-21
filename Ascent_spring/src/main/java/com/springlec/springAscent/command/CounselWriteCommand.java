@@ -12,7 +12,7 @@ public class CounselWriteCommand implements ACommand {
 	@Override
 	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
 		CDaoCounsel dao = sqlSession.getMapper(CDaoCounsel.class);
-		dao.write(request.getParameter("counselType"), request.getParameter("counselTitle"), request.getParameter("counselContent"), request.getParameter("userID"));
+		dao.write(request.getParameter("counselType"), request.getParameter("counselTitle"), request.getParameter("counselContent"), request.getParameter("counselImage"), request.getParameter("userID"));
 	}
 
 	@Override

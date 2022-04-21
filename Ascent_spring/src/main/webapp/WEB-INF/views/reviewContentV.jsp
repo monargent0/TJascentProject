@@ -203,6 +203,10 @@
 				<td>내용</td>
 				<td><textarea name="reviewContent" rows="10" cols="50" maxlength="100">${reviewContentV.reviewContent } </textarea></td>
 			</tr>						
+			</tr>
+				<td>후기 사진</td>
+				<td><img src="${reviewContentV.reviewImage}" alt="상품사진" width="180" height="180"/></a></td>
+			</tr>									
 			<tr>
 				<td><a id="hyper" href="reviewList">목록보기</a></td>
 			</tr>

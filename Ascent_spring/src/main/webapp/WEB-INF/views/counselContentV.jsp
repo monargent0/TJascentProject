@@ -215,6 +215,10 @@
 				<td>게시일</td>
 				<td><input type="text" name="counselDate" size="25" value="${counselContentV.counselDate}" readonly="readonly"></td>
 			</tr>						
+			</tr>
+				<td>첨부파일</td>
+				<td><img src="${counselContentV.counselImage}" alt="첨부파일" width="180" height="180"/></a></td>
+			</tr>					
 			<tr>
 				<td><a id="hyper" href="counselList">목록보기</a></td>
 				<td colspan="2" align="right"><input class="sub" type="submit" value="삭제">

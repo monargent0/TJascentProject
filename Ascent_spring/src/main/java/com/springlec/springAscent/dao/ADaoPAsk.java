@@ -10,7 +10,7 @@ public interface ADaoPAsk {
 		public ArrayList<ADtoAsk> list(String userID);
 			
 		// 상품 문의 입력
-		public void write(String askTitle, String askContent, String userID);
+		public void write(String askTitle, String askContent, String askImage, String userID);
 		
 		// 상품 문의 상세
 		public ADtoAsk content(int askCode);

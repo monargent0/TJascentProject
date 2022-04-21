@@ -216,6 +216,10 @@
 				<td><input type="file" id="upload" name="image" accept="image/*"></td>
 			</tr>			
 			<tr>
+				<td><input type="hidden" id="imgTxt" name="counselImage" ></td>
+				<td rowspan="7"><img id="preview" src="" width="250" height="250" alt="업로드할 이미지"> </td>
+			</tr>					
+			<tr>
 				<td><a id="hyper" href="counselList">목록보기</a></td>
 				<td colspan="2" align="right"><input class="sub" type="submit" value="입력"></td>
 			</tr>
@@ -224,6 +228,29 @@
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	
+	function readFile() {
+	  
+	  if (this.files && this.files[0]) {
+	    
+	    var FR = new FileReader();
+	    
+	    FR.onload = function(e) {
+	    	//console.log(e.target.result);
+	      document.getElementById("imgTxt").value = e.target.result;
+	     // alert(document.getElementById("imgTxt").value)
+	      document.getElementById("preview").src = e.target.result;
+	    }; 
+	    
+	    FR.readAsDataURL( this.files[0] );
+	  }
+	  
+	}
+	
+	document.getElementById("upload").addEventListener("change", readFile);	
+</script>
 </body>
 </body>
 </html>

@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
 import com.springlec.springAscent.dao.ADaoPAsk;
-import com.springlec.springAscent.dao.CDaoCounsel;
 
 public class ProductAskWriteCommand implements ACommand {
 
@@ -14,7 +13,7 @@ public class ProductAskWriteCommand implements ACommand {
 	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
 
 		ADaoPAsk dao = sqlSession.getMapper(ADaoPAsk.class);
-		dao.write(request.getParameter("askTitle"), request.getParameter("askContent"), request.getParameter("userID"));
+		dao.write(request.getParameter("askTitle"), request.getParameter("askContent"), request.getParameter("askImage"), request.getParameter("userID"));
 	}
 
 	@Override

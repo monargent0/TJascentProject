@@ -5,11 +5,11 @@
     
       <mapper namespace="com.springlec.springAscent.dao.ADaoPAsk">
     	<select id="list" resultType="com.springlec.springAscent.dto.ADtoAsk">
-    		SELECT ASKCODE, ASKTITLE, ASKCONTENT, ASKDATE, A_REPLYCHECK FROM PRODUCTASK
+    		SELECT ASKCODE, ASKTITLE, ASKCONTENT, ASKDATE, A_REPLYCHECK, ASKIMAGE FROM PRODUCTASK
     	</select>
     	<insert id="write">
-    		INSERT INTO PRODUCTASK (ASKTITLE, ASKCONTENT, ASKDATE, USER_USERID, A_REPLYCHECK ) 
-    		VALUES (#{param1},#{param2},NOW(),'JUNGEUN','미답변')
+    		INSERT INTO PRODUCTASK (ASKTITLE, ASKCONTENT, ASKDATE, USER_USERID, A_REPLYCHECK, ASKIMAGE ) 
+    		VALUES (#{param1},#{param2},NOW(),'JUNGEUN','미답변',#{param3})
     	</insert>
     	<select id="content" resultType="com.springlec.springAscent.dto.ADtoAsk">
     		SELECT * FROM PRODUCTASK WHERE ASKCODE = #{param1}

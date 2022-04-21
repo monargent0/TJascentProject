@@ -5,11 +5,11 @@
     
     <mapper namespace="com.springlec.springAscent.dao.CDaoCounsel">
     	<select id="list" resultType="com.springlec.springAscent.dto.CDtoCounsel">
-    		SELECT COUNSELCODE, COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, C_REPLYCHECK FROM COUNSEL 
+    		SELECT COUNSELCODE, COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, C_REPLYCHECK, COUNSELIMAGE FROM COUNSEL 
     	</select>
     	<insert id="write">
-    		INSERT INTO COUNSEL (COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, USER_USERID, C_REPLYCHECK ) 
-    		VALUES (#{param1},#{param2},#{param3},NOW(),'JUNGEUN','미답변')
+    		INSERT INTO COUNSEL (COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, USER_USERID, C_REPLYCHECK, COUNSELIMAGE ) 
+    		VALUES (#{param1},#{param2},#{param3},NOW(),'JUNGEUN','미답변',#{param4})
     	</insert>
     	<select id="content" resultType="com.springlec.springAscent.dto.CDtoCounsel">
     		SELECT * FROM COUNSEL WHERE COUNSELCODE = #{param1}

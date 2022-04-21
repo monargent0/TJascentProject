@@ -233,7 +233,7 @@
 				<td><input type="file" id="upload" name="image" accept="image/*"></td>
 			</tr>
 			<tr>
-				<td><input type="hidden" id="imgTxt" name="productImages" >	</td>
+				<td><input type="hidden" id="imgTxt" name="reviewImage" >	</td>
 				<td rowspan="7"><img id="preview" src="" width="250" height="250" alt="업로드할 이미지"> </td>
 			</tr>		
 			<!-- 별점 기능 아직 미구현 -->		

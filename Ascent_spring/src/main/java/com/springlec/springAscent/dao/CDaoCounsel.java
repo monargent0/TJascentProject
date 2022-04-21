@@ -10,7 +10,7 @@ public interface CDaoCounsel {
 	public ArrayList<CDtoCounsel> list(String userID);
 	
 	// 1대1 문의 입력
-	public void write(String counselType, String counselTitle, String counselContent, String userID);
+	public void write(String counselType, String counselTitle, String counselContent, String counselImage, String userID);
 	
 	// 1대1 문의 상세
 	public CDtoCounsel content(int counselCode);
