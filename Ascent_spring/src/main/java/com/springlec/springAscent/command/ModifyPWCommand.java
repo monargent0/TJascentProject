@@ -32,11 +32,11 @@ public class ModifyPWCommand implements ACommand {
 		UDao dao = sqlSession.getMapper(UDao.class);
 		
 		String originPW = dao.confirmPW(userID);
-		System.out.println(originPW);
+		//System.out.println(originPW);
 		dao.modifyPW(newPW, oldPW, userID);
 		
 		String resultPW = dao.confirmPW(userID);
-		System.out.println(resultPW);
+		//System.out.println(resultPW);
 		
 		if(resultPW.equals(originPW) ) {
 			model.addAttribute("resultTxt" , "기존 비밀번호를 확인해 주세요.");

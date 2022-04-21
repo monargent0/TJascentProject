@@ -19,7 +19,6 @@ public interface UDao {
 	public void modifyPW(String newPW, String oldPW, String userID); // 비밀번호 변경
 	public String confirmPW(String userID); // 비밀번호 변경 커맨드에서 사용
 	
-	
 	// 관리자 Page
 //	public ArrayList<DDtoU> signinList(); // 가입회원조회
 //	public ArrayList<DDtoU> signoutList(); // 탈퇴회원조회
