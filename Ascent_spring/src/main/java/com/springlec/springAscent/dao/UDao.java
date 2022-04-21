@@ -16,9 +16,8 @@ public interface UDao {
 	public String findPW(String userID ,String userName, String userEmail); // 비밀번호 찾기
 	public UDtoMypage userinfo(String userID); // 마이페이지 회원 정보
 	public void usermodify(String userName, String userEmail, String userPhone, String userID); //마이페이지 회원정보 수정
-	//public void pwChange(String newPW, String oldPW, String userID); // 비밀번호 변경
-
-	//	public String pwCheck(String userID); // 비밀번호 변경 커맨드에서 사용
+	public void modifyPW(String newPW, String oldPW, String userID); // 비밀번호 변경
+	public String confirmPW(String userID); // 비밀번호 변경 커맨드에서 사용
 	
 	
 	// 관리자 Page

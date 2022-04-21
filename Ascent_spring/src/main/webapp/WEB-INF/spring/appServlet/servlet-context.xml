@@ -51,6 +51,7 @@
 	<beans:bean name="findPW" class="com.springlec.springAscent.command.FindPWCommand" ></beans:bean>
 	<beans:bean name="profile" class="com.springlec.springAscent.command.ProfileCommand" ></beans:bean>
 	<beans:bean name="profileModify" class="com.springlec.springAscent.command.ProfileModifyCommand" ></beans:bean>
+	<beans:bean name="modifyPW" class="com.springlec.springAscent.command.ModifyPWCommand" ></beans:bean>
 	
 	<!-- jh command -->
 	<beans:bean name="counselList" class="com.springlec.springAscent.command.CounselListCommand"></beans:bean>

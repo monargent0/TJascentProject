@@ -24,11 +24,12 @@ public class AControllerUser {
 	private ACommand findPWCommand = null;
 	private ACommand profileCommand = null;
 	private ACommand profilemodifyCommand = null;
+	private ACommand modifyPWCommand = null;
 	
 	
 	@Autowired
 	public void auto(ACommand logIn, ACommand signIn, ACommand signOut, ACommand duplicateID 
-			, ACommand findID, ACommand findPW, ACommand profile, ACommand profileModify) {
+			, ACommand findID, ACommand findPW, ACommand profile, ACommand profileModify, ACommand modifyPW) {
 		this.loginCommand = logIn;
 		this.signinCommand = signIn;
 		this.signoutCommand = signOut;
@@ -37,6 +38,7 @@ public class AControllerUser {
 		this.findPWCommand = findPW;
 		this.profileCommand = profile;
 		this.profilemodifyCommand = profileModify;
+		this.modifyPWCommand = modifyPW;
 		
 	}
 	// 임시 메인화면
@@ -150,7 +152,8 @@ public class AControllerUser {
 	}
 	// 비밀번호 변경
 	@RequestMapping("/myPWModify.do")
-	public String pwmodify() {
+	public String pwmodify(HttpServletRequest request , Model model) {
+		modifyPWCommand.execute3(sqlSession, request, model);
 		return "myPWModifyV";
 	}
 }
