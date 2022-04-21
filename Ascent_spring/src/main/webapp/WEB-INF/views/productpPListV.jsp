@@ -152,7 +152,7 @@
 		  					<c:forEach items="${pPList }" var="dto">
  								 <div class="col">
    									 <div class="card h-100">
-   									  <a class="card-image" href="productDetailV.do?productCode=${dto.productCode }">
+   									  <a class="card-image" href="productDetailV?productCode=${dto.productCode }">
    									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
      								 <div class="card-body">
      								  <div class="detail-text-center">

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springlec.springAscent.command.ACommand;
+import com.springlec.springAscent.dto.Criteria;
 @Controller
 public class AControllerProduct {
 	
@@ -51,13 +52,16 @@ public class AControllerProduct {
 		this.productsOListCommand = productsOList;
 		
 	}
-	//모든 상품 
+	//모든 상품 (페이징 구현 )
 	@RequestMapping("/allList")
-	public String allList(Model model) {
+	public String allList(Model model,Criteria cri) {
+		
+		System.out.println("전체 페이징 ");
 		productAllListCommand.execute2(sqlSession, model);
 		return "productAllListV"; //jsp 
 	
 	}
+	
 	//메인화면 상품 
 	@RequestMapping("/main")
 	public String mainList(Model model) {

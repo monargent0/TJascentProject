@@ -7,6 +7,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="allList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT ORDER BY PRODUCTCODE DESC
 </select>
+<!-- paging total = product counting  -->
+<select id="getTotal" resultType="int">
+SELECT COUNT(*) FROM PRODUCT
+</select>
+
+<select id="getListPaging" resultType="com.springlec.springAscent.dto.PDto" >
+    <![CDATA[
+        select
+ 		  PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,
+from 
+    (
+    select 
+        rownum rn, PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,
+    from
+        product
+    where rownum<= 20
+    )
+where rn > 10
+    ]]>
+</select>
 
 <select id="mainList" resultType="com.springlec.springAscent.dto.PDto">
 SELECT * FROM PRODUCT WHERE PRODUCTNAME LIKE '%로즈%' ORDER BY PRODUCTCODE DESC LIMIT 4 
