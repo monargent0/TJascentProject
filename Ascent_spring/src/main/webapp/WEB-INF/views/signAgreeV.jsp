@@ -57,7 +57,25 @@
 		font-family: "나눔명조";
 		color:#463D3D;
 	}
-	
+	#bt{
+	    background-color: #F7CCB6;
+	    color: #463D3D;
+	    border: 1px solid #999191;
+	    font-size: 14px;
+	    letter-spacing: 1px;
+	    padding: 5px 0 0 1px;
+	    cursor: pointer;
+	    display: inline-block;
+	   	margin-bottom : 10px;
+	    transition: all 0.5s;    
+	    width:130px;
+	    height:28px;
+	}
+	#bt:hover{
+	    background: #241571;
+	    color: #FFFAF6;
+	    transition: all 0.5s;
+	}
 </style>
 <body style="background-color:#FFFAF6">
 
@@ -433,8 +451,8 @@
   </tr>
   <tr>
    <td align="center" valign="top">
-	    <input type="button" value="동의" onclick="check()"/>&nbsp;&nbsp;&nbsp;
-	    <input type="button" value="동의하지 않습니다" onclick="nocheck()"/>
+	    <button id="bt" type="button" onclick="check()" style="width: 50px;">동의</button>&nbsp;&nbsp;&nbsp;
+	    <button id="bt" type="button" onclick="nocheck()" >동의하지 않습니다</button>
    </td>
   </tr>
  </table>

@@ -240,7 +240,25 @@
 		font-size: 12px;
 		text-align: center;
 	}
-	
+	#bt{
+	    background-color: #F7CCB6;
+	    color: #463D3D;
+	    border: 1px solid #999191;
+	    font-size: 14px;
+	    letter-spacing: 1px;
+	    padding: 5px 0 0 1px;
+	    cursor: pointer;
+	    display: inline-block;
+	   	margin-bottom : 10px;
+	    transition: all 0.5s;    
+	    width:110px;
+	    height:28px;
+	}
+	#bt:hover{
+	    background: #241571;
+	    color: #FFFAF6;
+	    transition: all 0.5s;
+	}
 	
 </style>
 
@@ -378,7 +396,7 @@
 				<div>
 					<input type="text" name="userID" placeholder="아이디를 입력해 주세요."
 					onBlur="checkID()" onkeydown="typingID()" id="userID" size="50" onkeyup="noblank(this)">
-					<button type="button" onclick="doubleC() " >아이디 중복 확인</button>
+					<button id="bt" type="button" onclick="doubleC() " style="width: 130px;">아이디 중복 확인</button>
 				</div>
 				<div style="">
 					<input type="hidden" id="idcheck" name="idcheck" value="uncheck">
@@ -440,7 +458,7 @@
 				<div id="BDWarning"></div>
 			</div>
 			
-			<div>
+			<div style="margin-bottom: 10px;">
 				<div>
 					<label>Gender</label>
 				</div>
@@ -452,7 +470,7 @@
 			
 			
 			<div>
-				<button type="button" onclick="check()">회원가입</button>
+				<button id="bt" type="button" onclick="check()">회원가입</button>
 			</div>
 			
 		</form>
