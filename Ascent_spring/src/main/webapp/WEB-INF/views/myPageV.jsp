@@ -180,10 +180,7 @@
 <br>
 <button onclick="location='orderList.do'" style="width: 200px;" class="hd-btn">주문내역</button> <br>
 <br>
-<form method="get">
-<input type="text" value="<%=session.getAttribute("userID")%>" name="userID" readonly="readonly" hidden="">
-<input type="submit" formaction="orderList.do" style="width: 200px;" value="주문내역" class="hd-btn"> <br>
-</form>
+<button onclick="location='counselList.do'" style="width: 200px;" class="hd-btn">1:1문의</button> <br>
 <br>
 <button onclick="location='reviewList.do'" style="width: 200px;" class="hd-btn" >후기목록</button> <br>
 <br>
