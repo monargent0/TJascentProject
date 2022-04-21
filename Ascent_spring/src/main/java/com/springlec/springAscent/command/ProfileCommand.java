@@ -8,20 +8,11 @@ import org.springframework.ui.Model;
 
 import com.springlec.springAscent.dao.UDao;
 
-public class IDDuplicateCommand implements ACommand {
+public class ProfileCommand implements ACommand {
 
 	@Override
 	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		String userID = request.getParameter("userID");
-		
-		UDao dao = sqlSession.getMapper(UDao.class);
-		
-		if (dao.doubleID(userID) == null) {
-			session.setAttribute("idtxt", "Nodouble");
-		}else if(dao.doubleID(userID) != null) {
-			session.setAttribute("idtxt", "Double");
-		}
+		// TODO Auto-generated method stub
 
 	}
 
@@ -33,7 +24,10 @@ public class IDDuplicateCommand implements ACommand {
 
 	@Override
 	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userID");
+		UDao dao = sqlSession.getMapper(UDao.class);
+		model.addAttribute("userinfo", dao.userinfo(userId));
 
 	}
 

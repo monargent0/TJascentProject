@@ -22,17 +22,21 @@ public class AControllerUser {
 	private ACommand duplicateIDCommand = null;
 	private ACommand findIDCommand = null;
 	private ACommand findPWCommand = null;
+	private ACommand profileCommand = null;
+	private ACommand profilemodifyCommand = null;
 	
 	
 	@Autowired
 	public void auto(ACommand logIn, ACommand signIn, ACommand signOut, ACommand duplicateID 
-			, ACommand findID, ACommand findPW) {
+			, ACommand findID, ACommand findPW, ACommand profile, ACommand profileModify) {
 		this.loginCommand = logIn;
 		this.signinCommand = signIn;
 		this.signoutCommand = signOut;
 		this.duplicateIDCommand = duplicateID;
 		this.findIDCommand = findID;
 		this.findPWCommand = findPW;
+		this.profileCommand = profile;
+		this.profilemodifyCommand = profileModify;
 		
 	}
 	// 임시 메인화면
@@ -121,5 +125,32 @@ public class AControllerUser {
 		findPWCommand.execute3(sqlSession, request, model);
 		return "findPWRV";
 	}
-	
+	// 회원정보
+	@RequestMapping("/profile.do")
+	public String profile(HttpServletRequest request , Model model) {
+		profileCommand.execute3(sqlSession, request, model);
+		return "myProfileV";
+	}
+	// 회원정보 수정화면
+	@RequestMapping("/myProfileModifyV")
+	public String myprofileV(HttpServletRequest request , Model model) {
+		profileCommand.execute3(sqlSession, request, model);
+		return "myProfileModifyV";
+	}
+	// 회원정보 수정
+	@RequestMapping("/profileModify.do")
+	public String profileModify(HttpServletRequest request) {
+		profilemodifyCommand.execute1(sqlSession, request);
+		return "redirect:profile.do";
+	}
+	// 비밀번호 변경화면
+	@RequestMapping("/myPWModify")
+	public String pwmodifyV() {
+		return "myPWModifyV";
+	}
+	// 비밀번호 변경
+	@RequestMapping("/myPWModify.do")
+	public String pwmodify() {
+		return "myPWModifyV";
+	}
 }

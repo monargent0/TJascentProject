@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+ 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ 	<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -29,43 +32,61 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>ascent</title>
-<title>MY PAGE MAIN</title>
+<title>My Profile</title>
 </head>
 
 <style>
-	.contents{
+	table {
+        border-collapse: collapse;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        width: auto;
+        height: auto;
+        width: 600px;
+      }
+      
+      table, th, td {
+        padding: 5px;
+       }
+       
+      .contents{
 		position: absolute;
 		left : 50%;
 		transform : translate(-50%,0%);
 		padding: 50px ;
-		font-family: "나눔명조";
-		color:#463D3D;
-	}
-	 .hd-btn{
-	    background-color: #FFFAF6;
+		font-family:"나눔명조";  
+      	color: #463D3D;
+	}    
+	#hyper{				
+      	/* font-size: 20px; */
+      	TEXT-DECORATION:none;
+      	font-family:"나눔명조";  
+      	color: #463D3D;
+      }
+      .sub{
+	    background-color: #F7CCB6;
 	    color: #463D3D;
-	    border: none;
-	    font-size: 1.0em;
+	    border: 1px solid #999191;
 	    letter-spacing: 0px;
-	    padding: 5px 0 0 0px;
+	   /*  padding: 5px 0 0 0px; */
 	    cursor: pointer;
 	    display: inline-block;
 	    transition: all 0.5s;    
-	    width:100px;
-	    height:32px;
+	    width:130px;
+	    height:25px;
 	    font-family: "나눔명조";
 		color:#463D3D;
 	    
 	}
-	.hd-btn:hover{
-	    background: #F7CCB6;
+	.sub:hover{
+	    background: #241571;
 	    color: #FFFAF6;
 	    transition: all 0.5s;
 	}
 </style>
 <body style="background-color:#FFFAF6">
-<!-- 메인홈바 -->
+	
+	<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -168,44 +189,46 @@
 				</div>
 			</div>
 	</nav>
-	
-	
+
 <div class="contents">
 
-<!-- 개인정보수정,회원탈퇴 -->
-<h4 align="center">MY PAGE</h4>
+<h2>My Profile</h2>
 
-<button onclick="location='profile.do'" style="width: 200px;" class="hd-btn">나의 정보</button> <br>
-<br>
-<button onclick="location='addressList.do'" style="width: 200px;" class="hd-btn">주소록</button> <br>
-<br>
-<button onclick="location='orderList.do'" style="width: 200px;" class="hd-btn">주문내역</button> <br>
-<br>
-<form method="get">
-<input type="text" value="<%=session.getAttribute("userID")%>" name="userID" readonly="readonly" hidden="">
-<input type="submit" formaction="orderList.do" style="width: 200px;" value="주문내역" class="hd-btn"> <br>
-</form>
-<br>
-<button onclick="location='reviewList.do'" style="width: 200px;" class="hd-btn" >후기목록</button> <br>
-<br>
-<button onclick="location='signOutV'" style="width: 200px;" class="hd-btn">회원탈퇴</button> <br>
-<br>
-<button onclick="location='logOutH'" style="width: 200px;" class="hd-btn">로그아웃</button> <br>
-<br>
-
+<table>
+			<tr> <td><h4>기본정보</h4> </td></tr>	
+			
+				<tr>
+					<td> 이름 </td> 
+					<td> ${userinfo.userName} </td>
+				</tr>
+				<tr>
+					<td> 생년월일 </td> 
+					<td> <fmt:formatDate pattern="yyyy년 MM월 dd일" value="${userinfo.userBirth }"/></td>
+				</tr>
+				<tr>
+					<td> 성별 </td> 
+					<td> ${userinfo.userGender}</td>
+				</tr>
+				<tr><td> </td></tr>
+				<tr> <td><h4>연락처정보</h4></td></tr>
+				<tr>
+					<td> 이메일 </td> 
+					<td> ${userinfo.userEmail } </td>
+				</tr>
+				<tr>
+					<td> 전화번호 </td> 
+					<td> ${userinfo.userPhone }</td>
+				</tr>
+				<tr><td> </td></tr>
+			<tr>
+				<td> <button class="sub" type="button" onclick="location='myPWModify'">비밀번호 변경</button> </td>
+				<td align="right"> <button class="sub" type="button" onclick="location='myProfileModifyV'">개인정보 수정</button> </td>
+			</tr>
+</table>
+	
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+	crossorigin="anonymous"></script>
 </body>
-<script>
-var userID = '<%=session.getAttribute("userID")%>';
-function cartListCheckUser() {
-	if (userID != 'null'){
-		location.href='cartList.do?userID='+userID;
-	}
-	else{
-		alert("로그인이 필요합니다.");
-		location.href='logInV';
-	}
-}
-</script>
 </html>

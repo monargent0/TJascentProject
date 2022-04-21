@@ -46,9 +46,11 @@
 	<beans:bean name="logIn" class="com.springlec.springAscent.command.LoginCommand" ></beans:bean>
 	<beans:bean name="signIn" class="com.springlec.springAscent.command.SignInCommand" ></beans:bean>
 	<beans:bean name="signOut" class="com.springlec.springAscent.command.SignOutCommand" ></beans:bean>
-	<beans:bean name="duplicateID" class="com.springlec.springAscent.command.IDDuplicateCommand" ></beans:bean>
+	<beans:bean name="duplicateID" class="com.springlec.springAscent.command.DuplicateIDCommand" ></beans:bean>
 	<beans:bean name="findID" class="com.springlec.springAscent.command.FindIDCommand" ></beans:bean>
 	<beans:bean name="findPW" class="com.springlec.springAscent.command.FindPWCommand" ></beans:bean>
+	<beans:bean name="profile" class="com.springlec.springAscent.command.ProfileCommand" ></beans:bean>
+	<beans:bean name="profileModify" class="com.springlec.springAscent.command.ProfileModifyCommand" ></beans:bean>
 	
 	<!-- jh command -->
 	<beans:bean name="counselList" class="com.springlec.springAscent.command.CounselListCommand"></beans:bean>

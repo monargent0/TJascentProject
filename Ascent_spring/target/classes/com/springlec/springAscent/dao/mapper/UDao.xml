@@ -23,5 +23,10 @@
 	<select id="findPW" resultType="String">
 		SELECT USERPW FROM USERINFO WHERE USERID = #{param1} AND USERNAME = #{param2} AND USEREMAIL = #{param3} AND U_RESIGNDATE IS NULL
 	</select>
-	
+	<select id="userinfo" resultType="com.springlec.springAscent.dto.UDtoMypage">
+		SELECT USERNAME, USERGENDER, USERBIRTH, USERPHONE, USEREMAIL FROM USERINFO WHERE USERID =#{param1} AND U_RESIGNDATE IS NULL
+	</select>
+	<update id="usermodify">
+		UPDATE USERINFO SET USERNAME =  #{param1}, USEREMAIL =  #{param2}, USERPHONE = #{param3} WHERE USERID =  #{param4}
+	</update>
 </mapper>
