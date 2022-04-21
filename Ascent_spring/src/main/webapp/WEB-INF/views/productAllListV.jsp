@@ -43,6 +43,7 @@
   text-align:center;
   }
   .card-img-top{
+  width: 100%; 
   height: 22rem;
   object-fit: cover;
   }

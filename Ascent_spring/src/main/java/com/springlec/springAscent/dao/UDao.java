@@ -1,8 +1,5 @@
 package com.springlec.springAscent.dao;
 
-
-import java.util.ArrayList;
-
 import org.apache.ibatis.annotations.Param;
 
 import com.springlec.springAscent.dto.UDtoLogin;
