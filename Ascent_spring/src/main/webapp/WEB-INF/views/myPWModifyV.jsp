@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,46 +29,118 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta charset="UTF-8">
 <title>ascent</title>
-<!-- 비디오 -->
-<style>
-#videobcg {
-	position: relative;
-	top:0px;
-	left:-15px;
-	min-width:100%;
-	min-height:100%;
-	padding-bottom:70px;
-	height:auto;
-	margin:0;
-	z-index:-1000;
-}
-/*상품구현 위치 */
-#container1 {
-		position: relative;
-		top:300px;
-}
-</style>
-<!-- 상품에 마우스 올릴때 및 위치 조정  -->
-<style>
-  .py-5 div:hover {
-  border-color:#333;
- }   
-  .col {
-  padding:70px 70px 0 70px;
-  } 
- .detail-text-center {
-  padding:15px;
-  height:140px;
-  text-align:center;
-  }
-  .card-img-top{
-  width: 100%;
-  height: 22rem;
-  object-fit: cover;
-  }
- </style>
 </head>
+<script type="text/javascript">
+
+let resultTxt = '<%=(String)request.getAttribute("resultTxt")%>';
+if(resultTxt !== "null"){
+	if(resultTxt == "기존 비밀번호를 확인해 주세요."){
+		alert(resultTxt);
+	}else if(resultTxt == "비밀번호 변경이 완료되었습니다."){
+		window.location.href = 'myPWModifyH';		
+	}
+}
+
+/* 비밀번호 유효성 검사 */
+function checkPW(){
+	let pw = document.getElementById("newPW").value;
+	let oldpw = document.getElementById("oldPW").value;
+	let cfpw = document.getElementById("cfPW").value;
+	let warning = document.getElementById("Warning");
+	var regExpPW = /^[0-9a-zA-Z]*$/
+	
+	if(!regExpPW.test(pw)){
+		warning.innerHTML = '<p id="warning"> 영어 대소문자와 숫자만 입력 가능합니다. </p>';
+	}else if(pw.length < 3){
+		warning.innerHTML = '<p id="warning"> 비밀번호를 3자 이상 입력해주세요 </p>';
+	}else if(pw.length > 16){
+		warning.innerHTML = '<p id="warning"> 15자 이하로 입력해주세요 </p>';
+	}else if(pw == oldpw){
+		warning.innerHTML = '<p id="warning"> 기존 비밀번호와 새로운 비밀번호가 같습니다. </p>';
+	}else if(pw != cfpw){
+		warning.innerHTML = '<p id="warning"> 새로운 비밀번호가 일치하지 않습니다 </p>';
+	}else{
+		document.pwC.submit();
+	}
+}
+
+function typingPW(){
+	let warning = document.getElementById("Warning");
+	warning.innerHTML = "";
+}
+
+function noblank(obj) { // 공백사용못하게
+    var str_space = /\s/;  // 공백체크
+    if(str_space.exec(obj.value)) { //공백 체크
+        /* alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다."); */
+        obj.focus();
+        obj.value = obj.value.replace(' ',''); // 공백제거
+        return false;
+    }
+ // onkeyup="noblank(this)" onchange="noSpaceForm(this);"
+}
+
+</script>
+<style>
+	table {
+        border-collapse: collapse;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        width: auto;
+        height: auto;
+        width: 400px;
+      }
+      
+      table, th, td {
+        padding: 5px;
+       }
+      
+	.contents{
+		position: absolute;
+		left : 50%;
+		transform : translate(-50%,0%);
+		padding: 20px ;
+		font-family: "나눔명조";
+		color:#463D3D;
+	}
+	
+	#warning{
+		font-size: 12px;
+		text-align: center;
+	}
+	input{
+   		margin:7px 0px;
+   		width:220px;
+	    height:25px;
+   	}
+   	
+    #button{
+	    background-color: #F7CCB6;
+	    color: #463D3D;
+	    border: 1px solid #999191;
+	    /* font-size: 1.0em; */
+	    letter-spacing: 0px;
+	    padding: 5px 0 0 0px;
+	    cursor: pointer;
+	    display: inline-block;
+	   	margin-bottom : 10px;
+	    transition: all 0.5s;    
+	    width:177px;
+	    height:28px;
+	}
+	#button:hover{
+	    background: #241571;
+	    color: #FFFAF6;
+	    transition: all 0.5s;
+	}
+	form{
+		display:inline;
+		float: center;
+		}
+	
+</style>	
 <body style="background-color:#FFFAF6">
 	
 	<!-- 메인홈바 -->
@@ -177,50 +247,34 @@
 			</div>
 	</nav>
 	
-		<!-- 비디오1  -->
-		<!-- 비디오에 하이퍼링크 띄우기  -->
-		<ul>
-		<video id="videobcg" width="100%" height="480"  autoplay loop muted>
-			<source	src="assets/pexels-rose.mp4" type="video/mp4" >
-		</video>
-			<div class="jb-text">
-      	  <p id="hyper1">Red in full bloom</p>
-    	  </div>
-		<a id="hyper2" href="sFList.do">More </a>		
-		</ul>
-		
-	<!-- 상품 구현  -->
-    
-    <section class="py-5">
-               			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${mainList }" var="dto"><%--반복문,dto --%>
- 								 <div class="col">
-   									 <div class="card h-100">
-   									  <a class="card-image" href="productDetailV.?productCode=${dto.productCode }">
-   									  <img class="card-img-top" src="${dto.productImages }" alt="" /></a>
-     								 <div class="card-body">
-     								  <div class="detail-text-center">
-                              	     <p style="font-size: 15px;" class="pd.name">${dto.productName }</p> 
-                                    <!-- Product size-->
-                             		<p style="font-size: 13px;" class="pd.size">${dto.productSize }ml</p>
-                                    <!-- Product price-->
-                                	<p style="font-size: 16px;" class="pd.price">${dto.productPrice }원</p>
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
-               		 </c:forEach>
-  				  </div>
-  				  </section>
- 
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+ 
+ 	<div class="contents">
+ 		<form action="myPWModify.do" method="post" name="pwC">
+ 			<table>
+ 			<tr><td><h2>비밀번호 변경</h2></td></tr>
+				<tr><td align="center">
+					<input type="password" placeholder="기존 비밀번호" name="oldPW" id="oldPW" onkeyup="noblank(this)">
+				</td></tr>
+				<tr><td align="center">
+					<input type="password" name="newPW" placeholder="새로운 비밀번호" id="newPW" onkeydown="typingPW()" onkeyup="noblank(this)">
+				</td></tr>
+				<tr><td align="center">
+					<input type="password" name="confirmPW" placeholder="새로운 비밀번호 확인" id="cfPW" onkeydown="typingPW()" onkeyup="noblank(this)">
+				</td></tr>
+				<tr><td><div id="Warning" ></div> &nbsp; </td></tr> 
+ 			</table>
+ 		</form>
+ 		&nbsp;<br>
+		<div align="right" ><button id="button" type="button" onclick="checkPW()">변경하기</button> </div>
+ 	</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
 	crossorigin="anonymous"></script>
 </body>
-<script type="text/javascript">
+<script>
 var userID = '<%=session.getAttribute("userID")%>';
-var productCode1 = document.cartForm.productCode.value;
 function cartListCheckUser() {
 	if (userID != 'null'){
 		location.href='cartList.do?userID='+userID;

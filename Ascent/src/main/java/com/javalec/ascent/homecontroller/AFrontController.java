@@ -165,7 +165,7 @@ public class AFrontController extends HttpServlet {
 				command.execute(request, response);
 				viewPage = (String) request.getAttribute("viewPage");
 				break;
-			// userModify, 개인정보 수정
+			// 중복체크
 			case("/idDB.do"):
 				command = new AIDCheckCommand();
 				command.execute(request, response);

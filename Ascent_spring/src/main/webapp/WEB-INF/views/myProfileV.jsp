@@ -1,55 +1,92 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+ 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ 	<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
-    <!-- Bootstrap core CSS -->
-	<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 메인홈바  CSS -->
-	<link type="text/css" href="css/productlist.css" rel="stylesheet" >
-	 
-	 <!-- Custom styles for this template -->
-    <link href="headers.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
-    crossorigin="anonymous">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author"
+	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.88.1">
+<link rel="canonical"
+	href="https://getbootstrap.com/docs/5.1/examples/headers/">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-  <%-- 아이콘 --%>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/productlist.css" rel="stylesheet" >
+<!-- Custom styles for this template -->
+<link href="headers.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<%-- 아이콘 --%>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>ascent</title>
-<!-- 상품에 마우스 올릴때 및 위치 조정  -->
-<style>
- .py-5 div:hover {
-  border-color:#333;     
- }   
-  .col {
-  padding:70px 70px 0 70px;
-  } 
-
-  .detail-text-center {
-  padding:15px;
-  height:140px;
-  text-align:center;
-  }
-  .card-img-top{
-  width: 100%; 
-  height: 22rem;
-  object-fit: cover;
-  } 
- </style>
 </head>
+
+<style>
+	table {
+        border-collapse: collapse;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        width: auto;
+        height: auto;
+        width: 600px;
+      }
+      
+      table, th, td {
+        padding: 5px;
+       }
+       
+      .contents{
+		position: absolute;
+		left : 50%;
+		transform : translate(-50%,0%);
+		padding: 50px ;
+		font-family:"나눔명조";  
+      	color: #463D3D;
+	}    
+	#hyper{				
+      	/* font-size: 20px; */
+      	TEXT-DECORATION:none;
+      	font-family:"나눔명조";  
+      	color: #463D3D;
+      }
+      .sub{
+	    background-color: #F7CCB6;
+	    color: #463D3D;
+	    border: 1px solid #999191;
+	    letter-spacing: 0px;
+	   /*  padding: 5px 0 0 0px; */
+	    cursor: pointer;
+	    display: inline-block;
+	    transition: all 0.5s;    
+	    width:130px;
+	    height:25px;
+	    font-family: "나눔명조";
+		color:#463D3D;
+	    
+	}
+	.sub:hover{
+	    background: #241571;
+	    color: #FFFAF6;
+	    transition: all 0.5s;
+	}
+</style>
 <body style="background-color:#FFFAF6">
-<!-- 메인홈바 -->
+	
+	<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -152,46 +189,53 @@
 				</div>
 			</div>
 	</nav>
+
+<div class="contents">
+
+<h2>My Profile</h2>
+
+<table>
+			<tr> <td><h4>기본정보</h4> </td></tr>	
+			
+				<tr>
+					<td> 이름 </td> 
+					<td> ${userinfo.userName} </td>
+				</tr>
+				<tr>
+					<td> 생년월일 </td> 
+					<td> <fmt:formatDate pattern="yyyy년 MM월 dd일" value="${userinfo.userBirth }"/></td>
+				</tr>
+				<tr>
+					<td> 성별 </td> 
+					<td> ${userinfo.userGender}</td>
+				</tr>
+				<tr><td> </td></tr>
+				<tr> <td><h4>연락처정보</h4></td></tr>
+				<tr>
+					<td> 이메일 </td> 
+					<td> ${userinfo.userEmail } </td>
+				</tr>
+				<tr>
+					<td> 전화번호 </td> 
+					<td> ${userinfo.userPhone }</td>
+				</tr>
+				<tr><td> </td></tr>
+			<tr>
+				<td> <button class="sub" type="button" onclick="location='myPWModify'">비밀번호 변경</button> </td>
+				<td align="right"> <button class="sub" type="button" onclick="location='myProfileModifyV'">개인정보 수정</button> </td>
+			</tr>
+</table>
 	
-
-
-
-
-
-<!-- 상품 -->
-               			  
-               			   <section class="py-5">
-               			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${pPList }" var="dto">
- 								 <div class="col">
-   									 <div class="card h-100">
-   									  <a class="card-image" href="productDetailV?productCode=${dto.productCode }">
-   									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
-     								 <div class="card-body">
-     								  <div class="detail-text-center">
-                              	     <p style="font-size: 15px;" class="pd.name">${dto.productName }</p>
-                                    <!-- Product size-->
-                             		<p style="font-size: 13px;" class="pd.size">${dto.productSize }ml</p>
-                                    <!-- Product price-->
-                                	<p style="font-size: 16px;" class="pd.price">${dto.productPrice }원</p>
-                             	
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
-               		 </c:forEach>
-  				  </div>
-  				  </section> 
-                          
-        
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+	crossorigin="anonymous"></script>
 </body>
-<script type="text/javascript">
-var userID1 = '<%=session.getAttribute("userID")%>';
-// 따옴표 주의
+<script>
+var userID = '<%=session.getAttribute("userID")%>';
 function cartListCheckUser() {
-	if (userID1 != 'null'){
-		location.href='cartList.do?userID='+userID1;
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
 	}
 	else{
 		alert("로그인이 필요합니다.");

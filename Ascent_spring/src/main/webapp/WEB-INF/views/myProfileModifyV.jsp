@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,48 +31,133 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>ascent</title>
-<!-- 비디오 -->
-<style>
-#videobcg {
-	position: relative;
-	top:0px;
-	left:-15px;
-	min-width:100%;
-	min-height:100%;
-	padding-bottom:70px;
-	height:auto;
-	margin:0;
-	z-index:-1000;
-}
-/*상품구현 위치 */
-#container1 {
-		position: relative;
-		top:300px;
-}
-</style>
-<!-- 상품에 마우스 올릴때 및 위치 조정  -->
-<style>
-  .py-5 div:hover {
-  border-color:#333;
- }   
-  .col {
-  padding:70px 70px 0 70px;
-  } 
- .detail-text-center {
-  padding:15px;
-  height:140px;
-  text-align:center;
-  }
-  .card-img-top{
-  width: 100%;
-  height: 22rem;
-  object-fit: cover;
-  }
- </style>
 </head>
+<style>
+	table {
+        border-collapse: collapse;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        width: auto;
+        height: auto;
+        width: 550px;
+      }
+      
+      table, th, td {
+        padding: 5px;
+       }
+       
+      .contents{
+		position: absolute;
+		left : 50%;
+		transform : translate(-50%,0%);
+		padding: 50px ;
+		font-family:"나눔명조";  
+      	color: #463D3D;
+	}    
+	#hyper{				
+      	/* font-size: 20px; */
+      	TEXT-DECORATION:none;
+      	font-family:"나눔명조";  
+      	color: #463D3D;
+      }
+      .sub{
+	    background-color: #F7CCB6;
+	    color: #463D3D;
+	    border: 1px solid #999191;
+	    letter-spacing: 0px;
+	   /*  padding: 5px 0 0 0px; */
+	    cursor: pointer;
+	    display: inline-block;
+	    transition: all 0.5s;    
+	    width:130px;
+	    height:25px;
+	    font-family: "나눔명조";
+		color:#463D3D;
+	    
+	}
+	.sub:hover{
+	    background: #241571;
+	    color: #FFFAF6;
+	    transition: all 0.5s;
+	}
+	#warning{
+		color: blue;
+		font-size: 12px;
+		text-align: center;
+	}
+</style>
+
+<script type="text/javascript">
+/* 이름 유효성 검사 */
+function checkNAME(){
+	let name = document.getElementById("NAME").value;
+	let warning = document.getElementById("NameWarning");
+	var regExpNAME = /^[가-힣]*$/
+	
+	if(!regExpNAME.test(name)){
+		warning.innerHTML = '<p id="warning"> 한글만 입력 가능합니다. </p>';
+	}
+	if(name.length < 2){
+		warning.innerHTML = '<p id="warning"> 이름은 2글자 이상 입력해주세요 </p>';
+	} 
+	if(name.length > 9){
+		warning.innerHTML = '<p id="warning"> 입력하신 이름 정보를 확인해주세요 </p>';
+	} 
+}
+
+function typingNAME(){
+	let warning = document.getElementById("NameWarning");
+	warning.innerHTML = "";
+}
+
+/* 이메일 유효성 검사 */
+function checkEM(){
+	let email = document.getElementById("email").value;
+	let warning = document.getElementById("EMWarning");
+	var regExpEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
+	
+	if(!regExpEmail.test(email)){
+		warning.innerHTML = '<p id="warning"> 이메일 입력 정보를 확인해 주세요. </p>';
+	}
+}
+
+function typingEM(){
+	let warning = document.getElementById("EMWarning");
+	warning.innerHTML = "";
+}
+
+/* 폰번호 유효성 검사 */
+function checkPH(){
+	let phone = document.getElementById("phone").value;
+	let warning = document.getElementById("PHWarning");
+	var regExpPhone = /^\d{3}-\d{3,4}-\d{4}$/ 
+	
+	if(!regExpPhone.test(phone)){
+		warning.innerHTML = '<p id="warning"> 연락처는 - 를 포함한 형식으로 입력해주세요. </p>';
+	}
+}
+
+function typingPH(){
+	let warning = document.getElementById("PHWarning");
+	warning.innerHTML = "";
+}
+
+function noblank(obj) { // 공백사용못하게
+    var str_space = /\s/;  // 공백체크
+    if(str_space.exec(obj.value)) { //공백 체크
+        /* alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다."); */
+        obj.focus();
+        obj.value = obj.value.replace(' ',''); // 공백제거
+        return false;
+    }
+ // onkeyup="noblank(this)" onchange="noSpaceForm(this);"
+}
+
+</script>
+
 <body style="background-color:#FFFAF6">
 	
-	<!-- 메인홈바 -->
+<!-- 메인홈바 -->
 	<nav id="navBar" class="navbar navbar-expand-lg navbar">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button"
@@ -177,50 +261,46 @@
 			</div>
 	</nav>
 	
-		<!-- 비디오1  -->
-		<!-- 비디오에 하이퍼링크 띄우기  -->
-		<ul>
-		<video id="videobcg" width="100%" height="480"  autoplay loop muted>
-			<source	src="assets/pexels-rose.mp4" type="video/mp4" >
-		</video>
-			<div class="jb-text">
-      	  <p id="hyper1">Red in full bloom</p>
-    	  </div>
-		<a id="hyper2" href="sFList.do">More </a>		
-		</ul>
-		
-	<!-- 상품 구현  -->
-    
-    <section class="py-5">
-               			  <div class="row row-cols-1 row-cols-md-4 g-4">
-		  					<c:forEach items="${mainList }" var="dto"><%--반복문,dto --%>
- 								 <div class="col">
-   									 <div class="card h-100">
-   									  <a class="card-image" href="productDetailV.?productCode=${dto.productCode }">
-   									  <img class="card-img-top" src="${dto.productImages }" alt="" /></a>
-     								 <div class="card-body">
-     								  <div class="detail-text-center">
-                              	     <p style="font-size: 15px;" class="pd.name">${dto.productName }</p> 
-                                    <!-- Product size-->
-                             		<p style="font-size: 13px;" class="pd.size">${dto.productSize }ml</p>
-                                    <!-- Product price-->
-                                	<p style="font-size: 16px;" class="pd.price">${dto.productPrice }원</p>
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
-    				 		 </div>
-               		 </c:forEach>
-  				  </div>
-  				  </section>
- 
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+<div class="contents">
+
+<h2>My Profile Modify</h2>
+	
+				<form action="profileModify.do" method="post">
+<table>
+				<!-- <tr> <td><h3>정보 수정</h3></td></tr> -->
+				<tr>
+					<td> 이름 </td> 
+					<td align="right"> <input name="userName" value="${userinfo.userName}" size="30"
+					id="NAME" onBlur="checkNAME()" onkeydown="typingNAME()" onkeyup="noblank(this)"> </td>
+				</tr>
+				<tr><td id="NameWarning"></td></tr>
+				<tr>
+					<td> 이메일 </td> 
+					<td align="right"> <input name="userEmail" value="${userinfo.userEmail }" size="30"
+					id="email" onBlur="checkEM()" onkeydown="typingEM()" onkeyup="noblank(this)"> </td>
+				</tr>
+				<tr><td id="EMWarning"></td></tr>
+				<tr>
+					<td> 전화번호 </td> 
+					<td align="right"> <input name="userPhone" value="${userinfo.userPhone }" size="30"
+					id="phone" onBlur="checkPH()" onkeydown="typingPH()" onkeyup="noblank(this)"> </td>
+				</tr>
+				<tr><td id="PHWarning"></td></tr>
+			<tr>
+				<td colspan="2" align="right"> <button class="sub" type="submit">수정하기</button> </td>
+			</tr>
+
+</table>
+				</form>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
 	crossorigin="anonymous"></script>
 </body>
-<script type="text/javascript">
+<script>
 var userID = '<%=session.getAttribute("userID")%>';
-var productCode1 = document.cartForm.productCode.value;
 function cartListCheckUser() {
 	if (userID != 'null'){
 		location.href='cartList.do?userID='+userID;
