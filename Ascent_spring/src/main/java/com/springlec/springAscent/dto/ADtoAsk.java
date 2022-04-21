@@ -6,12 +6,12 @@ public class ADtoAsk {
 
 	// Field
 	
-	int askCode;
-	String askTitle;
-	String askContent;
-	Timestamp askDate;
-	String a_ReplyContent;
-	String a_ReplyCheck;
+	private int askCode;
+	private String askTitle;
+	private String askContent;
+	private Timestamp askDate;
+	private String a_ReplyContent;
+	private String a_ReplyCheck;
 	
 	// Constructor
 	
