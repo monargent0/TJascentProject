@@ -1,6 +1,8 @@
 package com.springlec.springAscent.dao;
 
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.springlec.springAscent.dto.UDtoLogin;
@@ -15,9 +17,11 @@ public interface UDao {
 	public String findID(String userName, String userEmail); // 아이디 찾기
 	public String findPW(String userID ,String userName, String userEmail); // 비밀번호 찾기
 	
-//	public dto userinfo(String userID);
-//	public void modifyUser(String userName, String userEmail, String userPhone, String userID);
-//	public void pwChange(String newPW, String oldPW, String userID);
-//	public String pwCheck(String userID);
+//	public dto userinfo(String userID); // 마이페이지 개인정보
+//	public void modifyUser(String userName, String userEmail, String userPhone, String userID); //마이페이지 개인정보 수정
+//	public void pwChange(String newPW, String oldPW, String userID); // 비밀번호 변경
+//	public String pwCheck(String userID); // 비밀번호 변경 커맨드에서 사용
 	// 관리자 Page
+//	public ArrayList<DDtoU> signinList(); // 가입회원조회
+//	public ArrayList<DDtoU> signoutList(); // 탈퇴회원조회
 }

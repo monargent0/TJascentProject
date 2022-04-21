@@ -38,11 +38,15 @@
   } 
 
   .detail-text-center {
- 	padding:30px;
+  padding:15px;
   height:140px;
   text-align:center;
   }
-  
+  .card-img-top{
+  height: 22rem;
+  object-fit: cover;
+  }
+
  </style>
 </head>
 <!-- 메인 홈바  -->
@@ -153,11 +157,11 @@
    									  <img class="card-img-top" src="${dto.productImages}" alt="" /></a>
      								 <div class="card-body">
      								  <div class="detail-text-center">
-                              	     <p class="pd.name">${dto.productName }</p>
+                              	     <p style="font-size: 15px;" class="pd.name">${dto.productName }</p>
                                     <!-- Product size-->
-                             		<p class="pd.size">${dto.productSize }ml</p>
+                             		<p style="font-size: 13px;" class="pd.size">${dto.productSize }ml</p>
                                     <!-- Product price-->
-                                	<p class="pd.price">${dto.productPrice }원</p>
+                                	<p style="font-size: 16px;" class="pd.price">${dto.productPrice }원</p>
                              	
     				 		 </div>
     				 		 </div>
