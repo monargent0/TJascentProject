@@ -258,7 +258,7 @@
  		</form>
  	</div>
  		<div style="float: right;">
- 		<br><a id="hyper" href = "" target ="popup" onclick="window.open('findIDV','popup','width=600,height=600'); return false">아이디/비밀번호 찾기</a>
+ 		<br><a id="hyper" href = "" target ="popup" onclick="window.open('findIDV','popup','width=600,height=400'); return false">아이디/비밀번호 찾기</a>
  		</div>
  </div>
  <!-- login 후 productDetail 띄우기 위한 productCode를 저장하는 세션 -->

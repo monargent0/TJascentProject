@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springlec.springAscent.command.ACommand;
@@ -19,15 +20,19 @@ public class AControllerUser {
 	private ACommand signinCommand = null;
 	private ACommand signoutCommand = null;
 	private ACommand duplicateIDCommand = null;
+	private ACommand findIDCommand = null;
+	private ACommand findPWCommand = null;
 	
 	
 	@Autowired
-	public void auto(ACommand logIn, ACommand signIn, ACommand signOut, ACommand duplicateID) {
+	public void auto(ACommand logIn, ACommand signIn, ACommand signOut, ACommand duplicateID 
+			, ACommand findID, ACommand findPW) {
 		this.loginCommand = logIn;
 		this.signinCommand = signIn;
 		this.signoutCommand = signOut;
 		this.duplicateIDCommand = duplicateID;
-		
+		this.findIDCommand = findID;
+		this.findPWCommand = findPW;
 		
 	}
 	// 임시 메인화면
@@ -94,4 +99,27 @@ public class AControllerUser {
 		duplicateIDCommand.execute1(sqlSession, request);
 		return "duplicateIDRV";
 	}
+	// 아이디 찾기 화면
+	@RequestMapping("/findIDV")
+	public String findIDV() {
+		return "findIDV";
+	}
+	// 아이디 찾기
+	@RequestMapping("/findID.do")
+	public String findIDRV(HttpServletRequest request, Model model) {
+		findIDCommand.execute3(sqlSession, request, model);
+		return "findIDRV";
+	}
+	// 비밀번호 찾기 화면
+	@RequestMapping("/findPWV")
+	public String findPWV() {
+		return "findPWV";
+	}
+	// 비밀번호 찾기
+	@RequestMapping("/findPW.do")
+	public String findPWRV(HttpServletRequest request , Model model) {
+		findPWCommand.execute3(sqlSession, request, model);
+		return "findPWRV";
+	}
+	
 }

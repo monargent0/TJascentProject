@@ -17,5 +17,11 @@
 	<select id="doubleID" resultType="String" >
 		SELECT USERID FROM USERINFO WHERE USERID = #{param1}
 	</select>
+	<select id="findID" resultType="String">
+		SELECT USERID FROM USERINFO WHERE USERNAME = #{param1} AND USEREMAIL = #{param2} AND U_RESIGNDATE IS NULL
+	</select>
+	<select id="findPW" resultType="String">
+		SELECT USERPW FROM USERINFO WHERE USERID = #{param1} AND USERNAME = #{param2} AND USEREMAIL = #{param3} AND U_RESIGNDATE IS NULL
+	</select>
 	
 </mapper>

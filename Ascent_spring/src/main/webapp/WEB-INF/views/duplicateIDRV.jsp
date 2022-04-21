@@ -30,7 +30,7 @@
 	
    	
     #bt{
-	    background-color: #FFFAF6;
+	    background-color: #F7CCB6;
 	    color: #463D3D;
 	    border: 1px solid #999191;
 	    /* font-size: 1.0em; */
