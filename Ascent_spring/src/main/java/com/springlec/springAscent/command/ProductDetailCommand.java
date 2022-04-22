@@ -5,9 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.springlec.springAscent.dao.PDaoAR;
+import com.springlec.springAscent.dao.PDao;
 
-public class productDetailCommand implements ACommand {
+
+public class ProductDetailCommand implements ACommand {
 
 	@Override
 	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
@@ -23,7 +24,7 @@ public class productDetailCommand implements ACommand {
 	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
 		String productCode = request.getParameter("productCode");
 		
-		PDaoAR dao = sqlSession.getMapper(PDaoAR.class);
+		PDao dao = sqlSession.getMapper(PDao.class);
 		model.addAttribute("detail", dao.productDetail(productCode));
 		
 	

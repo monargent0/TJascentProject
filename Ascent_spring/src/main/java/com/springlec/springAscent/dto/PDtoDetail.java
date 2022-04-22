@@ -1,25 +1,28 @@
 package com.springlec.springAscent.dto;
 
-public class PDto {
+public class PDtoDetail {
+	
 	String productCode;
 	String productName;
 	int productPrice;
 	String productSize;
 	String productImages;
+	String productBrand;
 	String category_categoryCode;
 	
-	public PDto() {
+	public PDtoDetail(){
 		
 	}
 
-	public PDto(String productCode, String productName, int productPrice, String productSize, String productImages,
-			String category_categoryCode) {
+	public PDtoDetail(String productCode, String productName, int productPrice, String productSize, String productImages,
+			String productBrand, String category_categoryCode) {
 		super();
 		this.productCode = productCode;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productSize = productSize;
 		this.productImages = productImages;
+		this.productBrand = productBrand;
 		this.category_categoryCode = category_categoryCode;
 	}
 
@@ -63,6 +66,14 @@ public class PDto {
 		this.productImages = productImages;
 	}
 
+	public String getProductBrand() {
+		return productBrand;
+	}
+
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
+	}
+
 	public String getCategory_categoryCode() {
 		return category_categoryCode;
 	}
@@ -70,6 +81,6 @@ public class PDto {
 	public void setCategory_categoryCode(String category_categoryCode) {
 		this.category_categoryCode = category_categoryCode;
 	}
-	
+
 	
 }

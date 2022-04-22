@@ -2,26 +2,30 @@ package com.springlec.springAscent.dao;
 
 import java.util.ArrayList;
 
+
 import com.springlec.springAscent.dto.Criteria;
-import com.springlec.springAscent.dto.PDto;
+import com.springlec.springAscent.dto.PDtoDetail;
+import com.springlec.springAscent.dto.PDtoList;
 
 
 public interface PDao {
 	
-	public ArrayList<PDto> allList();	//product-all
-	public ArrayList<PDto> mainList();	//main 화면구성 
-	public ArrayList<PDto> searchList();	//검색할 때 보이는 
-	public ArrayList<PDto> pPList(); 	//perfume - perfume
-	public ArrayList<PDto> pTList();	//perfume-toilette
-	public ArrayList<PDto> pCList();	//perfume-cologne
-	public ArrayList<PDto> pBList();	//perfume-bodyspray
-	public ArrayList<PDto> sFList();	//scent-floral
-	public ArrayList<PDto> sCList();	//scent-citrus
-	public ArrayList<PDto> sFRList();	//scent-fresh
-	public ArrayList<PDto> sFTList();	//scent-fruity
-	public ArrayList<PDto> sWList();	//scent-woody
-	public ArrayList<PDto> sOList();	//scent-oritental
-	public ArrayList<PDto> listPage(int displayPost, int postNum);
+	public ArrayList<PDtoList> allList();	//product-all
+	public ArrayList<PDtoList> allListPaging(Criteria cri); //paging
+	public int getTotal();
+	public ArrayList<PDtoList> mainList();	//main 화면구성 
+	public ArrayList<PDtoList> searchList();	//검색할 때 보이는 
+	public ArrayList<PDtoList> pPList(); 	//perfume - perfume
+	public ArrayList<PDtoList> pTList();	//perfume-toilette
+	public ArrayList<PDtoList> pCList();	//perfume-cologne
+	public ArrayList<PDtoList> pBList();	//perfume-bodyspray
+	public ArrayList<PDtoList> sFList();	//scent-floral
+	public ArrayList<PDtoList> sCList();	//scent-citrus
+	public ArrayList<PDtoList> sFRList();	//scent-fresh
+	public ArrayList<PDtoList> sFTList();	//scent-fruity
+	public ArrayList<PDtoList> sWList();	//scent-woody
+	public ArrayList<PDtoList> sOList();	//scent-oritental
+	public PDtoDetail productDetail(String productCode);
 	
 	
 }

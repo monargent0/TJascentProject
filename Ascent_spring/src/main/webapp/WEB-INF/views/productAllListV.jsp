@@ -48,6 +48,17 @@
   height: 22rem;
   object-fit: cover;
   }
+ .pagination {
+      list-style:none;
+     display:flex;
+     justify-content: center;
+     align-items: center;
+  } 
+  .pagination li{
+  	float:left;
+    font-size: 20px;
+    font-weight: 300;
+  }
  </style>
 </head>
 <body style="background-color:#FFFAF6">
@@ -180,42 +191,37 @@
   				  </div>
   				  </section>
  <!--  paging --> 
-  	<div class="pageInfo_wrap" >
-        <div class="pageInfo_area">
 			 <nav class="paging-nav" aria-label="Page navigation example">
   			<div>
   			<ul class="pagination" id="pagination">
  			<!--  이전 페이지 -->
-  				<c:if test="${prev }">
+  				<c:if test="${pageMaker.prev }">
    				 <li class="page-item">
-    			  	<a class="page-link" href="${startPageNum - 1 }" aria-label="Previous">
+    			  	<a class="page-link" href="${startPage - 1 }" aria-label="Previous">
      			   <span aria-hidden="true">&laquo;</span>
-    			  </a>
+    			 Previous </a>
    				</li>
    				</c:if>
+   
    			<!-- 1부터 5까지 화면상 보여주는 페이지  -->	
-   			<c:forEach var="num" begin="${startPageNum  }" end="${endPageNum  }">
+   			<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
    			 <li class="page-item">
    			 <a class="page-link" href="/allList?num=${num }">${num }</a></li>		
    			 </c:forEach>	
    			 <!-- 다음 페이지  -->
-   			 <c:if test="${next }">
+   			 <c:if test="${pageMaker.next }">
    			 <li class="page-item">
-    			  <a class="page-link" href="${endPageNum + 1 }" aria-label="Next">
-      		  <span aria-hidden="true">&raquo;</span>
+    			  <a class="page-link" href="${pageMaker.endPage + 1 }" aria-label="Next">
+    			  Next<span aria-hidden="true">&raquo;</span>
      			 </a>
     			</li>
   				</c:if>
   				</ul>
 			</div>		
 			</nav>
-		</div>
-  	</div> 
  
   	
-  	
-  	
-	<%--  <!-- paging move  form  -->
+	 <!-- paging move  form  -->
 	<form id="moveForm" action="get">
 		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 		<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
@@ -224,7 +230,7 @@
 	<!-- page move function -->
 	<script>
 			$(document).ready(function () {
-				var moveForm = $("#moveFrom");
+				var moveForm = $("#moveForm");
 				
 				$(".pagination a").on("click",function(e)){
 					e.preventDefault;
@@ -235,7 +241,7 @@
 			});
 	</script>
  
- <nav aria-label="Page navigation example">
+ <!-- <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-end">
     <li class="page-item disabled">
       <a class="page-link">Previous</a>
@@ -247,8 +253,8 @@
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
-</nav> --%>
-	
+</nav> 
+	 -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

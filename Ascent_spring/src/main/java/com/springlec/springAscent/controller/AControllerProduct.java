@@ -59,11 +59,17 @@ public class AControllerProduct {
 		
 	}
 	//모든 상품 
+//	@RequestMapping("/allList")
+//	public String allList(Model model,Criteria cri) {
+//		productAllListCommand.execute2(sqlSession, model);
+//		return "productAllListV"; //jsp 
+//	}
+	//모든 상품- 페이징 구현 
 	@RequestMapping("/allList")
 	public String allList(Model model,Criteria cri) {
+		System.out.println("paging");
 		productAllListCommand.execute2(sqlSession, model);
 		return "productAllListV"; //jsp 
-	
 	}
 	
 	//메인화면 상품 
