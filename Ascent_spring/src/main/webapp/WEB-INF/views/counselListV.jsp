@@ -181,13 +181,13 @@
 			<tr>
 				<td style="text-align: center;"> ${dto.counselCode }</td>
 				<td>${dto.counselType }</td>
-				<td><a id="hyper" href="counselDetail.do?counselCode=${dto.counselCode }">${dto.counselTitle}</a></td>						
+				<td><a id="hyper" href="counselContent?counselCode=${dto.counselCode }">${dto.counselTitle}</a></td>						
 				<td>${dto.counselDate}</td>
 				<td>${dto.c_ReplyCheck}</td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td align="right" colspan="5"><a id="hyper" href="counselWriteV.jsp">글작성</a></td>
+			<td align="right" colspan="5"><a id="hyper" href="counselWriteV">글작성</a></td>
 		</tr>
 	</table>	
 	

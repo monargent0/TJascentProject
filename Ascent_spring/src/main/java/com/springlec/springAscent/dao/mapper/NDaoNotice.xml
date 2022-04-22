@@ -5,7 +5,7 @@
     
     <mapper namespace="com.springlec.springAscent.dao.NDaoNotice">
     	<select id="list" resultType="com.springlec.springAscent.dto.NDtoNotice">
-    		SELECT NOTICECODE, NOTICETYPE, NOTICETITLE, NOTICECONTENT, NOTICEDATE FROM NOTICEBOARD ORDER BY MID DESC
+    		SELECT NOTICECODE, NOTICETYPE, NOTICETITLE, NOTICECONTENT, NOTICEDATE FROM NOTICEBOARD 
     	</select>
     	<select id="content" resultType="com.springlec.springAscent.dto.NDtoNotice">
     		SELECT * FROM NOTICEBOARD WHERE NOTICECODE = #{param1}

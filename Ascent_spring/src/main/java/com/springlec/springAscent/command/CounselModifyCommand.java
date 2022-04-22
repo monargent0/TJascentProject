@@ -7,25 +7,31 @@ import org.springframework.ui.Model;
 
 import com.springlec.springAscent.dao.CDaoCounsel;
 
-public class CounselWriteCommand implements ACommand {
+public class CounselModifyCommand implements ACommand {
 
 	@Override
 	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
+		
+		int counselCode = Integer.parseInt(request.getParameter("counselCode"));
+		String counselType = request.getParameter("counselType");
+		String counselTitle = request.getParameter("counselTitle");
+		String counselContent = request.getParameter("counselContent");
+		
 		CDaoCounsel dao = sqlSession.getMapper(CDaoCounsel.class);
-		dao.write(request.getParameter("counselType"), request.getParameter("counselTitle"), request.getParameter("counselContent"), request.getParameter("counselImage"), request.getParameter("userID"));
+		dao.modify(counselType, counselTitle, counselContent, counselCode);
+		
 	}
 
 	@Override
 	public void execute2(SqlSession sqlSession, Model model) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
 }

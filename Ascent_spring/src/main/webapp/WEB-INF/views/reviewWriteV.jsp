@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,9 +30,9 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>1대1 문의</title>
+<title>ascent</title>
 <style>
-	 table {
+	   table {
         border-collapse: collapse;
         border-top: 1px solid black;
         border-bottom: 1px solid black;
@@ -59,7 +59,7 @@
       	font-family:"나눔명조";  
       	color: #463D3D;
       }
-      .sub{
+    .sub{
 	    background-color: #F7CCB6;
 	    color: #463D3D;
 	    border: 1px solid #999191;
@@ -79,7 +79,39 @@
 	    color: #FFFAF6;
 	    transition: all 0.5s;
 	}
-</style>
+	#myform fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    border: 0; /* 필드셋 테두리 제거 */
+	}
+	#myform input[type=radio]{
+    display: none; /* 라디오박스 감춤 */
+	}
+	#myform label{
+    font-size: 1em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+	}	
+	
+	#myform label:hover{
+    text-shadow: 0 0 0 #a00; /* 마우스 호버 */
+	}
+	#myform label:hover ~ label{
+    text-shadow: 0 0 0 #a00; /* 마우스 호버 뒤에오는 이모지들 */
+	}
+	#myform fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    direction: rtl; /* 이모지 순서 반전 */
+    border: 0; /* 필드셋 테두리 제거 */
+	}
+	#myform fieldset legend{
+    text-align: left;
+	}
+	#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 #a00; /* 마우스 클릭 체크 */
+	}
+    </style>
+
+<title>1대1 문의 작성</title>
 </head>
 <body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
@@ -185,53 +217,68 @@
 			
 	</nav>
  <div class="contents">
-	<table >
-		<form action="counselDelete" method="post">
-			<tr>
-				<td>글번호</td>
-				<td><input type="text" name="counselCode" size="5" value="${counselContentV.counselCode}" readonly="readonly"></td>
-			</tr>			
-			<tr>
-				<td>문의종류</td>
-				<td><select name="counselType">
-					<option value= "환불">환불</option>
-					<option value= "배송">배송</option>
-					<option value= "주문/결제">주문/결제</option>
-					<option value= "회원">회원</option>
-					<option value= "상품">상품</option>				
-					<option value= "사이트 이용">사이트 이용</option>				
-					<option value= "기타">기타</option>				
-				</select></td>
-			</tr>			
+	<h3>ascent 상품 후기</h3>
+		<table >
+		<form action="reviewWrite" method="post">
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="counselTitle" size="61" value="${counselContentV.counselTitle }"></td>
-			</tr>			
-			</tr>
-				<td>문의내용</td>
-				<td><textarea name="counselContent" rows="10" cols="50" maxlength="100">${counselContentV.counselContent } </textarea></td>
+				<td><input type="text" name="reviewTitle" size="50"></td>
 			</tr>
 			<tr>
-				<td>게시일</td>
-				<td><input type="text" name="counselDate" size="25" value="${counselContentV.counselDate}" readonly="readonly"></td>
-			</tr>						
+				<td>내용</td>
+				<td><textarea name="reviewContent" rows="10" cols="50" maxlength="100"></textarea></td>
 			</tr>
+			<tr>
 				<td>첨부파일</td>
-				<td><img src="${counselContentV.counselImage}" alt="첨부파일" width="180" height="180"/></a></td>
-			</tr>					
-			<tr>
-				<td><a id="hyper" href="counselList">목록보기</a></td>
-				<td colspan="2" align="right"><input class="sub" type="submit" value="삭제">
-				<input class="sub" type="submit" value="수정" formaction="counselModify"></td>
+				<td><input type="file" id="upload" name="image" accept="image/*"></td>
 			</tr>
-	</table>
-	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 			<tr>
-				<td style="border-bottom:none;" valign="middle"><br><br></td>
-				<td><input type="text" style="height:50px;" class="form-control" name = "reply" value="${reply_view.c_ReplyContent }" readonly="readonly"></td>
+				<td><input type="hidden" id="imgTxt" name="reviewImage" >	</td>
+				<td rowspan="7"><img id="preview" src="" width="250" height="250" alt="업로드할 이미지"> </td>
+			</tr>		
+			<!-- 별점 기능 아직 미구현 -->		
+			<!-- <tr>
+				<td id="myform"><form name="myform" id="myform" method="post">
+   		 <fieldset>
+       		 <legend>평가</legend>
+       			 <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
+       			 <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
+       			 <input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
+       			 <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
+       			 <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
+    	</fieldset>
+		</form></td>
+			</tr> -->			
+			<tr>
+				<td><a id="hyper" href="reviewList">목록보기</a></td>
+				<td colspan="2" align="right"><input class="sub" type="submit" value="입력"></td>
 			</tr>
- 	</table> <!-- 관리자페이지에서 입력 시 댓글 출력 양식 -->			
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>	
+		</form>
+	</table>	
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	
+	function readFile() {
+	  
+	  if (this.files && this.files[0]) {
+	    
+	    var FR = new FileReader();
+	    
+	    FR.onload = function(e) {
+	    	//console.log(e.target.result);
+	      document.getElementById("imgTxt").value = e.target.result;
+	     // alert(document.getElementById("imgTxt").value)
+	      document.getElementById("preview").src = e.target.result;
+	    }; 
+	    
+	    FR.readAsDataURL( this.files[0] );
+	  }
+	  
+	}
+	
+	document.getElementById("upload").addEventListener("change", readFile);	
+</script>
 </body>
 </html>

@@ -189,40 +189,26 @@
 		<form action="counselDelete" method="post">
 			<tr>
 				<td>글번호</td>
-				<td><input type="text" name="counselCode" size="5" value="${counselContentV.counselCode}" readonly="readonly"></td>
+				<td><input type="text" name="reviewCode" size="5" value="${reviewContentV.reviewCode}" readonly="readonly"></td>
 			</tr>			
-			<tr>
-				<td>문의종류</td>
-				<td><select name="counselType">
-					<option value= "환불">환불</option>
-					<option value= "배송">배송</option>
-					<option value= "주문/결제">주문/결제</option>
-					<option value= "회원">회원</option>
-					<option value= "상품">상품</option>				
-					<option value= "사이트 이용">사이트 이용</option>				
-					<option value= "기타">기타</option>				
-				</select></td>
-			</tr>			
+			<%-- <tr>
+				<td>주문번호</td>
+				<td><input type="text" name="orderCode" size="5" value="${reviewContentV.orderCode}" readonly="readonly"></td>
+			</tr>	 --%>		
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="counselTitle" size="61" value="${counselContentV.counselTitle }"></td>
+				<td><input type="text" name="reviewTitle" size="61" value="${reviewContentV.reviewTitle }"></td>
 			</tr>			
 			</tr>
-				<td>문의내용</td>
-				<td><textarea name="counselContent" rows="10" cols="50" maxlength="100">${counselContentV.counselContent } </textarea></td>
-			</tr>
-			<tr>
-				<td>게시일</td>
-				<td><input type="text" name="counselDate" size="25" value="${counselContentV.counselDate}" readonly="readonly"></td>
+				<td>내용</td>
+				<td><textarea name="reviewContent" rows="10" cols="50" maxlength="100">${reviewContentV.reviewContent } </textarea></td>
 			</tr>						
 			</tr>
-				<td>첨부파일</td>
-				<td><img src="${counselContentV.counselImage}" alt="첨부파일" width="180" height="180"/></a></td>
-			</tr>					
+				<td>후기 사진</td>
+				<td><img src="${reviewContentV.reviewImage}" alt="상품사진" width="180" height="180"/></a></td>
+			</tr>									
 			<tr>
-				<td><a id="hyper" href="counselList">목록보기</a></td>
-				<td colspan="2" align="right"><input class="sub" type="submit" value="삭제">
-				<input class="sub" type="submit" value="수정" formaction="counselModify"></td>
+				<td><a id="hyper" href="reviewList">목록보기</a></td>
 			</tr>
 	</table>
 	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">

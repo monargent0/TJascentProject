@@ -190,15 +190,15 @@
  <div class="contents">
 	<h3>ascent 1대1 문의</h3>
 		<table >
-		<form action="counselWrite.do"  encType="multipart/form-data" method="post">
+		<form action="counselWrite" method="post">
 			<tr>
 				<td>문의종류</td>
 				<td><select name="counselType">
 					<option value= 환불>환불</option>
 					<option value= 배송>배송</option>
-					<option value= 주문결제>주문/결제</option>
-					<option value= 회원>회원 관련</option>
-					<option value= 상품>상품 관련</option>				
+					<option value= 주문/결제>주문/결제</option>
+					<option value= 회원>회원</option>
+					<option value= 상품>상품</option>				
 					<option value= 사이트이용>사이트 이용</option>				
 					<option value= 기타문의>기타</option>				
 				</select></td>
@@ -213,16 +213,44 @@
 			</tr>
 			<tr>
 				<td>첨부파일</td>
-				<td><input type="file" name="image" accept="image/*" multiple></td>
+				<td><input type="file" id="upload" name="image" accept="image/*"></td>
 			</tr>			
 			<tr>
-				<td><a id="hyper" href="counselList.do">목록보기</a></td>
+				<td><input type="hidden" id="imgTxt" name="counselImage" ></td>
+				<td rowspan="7"><img id="preview" src="" width="250" height="250" alt="업로드할 이미지"> </td>
+			</tr>					
+			<tr>
+				<td><a id="hyper" href="counselList">목록보기</a></td>
 				<td colspan="2" align="right"><input class="sub" type="submit" value="입력"></td>
 			</tr>
 		</form>
 	</table>	
 	</div>
+	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	
+	function readFile() {
+	  
+	  if (this.files && this.files[0]) {
+	    
+	    var FR = new FileReader();
+	    
+	    FR.onload = function(e) {
+	    	//console.log(e.target.result);
+	      document.getElementById("imgTxt").value = e.target.result;
+	     // alert(document.getElementById("imgTxt").value)
+	      document.getElementById("preview").src = e.target.result;
+	    }; 
+	    
+	    FR.readAsDataURL( this.files[0] );
+	  }
+	  
+	}
+	
+	document.getElementById("upload").addEventListener("change", readFile);	
+</script>
 </body>
 </body>
 </html>

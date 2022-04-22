@@ -12,12 +12,12 @@ public class NoticeContentCommand implements ACommand {
 	@Override
 	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
 
-		String noticeCode = request.getParameter("noticeCode");
+		int noticeCode = Integer.parseInt( request.getParameter("noticeCode")); 
 		
 		NDaoNotice dao = sqlSession.getMapper(NDaoNotice.class);
 		
-		model.addAttribute("noticeContentV", dao.content(noticeCode));
-		
+		model.addAttribute("noticeBoardContentV", dao.content(noticeCode));
+		request.setAttribute("result", "noticeBoardContentV");
 	}
 
 	@Override

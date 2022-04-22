@@ -8,6 +8,7 @@ public class CDtoCounsel {
 	private String counselType;
 	private String counselTitle;
 	private String counselContent;
+	private String counselImage;
 	private Timestamp counselDate;
 	private String c_ReplyCheck;
 	
@@ -16,12 +17,13 @@ public class CDtoCounsel {
 	}
 
 	public CDtoCounsel(int counselCode, String counselType, String counselTitle, String counselContent,
-			Timestamp counselDate, String c_ReplyCheck) {
+			String counselImage, Timestamp counselDate, String c_ReplyCheck) {
 		super();
 		this.counselCode = counselCode;
 		this.counselType = counselType;
 		this.counselTitle = counselTitle;
 		this.counselContent = counselContent;
+		this.counselImage = counselImage;
 		this.counselDate = counselDate;
 		this.c_ReplyCheck = c_ReplyCheck;
 	}
@@ -58,6 +60,14 @@ public class CDtoCounsel {
 		this.counselContent = counselContent;
 	}
 
+	public String getCounselImage() {
+		return counselImage;
+	}
+
+	public void setCounselImage(String counselImage) {
+		this.counselImage = counselImage;
+	}
+
 	public Timestamp getCounselDate() {
 		return counselDate;
 	}
@@ -73,7 +83,5 @@ public class CDtoCounsel {
 	public void setC_ReplyCheck(String c_ReplyCheck) {
 		this.c_ReplyCheck = c_ReplyCheck;
 	}
-	
-	
-
+		
 }

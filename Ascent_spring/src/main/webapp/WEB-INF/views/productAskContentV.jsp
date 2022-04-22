@@ -30,7 +30,7 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>1대1 문의</title>
+<title>상품 문의</title>
 <style>
 	 table {
         border-collapse: collapse;
@@ -186,49 +186,37 @@
 	</nav>
  <div class="contents">
 	<table >
-		<form action="counselDelete" method="post">
+		<form action="productAskDelete" method="post">
 			<tr>
 				<td>글번호</td>
-				<td><input type="text" name="counselCode" size="5" value="${counselContentV.counselCode}" readonly="readonly"></td>
-			</tr>			
-			<tr>
-				<td>문의종류</td>
-				<td><select name="counselType">
-					<option value= "환불">환불</option>
-					<option value= "배송">배송</option>
-					<option value= "주문/결제">주문/결제</option>
-					<option value= "회원">회원</option>
-					<option value= "상품">상품</option>				
-					<option value= "사이트 이용">사이트 이용</option>				
-					<option value= "기타">기타</option>				
-				</select></td>
+				<td><input type="text" name="askCode" size="5" value="${productAskContentV.askCode}" readonly="readonly"></td>
 			</tr>			
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="counselTitle" size="61" value="${counselContentV.counselTitle }"></td>
+				<td><input type="text" name="askTitle" size="61" value="${productAskContentV.askTitle }"></td>
 			</tr>			
 			</tr>
 				<td>문의내용</td>
-				<td><textarea name="counselContent" rows="10" cols="50" maxlength="100">${counselContentV.counselContent } </textarea></td>
+				<td><textarea name="askContent" rows="10" cols="50" maxlength="100">${productAskContentV.askContent } </textarea></td>
 			</tr>
 			<tr>
 				<td>게시일</td>
-				<td><input type="text" name="counselDate" size="25" value="${counselContentV.counselDate}" readonly="readonly"></td>
-			</tr>						
-			</tr>
-				<td>첨부파일</td>
-				<td><img src="${counselContentV.counselImage}" alt="첨부파일" width="180" height="180"/></a></td>
-			</tr>					
+				<td><input type="text" name="askDate" size="25" value="${productAskContentV.askDate}" readonly="readonly"></td>
+			</tr>	
 			<tr>
-				<td><a id="hyper" href="counselList">목록보기</a></td>
+				<td>상품사진</td>
+				<td><img src="${productAskContentV.askImage}" alt="상품사진" width="180" height="180"/></a></td>
+			</tr>									
+			<tr>
+				<td><a id="hyper" href="productAskList">목록보기</a></td>
 				<td colspan="2" align="right"><input class="sub" type="submit" value="삭제">
-				<input class="sub" type="submit" value="수정" formaction="counselModify"></td>
+				<input class="sub" type="submit" value="수정" formaction="productAskModify"></td>
 			</tr>
 	</table>
 	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 			<tr>
 				<td style="border-bottom:none;" valign="middle"><br><br></td>
-				<td><input type="text" style="height:50px;" class="form-control" name = "reply" value="${reply_view.c_ReplyContent }" readonly="readonly"></td>
+				<td><input type="text" style="height:50px;" class="form-control" name = "reply" value="${reply_view.a_ReplyContent }" readonly="readonly"></td>
 			</tr>
  	</table> <!-- 관리자페이지에서 입력 시 댓글 출력 양식 -->			
 </div>

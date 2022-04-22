@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,9 +30,9 @@
 <%-- 아이콘 --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<title>1대1 문의</title>
+<title>ascent</title>
 <style>
-	 table {
+	   table {
         border-collapse: collapse;
         border-top: 1px solid black;
         border-bottom: 1px solid black;
@@ -59,7 +59,7 @@
       	font-family:"나눔명조";  
       	color: #463D3D;
       }
-      .sub{
+    .sub{
 	    background-color: #F7CCB6;
 	    color: #463D3D;
 	    border: 1px solid #999191;
@@ -79,7 +79,10 @@
 	    color: #FFFAF6;
 	    transition: all 0.5s;
 	}
-</style>
+	
+    </style>
+
+<title>1대1 문의 작성</title>
 </head>
 <body style="background-color:#FFFAF6">
 <!-- 메인홈바 -->
@@ -185,53 +188,57 @@
 			
 	</nav>
  <div class="contents">
-	<table >
-		<form action="counselDelete" method="post">
-			<tr>
-				<td>글번호</td>
-				<td><input type="text" name="counselCode" size="5" value="${counselContentV.counselCode}" readonly="readonly"></td>
-			</tr>			
-			<tr>
-				<td>문의종류</td>
-				<td><select name="counselType">
-					<option value= "환불">환불</option>
-					<option value= "배송">배송</option>
-					<option value= "주문/결제">주문/결제</option>
-					<option value= "회원">회원</option>
-					<option value= "상품">상품</option>				
-					<option value= "사이트 이용">사이트 이용</option>				
-					<option value= "기타">기타</option>				
-				</select></td>
-			</tr>			
+	<h3>상품 문의</h3>
+		<table >
+		<form action="productAskWrite" method="post">
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="counselTitle" size="61" value="${counselContentV.counselTitle }"></td>
-			</tr>			
-			</tr>
-				<td>문의내용</td>
-				<td><textarea name="counselContent" rows="10" cols="50" maxlength="100">${counselContentV.counselContent } </textarea></td>
+				<td><input type="text" name="askTitle" size="50"></td>
 			</tr>
 			<tr>
-				<td>게시일</td>
-				<td><input type="text" name="counselDate" size="25" value="${counselContentV.counselDate}" readonly="readonly"></td>
-			</tr>						
+				<td>내용</td>
+				<td><textarea name="askContent" rows="10" cols="50" maxlength="100"></textarea></td>
 			</tr>
+			<tr>
 				<td>첨부파일</td>
-				<td><img src="${counselContentV.counselImage}" alt="첨부파일" width="180" height="180"/></a></td>
-			</tr>					
-			<tr>
-				<td><a id="hyper" href="counselList">목록보기</a></td>
-				<td colspan="2" align="right"><input class="sub" type="submit" value="삭제">
-				<input class="sub" type="submit" value="수정" formaction="counselModify"></td>
+				<td><input type="file" id="upload" name="image" accept="image/*"></td>
 			</tr>
-	</table>
-	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 			<tr>
-				<td style="border-bottom:none;" valign="middle"><br><br></td>
-				<td><input type="text" style="height:50px;" class="form-control" name = "reply" value="${reply_view.c_ReplyContent }" readonly="readonly"></td>
+				<td><input type="hidden" id="imgTxt" name="askImage" >	</td>
+				<td rowspan="7"><img id="preview" src="" width="250" height="250" alt="업로드할 이미지"> </td>
+			</tr>				
+			<tr>
+				<td><a id="hyper" href="productAskList">목록보기</a></td>
+				<td colspan="2" align="right"><input class="sub" type="submit" value="입력"></td>
 			</tr>
- 	</table> <!-- 관리자페이지에서 입력 시 댓글 출력 양식 -->			
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>	
+		</form>
+	</table>	
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	
+	function readFile() {
+	  
+	  if (this.files && this.files[0]) {
+	    
+	    var FR = new FileReader();
+	    
+	    FR.onload = function(e) {
+	    	//console.log(e.target.result);
+	      document.getElementById("imgTxt").value = e.target.result;
+	     // alert(document.getElementById("imgTxt").value)
+	      document.getElementById("preview").src = e.target.result;
+	    }; 
+	    
+	    FR.readAsDataURL( this.files[0] );
+	  }
+	  
+	}
+	
+	document.getElementById("upload").addEventListener("change", readFile);
+	
+</script>
+</body>
 </body>
 </html>

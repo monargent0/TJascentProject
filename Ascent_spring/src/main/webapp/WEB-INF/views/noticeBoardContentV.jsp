@@ -168,22 +168,22 @@
 	<table >
 			<tr>
 				<td>글번호</td>
-				<td><input type="text" name="noticeCode" size="5" value="${noticeContentV.noticeCode}" readonly="readonly"></td>
+				<td><input type="text" name="noticeCode" size="5" value="${noticeBoardContentV.noticeCode}" readonly="readonly"></td>
 			</tr>			
 			<tr>
 				<td>종류</td>
-				<td><input type="text" name="noiticeType" size="15" value="${noticeContentV.noticeType}" readonly="readonly"></td>
+				<td><input type="text" name="noiticeType" size="15" value="${noticeBoardContentV.noticeType}" readonly="readonly"></td>
 			</tr>			
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="noticeTitle" size="50" value="${noticeContentV.noticeTitle }" readonly="readonly"></td>
+				<td><input type="text" name="noticeTitle" size="50" value="${noticeBoardContentV.noticeTitle }" readonly="readonly"></td>
 			</tr>			
 			</tr>
 				<td>내용</td>
-				<td><textarea name="noticeContent" rows="10" cols="50" maxlength="100" readonly="readonly">${noticeContentV.noticeContent } </textarea></td>
+				<td><textarea name="noticeContent" rows="10" cols="50" maxlength="100" readonly="readonly">${noticeBoardContentV.noticeContent } </textarea></td>
 			</tr>
 			<tr>
-				<td><a id="hyper" href="noticeBoardList.do">목록보기</a></td>
+				<td><a id="hyper" href="noticeBoardList">목록보기</a></td>
 			</tr>
 	</table>
 </div>
