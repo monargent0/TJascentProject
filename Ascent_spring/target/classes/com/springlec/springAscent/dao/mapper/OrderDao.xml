@@ -12,7 +12,7 @@
 		ORDER BY O.ORDERNUMBER
 	</select>
 	
-	<select id="orderWriteView" resultType="com.springlec.springAscent.dto.CartDtoPC" >
+	<select id="orderWriteView" resultType="HashMap" parameterType="com.springlec.springAscent.command.OrderWriteViewCommand">
 		SELECT C.CARTCODE, P.PRODUCTCODE, P.PRODUCTIMAGES, P.PRODUCTNAME, P.PRODUCTSIZE, C.CARTAMOUNT, P.PRODUCTPRICE, C.CARTAMOUNT*P.PRODUCTPRICE AS CARTSUM 
 		FROM CART C, USERINFO U, PRODUCT P WHERE C.USER_USERID = U.USERID AND C.PRODUCT_PRODUCTCODE = P.PRODUCTCODE AND U.USERID = #{param1} and C.CARTCODE = 
 		<foreach collection="param2" separator=" OR ">

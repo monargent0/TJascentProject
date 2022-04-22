@@ -34,7 +34,9 @@ public class OrderWriteViewCommand implements ACommand {
 		for(int i=0; i<checkCart.length; i++) {
 			checkCartArray[i] =Integer.parseInt(checkCart[i]);
 		}
+		
 		model.addAttribute("orderWriteView", dao.orderWriteView(userID, checkCartArray));
+		System.out.println(dao.orderWriteView(userID, checkCartArray));
 	}
 
 }
