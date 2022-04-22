@@ -22,7 +22,6 @@ public class ProductAllListCommand implements ACommand {
 	
 		//페이징
 		Criteria cri = new Criteria();
-		
 		PDao dao = sqlSession.getMapper(PDao.class);
 		model.addAttribute("allList",dao.allListPaging(cri));
 		model.addAttribute("total",dao.getTotal());
@@ -30,7 +29,7 @@ public class ProductAllListCommand implements ACommand {
 		//총 게시물 = 총 상품의 갯수 
 		int total = dao.getTotal();
 		//model.addAttribute("allList",dao.allList()); 
-		PDtoPageMaker pageMake = new PDtoPageMaker(cri,total );
+		PDtoPageMaker pageMake = new PDtoPageMaker(cri,total);
 		model.addAttribute("pageMaker", pageMake);
 	}
 

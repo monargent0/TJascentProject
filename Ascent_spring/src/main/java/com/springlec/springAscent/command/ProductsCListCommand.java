@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 
 import com.springlec.springAscent.dao.PDao;
 
-public class PproductsCListCommand implements ACommand {
+public class ProductsCListCommand implements ACommand {
 
 	@Override
 	public void execute1(SqlSession sqlSession,HttpServletRequest request) {

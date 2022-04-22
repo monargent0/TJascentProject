@@ -209,6 +209,7 @@
    			 <a class="page-link" href="/allList?num=${num }">${num }</a></li>		
    			 </c:forEach>	
    			 <!-- 다음 페이지  -->
+   			 
    			 <c:if test="${pageMaker.next }">
    			 <li class="page-item">
     			  <a class="page-link" href="${pageMaker.endPage + 1 }" aria-label="Next">

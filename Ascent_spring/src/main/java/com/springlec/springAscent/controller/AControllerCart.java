@@ -15,9 +15,6 @@ public class AControllerCart {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	
-	private ACommand productDetailCommand = null;
-	
 	private ACommand cartListCommand = null;
 	private ACommand cartWriteCommand = null;
 	private ACommand cartModifyCommand = null;
@@ -28,10 +25,7 @@ public class AControllerCart {
 //	private ACommand orderContentCommand = null;
 	
 	@Autowired
-	public void auto(ACommand productDetail, ACommand cartList, ACommand cartWrite, ACommand cartModify) {
-		
-		this.productDetailCommand = productDetail;
-		
+	public void auto(ACommand cartList, ACommand cartWrite, ACommand cartModify) {
 		this.cartListCommand = cartList;
 		this.cartWriteCommand = cartWrite;
 		this.cartModifyCommand = cartModify;
@@ -42,14 +36,6 @@ public class AControllerCart {
 //		this.orderContentCommand = orderContent;
 	}
 	
-	@RequestMapping("/productDetail")
-	public String productDetail(HttpServletRequest request, Model model) {
-		
-		model.addAttribute("request", request);
-		productDetailCommand.execute3(sqlSession, request, model);
-		
-		return "productDetailV";
-	}
 	
 	@RequestMapping("/cartList")
 	public String cartList(HttpServletRequest request, Model model) {
