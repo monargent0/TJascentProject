@@ -256,6 +256,9 @@ function sample6_execDaumPostcode() {
 					</td>
 					<td align="left">
 					${dto.productName }
+					<%=session.getAttribute("userID") %>
+					${dto.cartCode }
+					11
 					</td>
 					<td align="center">
 					${dto.productSize } ml

@@ -190,7 +190,7 @@ function checkBoxAll(event) {
 				<th>수량</th>
 				<th>합계</th>
 			</tr>
-			<form name="cartForm" method="get">
+			<form name="cartForm" method="post">
 			<c:forEach items="${cartList }" var="dto" varStatus="status" >
 			<tr>
 				<td hidden="">
