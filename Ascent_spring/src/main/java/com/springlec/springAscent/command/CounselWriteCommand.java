@@ -5,13 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.springlec.springAscent.dao.CDaoCounsel;
+import com.springlec.springAscent.dao.CounselDao;
 
 public class CounselWriteCommand implements ACommand {
 
 	@Override
 	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
-		CDaoCounsel dao = sqlSession.getMapper(CDaoCounsel.class);
+		CounselDao dao = sqlSession.getMapper(CounselDao.class);
 		dao.write(request.getParameter("counselType"), request.getParameter("counselTitle"), request.getParameter("counselContent"), request.getParameter("counselImage"), request.getParameter("userID"));
 	}
 

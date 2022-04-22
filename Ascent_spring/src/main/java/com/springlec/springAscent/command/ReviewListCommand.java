@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.springlec.springAscent.dao.RDaoReview;
+import com.springlec.springAscent.dao.ReviewDao;
 
 public class ReviewListCommand implements ACommand {
 
@@ -26,7 +26,7 @@ public class ReviewListCommand implements ACommand {
 
 		String userID = request.getParameter("userID");
 		
-		RDaoReview dao = sqlSession.getMapper(RDaoReview.class);
+		ReviewDao dao = sqlSession.getMapper(ReviewDao.class);
 		model.addAttribute("list", dao.list(userID));
 	}
 

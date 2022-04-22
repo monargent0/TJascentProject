@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.springlec.springAscent.dao.CDaoCounsel;
+import com.springlec.springAscent.dao.CounselDao;
 
 public class CounselModifyCommand implements ACommand {
 
@@ -17,7 +17,7 @@ public class CounselModifyCommand implements ACommand {
 		String counselTitle = request.getParameter("counselTitle");
 		String counselContent = request.getParameter("counselContent");
 		
-		CDaoCounsel dao = sqlSession.getMapper(CDaoCounsel.class);
+		CounselDao dao = sqlSession.getMapper(CounselDao.class);
 		dao.modify(counselType, counselTitle, counselContent, counselCode);
 		
 	}

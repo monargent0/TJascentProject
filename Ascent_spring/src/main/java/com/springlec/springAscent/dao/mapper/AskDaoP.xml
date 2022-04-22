@@ -3,15 +3,15 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-      <mapper namespace="com.springlec.springAscent.dao.ADaoPAsk">
-    	<select id="list" resultType="com.springlec.springAscent.dto.ADtoAsk">
+      <mapper namespace="com.springlec.springAscent.dao.AskDaoP">
+    	<select id="list" resultType="com.springlec.springAscent.dto.AskDto">
     		SELECT ASKCODE, ASKTITLE, ASKCONTENT, ASKDATE, A_REPLYCHECK, ASKIMAGE FROM PRODUCTASK
     	</select>
     	<insert id="write">
     		INSERT INTO PRODUCTASK (ASKTITLE, ASKCONTENT, ASKDATE, USER_USERID, A_REPLYCHECK, ASKIMAGE ) 
     		VALUES (#{param1},#{param2},NOW(),'JUNGEUN','미답변',#{param3})
     	</insert>
-    	<select id="content" resultType="com.springlec.springAscent.dto.ADtoAsk">
+    	<select id="content" resultType="com.springlec.springAscent.dto.AskDto">
     		SELECT * FROM PRODUCTASK WHERE ASKCODE = #{param1}
     	</select>
     	<delete id="delete">

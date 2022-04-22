@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.springlec.springAscent.dao.ADaoPAsk;
+import com.springlec.springAscent.dao.AskDaoP;
 
 
 public class ProductAskModifyCommand implements ACommand {
@@ -17,7 +17,7 @@ public class ProductAskModifyCommand implements ACommand {
 		String askTitle = request.getParameter("askTitle");
 		String askContent = request.getParameter("askContent");
 		
-		ADaoPAsk dao = sqlSession.getMapper(ADaoPAsk.class);
+		AskDaoP dao = sqlSession.getMapper(AskDaoP.class);
 		dao.modify(askTitle, askContent, askCode);
 		
 	}

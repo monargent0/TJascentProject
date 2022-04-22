@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.springlec.springAscent.dto.NDtoNotice;
 
-public interface NDaoNotice {
+public interface NDao {
 	
 	// 공지사항 목록
 	public ArrayList<NDtoNotice> list(); 

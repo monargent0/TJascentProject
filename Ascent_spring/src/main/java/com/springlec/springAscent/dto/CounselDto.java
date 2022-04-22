@@ -2,7 +2,7 @@ package com.springlec.springAscent.dto;
 
 import java.sql.Timestamp;
 
-public class CDtoCounsel {
+public class CounselDto {
 	
 	private int counselCode;
 	private String counselType;
@@ -12,11 +12,11 @@ public class CDtoCounsel {
 	private Timestamp counselDate;
 	private String c_ReplyCheck;
 	
-	public CDtoCounsel() {
+	public CounselDto() {
 		
 	}
 
-	public CDtoCounsel(int counselCode, String counselType, String counselTitle, String counselContent,
+	public CounselDto(int counselCode, String counselType, String counselTitle, String counselContent,
 			String counselImage, Timestamp counselDate, String c_ReplyCheck) {
 		super();
 		this.counselCode = counselCode;

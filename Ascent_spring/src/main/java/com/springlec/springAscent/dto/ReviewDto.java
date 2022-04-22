@@ -2,18 +2,18 @@ package com.springlec.springAscent.dto;
 
 import java.sql.Timestamp;
 
-public class RDtoReview {
+public class ReviewDto {
 	
 	private int reviewCode;
 	private String reviewTitle;
 	private String reviewContent;
 	private String reviewImage;
 	
-	public RDtoReview() {
+	public ReviewDto() {
 		
 	}
 
-	public RDtoReview(int reviewCode, String reviewTitle, String reviewContent, String reviewImage) {
+	public ReviewDto(int reviewCode, String reviewTitle, String reviewContent, String reviewImage) {
 		super();
 		this.reviewCode = reviewCode;
 		this.reviewTitle = reviewTitle;

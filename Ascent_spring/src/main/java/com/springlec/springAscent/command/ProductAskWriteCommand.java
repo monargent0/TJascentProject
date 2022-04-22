@@ -5,14 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.springlec.springAscent.dao.ADaoPAsk;
+import com.springlec.springAscent.dao.AskDaoP;
 
 public class ProductAskWriteCommand implements ACommand {
 
 	@Override
 	public void execute1(SqlSession sqlSession, HttpServletRequest request) {
 
-		ADaoPAsk dao = sqlSession.getMapper(ADaoPAsk.class);
+		AskDaoP dao = sqlSession.getMapper(AskDaoP.class);
 		dao.write(request.getParameter("askTitle"), request.getParameter("askContent"), request.getParameter("askImage"), request.getParameter("userID"));
 	}
 
