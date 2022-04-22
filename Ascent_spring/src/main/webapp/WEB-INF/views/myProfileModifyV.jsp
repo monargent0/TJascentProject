@@ -163,7 +163,7 @@ function noblank(obj) { // 공백사용못하게
 
 <h2>My Profile Modify</h2>
 	
-				<form action="profileModify.do" method="post">
+				<form action="profileModify" method="post">
 <table>
 				<!-- <tr> <td><h3>정보 수정</h3></td></tr> -->
 				<tr>

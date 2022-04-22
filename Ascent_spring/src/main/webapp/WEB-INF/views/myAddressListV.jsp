@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
- 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- 	<% request.setCharacterEncoding("utf-8"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,16 +31,15 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>ascent</title>
-</head>
-
 <style>
-	table {
+	  table {
         border-collapse: collapse;
         border-top: 1px solid black;
         border-bottom: 1px solid black;
         width: auto;
         height: auto;
         width: 600px;
+        text-align: center;
       }
       
       table, th, td {
@@ -57,12 +54,7 @@
 		font-family:"나눔명조";  
       	color: #463D3D;
 	}    
-	#hyper{				
-      	/* font-size: 20px; */
-      	TEXT-DECORATION:none;
-      	font-family:"나눔명조";  
-      	color: #463D3D;
-      }
+	
       .sub{
 	    background-color: #F7CCB6;
 	    color: #463D3D;
@@ -83,49 +75,54 @@
 	    color: #FFFAF6;
 	    transition: all 0.5s;
 	}
-</style>
+    
+	#hyper{				
+      	font-size: 14px;
+      	font-family:"나눔명조";
+      	color:#463D3D;
+      	TEXT-DECORATION:none;
+      }
+    </style>
+</head>
+<script type="text/javascript">
+	function delAd(){
+		return confirm("삭제하시겠습니까?");
+	}
+
+</script>
 <body style="background-color:#FFFAF6">
-<%@include file="head.jsp" %>	
+<%@include file="head.jsp" %>
+ <div class="contents">
+	<h2>주소록</h2>
 
-<div class="contents">
-
-<h2>My Profile</h2>
-
-<table>
-			<tr> <td><h4>기본정보</h4> </td></tr>	
-			
-				<tr>
-					<td> 이름 </td> 
-					<td> ${userinfo.userName} </td>
-				</tr>
-				<tr>
-					<td> 생년월일 </td> 
-					<td> <fmt:formatDate pattern="yyyy년 MM월 dd일" value="${userinfo.userBirth }"/></td>
-				</tr>
-				<tr>
-					<td> 성별 </td> 
-					<td> ${userinfo.userGender}</td>
-				</tr>
-				<tr><td> </td></tr>
-				<tr> <td><h4>연락처정보</h4></td></tr>
-				<tr>
-					<td> 이메일 </td> 
-					<td> ${userinfo.userEmail } </td>
-				</tr>
-				<tr>
-					<td> 전화번호 </td> 
-					<td> ${userinfo.userPhone }</td>
-				</tr>
-				<tr><td> </td></tr>
+	<table >
+		<tr>
+			<th>배송지</th>
+			<th >주소</th>
+			<th >수정&삭제</th>
+		</tr>
+		
+		<c:forEach items="${address}" var="dto" varStatus="st">
 			<tr>
-				<td> <button class="sub" type="button" onclick="location='myPWModify'">비밀번호 변경</button> </td>
-				<td align="right"> <button class="sub" type="button" onclick="location='myProfileModify'">개인정보 수정</button> </td>
+				<td style="width: 150px">${dto.addressType}<br>
+					${def[${st.index}]}
+					${dto.aDefault}
+					<!-- 기본배송지칼럼 --></td>
+				<td style="text-align: left;">${dto.postcode }<br>
+					${dto.mainAddress} <br> 
+					${dto.detailAddress} ${dto.extraAddress}</td>						
+				<%-- <td>${dto.user_userID}</td> --%>
+				<td ><a id="hyper" href="modifyAddress?addressCode=${dto.addressCode }" onclick="" >수정</a>
+					<a id="hyper" href="deleteAddress?addressCode=${dto.addressCode }" onclick="return delAd();" >삭제</a></td>
 			</tr>
-</table>
+		</c:forEach>
+		<tr>
+			<td align="right" colspan="5"><a id="hyper" href="addressWrite">주소 추가</a></td>
+		</tr>
+	</table>	
 	
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
-	crossorigin="anonymous"></script>
+		<!-- <br><a id="hyper" href="mainV.jsp">main</a> &nbsp; <a id="hyper" href="logOutH.jsp">로그아웃</a> -->
+	</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>
 </html>

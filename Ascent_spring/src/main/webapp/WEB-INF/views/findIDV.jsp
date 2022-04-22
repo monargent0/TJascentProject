@@ -59,7 +59,7 @@
 	</div>
 
 	<div>
-		<form action="findID.do" method="post" >
+		<form action="findID" method="post" >
 			<div style="margin-bottom: 15px;">
 				<div>
 					<input type="text" name="userName" placeholder="이름을 입력해 주세요" required="required" size="50" onkeyup="noblank(this)">

@@ -25,11 +25,15 @@ public class AControllerUser {
 	private ACommand profileCommand = null;
 	private ACommand profilemodifyCommand = null;
 	private ACommand modifyPWCommand = null;
+	private ACommand adrsListCommand = null;
+	private ACommand adrsWriteCommand = null;
+	private ACommand adrsDeleteCommand = null;
 	
 	
 	@Autowired
-	public void auto(ACommand logIn, ACommand signIn, ACommand signOut, ACommand duplicateID 
-			, ACommand findID, ACommand findPW, ACommand profile, ACommand profileModify, ACommand modifyPW) {
+	public void auto(ACommand logIn, ACommand signIn, ACommand signOut, ACommand duplicateID , 
+			ACommand findID, ACommand findPW, ACommand profile, ACommand profileModify, ACommand modifyPW,
+			ACommand adrslist, ACommand adrswrite, ACommand adrsdelete) {
 		this.loginCommand = logIn;
 		this.signinCommand = signIn;
 		this.signoutCommand = signOut;
@@ -39,13 +43,11 @@ public class AControllerUser {
 		this.profileCommand = profile;
 		this.profilemodifyCommand = profileModify;
 		this.modifyPWCommand = modifyPW;
-		
+		this.adrsListCommand = adrslist;
+		this.adrsDeleteCommand = adrsdelete;
+		this.adrsWriteCommand = adrswrite;
 	}
-	// 임시 메인화면
-//	@RequestMapping("/main")
-//	public String main() {
-//		return "mainV";
-//	}
+
 	// 로그인 화면
 	@RequestMapping("/logInV")
 	public String loginV() {
@@ -58,12 +60,12 @@ public class AControllerUser {
 		return (String)request.getAttribute("return");
 	}
 	// 로그아웃
-	@RequestMapping("logOutH")
+	@RequestMapping("logOut")
 	public String logout() {
 		return "logOutH";
 	}
 	// 회원가입 약관 동의
-	@RequestMapping("/signAgreeV")
+	@RequestMapping("/signAgree")
 	public String signAgree() {
 		return "signAgreeV";
 	}
@@ -73,7 +75,7 @@ public class AControllerUser {
 		return "signInV";
 	}
 	// 회원가입
-	@RequestMapping("/signIn.do")
+	@RequestMapping("/signIn")
 	public String signIn(HttpServletRequest request) {
 		signinCommand.execute1(sqlSession, request);
 		return "signInH";
@@ -84,7 +86,7 @@ public class AControllerUser {
 		return "signOutV";
 	}
 	// 회원탈퇴
-	@RequestMapping("/signOut.do")
+	@RequestMapping("/signOut")
 	public String signOut(HttpServletRequest request) {
 		signoutCommand.execute1(sqlSession, request);
 		return (String)request.getAttribute("return");
@@ -95,7 +97,7 @@ public class AControllerUser {
 		return "myPageV";
 	}
 	// 아이디 중복 체크 화면
-	@RequestMapping("/duplicateIDV")
+	@RequestMapping("/duplicateID")
 	public String duplicateIDV() {
 		return "duplicateIDV";
 	}
@@ -111,7 +113,7 @@ public class AControllerUser {
 		return "findIDV";
 	}
 	// 아이디 찾기
-	@RequestMapping("/findID.do")
+	@RequestMapping("/findID")
 	public String findIDRV(HttpServletRequest request, Model model) {
 		findIDCommand.execute3(sqlSession, request, model);
 		return "findIDRV";
@@ -122,25 +124,25 @@ public class AControllerUser {
 		return "findPWV";
 	}
 	// 비밀번호 찾기
-	@RequestMapping("/findPW.do")
+	@RequestMapping("/findPW")
 	public String findPWRV(HttpServletRequest request , Model model) {
 		findPWCommand.execute3(sqlSession, request, model);
 		return "findPWRV";
 	}
 	// 회원정보
-	@RequestMapping("/profile.do")
+	@RequestMapping("/profile")
 	public String profile(HttpServletRequest request , Model model) {
 		profileCommand.execute3(sqlSession, request, model);
 		return "myProfileV";
 	}
 	// 회원정보 수정화면
-	@RequestMapping("/myProfileModifyV")
+	@RequestMapping("/myProfileModify")
 	public String myprofileV(HttpServletRequest request , Model model) {
 		profileCommand.execute3(sqlSession, request, model);
 		return "myProfileModifyV";
 	}
 	// 회원정보 수정
-	@RequestMapping("/profileModify.do")
+	@RequestMapping("/profileModify")
 	public String profileModify(HttpServletRequest request) {
 		profilemodifyCommand.execute1(sqlSession, request);
 		return "redirect:profile.do";
@@ -151,14 +153,38 @@ public class AControllerUser {
 		return "myPWModifyV";
 	}
 	// 비밀번호 변경
-	@RequestMapping("/myPWModify.do")
+	@RequestMapping("/pwModify")
 	public String pwmodify(HttpServletRequest request , Model model) {
 		modifyPWCommand.execute3(sqlSession, request, model);
 		return "myPWModifyV";
 	}
-	// 비밀번호 변경성공
+	// 비밀번호 변경성공시 (아이디 세션 삭제 후 로그인화면으로 보냄)
 	@RequestMapping("/myPWModifyH")
 	public String pwmodifyH() {
 		return "myPWModifyH";
 	}
+	// 주소록 리스트
+	@RequestMapping("/addressList")
+	public String adrsList(HttpServletRequest request, Model model) {
+		adrsListCommand.execute3(sqlSession, request, model);
+		return "myAddressListV";
+	}
+	// 주소록 추가화면
+	@RequestMapping("/addressWrite")
+	public String adrsWrite() {
+		return "myAddressWriteV";
+	}
+	// 주소록 추가
+	@RequestMapping("/addAddress")
+	public String addAdrs(HttpServletRequest request) {
+		adrsWriteCommand.execute1(sqlSession, request);
+		return "redirect:addressList";
+	}
+	// 주소록 삭제
+	@RequestMapping("/deleteAddress")
+	public String delAdrs(HttpServletRequest request) {
+		adrsDeleteCommand.execute1(sqlSession, request);
+		return "redirect:myAddressList";
+	}
+	
 }

@@ -4,5 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.springlec.springAscent.dao.AddressDao">
-
+	<select id="adrslist" resultType="com.springlec.springAscent.dto.AddressDto">
+		SELECT ADDRESSCODE, ADEFAULT, ADDRESSTYPE, POSTCODE, MAINADDRESS, DETAILADDRESS, EXTRAADDRESS, USER_USERID 
+		FROM ADDRESS WHERE USER_USERID = #{param1}
+	</select>
+	<insert id="adrswrite">
+		INSERT INTO ADDRESS (ADDRESSTYPE, POSTCODE, MAINADDRESS, DETAILADDRESS, EXTRAADDRESS, USER_USERID , ADEFAULT) 
+		VALUES (#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7})
+	</insert>
+	<delete id="adrsdelete">
+		DELETE FROM ADDRESS WHERE ADDRESSCODE = #{param1}
+	</delete>
 </mapper>

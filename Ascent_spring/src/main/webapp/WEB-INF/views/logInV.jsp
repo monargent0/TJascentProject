@@ -150,7 +150,7 @@
 				<div id="Warning"></div>
  			<div>
 				<div  align="right"><button id="button" type="button" onclick="checkid()">LOGIN</button> <br> </div> 
-				<div  align="right"><button id="button" type="button" onclick="location.href='signAgreeV'">SIGNIN</button></div>
+				<div  align="right"><button id="button" type="button" onclick="location.href='signAgree'">SIGNIN</button></div>
 			</div>
  		</form>
  	</div>

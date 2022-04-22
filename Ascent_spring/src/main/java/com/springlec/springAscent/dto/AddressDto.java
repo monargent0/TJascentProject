@@ -4,6 +4,7 @@ public class AddressDto {
 	
 	int addressCode;
 	String addressType;
+	String aDefault;
 	String postcode;
 	String mainAddress;
 	String detailAddress;
@@ -11,14 +12,14 @@ public class AddressDto {
 	String user_userID;
 	
 	public AddressDto() {
-		
 	}
 
-	public AddressDto(int addressCode, String addressType, String postcode, String mainAddress, String detailAddress,
-			String extraAddress, String user_userID) {
+	public AddressDto(int addressCode, String addressType, String aDefault, String postcode, String mainAddress,
+			String detailAddress, String extraAddress, String user_userID) {
 		super();
 		this.addressCode = addressCode;
 		this.addressType = addressType;
+		this.aDefault = aDefault;
 		this.postcode = postcode;
 		this.mainAddress = mainAddress;
 		this.detailAddress = detailAddress;
@@ -40,6 +41,14 @@ public class AddressDto {
 
 	public void setAddressType(String addressType) {
 		this.addressType = addressType;
+	}
+
+	public String getaDefault() {
+		return aDefault;
+	}
+
+	public void setaDefault(String aDefault) {
+		this.aDefault = aDefault;
 	}
 
 	public String getPostcode() {

@@ -47,7 +47,7 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							About </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="noticeBoardList.do">Notice</a></li>
+							<li><a class="dropdown-item" href="noticeBoardList">Notice</a></li>
 							<%
 							if(session.getAttribute("userID") == null){
 							%>
@@ -55,7 +55,7 @@
 							<%
 							}else if(session.getAttribute("userID") != null){
 							%>
-							<li><a class="dropdown-item" href="counselList.do">Q&A</a></li>
+							<li><a class="dropdown-item" href="counselList">Q&A</a></li>
 						  <% } %>
 						</ul>
 					</li>

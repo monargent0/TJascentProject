@@ -52,6 +52,9 @@
 	<beans:bean name="profile" class="com.springlec.springAscent.command.ProfileCommand" ></beans:bean>
 	<beans:bean name="profileModify" class="com.springlec.springAscent.command.ProfileModifyCommand" ></beans:bean>
 	<beans:bean name="modifyPW" class="com.springlec.springAscent.command.ModifyPWCommand" ></beans:bean>
+	<beans:bean name="adrslist" class="com.springlec.springAscent.command.AddressListCommand" ></beans:bean>
+	<beans:bean name="adrswrite" class="com.springlec.springAscent.command.AddressWriteCommand" ></beans:bean>
+	<beans:bean name="adrsdelete" class="com.springlec.springAscent.command.AddressDeleteCommand" ></beans:bean>
 	
 	<!-- jh command -->
 	<beans:bean name="counselList" class="com.springlec.springAscent.command.CounselListCommand"></beans:bean>

@@ -208,7 +208,7 @@
 	
 	function doubleC(){
 		let id = document.getElementById("userID").value;
- 		window.open('duplicateIDV?userID='+id ,'popup','width=600,height=300'); 
+ 		window.open('duplicateID?userID='+id ,'popup','width=600,height=300'); 
 	}
 	
 	function noblank(obj) { // 공백사용못하게
@@ -273,7 +273,7 @@
 	</div>
 	
 	<div>
-		<form action="signIn.do" method="post" name="signin">
+		<form action="signIn" method="post" name="signin">
 			<div>
 				<div>
 					<label>Name</label>
