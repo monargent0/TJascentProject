@@ -2,7 +2,7 @@ package com.springlec.springAscent.dto;
 
 import java.sql.Timestamp;
 
-public class ADtoAsk {
+public class AskDto {
 
 	// Field
 	
@@ -16,11 +16,11 @@ public class ADtoAsk {
 	
 	// Constructor
 	
-	public ADtoAsk() {
+	public AskDto() {
 		
 	}
 
-	public ADtoAsk(int askCode, String askTitle, String askContent, String askImage, Timestamp askDate,
+	public AskDto(int askCode, String askTitle, String askContent, String askImage, Timestamp askDate,
 			String a_ReplyContent, String a_ReplyCheck) {
 		super();
 		this.askCode = askCode;

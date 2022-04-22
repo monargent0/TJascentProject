@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.springlec.springAscent.dao.NDaoNotice;
+import com.springlec.springAscent.dao.NDao;
 
 public class NoticeContentCommand implements ACommand {
 
@@ -14,7 +14,7 @@ public class NoticeContentCommand implements ACommand {
 
 		int noticeCode = Integer.parseInt( request.getParameter("noticeCode")); 
 		
-		NDaoNotice dao = sqlSession.getMapper(NDaoNotice.class);
+		NDao dao = sqlSession.getMapper(NDao.class);
 		
 		model.addAttribute("noticeBoardContentV", dao.content(noticeCode));
 		request.setAttribute("result", "noticeBoardContentV");

@@ -3,15 +3,15 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-    <mapper namespace="com.springlec.springAscent.dao.CDaoCounsel">
-    	<select id="list" resultType="com.springlec.springAscent.dto.CDtoCounsel">
+    <mapper namespace="com.springlec.springAscent.dao.CounselDao">
+    	<select id="list" resultType="com.springlec.springAscent.dto.CounselDto">
     		SELECT COUNSELCODE, COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, C_REPLYCHECK, COUNSELIMAGE FROM COUNSEL 
     	</select>
     	<insert id="write">
     		INSERT INTO COUNSEL (COUNSELTYPE, COUNSELTITLE, COUNSELCONTENT, COUNSELDATE, USER_USERID, C_REPLYCHECK, COUNSELIMAGE ) 
     		VALUES (#{param1},#{param2},#{param3},NOW(),'JUNGEUN','미답변',#{param4})
     	</insert>
-    	<select id="content" resultType="com.springlec.springAscent.dto.CDtoCounsel">
+    	<select id="content" resultType="com.springlec.springAscent.dto.CounselDto">
     		SELECT * FROM COUNSEL WHERE COUNSELCODE = #{param1}
     	</select>
     	<delete id="delete">
@@ -20,10 +20,5 @@
     	 <update id="modify">
   			UPDATE COUNSEL SET COUNSELTYPE = #{param1}, COUNSELTITLE = #{param2}, COUNSELCONTENT = #{param3} WHERE COUNSELCODE = #{param4}
   		</update>
-    
-    
-    
-    
-    
-    
+      
     </mapper>

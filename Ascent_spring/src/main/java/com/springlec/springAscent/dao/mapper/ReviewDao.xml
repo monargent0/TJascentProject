@@ -3,15 +3,15 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-     <mapper namespace="com.springlec.springAscent.dao.RDaoReview">
-    	<select id="list" resultType="com.springlec.springAscent.dto.RDtoReview">
+     <mapper namespace="com.springlec.springAscent.dao.ReviewDao">
+    	<select id="list" resultType="com.springlec.springAscent.dto.ReviewDto">
     		SELECT REVIEWCODE, REVIEWTITLE, REVIEWCONTENT, REVIEWIMAGE FROM REVIEW  
     	</select>
     	<insert id="write">
     		INSERT INTO REVIEW (REVIEWTITLE, REVIEWCONTENT, REVIEWIMAGE, USER_USERID) 
     		VALUES (#{param1},#{param2},#{param3},'JUNGEUN')
     	</insert>
-    		<select id="content" resultType="com.springlec.springAscent.dto.RDtoReview">
+    		<select id="content" resultType="com.springlec.springAscent.dto.ReviewDto">
     		SELECT * FROM REVIEW WHERE REVIEWCODE = #{param1} 
     	</select>
     	

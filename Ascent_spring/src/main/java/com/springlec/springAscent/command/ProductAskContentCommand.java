@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.springlec.springAscent.dao.ADaoPAsk;
-import com.springlec.springAscent.dao.CDaoCounsel;
+import com.springlec.springAscent.dao.AskDaoP;
+import com.springlec.springAscent.dao.CounselDao;
 
 public class ProductAskContentCommand implements ACommand {
 
@@ -27,7 +27,7 @@ public class ProductAskContentCommand implements ACommand {
 
 		int askCode = Integer.parseInt(request.getParameter("askCode"));
 		
-		ADaoPAsk dao = sqlSession.getMapper(ADaoPAsk.class);
+		AskDaoP dao = sqlSession.getMapper(AskDaoP.class);
 		
 		model.addAttribute("productAskContentV", dao.content(askCode));
 		request.setAttribute("result", "productAskContentV");
