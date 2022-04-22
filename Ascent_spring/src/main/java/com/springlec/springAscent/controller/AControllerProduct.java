@@ -1,11 +1,5 @@
 package com.springlec.springAscent.controller;
 
-
-
-
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,6 +52,7 @@ public class AControllerProduct {
 		this.ProductsOListCommand = ProductsOList;
 		
 	}
+	
 	//모든 상품 
 //	@RequestMapping("/allList")
 //	public String allList(Model model,Criteria cri) {
@@ -77,7 +72,7 @@ public class AControllerProduct {
 	public String mainList(Model model) {
 		ProductMainCommand.execute2(sqlSession, model);
 		return "mainV";
-		
+	
 	}
 	//검색 
 	@RequestMapping("/productsearch")
@@ -122,6 +117,7 @@ public class AControllerProduct {
 		return "productpBListV";
 		
 	}
+	// 향 종류별 탭
 	@RequestMapping("/productscentfloralList")
 	public String sFList(Model model) {
 		ProductsFListCommand.execute2(sqlSession, model);

@@ -5,14 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
-import com.springlec.springAscent.dao.NDaoNotice;
+import com.springlec.springAscent.dao.NDao;
 
 public class NoticeListCommand implements ACommand {
 
 	@Override
 	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
 		
-		NDaoNotice dao = sqlSession.getMapper(NDaoNotice.class);
+		NDao dao = sqlSession.getMapper(NDao.class);
 		model.addAttribute("list", dao.list());
 		
 	}

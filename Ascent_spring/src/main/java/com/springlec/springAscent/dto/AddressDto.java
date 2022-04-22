@@ -1,10 +1,7 @@
 package com.springlec.springAscent.dto;
 
-public class ADtoA {
-	//
-	public ADtoA() {
-		
-	}
+public class AddressDto {
+	
 	int addressCode;
 	String addressType;
 	String postcode;
@@ -13,8 +10,11 @@ public class ADtoA {
 	String extraAddress;
 	String user_userID;
 	
+	public AddressDto() {
+		
+	}
 
-	public ADtoA(int addressCode, String addressType, String postcode, String mainAddress, String detailAddress,
+	public AddressDto(int addressCode, String addressType, String postcode, String mainAddress, String detailAddress,
 			String extraAddress, String user_userID) {
 		super();
 		this.addressCode = addressCode;

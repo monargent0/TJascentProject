@@ -90,7 +90,7 @@ public class AControllerUser {
 		return (String)request.getAttribute("return");
 	}
 	// 마이페이지 화면
-	@RequestMapping("/myPageV")
+	@RequestMapping("/myPage")
 	public String mypageV() {
 		return "myPageV";
 	}

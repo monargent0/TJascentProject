@@ -3,16 +3,12 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-    <mapper namespace="com.springlec.springAscent.dao.NDaoNotice">
+    <mapper namespace="com.springlec.springAscent.dao.NDao">
     	<select id="list" resultType="com.springlec.springAscent.dto.NDtoNotice">
-    		SELECT NOTICECODE, NOTICETYPE, NOTICETITLE, NOTICECONTENT, NOTICEDATE FROM NOTICEBOARD ORDER BY MID DESC
+    		SELECT NOTICECODE, NOTICETYPE, NOTICETITLE, NOTICECONTENT, NOTICEDATE FROM NOTICEBOARD 
     	</select>
     	<select id="content" resultType="com.springlec.springAscent.dto.NDtoNotice">
     		SELECT * FROM NOTICEBOARD WHERE NOTICECODE = #{param1}
     	</select>
     
-    
-    
-    
-       
     </mapper>

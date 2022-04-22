@@ -58,8 +58,19 @@
 	<beans:bean name="counselWrite" class="com.springlec.springAscent.command.CounselWriteCommand"></beans:bean>
 	<beans:bean name="counselContent" class="com.springlec.springAscent.command.CounselContentCommand"></beans:bean>
 	<beans:bean name="counselDelete" class="com.springlec.springAscent.command.CounselDeleteCommand"></beans:bean>
+	<beans:bean name="counselModify" class="com.springlec.springAscent.command.CounselModifyCommand"></beans:bean>	
 	<beans:bean name="noticeList" class="com.springlec.springAscent.command.NoticeListCommand"></beans:bean>
 	<beans:bean name="noticeContent" class="com.springlec.springAscent.command.NoticeContentCommand"></beans:bean>
+	<beans:bean name="reviewList" class="com.springlec.springAscent.command.ReviewListCommand"></beans:bean>
+	<beans:bean name="reviewWrite" class="com.springlec.springAscent.command.ReviewWriteCommand"></beans:bean>
+	<beans:bean name="reviewContent" class="com.springlec.springAscent.command.ReviewContentCommand"></beans:bean>
+	<beans:bean name="productAskList" class="com.springlec.springAscent.command.ProductAskListCommand"></beans:bean>
+	<beans:bean name="productAskWrite" class="com.springlec.springAscent.command.ProductAskWriteCommand"></beans:bean>
+	<beans:bean name="productAskContent" class="com.springlec.springAscent.command.ProductAskContentCommand"></beans:bean>
+	<beans:bean name="productAskDelete" class="com.springlec.springAscent.command.ProductAskDeleteCommand"></beans:bean>
+	<beans:bean name="productAskModify" class="com.springlec.springAscent.command.ProductAskModifyCommand"></beans:bean>
+	
+	
 	
 	<!-- sw command -->
 	<beans:bean name="cartList" class="com.springlec.springAscent.command.CartListCommand"/>
