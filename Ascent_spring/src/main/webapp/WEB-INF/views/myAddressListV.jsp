@@ -105,7 +105,7 @@
 		<c:forEach items="${address}" var="dto" varStatus="st">
 			<tr>
 				<td style="width: 150px">${dto.addressType}<br>
-					${def[${st.index}]}
+					<%-- ${def[${st.index}]} --%>
 					${dto.aDefault}
 					<!-- 기본배송지칼럼 --></td>
 				<td style="text-align: left;">${dto.postcode }<br>
