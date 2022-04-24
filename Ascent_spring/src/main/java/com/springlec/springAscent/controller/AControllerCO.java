@@ -1,6 +1,7 @@
 package com.springlec.springAscent.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.springlec.springAscent.command.ACommand;
 
 @Controller
-public class AControllerCart {
+public class AControllerCO {
 	
 	@Autowired
 	private SqlSession sqlSession;
@@ -72,11 +73,13 @@ public class AControllerCart {
 	
 	@RequestMapping("/cartModify")
 	public String cartModify(HttpServletRequest request, Model model) {
+	
+		String userID = request.getParameter("userID");
 		
 		model.addAttribute("request", request);
 		cartModifyCommand.execute1(sqlSession, request);
 		
-		return "redirect:cartList";
+		return "redirect:cartList?userID="+userID;
 	}
 	
 	@RequestMapping("/cartDelete")

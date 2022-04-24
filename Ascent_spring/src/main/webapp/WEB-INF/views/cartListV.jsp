@@ -285,6 +285,7 @@ function cartMo(changed_id){
 	var cartCode = document.getElementById('cartCode'+statusIndex).value;
 	var cartAmount = document.getElementById(statusIndex).value;
 	location='cartModify?cartCode='+cartCode+'&cartAmount='+cartAmount+'&userID='+userID;
+	alert(userID);
 	alert('수량이 변경되었습니다.');
 }
 </script>
