@@ -30,7 +30,7 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-<title>Order Detail</title>
+<title>ascent</title>
 </head>
 <style>
 	  table {
@@ -54,95 +54,8 @@
       	transform : translate(-50%,-50%);
       }
 </style>
-<body>
-	<!-- 메인홈바 -->
-	<nav id="navBar" class="navbar navbar-expand-lg navbar">
-		<div class="container-fluid">
-			<button class="navbar-toggler" type="button"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					
-				<!-- 상품 센트별로 보여주기  -->
-					<ul id="nav">
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Scent </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="allList">All</a></li>
-							<li><a class="dropdown-item" href="productscentfloralList">Floral</a></li>
-							<li><a class="dropdown-item" href="productscentcitruslist">Citrus</a></li>
-							<li><a class="dropdown-item" href="productscentfreshlist">Fresh</a></li>
-							<li><a class="dropdown-item" href="productscentfruitylist">Fruity</a></li>
-							<li><a class="dropdown-item" href="productscentwoodylist">Woody</a></li>
-							<li><a class="dropdown-item" href="productscentoritentallist">Oriental</a></li>
-						</ul>
-					</li> 
-				<!-- 부향로 보여주기  -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Perfume </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="allList">All</a></li>
-							<li><a class="dropdown-item" href="productperfumelist">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="producttotilettelist">Eau de toilette</a></li>
-							<li><a class="dropdown-item" href="productcolongelist">Eau de cologne</a></li>
-							<li><a class="dropdown-item" href="productbodyspraylist">Body Spray</a></li>
-						</ul>
-					</li>
-				<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							About </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="noticeBoardList.do">Notice</a></li>
-							<%
-							if(session.getAttribute("userID") == null){
-							%>
-							<li><a class="dropdown-item" href="logInV">Q&A</a></li>
-							<%
-							}else if(session.getAttribute("userID") != null){
-							%>
-							<li><a class="dropdown-item" href="counselList.do">Q&A</a></li>
-						  <% } %>
-						</ul>
-					</li>
-				</ul>
-				</ul>
-				<!--로고 -->
-      			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="main.do">
-   					   <img src="assets/logo.png"  alt="" width="300" height="150">
-  					  </a>
-				  </div>
-      			 <!--검색하기  -->
-				<form  class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="검색하기" aria-label="Search"> 
-				</form>
-				<!--검색,마이페이지,장바구니 아이콘  -->
-				<div class="text-end">
-					<k class="bi bi-search" style="font-size:2.1rem; cursor: pointer;" href="#"></k>
-
-					<% 
-				 	 if(session.getAttribute("userID") == null){
-					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
-					<%
-					}else if(session.getAttribute("userID") != null){
-					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
-				  <% } %>
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick="cartListCheckUser()"></j>
-				</div>
-			</div>
-		</div>
-	</nav>
+<body style="background-color:#FFFAF6">
+<%@include file="head.jsp" %>
 
 	<div class="list">
 		<h1>Order Detail</h1>
@@ -212,23 +125,13 @@
 
 </body>
 <script>
-var userID = '<%=session.getAttribute("userID")%>';
-function cartListCheckUser() {
-	if (userID != 'null'){
-		location.href='cartList.do?userID='+userID;
-	}
-	else{
-		alert("로그인이 필요합니다.");
-		location.href='logInV.jsp';
-	}
-}
 function sendProductCodeLogin() {
 	if (userID != 'null'){
-		location.href='myPage.jsp'
+		location.href='myPageV'
 	}
 	else{
 		alert("로그인이 필요합니다.");
-		location.href='logInV.jsp?productCode='+productCode1;
+		location.href='logInV?productCode='+productCode1;
 	}
 }
 </script>

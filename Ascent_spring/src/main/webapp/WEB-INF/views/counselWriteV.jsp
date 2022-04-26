@@ -85,120 +85,19 @@
 <title>1대1 문의 작성</title>
 </head>
 <body style="background-color:#FFFAF6">
-<!-- 메인홈바 -->
-	<nav id="navBar" class="navbar navbar-expand-lg navbar">
-		<div class="container-fluid">
-			<button class="navbar-toggler" type="button"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					
-				<!-- 상품 센트별로 보여주기  -->
-					<ul id="nav">
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Scent </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="allList">All</a></li>
-							<li><a class="dropdown-item" href="productscentfloralList">Floral</a></li>
-							<li><a class="dropdown-item" href="productscentcitruslist">Citrus</a></li>
-							<li><a class="dropdown-item" href="productscentfreshlist">Fresh</a></li>
-							<li><a class="dropdown-item" href="productscentfruitylist">Fruity</a></li>
-							<li><a class="dropdown-item" href="productscentwoodylist">Woody</a></li>
-							<li><a class="dropdown-item" href="productscentoritentallist">Oriental</a></li>
-						</ul>
-					</li> 
-				<!-- 부향로 보여주기  -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Perfume </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="allList">All</a></li>
-							<li><a class="dropdown-item" href="productperfumelist">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="producttotilettelist">Eau de toilette</a></li>
-							<li><a class="dropdown-item" href="productcolongelist">Eau de cologne</a></li>
-							<li><a class="dropdown-item" href="productbodyspraylist">Body Spray</a></li>
-						</ul>
-					</li>
-					<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li><a class="nav-link px-2" href="#">About</a>
-						<ul>
-							<li><a href="noticeBoardList.do">Notice</a></li>
-							<!-- <li><a href="counselList.do">Q&A</a></li> -->
-							<%
-							if(session.getAttribute("userID") == null){
-							%>
-							<li><a href="logInV.jsp">Q&A</a></li>
-							<%
-							}else if(session.getAttribute("userID") != null){
-							%>
-							<li><a href="counselList.do">Q&A</a></li>
-						  <% } %>
-						</ul>
-					</li>
-				</ul>
-				</ul>
-				<!--로고 -->
-      			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="main.do">
-   					   <img src="assets/logo.png"  alt="" width="300" height="150">
-  					  </a>
-				  </div>
-      			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct.do" >
-				<div>
-					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
-				</div>
-				
-					<div class="text-end">
-					
-					<!--  검색 -->
-					<div> 
-				<button type="submit" class="btn text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 14 14 ">
-				  <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
- 				 <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
-				</svg>
-				<span class="visually-hidden"></span>
-                </button>
-				 </div> 
-				 </div>
-				</form>
-				
-				<!-- 마이페이지 -->
-					<% 
-				 	 if(session.getAttribute("userID") == null){
-					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='logInV.jsp'" ></i>
-					<%
-					}else if(session.getAttribute("userID") != null){
-					%>
-					<i class="bi bi-person-fill" style="font-size:2.5rem;cursor: pointer;" onclick = "location.href='myPageV.jsp'" ></i>
-				  <% } %>
-				  <!-- 장바구니 -->
-					<j  class="bi bi-bag-heart" style="font-size:2.3rem; cursor: pointer;" onclick = "cartCheckUser()"></j>
-					
-				</div>
-			</div>
-			
-	</nav>
+<%@include file="head.jsp" %>	
  <div class="contents">
 	<h3>ascent 1대1 문의</h3>
 		<table >
-		<form action="counselWrite.do"  encType="multipart/form-data" method="post">
+		<form action="counselWrite" method="post">
 			<tr>
 				<td>문의종류</td>
 				<td><select name="counselType">
 					<option value= 환불>환불</option>
 					<option value= 배송>배송</option>
-					<option value= 주문결제>주문/결제</option>
-					<option value= 회원>회원 관련</option>
-					<option value= 상품>상품 관련</option>				
+					<option value= 주문/결제>주문/결제</option>
+					<option value= 회원>회원</option>
+					<option value= 상품>상품</option>				
 					<option value= 사이트이용>사이트 이용</option>				
 					<option value= 기타문의>기타</option>				
 				</select></td>
@@ -213,16 +112,44 @@
 			</tr>
 			<tr>
 				<td>첨부파일</td>
-				<td><input type="file" name="image" accept="image/*" multiple></td>
+				<td><input type="file" id="upload" name="image" accept="image/*"></td>
 			</tr>			
 			<tr>
-				<td><a id="hyper" href="counselList.do">목록보기</a></td>
+				<td><input type="hidden" id="imgTxt" name="counselImage" ></td>
+				<td rowspan="7"><img id="preview" src="" width="250" height="250" alt="업로드할 이미지"> </td>
+			</tr>					
+			<tr>
+				<td><a id="hyper" href="counselList">목록보기</a></td>
 				<td colspan="2" align="right"><input class="sub" type="submit" value="입력"></td>
 			</tr>
 		</form>
 	</table>	
 	</div>
+	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	
+	function readFile() {
+	  
+	  if (this.files && this.files[0]) {
+	    
+	    var FR = new FileReader();
+	    
+	    FR.onload = function(e) {
+	    	//console.log(e.target.result);
+	      document.getElementById("imgTxt").value = e.target.result;
+	     // alert(document.getElementById("imgTxt").value)
+	      document.getElementById("preview").src = e.target.result;
+	    }; 
+	    
+	    FR.readAsDataURL( this.files[0] );
+	  }
+	  
+	}
+	
+	document.getElementById("upload").addEventListener("change", readFile);	
+</script>
 </body>
 </body>
 </html>

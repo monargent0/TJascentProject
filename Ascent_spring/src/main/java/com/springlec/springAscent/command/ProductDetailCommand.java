@@ -30,6 +30,11 @@ public class ProductDetailCommand implements ACommand {
 		PDao dao = sqlSession.getMapper(PDao.class);
 		model.addAttribute("detail", dao.productDetail(productCode));
 		
+	
+		
+		
+		
+		
 	}
 
 }

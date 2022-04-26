@@ -58,12 +58,21 @@
 	<beans:bean name="counselWrite" class="com.springlec.springAscent.command.CounselWriteCommand"></beans:bean>
 	<beans:bean name="counselContent" class="com.springlec.springAscent.command.CounselContentCommand"></beans:bean>
 	<beans:bean name="counselDelete" class="com.springlec.springAscent.command.CounselDeleteCommand"></beans:bean>
+	<beans:bean name="counselModify" class="com.springlec.springAscent.command.CounselModifyCommand"></beans:bean>	
 	<beans:bean name="noticeList" class="com.springlec.springAscent.command.NoticeListCommand"></beans:bean>
 	<beans:bean name="noticeContent" class="com.springlec.springAscent.command.NoticeContentCommand"></beans:bean>
+	<beans:bean name="reviewList" class="com.springlec.springAscent.command.ReviewListCommand"></beans:bean>
+	<beans:bean name="reviewWrite" class="com.springlec.springAscent.command.ReviewWriteCommand"></beans:bean>
+	<beans:bean name="reviewContent" class="com.springlec.springAscent.command.ReviewContentCommand"></beans:bean>
+	<beans:bean name="productAskList" class="com.springlec.springAscent.command.ProductAskListCommand"></beans:bean>
+	<beans:bean name="productAskWrite" class="com.springlec.springAscent.command.ProductAskWriteCommand"></beans:bean>
+	<beans:bean name="productAskContent" class="com.springlec.springAscent.command.ProductAskContentCommand"></beans:bean>
+	<beans:bean name="productAskDelete" class="com.springlec.springAscent.command.ProductAskDeleteCommand"></beans:bean>
+	<beans:bean name="productAskModify" class="com.springlec.springAscent.command.ProductAskModifyCommand"></beans:bean>
+	
+	
 	
 	<!-- sw command -->
-	<beans:bean name="productDetail" class="com.springlec.springAscent.command.ProductDetailCommand"/>
-	
 	<beans:bean name="cartList" class="com.springlec.springAscent.command.CartListCommand"/>
 	<beans:bean name="cartWrite" class="com.springlec.springAscent.command.CartWriteCommand"/>
 	<beans:bean name="cartModify" class="com.springlec.springAscent.command.CartModifyCommand"/>
@@ -73,20 +82,20 @@
 	<beans:bean name="orderWrite" class="com.springlec.springAscent.command.OrderWriteCommand"/>
 	
 	<!--jy product command -->
-	<beans:bean name="productAllList" class="com.springlec.springAscent.command.productAllListCommand" ></beans:bean>
-	<beans:bean name="productSearch" class="com.springlec.springAscent.command.productSearchCommand" ></beans:bean>
-	<beans:bean name="productMain" class="com.springlec.springAscent.command.productMainCommand" ></beans:bean>
-	<beans:bean name="productpPList" class="com.springlec.springAscent.command.productpPListCommand" ></beans:bean>
-	<beans:bean name="productpTList" class="com.springlec.springAscent.command.productpTListCommand" ></beans:bean>
-	<beans:bean name="productpCList" class="com.springlec.springAscent.command.productpCListCommand" ></beans:bean>
-	<beans:bean name="productpBList" class="com.springlec.springAscent.command.productpBListCommand" ></beans:bean>
-	<beans:bean name="productsFList" class="com.springlec.springAscent.command.productsFListCommand" ></beans:bean>
-	<beans:bean name="productsCList" class="com.springlec.springAscent.command.productsCListCommand" ></beans:bean>
-	<beans:bean name="productsFRList" class="com.springlec.springAscent.command.productsFRListCommand" ></beans:bean>
-	<beans:bean name="productsFTList" class="com.springlec.springAscent.command.productsFTListCommand" ></beans:bean>
-	<beans:bean name="productsOList" class="com.springlec.springAscent.command.productsOListCommand" ></beans:bean>
-
-	<beans:bean name="productsWList" class="com.springlec.springAscent.command.productsWListCommand" ></beans:bean> 
+	<beans:bean name="ProductAllList" class="com.springlec.springAscent.command.ProductAllListCommand" ></beans:bean>
+	<beans:bean name="ProductSearch" class="com.springlec.springAscent.command.ProductSearchCommand" ></beans:bean>
+	<beans:bean name="ProductMain" class="com.springlec.springAscent.command.ProductMainCommand" ></beans:bean>
+	<beans:bean name="ProductDetail" class="com.springlec.springAscent.command.ProductDetailCommand" ></beans:bean>
+	<beans:bean name="ProductpPList" class="com.springlec.springAscent.command.ProductpPListCommand" ></beans:bean>
+	<beans:bean name="ProductpTList" class="com.springlec.springAscent.command.ProductpTListCommand" ></beans:bean>
+	<beans:bean name="ProductpCList" class="com.springlec.springAscent.command.ProductpCListCommand" ></beans:bean>
+	<beans:bean name="ProductpBList" class="com.springlec.springAscent.command.ProductpBListCommand" ></beans:bean>
+	<beans:bean name="ProductsFList" class="com.springlec.springAscent.command.ProductsFListCommand" ></beans:bean>
+	<beans:bean name="ProductsCList" class="com.springlec.springAscent.command.ProductsCListCommand" ></beans:bean>
+	<beans:bean name="ProductsFRList" class="com.springlec.springAscent.command.ProductsFRListCommand" ></beans:bean>
+	<beans:bean name="ProductsFTList" class="com.springlec.springAscent.command.ProductsFTListCommand" ></beans:bean>
+	<beans:bean name="ProductsOList" class="com.springlec.springAscent.command.ProductsOListCommand" ></beans:bean>
+	<beans:bean name="ProductsWList" class="com.springlec.springAscent.command.ProductsWListCommand" ></beans:bean> 
 
 
 </beans:beans>

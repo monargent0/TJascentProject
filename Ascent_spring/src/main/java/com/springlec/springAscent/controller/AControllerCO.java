@@ -16,9 +16,6 @@ public class AControllerCO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	
-	private ACommand productDetailCommand = null;
-	
 	private ACommand cartListCommand = null;
 	private ACommand cartWriteCommand = null;
 	private ACommand cartModifyCommand = null;
@@ -44,14 +41,6 @@ public class AControllerCO {
 		this.orderWriteCommand = orderWrite;
 	}
 	
-	@RequestMapping("/productDetail")
-	public String productDetail(HttpServletRequest request, Model model) {
-		
-		model.addAttribute("request", request);
-		productDetailCommand.execute3(sqlSession, request, model);
-		
-		return "productDetailV";
-	}
 	
 	@RequestMapping("/cartList")
 	public String cartList(HttpServletRequest request, Model model) {
