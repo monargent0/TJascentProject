@@ -63,9 +63,14 @@
 	
 	<!-- sw command -->
 	<beans:bean name="productDetail" class="com.springlec.springAscent.command.ProductDetailCommand"/>
+	
 	<beans:bean name="cartList" class="com.springlec.springAscent.command.CartListCommand"/>
 	<beans:bean name="cartWrite" class="com.springlec.springAscent.command.CartWriteCommand"/>
 	<beans:bean name="cartModify" class="com.springlec.springAscent.command.CartModifyCommand"/>
+	<beans:bean name="cartDelete" class="com.springlec.springAscent.command.CartDeleteCommand"/>
+	<beans:bean name="orderList" class="com.springlec.springAscent.command.OrderListCommand"/>
+	<beans:bean name="orderWriteView" class="com.springlec.springAscent.command.OrderWriteViewCommand"/>
+	<beans:bean name="orderWrite" class="com.springlec.springAscent.command.OrderWriteCommand"/>
 	
 	<!--jy product command -->
 	<beans:bean name="productAllList" class="com.springlec.springAscent.command.productAllListCommand" ></beans:bean>

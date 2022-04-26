@@ -86,17 +86,17 @@ function checkBoxAll(event) {
 				<!-- 상품 센트별로 보여주기  -->
 					<ul id="nav">
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
+						class="nav-link dropdown-toggle" href="main" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Scent </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="allList">All</a></li>
-							<li><a class="dropdown-item" href="productscentfloralList">Floral</a></li>
-							<li><a class="dropdown-item" href="productscentcitruslist">Citrus</a></li>
-							<li><a class="dropdown-item" href="productscentfreshlist">Fresh</a></li>
-							<li><a class="dropdown-item" href="productscentfruitylist">Fruity</a></li>
-							<li><a class="dropdown-item" href="productscentwoodylist">Woody</a></li>
-							<li><a class="dropdown-item" href="productscentoritentallist">Oriental</a></li>
+							<li><a class="dropdown-item" href="sFList">Floral</a></li>
+							<li><a class="dropdown-item" href="sCList">Citrus</a></li>
+							<li><a class="dropdown-item" href="sFRList">Fresh</a></li>
+							<li><a class="dropdown-item" href="sFTList">Fruity</a></li>
+							<li><a class="dropdown-item" href="sWList">Woody</a></li>
+							<li><a class="dropdown-item" href="sOList">Oriental</a></li>
 						</ul>
 					</li> 
 				<!-- 부향로 보여주기  -->
@@ -106,27 +106,25 @@ function checkBoxAll(event) {
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="allList">All</a></li>
-							<li><a class="dropdown-item" href="productperfumelist">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="producttotilettelist">Eau de toilette</a></li>
-							<li><a class="dropdown-item" href="productcolongelist">Eau de cologne</a></li>
-							<li><a class="dropdown-item" href="productbodyspraylist">Body Spray</a></li>
+							<li><a class="dropdown-item" href="pPList">Eau de perfume</a></li>
+							<li><a class="dropdown-item" href="pTList">Eau de toilette</a></li>
+							<li><a class="dropdown-item" href="pCList">Eau de cologne</a></li>
+							<li><a class="dropdown-item" href="pBList">Body Spray</a></li>
 						</ul>
 					</li>
-				<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							About </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="noticeBoardList.do">Notice</a></li>
+					<!-- 1:1문의 ,공지사항, 상품문의  -->
+					<li><a class="nav-link px-2" href="#">About</a>
+						<ul>
+							<li><a href="noticeBoardList">Notice</a></li>
+							<!-- <li><a href="counselList">Q&A</a></li> -->
 							<%
 							if(session.getAttribute("userID") == null){
 							%>
-							<li><a class="dropdown-item" href="logInV">Q&A</a></li>
+							<li><a href="logInV">Q&A</a></li>
 							<%
 							}else if(session.getAttribute("userID") != null){
 							%>
-							<li><a class="dropdown-item" href="counselList.do">Q&A</a></li>
+							<li><a href="counselList">Q&A</a></li>
 						  <% } %>
 						</ul>
 					</li>
@@ -134,12 +132,12 @@ function checkBoxAll(event) {
 				</ul>
 				<!--로고 -->
       			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="main.do">
+   					 <a class="navbar-brand" href="main">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
       			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct.do" >
+				<form  class="d-flex" method="post" action="searchProduct" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
@@ -193,24 +191,24 @@ function checkBoxAll(event) {
 				<th>합계</th>
 			</tr>
 			<form name="cartForm" method="post">
-			<c:forEach items="${cartList }" var="dto">
+			<c:forEach items="${cartList }" var="dto" varStatus="status" >
 			<tr>
 				<td hidden="">
 				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly">
 				</td>
 				<td hidden="">
-				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly">
+				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly" id="cartCode${status.index }">
 				</td>
 				<td>
 				<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
 				</td>
 				<td align="center">
-				<a href="productDetail.do?productCode=${dto.productCode }">
+				<a href="productDetail?productCode=${dto.productCode }">
 				<img class="img" src="${dto.productImages }" width="100px" name="productImages">
 				</a>
 				</td>
 				<td align="left">
-				<a href="productDetail.do?productCode=${dto.productCode }">${dto.productName }</a>
+				<a href="productDetail?productCode=${dto.productCode }">${dto.productName }</a>
 				</td>
 				<td align="center">
 				${dto.productSize } ml
@@ -219,11 +217,18 @@ function checkBoxAll(event) {
 				${dto.productPrice } 원
 				</td>
 				<td align="center">
-					<select name="cartAmount">
+					<select name="cartAmount" onchange="cartMo(this.id)" id="${status.index }">
 						<option value="${dto.cartAmount }" selected="selected">${dto.cartAmount }</option>
-						<option value="1" onselect="">1</option>
-						<option value="2" onselect="">2</option>
-						<option value="3" onselect="">3</option>
+						<option value="1" >1</option>
+						<option value="2" >2</option>
+						<option value="3" >3</option>
+						<option value="1" >4</option>
+						<option value="2" >5</option>
+						<option value="3" >6</option>
+						<option value="1" >7</option>
+						<option value="2" >8</option>
+						<option value="3" >9</option>
+						<option value="3" >10</option>
 					</select>
 					개
 				</td>
@@ -233,21 +238,55 @@ function checkBoxAll(event) {
 			</tr>
 			</c:forEach>
 			</table><br>
-				<input type="button" value="선택상품 주문" onclick="checkUserCheck()">
-				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
+				<input type="button" value="선택상품 주문" onclick="orderCheckCart()">
+				<input type="button" value="선택상품 삭제" onclick="deleteCheckCart()">
 			</form>
 </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>
 <script type="text/javascript">
-var cartForm1 = document.cartForm;
-function checkUserCheck() {
-	if (cartForm1.checkCart.length == 0){
+var cartForm = document.cartForm;
+var userID = '<%=session.getAttribute("userID")%>';
+
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV';
+	}
+}
+
+function orderCheckCart() {
+	const query = 'input[name="checkCart"]:checked';
+	const selectedEls = document.querySelectorAll(query);
+	if (selectedEls.length == 0){
 		alert("1개 이상의 목록을 선택해주세요.");
 	}else {
-		cartForm1.action='orderView.do';
-		cartForm1.submit();
+		cartForm.action='orderWriteView';
+		cartForm.submit();
 	}
+}
+
+function deleteCheckCart() {
+	const query = 'input[name="checkCart"]:checked';
+	const selectedEls = document.querySelectorAll(query);
+	if (selectedEls.length == 0){
+		alert("1개 이상의 목록을 선택해주세요.");
+	}else {
+		cartForm.action='cartDelete';
+		cartForm.submit();
+	}
+}	
+
+function cartMo(changed_id){
+	var statusIndex = changed_id;
+	var cartCode = document.getElementById('cartCode'+statusIndex).value;
+	var cartAmount = document.getElementById(statusIndex).value;
+	location='cartModify?cartCode='+cartCode+'&cartAmount='+cartAmount+'&userID='+userID;
+	alert(userID);
+	alert('수량이 변경되었습니다.');
 }
 </script>
 </html>

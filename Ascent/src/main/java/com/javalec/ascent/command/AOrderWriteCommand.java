@@ -37,7 +37,6 @@ public class AOrderWriteCommand implements ACommand {
 			
 			// 주문한 cart Delete하기
 			ADaoCart daoC = new ADaoCart();
-			System.out.println(cartCodeArray);
 			daoC.delete(cartCodeArray);
 	}
 	

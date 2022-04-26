@@ -1,11 +1,11 @@
 package com.springlec.springAscent.dto;
 
-public class ADtoOPCart {
-	
-	public ADtoOPCart() {
+public class OrderDtoOPC {
+
+	public OrderDtoOPC() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	int orderCode;
 	String orderNumber;
 	String orderDate;
@@ -21,7 +21,7 @@ public class ADtoOPCart {
 	int cart_cartCode;
 	String user_userID;
 	
-	public ADtoOPCart(int orderCode, String orderNumber, String orderDate, String productImages, String productName,
+	public OrderDtoOPC(int orderCode, String orderNumber, String orderDate, String productImages, String productName,
 			String productSize, int productPrice, int cartAmount, int cartSum, int orderAmount, int orderSum,
 			int cart_cartCode, String user_userID) {
 		super();

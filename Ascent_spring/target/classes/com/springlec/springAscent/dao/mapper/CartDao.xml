@@ -6,9 +6,9 @@
 <mapper namespace="com.springlec.springAscent.dao.CartDao">
 
 	<select id="cartList" resultType="com.springlec.springAscent.dto.CartDtoPC">
-			SELECT C.CARTCODE, P.PRODUCTCODE, P.PRODUCTIMAGES, P.PRODUCTNAME, P.PRODUCTSIZE, C.CARTAMOUNT, C.CARTSUM, P.PRODUCTPRICE 
-			FROM CART C, USERINFO U, PRODUCT P 
-			WHERE C.USER_USERID = U.USERID AND C.PRODUCT_PRODUCTCODE = P.PRODUCTCODE AND U.USERID = #{param1} 
+		SELECT C.CARTCODE, P.PRODUCTCODE, P.PRODUCTIMAGES, P.PRODUCTNAME, P.PRODUCTSIZE, C.CARTAMOUNT, P.PRODUCTPRICE, C.CARTAMOUNT * P.PRODUCTPRICE AS CARTSUM 
+		FROM CART C, USERINFO U, PRODUCT P 
+		WHERE C.USER_USERID = U.USERID AND C.PRODUCT_PRODUCTCODE = P.PRODUCTCODE AND U.USERID = #{param1} 
 	</select>
 	
 	<insert id="cartWrite">
@@ -17,17 +17,11 @@
 	</insert>
 	
 	<update id="cartModify">
-		<foreach collection="array" item="cartAmountArray, cartCodeArray">
-			UPDATE CART SET CARTAMOUNT = #{cartAmountArray}, CARTDATE = NOW(), WHERE CARTCODE = #{cartCodeArray}
-		</foreach>
+		UPDATE CART SET CARTAMOUNT = #{param1}, CARTDATE = NOW() WHERE CARTCODE = #{param2}
 	</update>
 	
-	<!-- 
 	<delete id="cartDelete">
-		DELETE FROM CART 
-		WHERE CARTCODE = 
-		<foreach collection="array" item="cartCodeArray" separator=",">#{cartCodeArray}</foreach>
+		DELETE FROM CART WHERE CARTCODE = #{param1}
 	</delete>
-	  -->
 	  
 </mapper>

@@ -130,47 +130,45 @@ function sample6_execDaumPostcode() {
 				<!-- 상품 센트별로 보여주기  -->
 					<ul id="nav">
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
+						class="nav-link dropdown-toggle" href="main" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Scent </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="allList">All</a></li>
-							<li><a class="dropdown-item" href="productscentfloralList">Floral</a></li>
-							<li><a class="dropdown-item" href="productscentcitruslist">Citrus</a></li>
-							<li><a class="dropdown-item" href="productscentfreshlist">Fresh</a></li>
-							<li><a class="dropdown-item" href="productscentfruitylist">Fruity</a></li>
-							<li><a class="dropdown-item" href="productscentwoodylist">Woody</a></li>
-							<li><a class="dropdown-item" href="productscentoritentallist">Oriental</a></li>
+							<li><a class="dropdown-item" href="sFList">Floral</a></li>
+							<li><a class="dropdown-item" href="sCList">Citrus</a></li>
+							<li><a class="dropdown-item" href="sFRList">Fresh</a></li>
+							<li><a class="dropdown-item" href="sFTList">Fruity</a></li>
+							<li><a class="dropdown-item" href="sWList">Woody</a></li>
+							<li><a class="dropdown-item" href="sOList">Oriental</a></li>
 						</ul>
 					</li> 
 				<!-- 부향로 보여주기  -->
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
+						class="nav-link dropdown-toggle" href="main" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Perfume </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="allList">All</a></li>
-							<li><a class="dropdown-item" href="productperfumelist">Eau de perfume</a></li>
-							<li><a class="dropdown-item" href="producttotilettelist">Eau de toilette</a></li>
-							<li><a class="dropdown-item" href="productcolongelist">Eau de cologne</a></li>
-							<li><a class="dropdown-item" href="productbodyspraylist">Body Spray</a></li>
+							<li><a class="dropdown-item" href="pPList">Eau de perfume</a></li>
+							<li><a class="dropdown-item" href="pTList">Eau de toilette</a></li>
+							<li><a class="dropdown-item" href="pCList">Eau de cologne</a></li>
+							<li><a class="dropdown-item" href="pBList">Body Spray</a></li>
 						</ul>
 					</li>
-				<!-- 1:1문의 ,공지사항, 상품문의  -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							About </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="noticeBoardList.do">Notice</a></li>
+					<!-- 1:1문의 ,공지사항, 상품문의  -->
+					<li><a class="nav-link px-2" href="#">About</a>
+						<ul>
+							<li><a href="noticeBoardList">Notice</a></li>
+							<!-- <li><a href="counselList">Q&A</a></li> -->
 							<%
 							if(session.getAttribute("userID") == null){
 							%>
-							<li><a class="dropdown-item" href="logInV">Q&A</a></li>
+							<li><a href="logInV">Q&A</a></li>
 							<%
 							}else if(session.getAttribute("userID") != null){
 							%>
-							<li><a class="dropdown-item" href="counselList.do">Q&A</a></li>
+							<li><a href="counselList">Q&A</a></li>
 						  <% } %>
 						</ul>
 					</li>
@@ -178,12 +176,12 @@ function sample6_execDaumPostcode() {
 				</ul>
 				<!--로고 -->
       			  <div class="container col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-   					 <a class="navbar-brand" href="main.do">
+   					 <a class="navbar-brand" href="main">
    					   <img src="assets/logo.png"  alt="" width="300" height="150">
   					  </a>
 				  </div>
       			 <!--검색내용  -->
-				<form  class="d-flex" method="post" action="searchProduct.do" >
+				<form  class="d-flex" method="post" action="searchProduct" >
 				<div>
 					<input value="${param.searchText }" type="text"  class="form-control me-2" placeholder="검색하기" name="searchText" aria-label="Search"> 
 				</div>
@@ -222,13 +220,13 @@ function sample6_execDaumPostcode() {
 
 <div class="list">
 	<h2>주문 하기</h2>
-	<form name="orderForm" method="post" action="orderWrite.do">
+	<form name="orderForm" method="post" action="orderWrite">
 		<table>
 			<tr>
 				<td>
 				<h3>주문 상품</h3>
 				</td>
-			<tr>
+			<tr align="center">
 				<th hidden="">userID</th>
 				<th hidden="">cartCode</th>
 				<th hidden="">productCode</th>
@@ -241,7 +239,7 @@ function sample6_execDaumPostcode() {
 			</tr>
 			<c:set var="orderSum" value="0" />
 			<c:set var="orderAmount" value="0" />
-			<c:forEach items="${cartList }" var="dto" varStatus="status">
+			<c:forEach items="${orderWriteView }" var="dto" varStatus="status">
 				<tr>
 					<td hidden="">
 					<input type="text" value="<%=session.getAttribute("userID") %>" name="userID" readonly="readonly" >
@@ -257,6 +255,9 @@ function sample6_execDaumPostcode() {
 					</td>
 					<td align="left">
 					${dto.productName }
+					<%=session.getAttribute("userID") %>
+					${dto.cartCode }
+					11
 					</td>
 					<td align="center">
 					${dto.productSize } ml
@@ -349,7 +350,7 @@ function sample6_execDaumPostcode() {
 				</td>
 			</tr>
 		</table><br> -->
-		<input type="submit" value="결제하기" onclick="requestPay()">
+		<input type="button" value="결제하기" onclick="requestPay()">
 	</form>
 </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
@@ -357,7 +358,7 @@ function sample6_execDaumPostcode() {
 	crossorigin="anonymous"></script>
 </body>
 <script>
-var orderForm1 = document.orderForm;
+var orderForm = document.orderForm;
 var IMP = window.IMP; // 생략 가능
 IMP.init("imp26081497"); // 예: imp00000000
 
@@ -369,26 +370,27 @@ function requestPay() {
         merchant_uid: "ORD20180131-0000011",
         name: "테스트",
         amount: 1,
-        buyer_name: document.orderForm.orderReceiver.value,
-        buyer_addr: document.orderForm.orderMainAddress.value,
-        buyer_postcode: document.orderForm.orderPostcode.value;
+        buyer_name: orderForm.orderReceiver.value,
+        buyer_addr: orderForm.orderMainAddress.value,
+        buyer_postcode: orderForm.orderPostcode.value
     }, function (rsp) { // callback
-        if (rsp.success) {
+    	if (rsp.success) {
             // 결제 성공 시 로직,
             alert('결제 성공');
-   	 orderForm1.submit();
         } else {
             // 결제 실패 시 로직,
-   	 orderForm1.submit();
             alert('결제 취소');
         }
-    });
+    	orderForm.submit();
+    	}
+    );
   }
   
 var userID = '<%=session.getAttribute("userID")%>';
+
 function cartListCheckUser() {
-	if (userID != 'null'){
-		location.href='cartList.do?userID='+userID;
+	if (userID != null){
+		location.href='cartList?userID='+userID;
 	}
 	else{
 		alert("로그인이 필요합니다.");

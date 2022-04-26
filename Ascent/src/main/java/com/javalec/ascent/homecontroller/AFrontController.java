@@ -395,7 +395,7 @@ public class AFrontController extends HttpServlet {
 				viewPage = "cartList.do";
 				break;
 				
-			// orderView, 주문하기에서 장바구니 보기
+			// orderView, 장바구니에서 주문 입력화면
 			case("/orderView.do"):
 				command = new AOrderViewCommand();
 				command.execute(request, response);

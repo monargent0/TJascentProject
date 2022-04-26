@@ -13,6 +13,7 @@ public class AOrderViewCommand implements ACommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		
 			String userID = request.getParameter("userID");
 			String[] checkArray = request.getParameterValues("checkCart");
 			int[] checkCart = null;

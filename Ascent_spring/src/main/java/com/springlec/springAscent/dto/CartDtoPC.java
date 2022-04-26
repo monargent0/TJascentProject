@@ -14,7 +14,7 @@ public class CartDtoPC {
 	String productSize;
 	int cartAmount;
 	int productPrice;
-	int cartSum = cartAmount * productPrice;
+	int cartSum;
 
 
 	public CartDtoPC(int cartCode, String productCode, String productImages, String productName, String productSize,

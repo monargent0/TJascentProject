@@ -61,13 +61,17 @@ function checkBoxAll(event) {
 	const selectedEls = document.querySelectorAll(query);
 
 	if (event.target.checked) {
-		selectedEls.forEach((el) => {
+		selectedEls.forEach((el) => 
+			{
 			el.checked = true;
-		});
+			}
+		);
 	} else {
-		selectedEls.forEach((el) => {
+		selectedEls.forEach((el) => 
+			{
 			el.checked = false;
-		});
+			}
+		);
 	}
 }
 </script>
@@ -191,13 +195,13 @@ function checkBoxAll(event) {
 				<th>합계</th>
 			</tr>
 			<form name="cartForm" method="post">
-			<c:forEach items="${cartList }" var="dto">
+			<c:forEach items="${cartList }" var="dto" varStatus="status" >
 			<tr>
 				<td hidden="">
-				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly">
+				<input type="text" value="<%=session.getAttribute("userID") %>" name="userID" readonly="readonly">
 				</td>
 				<td hidden="">
-				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly">
+				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly" id="cartCode${status.index }">
 				</td>
 				<td>
 				<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
@@ -217,11 +221,18 @@ function checkBoxAll(event) {
 				${dto.productPrice } 원
 				</td>
 				<td align="center">
-					<select name="cartAmount" onchange="cartM()">
+					<select name="cartAmount" onchange="cartMo(this.id)" id="${status.index }">
 						<option value="${dto.cartAmount }" selected="selected">${dto.cartAmount }</option>
-						<option value="1" onselect="">1</option>
-						<option value="2" onselect="">2</option>
-						<option value="3" onselect="">3</option>
+						<option value="1" >1</option>
+						<option value="2" >2</option>
+						<option value="3" >3</option>
+						<option value="1" >4</option>
+						<option value="2" >5</option>
+						<option value="3" >6</option>
+						<option value="1" >7</option>
+						<option value="2" >8</option>
+						<option value="3" >9</option>
+						<option value="3" >10</option>
 					</select>
 					개
 				</td>
@@ -231,26 +242,54 @@ function checkBoxAll(event) {
 			</tr>
 			</c:forEach>
 			</table><br>
-				<input type="button" value="선택상품 주문" onclick="checkUserCheck()">
-				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
+				<input type="button" value="선택상품 주문" onclick="orderCheckCart()">
+				<input type="button" value="선택상품 삭제" onclick="deleteCheckCart()">
 			</form>
 </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
 </body>
 <script type="text/javascript">
-var cartForm1 = document.cartForm;
+var cartForm = document.cartForm;
+var userID = '<%=session.getAttribute("userID")%>';
 
-function checkUserCheck() {
-	if (cartForm1.checkCart.length == 0){
-		alert("1개 이상의 목록을 선택해주세요.");
-	}else {
-		cartForm1.action='orderView.do';
-		cartForm1.submit();
+function cartListCheckUser() {
+	if (userID != 'null'){
+		location.href='cartList.do?userID='+userID;
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV.jsp';
 	}
 }
-function cartM(){
-	cartForm1.action='cartModify.do';
-	cartForm1.submit();
+
+function orderCheckCart() {
+	const query = 'input[name="checkCart"]:checked';
+	const selectedEls = document.querySelectorAll(query);
+	if (selectedEls.length == 0){
+		alert("1개 이상의 목록을 선택해주세요.");
+	}else {
+		cartForm.action='orderView.do';
+		cartForm.submit();
+	}
+}
+
+function deleteCheckCart() {
+	const query = 'input[name="checkCart"]:checked';
+	const selectedEls = document.querySelectorAll(query);
+	if (selectedEls.length == 0){
+		alert("1개 이상의 목록을 선택해주세요.");
+	}else {
+		cartForm.action='cartDelete.do';
+		cartForm.submit();
+	}
+}	
+
+function cartMo(changed_id){
+	var statusIndex = changed_id;
+	var cartCode = document.getElementById('cartCode'+statusIndex).value;
+	var cartAmount = document.getElementById(statusIndex).value;
+	location='cartModify.do?cartCode='+cartCode+'&cartAmount='+cartAmount+'&userID='+userID;
+	alert('수량이 변경되었습니다.');
 }
 </script>
 </html>
