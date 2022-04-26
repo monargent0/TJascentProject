@@ -64,7 +64,6 @@ public class AControllerProduct {
 	//모든 상품- 페이징 구현 
 	@RequestMapping("/allList")
 	public String allList(Model model,Criteria cri) {
-		System.out.println("paging");
 		ProductAllListCommand.execute2(sqlSession, model);
 		return "productAllListV"; //jsp 
 	}
@@ -87,7 +86,6 @@ public class AControllerProduct {
 	//상세페이지
 	@RequestMapping("/productDetailV")
 	public String productdetail(HttpServletRequest request,	Model model) {
-		System.out.println("상세페이지 ");
 		ProductDetailCommand.execute3(sqlSession, request, model); 
 		
 		return "productDetailV";
