@@ -94,14 +94,14 @@
  			<!--  이전 페이지 -->
   				<c:if test="${pageMaker.prev }">
    				 <li class="page-item">
-    			  	<a class="page-link" href="${startPage - 1 }" aria-label="Previous">
+    			  	<a class="page-link" href="${pageMaker.startPage - 1 }" aria-label="Previous">
      			   <span aria-hidden="true">&laquo;</span>
     			 Previous </a>
    				</li>
    				</c:if>
    
    			<!-- 1부터 5까지 화면상 보여주는 페이지  -->	
-   			<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+   			<c:forEach var="num"  begin="1" end="${pageMaker.endPage }">
    			 <li class="page-item">
    			 <a class="page-link" href="/allList?num=${num }">${num }</a></li>		
    			 </c:forEach>	
@@ -130,12 +130,13 @@
 			$(document).ready(function () {
 				var moveForm = $("#moveForm");
 				
-				$(".pagination a").on("click",function(e)){
-					e.preventDefault;
-					moveForm.find("input[name= 'pageNum']").val($(this).attr("href");
+				$(".page-item a").on("click",function(e) {
+					
+					e.preventDefault();
+					moveForm.find("input[name= 'pageNum']").val($(this).attr("href"));
 					moveForm.attr("action", "/allList");
 					moveForm.submit();
-				}
+				});
 			});
 	</script>
  

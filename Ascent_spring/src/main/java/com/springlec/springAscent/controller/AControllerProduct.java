@@ -62,9 +62,11 @@ public class AControllerProduct {
 //		return "productAllListV"; //jsp 
 //	}
 	//모든 상품- 페이징 구현 
+	// PDao에서 선언한이름과 동일한 string 선언 
 	@RequestMapping("/allList")
-	public String allList(Model model,Criteria cri) {
+	public String allListPaging(Model model,Criteria cri) {
 		System.out.println("paging");
+	
 		ProductAllListCommand.execute2(sqlSession, model);
 		return "productAllListV"; //jsp 
 	}

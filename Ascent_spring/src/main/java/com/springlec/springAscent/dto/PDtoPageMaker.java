@@ -4,42 +4,38 @@ package com.springlec.springAscent.dto;
 
 public class PDtoPageMaker {
 	
-	/* 시작 페이지 */
+	// 시작페이지 
     private int startPage;
     
-    /* 끝 페이지 */
+    // 끝나는 페이지 
     private int endPage;
     
-    /* 이전 페이지, 다음 페이지 존재유무 */
+    // 이전, 다음 페이지
     private boolean prev, next;
     
-    /*전체 게시물 수*/
+    //총 상품수 (게시물 수 )
     private int total;
     
-    /* 현재 페이지, 페이지당 게시물 표시수 정보 */
+
     private Criteria cri;
     
     public PDtoPageMaker(Criteria cri, int total) {
     	 this.cri = cri;
          this.total = total;
          
-         /* 현재 화면에서 보여주는 마지막 페이지 */
+         //화면에 보여주는 끝나는 페이지, 1부터 5까지일 때 5에 해당 , 6부터 10까디라면 10에 해당 
          this.endPage = (int)(Math.ceil((double)cri.getPageNum())*5);
-         /* 현재 화면에서 보여주는 시작 페이지 */
+         //화면에 보여주는 시작하는 페이지, 1부터 5까지 중 1, 6부터 10까지라면 6에 해당 
          this.startPage = this.endPage - 4;
-         
-         /* 전체 마지막 페이지 */
+         //게시물의 가장 마지막 페이지, (총 게시물 / 한 화면당 보여주는 게시물), 총 100개를 20개씩 보여준다면 100/20 =5 ,5가 가장 마지막 페이지 
          int realEnd = (int)(Math.ceil((double)total /cri.getAmount()));
-         
-         /* 전체 마지막 페이지(realend)가 화면에 보이는 마지막페이지(endPage)보다 작은 경우, 보이는 페이지(endPage) 값 조정 */
+         //  보여주는 마지막페이지가 실제 마지막 페이지일 경우  같음 
          if(realEnd < this.endPage) {
              this.endPage = realEnd;
          }
-         
-         /* 시작 페이지(startPage)값이 1보다 큰 경우 true */
+         //이전 버튼은  시작페이지 1이상 일때  true
          this.prev = this.startPage > 1;
-         
-         /* 마지막 페이지(endPage)값이 1보다 큰 경우 true */
+         // 다음 버튼은 화면상 보여지는 마지막 페이지보다 실제 마지막페이지가 남았을 때 true
          this.next = this.endPage < realEnd;
     	
 	}
