@@ -24,11 +24,11 @@ public class PDtoPageMaker {
          this.total = total;
          
          //화면에 보여주는 끝나는 페이지, 1부터 5까지일 때 5에 해당 , 6부터 10까디라면 10에 해당 
-         this.endPage = (int)(Math.ceil((double)cri.getPageNum())*5);
+         this.endPage = (int ) (Math.ceil ( (double)cri.getPageNum( ) ) )*5 ;
          //화면에 보여주는 시작하는 페이지, 1부터 5까지 중 1, 6부터 10까지라면 6에 해당 
          this.startPage = this.endPage - 4;
          //게시물의 가장 마지막 페이지, (총 게시물 / 한 화면당 보여주는 게시물), 총 100개를 20개씩 보여준다면 100/20 =5 ,5가 가장 마지막 페이지 
-         int realEnd = (int)(Math.ceil((double)total /cri.getAmount()));
+         int realEnd = (int)(Math.ceil((double)total /cri.getAmount( )));
          //  보여주는 마지막페이지가 실제 마지막 페이지일 경우  같음 
          if(realEnd < this.endPage) {
              this.endPage = realEnd;

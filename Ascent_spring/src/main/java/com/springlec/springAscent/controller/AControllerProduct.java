@@ -64,7 +64,7 @@ public class AControllerProduct {
 	//모든 상품- 페이징 구현 
 	// PDao에서 선언한이름과 동일한 string 선언 
 	@RequestMapping("/allList")
-	public String allListPaging(Model model,Criteria cri) {
+	public String allListPaging(Criteria cri,Model model) {
 		System.out.println("paging");
 	
 		ProductAllListCommand.execute2(sqlSession, model);

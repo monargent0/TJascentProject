@@ -16,6 +16,8 @@ public class ProductAllListCommand implements ACommand {
 
 
 
+	private int amount;
+
 	@Override
 	public void execute1(SqlSession sqlSession,HttpServletRequest request) {
 
@@ -24,8 +26,9 @@ public class ProductAllListCommand implements ACommand {
 	@Override
 	public void execute2(SqlSession sqlSession, Model model) {
 	
+		
 		//페이징
-		Criteria cri = new Criteria();
+		Criteria cri =new Criteria();
 	
 		PDao dao = sqlSession.getMapper(PDao.class);
 		model.addAttribute("allList",dao.allListPaging(cri));
@@ -37,6 +40,11 @@ public class ProductAllListCommand implements ACommand {
 		//model.addAttribute("allList",dao.allList()); 
 		PDtoPageMaker pageMake = new PDtoPageMaker(cri,total);
 		model.addAttribute("pageMaker", pageMake);
+	}
+
+	private Criteria Criteria(int pageNum, int amount2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

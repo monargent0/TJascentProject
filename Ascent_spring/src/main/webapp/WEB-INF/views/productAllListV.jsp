@@ -48,17 +48,18 @@
   height: 22rem;
   object-fit: cover;
   }
- .pagination {
+ .pageInfo {
       list-style:none;
      display:flex;
      justify-content: center;
      align-items: center;
   } 
-  .pagination li{
+  .pageInfo li{
   	float:left;
     font-size: 20px;
     font-weight: 300;
   }
+  
  </style>
 </head>
 <body style="background-color:#FFFAF6">
@@ -87,40 +88,40 @@
                		 </c:forEach>
   				  </div>
   				  </section>
+  				  
  <!--  paging --> 
 			 <nav class="paging-nav" aria-label="Page navigation example">
-  			<div>
-  			<ul class="pagination" id="pagination">
+  			<div class = "pageInfo_wrap">
+  			<div class ="pageInfo_area" class="pageInfo">
+  				<ul class ="pageInfo" class="pageInfo">
  			<!--  이전 페이지 -->
   				<c:if test="${pageMaker.prev }">
    				 <li class="page-item">
     			  	<a class="page-link" href="${pageMaker.startPage - 1 }" aria-label="Previous">
-     			   <span aria-hidden="true">&laquo;</span>
-    			 Previous </a>
-   				</li>
+     			   Previous<span aria-hidden="true">&laquo;</span></a></li>
    				</c:if>
    
    			<!-- 1부터 5까지 화면상 보여주는 페이지  -->	
-   			<c:forEach var="num"  begin="1" end="${pageMaker.endPage }">
-   			 <li class="page-item">
-   			 <a class="page-link" href="/allList?num=${num }">${num }</a></li>		
+   			<c:forEach var="num"  begin="${pageMaker.startPage }"  end="${pageMaker.endPage }">
+   			  <li class="page-item"><a class="page-link" href="${num }">${num }</a> </li>	
    			 </c:forEach>	
+   			
    			 <!-- 다음 페이지  -->
-   			 
    			 <c:if test="${pageMaker.next }">
    			 <li class="page-item">
     			  <a class="page-link" href="${pageMaker.endPage + 1 }" aria-label="Next">
-    			  Next<span aria-hidden="true">&raquo;</span>
-     			 </a>
-    			</li>
+    			  Next<span aria-hidden="true">&raquo;</span></a></li>
   				</c:if>
+  				
   				</ul>
-			</div>		
+  				
+			</div>
+			</div>
 			</nav>
  
   	
 	 <!-- paging move  form  -->
-	<form id="moveForm" action="get">
+	 <form id="moveForm" action="get">
 		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 		<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
 	</form>
@@ -130,13 +131,14 @@
 			$(document).ready(function () {
 				var moveForm = $("#moveForm");
 				
-				$(".page-item a").on("click",function(e) {
+				$(".pageInfo a").on("click",function(e) {
 					
 					e.preventDefault();
 					moveForm.find("input[name= 'pageNum']").val($(this).attr("href"));
-					moveForm.attr("action", "/allList");
+					moveForm.attr("action", "/springAscent/allList");
 					moveForm.submit();
 				});
+				
 			});
 	</script>
  

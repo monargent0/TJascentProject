@@ -40,7 +40,7 @@ public class Criteria {
 			return amount;
 		}
 		public void setAmount(int amount) {
-			this.skip = (pageNum-1) * this.amount;
+			this.skip = (this.pageNum-1) *amount;
 			this.amount = amount;
 		}
 		public int getSkip() {
