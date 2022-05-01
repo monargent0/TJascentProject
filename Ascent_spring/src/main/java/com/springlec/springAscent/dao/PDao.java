@@ -11,7 +11,7 @@ import com.springlec.springAscent.dto.PDtoList;
 public interface PDao {
 	
 	public ArrayList<PDtoList> allList();	//product-all
-	public ArrayList<PDtoList> allListPaging(Criteria cri); //paging
+	public ArrayList<PDtoList> allListPaging(Criteria cri); //product-all-paging
 	public int getTotal();
 	public ArrayList<PDtoList> mainList();	//main 화면구성 
 	public ArrayList<PDtoList> searchList();	//검색할 때 보이는 

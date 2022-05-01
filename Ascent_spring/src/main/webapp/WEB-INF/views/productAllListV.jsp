@@ -89,11 +89,10 @@
   				  </div>
   				  </section>
   				  
- <!--  paging --> 
-			 <nav class="paging-nav" aria-label="Page navigation example">
-  			<div class = "pageInfo_wrap">
-  			<div class ="pageInfo_area" class="pageInfo">
+			 <!--  paging --> 
+			<nav class="paging-nav" aria-label="Page navigation example">
   				<ul class ="pageInfo" class="pageInfo">
+  				
  			<!--  이전 페이지 -->
   				<c:if test="${pageMaker.prev }">
    				 <li class="page-item">
@@ -103,7 +102,7 @@
    
    			<!-- 1부터 5까지 화면상 보여주는 페이지  -->	
    			<c:forEach var="num"  begin="${pageMaker.startPage }"  end="${pageMaker.endPage }">
-   			  <li class="page-item"><a class="page-link" href="${num }">${num }</a> </li>	
+   			  <li class="page-item"><a class="page-link"  href="${num }">${num }</a> </li>	
    			 </c:forEach>	
    			
    			 <!-- 다음 페이지  -->
@@ -112,11 +111,7 @@
     			  <a class="page-link" href="${pageMaker.endPage + 1 }" aria-label="Next">
     			  Next<span aria-hidden="true">&raquo;</span></a></li>
   				</c:if>
-  				
   				</ul>
-  				
-			</div>
-			</div>
 			</nav>
  
   	

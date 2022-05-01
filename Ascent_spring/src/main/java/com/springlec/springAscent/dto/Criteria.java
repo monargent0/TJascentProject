@@ -12,8 +12,10 @@ public class Criteria {
 		// Constructor
 		public Criteria() {
 		// constructor 생성시 기본 생성자를 호출하여 매개변수를 줘서 매개변수가 가지고 있는 constructor 함수 호출
-			this(1,8); //  pageNum = 1, amount = 8, 게시물  8개 
-			this.skip =0; 
+			//this(1,8); 				// 현재페이지 =1, amount = 8, 게시물  8개 ,1~5까지
+			this.pageNum =1;
+			this.amount = 8;
+			this.skip = 0;	 		// 0으로 설정하여 1번 코드부터 보여준다.
 		}
 		//기본 생성자 설정 
 		public Criteria(int pageNum, int amount) {	//pageNum,amount 매개변수 

@@ -15,9 +15,6 @@ import com.springlec.springAscent.dto.Criteria;
 public class ProductAllListCommand implements ACommand {
 
 
-
-	private int amount;
-
 	@Override
 	public void execute1(SqlSession sqlSession,HttpServletRequest request) {
 
@@ -37,14 +34,8 @@ public class ProductAllListCommand implements ACommand {
 		//총 게시물 = 총 상품의 갯수 
 		int total = dao.getTotal();
 		System.out.println(total);
-		//model.addAttribute("allList",dao.allList()); 
 		PDtoPageMaker pageMake = new PDtoPageMaker(cri,total);
 		model.addAttribute("pageMaker", pageMake);
-	}
-
-	private Criteria Criteria(int pageNum, int amount2) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
