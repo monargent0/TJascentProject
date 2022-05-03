@@ -25,7 +25,7 @@ public interface PDao {
 	public ArrayList<PDtoList> sFTList();	//scent-fruity
 	public ArrayList<PDtoList> sWList();	//scent-woody
 	public ArrayList<PDtoList> sOList();	//scent-oritental
-	public PDtoDetail productDetail(String productCode);
+	public PDtoDetail productDetail(String productCode);	//	상품디테일 
 	
 	
 }

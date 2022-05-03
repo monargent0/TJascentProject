@@ -98,7 +98,7 @@
    				 <li class="page-item">
     			  	<a class="page-link" href="${pageMaker.startPage - 1 }" aria-label="Previous">
      			   Previous<span aria-hidden="true">&laquo;</span></a></li>
-   				</c:if>
+   				</c:if> 
    
    			<!-- 1부터 5까지 화면상 보여주는 페이지  -->	
    			<c:forEach var="num"  begin="${pageMaker.startPage }"  end="${pageMaker.endPage }">
@@ -106,11 +106,11 @@
    			 </c:forEach>	
    			
    			 <!-- 다음 페이지  -->
-   			 <c:if test="${pageMaker.next }">
+   			  <c:if test="${pageMaker.next }">
    			 <li class="page-item">
     			  <a class="page-link" href="${pageMaker.endPage + 1 }" aria-label="Next">
     			  Next<span aria-hidden="true">&raquo;</span></a></li>
-  				</c:if>
+  				</c:if> 
   				</ul>
 			</nav>
  

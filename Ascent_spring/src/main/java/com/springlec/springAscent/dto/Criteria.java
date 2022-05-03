@@ -15,7 +15,7 @@ public class Criteria {
 			//this(1,8); 				// 현재페이지 =1, amount = 8, 게시물  8개 ,1~5까지
 			this.pageNum =1;
 			this.amount = 8;
-			this.skip = 0;	 		// 0으로 설정하여 1번 코드부터 보여준다.
+			this.skip = 8;	 		// 0으로 설정하여 1번 코드부터 보여준다.
 		}
 		//기본 생성자 설정 
 		public Criteria(int pageNum, int amount) {	//pageNum,amount 매개변수 
