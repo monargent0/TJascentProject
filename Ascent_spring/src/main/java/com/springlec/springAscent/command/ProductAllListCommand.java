@@ -6,6 +6,7 @@ package com.springlec.springAscent.command;
 
 
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,6 +16,8 @@ import com.springlec.springAscent.dao.PDao;
 import com.springlec.springAscent.dto.PDtoPageMaker;
 import com.springlec.springAscent.dto.Criteria;
 public class ProductAllListCommand implements ACommand {
+
+
 
 
 	@Override
@@ -31,15 +34,22 @@ public class ProductAllListCommand implements ACommand {
 		PDao dao = sqlSession.getMapper(PDao.class);
 		
 		model.addAttribute("allList",dao.allListPaging(cri));
-		model.addAttribute("total",dao.getTotal());
-		
 		//총 게시물 = 총 상품의 갯수 
 		int total = dao.getTotal();
-		
-		//int skip = cri.getSkip();
-		//model.addAttribute("skip",cri.getSkip());
+		model.addAttribute("total",dao.getTotal());
 		
 		System.out.println(total);
+		
+		model.addAttribute("skip",cri.getSkip());
+		int skip = cri.getSkip();
+
+		model.addAttribute("pageNum",cri.getPageNum());
+		int pageNum= cri.getPageNum();
+		
+		
+		System.out.println(skip);
+
+		System.out.println(pageNum);
 		PDtoPageMaker pageMake = new PDtoPageMaker(cri,total);
 		model.addAttribute("pageMaker", pageMake);
 	}
