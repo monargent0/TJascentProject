@@ -73,23 +73,19 @@ public class AControllerProduct {
 	public String mainList(Model model) {
 		ProductMainCommand.execute2(sqlSession, model);
 		return "mainV";
-	
 	}
 	//검색 
 	@RequestMapping("/productsearch")
 	public String searchList(Model model) {
 		ProductSearchCommand.execute2(sqlSession, model);
 		return "productsearchListV";
-		
 	}
 	
 	//상세페이지
 	@RequestMapping("/productDetailV")
 	public String productdetail(HttpServletRequest request,	Model model) {
 		ProductDetailCommand.execute3(sqlSession, request, model); 
-		
 		return "productDetailV";
-		
 	}
 	
 	
