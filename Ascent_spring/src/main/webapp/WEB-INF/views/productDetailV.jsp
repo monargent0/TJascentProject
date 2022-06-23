@@ -144,7 +144,6 @@ background:#1A0D35;
 	var productCode = document.cartForm.productCode.value;
 	
 function cartWriteCheckUser() {
-	
 	if (userID != 'null'){
 		cartForm.submit();
 		alert("장바구니에 담았습니다.")

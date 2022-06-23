@@ -52,7 +52,7 @@ public class AControllerCart {
 		model.addAttribute("request", request);
 		cartWriteCommand.execute1(sqlSession, request);
 		
-		return "redirect:productDetail";
+		return "redirect:productDetailV";
 	}
 	
 	@RequestMapping("/cartModify")
