@@ -30,7 +30,7 @@
 		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
 		<beans:property name="url" value="jdbc:mysql://localhost:3306/ascent?serverTimezone=Asia/Seoul&amp;characterEncoding=utf8&amp;useSSL=false"/>
 		<beans:property name="username" value="root"/>
-		<beans:property name="password" value="971015gihuk@"/>
+		<beans:property name="password" value="qwer1234"/>
 	</beans:bean>
 	
 	<beans:bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
