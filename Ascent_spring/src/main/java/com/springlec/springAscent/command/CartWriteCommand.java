@@ -14,7 +14,7 @@ public class CartWriteCommand implements ACommand {
 		int cartAmount = Integer.parseInt(request.getParameter("cartAmount"));
 		String productCode = request.getParameter("productCode");
 		String userID = request.getParameter("userID");
-		System.out.println(cartAmount+productCode+userID);
+		
 		CartDao dao = sqlSession.getMapper(CartDao.class);
 		dao.cartWrite(cartAmount, productCode, userID);
 		

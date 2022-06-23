@@ -141,26 +141,18 @@ background:#1A0D35;
 <script>
 	var cartForm = document.cartForm;
 	var userID = '<%=session.getAttribute("userID")%>';
-	var productCode1 = document.cartForm.productCode.value;
-function cartWriteCheckUser() {
+	var productCode = document.cartForm.productCode.value;
 	
+function cartWriteCheckUser() {
 	if (userID != 'null'){
 		cartForm.submit();
 		alert("장바구니에 담았습니다.")
 	}
 	else{
 		alert("로그인이 필요합니다.");
-		location.href='logInV?productCode='+productCode1;
+		location.href='logInV?productCode='+productCode;
 	}
 }
-function sendProductCodeLogin() {
-	if (userID != 'null'){
-		location.href='myPageV'
-	}
-	else{
-		alert("로그인이 필요합니다.");
-		location.href='logInV?productCode='+productCode1;
-	}
-}
+
 </script>
 </html>

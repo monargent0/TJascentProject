@@ -107,6 +107,8 @@
 	
 <script type="text/javascript">
 var userID = '<%=session.getAttribute("userID")%>';
+var productCode = document.cartForm.productCode.value;
+
 function cartListCheckUser() {
 	if (userID != 'null'){
 		location.href='cartList.do?userID='+userID;
@@ -114,6 +116,16 @@ function cartListCheckUser() {
 	else{
 		alert("로그인이 필요합니다.");
 		location.href='logInV';
+	}
+}
+
+function sendProductCodeLogin() {
+	if (userID != 'null'){
+		location.href='myPageV'
+	}
+	else{
+		alert("로그인이 필요합니다.");
+		location.href='logInV?productCode='+productCode;
 	}
 }
 </script>

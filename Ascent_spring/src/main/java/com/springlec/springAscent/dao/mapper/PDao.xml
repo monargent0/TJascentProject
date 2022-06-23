@@ -4,58 +4,76 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 
 <mapper namespace="com.springlec.springAscent.dao.PDao">
-<select id="allList" resultType="com.springlec.springAscent.dto.PDto">
+<select id="allList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT ORDER BY PRODUCTCODE DESC
 </select>
-
-<select id="mainList" resultType="com.springlec.springAscent.dto.PDto">
-SELECT * FROM PRODUCT WHERE PRODUCTNAME LIKE '%로즈%' ORDER BY PRODUCTCODE DESC LIMIT 4 
+<!-- product counting  -->
+<select id="getTotal" resultType="int">
+SELECT COUNT(PRODUCTCODE) FROM PRODUCT
+</select>
+<!--상품 전체 페이징 적용 -->
+<select id="allListPaging" resultType="com.springlec.springAscent.dto.PDtoList">
+ SELECT * FROM (
+ 	 SELECT 
+    	   PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE
+    FROM 
+    	PRODUCT ORDER BY PRODUCTCODE DESC) AS p1
+     LIMIT #{skip},#{amount}
 </select>
 
-<select id="searchList" resultType="com.springlec.springAscent.dto.PDto">
+<select id="mainList" resultType="com.springlec.springAscent.dto.PDtoList">
+SELECT * FROM PRODUCT WHERE PRODUCTNAME LIKE '%로즈%' ORDER BY PRODUCTCODE DESC LIMIT 4 
+</select>
+<!-- 검색 -->
+<select id="searchList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT * FROM PRODUCT WHERE REPLACE(PRODUCTNAME,' ','') LIKE '%${param1}%' OR REPLACE(PRODUCTBRAND,' ','') LIKE '%${param2}%' ORDER BY PRODUCTCODE DESC
 </select>
 
-<select id="pPList" resultType="com.springlec.springAscent.dto.PDto">
+<!-- 부향룰 -->
+<select id="pPList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE 'P-%'
 </select>
 
-<select id="pTList" resultType="com.springlec.springAscent.dto.PDto">
+<select id="pTList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE 'T-%'
 </select>
 
-<select id="pCList" resultType="com.springlec.springAscent.dto.PDto">
+<select id="pCList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE 'C-%'
 </select>
 
-<select id="pBList" resultType="com.springlec.springAscent.dto.PDto">
+<select id="pBList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE 'B-%'
 </select>
-
-<select id="sFList" resultType="com.springlec.springAscent.dto.PDto">
+<!-- scent -->
+<select id="sFList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE '%-F-%'
 </select>
 
-<select id="sCList" resultType="com.springlec.springAscent.dto.PDto">
+<select id="sCList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE '%-C-%'
 </select>
 
-<select id="sFRList" resultType="com.springlec.springAscent.dto.PDto">
+<select id="sFRList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE '%-FR-%'
 </select>
 
-<select id="sFTList" resultType="com.springlec.springAscent.dto.PDto">
+<select id="sFTList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE '%-FT-%'
 </select>
 
-<select id="sWList" resultType="com.springlec.springAscent.dto.PDto">
+<select id="sWList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE '%-W-%'
 </select>
 
-<select id="sOList" resultType="com.springlec.springAscent.dto.PDto">
+<select id="sOList" resultType="com.springlec.springAscent.dto.PDtoList">
 SELECT PRODUCTCODE,PRODUCTNAME,PRODUCTPRICE,PRODUCTSIZE,PRODUCTIMAGES,CATEGORY_CATEGORYCODE FROM PRODUCT WHERE PRODUCTCODE LIKE '%-O-%'
 </select>
 
-
+<!-- 상품 상세 -->
+    
+<select id="productDetail" resultType="com.springlec.springAscent.dto.PDtoDetail">
+SELECT * FROM PRODUCT WHERE PRODUCTCODE = #{param1}
+</select>
 
 </mapper>

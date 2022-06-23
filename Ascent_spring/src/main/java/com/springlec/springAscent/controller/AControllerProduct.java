@@ -1,5 +1,7 @@
 package com.springlec.springAscent.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springlec.springAscent.command.ACommand;
+import com.springlec.springAscent.dto.Criteria;
 @Controller
 public class AControllerProduct {
 	
@@ -14,122 +17,140 @@ public class AControllerProduct {
 	private SqlSession sqlSession;
 
 	//servlet-context에서 new를 선언해준것 
-	private ACommand productAllListCommand = null;
-	private ACommand productMainCommand = null;
-	private ACommand productSearchCommand = null;
-	private ACommand productpPListCommand = null;
-	private ACommand productpTListCommand = null;
-	private ACommand productpCListCommand = null;
-	private ACommand productpBListCommand = null;
-	private ACommand productsFListCommand = null;
-	private ACommand productsCListCommand = null;
-	private ACommand productsFTListCommand = null;
-	private ACommand productsFRListCommand = null;
-	private ACommand productsWListCommand = null;
-	private ACommand productsOListCommand = null;
+	private ACommand ProductAllListCommand = null;
+	private ACommand ProductMainCommand = null;
+	private ACommand ProductSearchCommand = null;
+	private ACommand ProductDetailCommand = null;
+	private ACommand ProductpPListCommand = null;
+	private ACommand ProductpTListCommand = null;
+	private ACommand ProductpCListCommand = null;
+	private ACommand ProductpBListCommand = null;
+	private ACommand ProductsFListCommand = null;
+	private ACommand ProductsCListCommand = null;
+	private ACommand ProductsFTListCommand = null;
+	private ACommand ProductsFRListCommand = null;
+	private ACommand ProductsWListCommand = null;
+	private ACommand ProductsOListCommand = null;
 	
 	@Autowired
-	public void auto(ACommand productAllList,
-			ACommand productMain, ACommand productSearch, ACommand productpPList,
-			ACommand productpTList, ACommand productpCList, ACommand productpBList,
-			ACommand productsFList, ACommand productsCList,ACommand productsFTList,
-			ACommand productsFRList, ACommand productsWList, ACommand productsOList	) {
-		this.productAllListCommand = productAllList;
-		this.productMainCommand = productMain;
-		this.productSearchCommand = productSearch;
-		this.productpPListCommand = productpPList;
-		this.productpTListCommand = productpTList;
-		this.productpCListCommand = productpCList;
-		this.productpBListCommand = productpBList;
-		this.productsFListCommand = productsFList;
-		this.productsCListCommand = productsCList;
-		this.productsFTListCommand = productsFTList;
-		this.productsFRListCommand = productsFRList;
-		this.productsWListCommand = productsWList;
-		this.productsOListCommand = productsOList;
+	public void auto(ACommand ProductAllList,
+			ACommand ProductMain, ACommand ProductSearch, ACommand ProductDetail,	ACommand ProductpPList,
+			ACommand ProductpTList, ACommand ProductpCList, ACommand ProductpBList,
+			ACommand ProductsFList, ACommand ProductsCList,ACommand ProductsFTList,
+			ACommand ProductsFRList, ACommand ProductsWList, ACommand ProductsOList	) {
+		this.ProductAllListCommand =ProductAllList;
+		this.ProductMainCommand = ProductMain;
+		this.ProductSearchCommand = ProductSearch;
+		this.ProductDetailCommand = ProductDetail;
+		this.ProductpPListCommand = ProductpPList;
+		this.ProductpTListCommand = ProductpTList;
+		this.ProductpCListCommand = ProductpCList;
+		this.ProductpBListCommand = ProductpBList;
+		this.ProductsFListCommand = ProductsFList;
+		this.ProductsCListCommand = ProductsCList;
+		this.ProductsFTListCommand = ProductsFTList;
+		this.ProductsFRListCommand = ProductsFRList;
+		this.ProductsWListCommand = ProductsWList;
+		this.ProductsOListCommand = ProductsOList;
 		
 	}
 	
 	//모든 상품 
+//	@RequestMapping("/allList")
+//	public String allList(Model model,Criteria cri) {
+//		productAllListCommand.execute2(sqlSession, model);
+//		return "productAllListV"; //jsp 
+//	}
+	//모든 상품- 페이징 구현 
 	@RequestMapping("/allList")
-	public String allList(Model model) {
-		productAllListCommand.execute2(sqlSession, model);
+	public String allList(Model model,Criteria cri) {
+		ProductAllListCommand.execute2(sqlSession, model);
 		return "productAllListV"; //jsp 
-	
 	}
+	
 	//메인화면 상품 
 	@RequestMapping("/main")
 	public String mainList(Model model) {
-		productMainCommand.execute2(sqlSession, model);
+		ProductMainCommand.execute2(sqlSession, model);
 		return "mainV";
 	
 	}
 	//검색 
 	@RequestMapping("/productsearch")
 	public String searchList(Model model) {
-		productSearchCommand.execute2(sqlSession, model);
+		ProductSearchCommand.execute2(sqlSession, model);
 		return "productsearchListV";
 		
 	}
-	// 제품 종류별 탭
+	
+	//상세페이지
+	@RequestMapping("/productDetailV")
+	public String productdetail(HttpServletRequest request,	Model model) {
+		ProductDetailCommand.execute3(sqlSession, request, model); 
+		
+		return "productDetailV";
+		
+	}
+	
+	
 	@RequestMapping("/productperfumelist")
 	public String pPList(Model model) {
-		productpPListCommand.execute2(sqlSession, model);
+		ProductpPListCommand.execute2(sqlSession, model);
 		return "productpPListV";
 		
 	}
 	@RequestMapping("/producttotilettelist")
 	public String pTList(Model model) {
-		productpTListCommand.execute2(sqlSession, model);
+		ProductpTListCommand.execute2(sqlSession, model);
 		return "productpTListV";
 		
 	}
 	@RequestMapping("/productcolongelist")
 	public String pCList(Model model) {
-		productpCListCommand.execute2(sqlSession, model);
+		ProductpCListCommand.execute2(sqlSession, model);
 		return "productpCListV";
 		
 	}
 	@RequestMapping("/productbodyspraylist")
 	public String pBList(Model model) {
-		productpBListCommand.execute2(sqlSession, model);
+		ProductpBListCommand.execute2(sqlSession, model);
 		return "productpBListV";
 		
 	}
 	// 향 종류별 탭
 	@RequestMapping("/productscentfloralList")
 	public String sFList(Model model) {
-		productsFListCommand.execute2(sqlSession, model);
+		ProductsFListCommand.execute2(sqlSession, model);
 		return "productsFListV";
 		
 	}
 	@RequestMapping("/productscentcitruslist")
 	public String sCList(Model model) {
-		productsCListCommand.execute2(sqlSession, model);
+		ProductsCListCommand.execute2(sqlSession, model);
 		return "productsCListV";
 		
 	}
 	@RequestMapping("/productscentfreshlist")
 	public String sFRList(Model model) {
-		productsFRListCommand.execute2(sqlSession, model);
+		ProductsFRListCommand.execute2(sqlSession, model);
 		return "productsFRListV";
 		
 	}
 	@RequestMapping("/productscentfruitylist")
 	public String sFTList(Model model) {
-		productsFTListCommand.execute2(sqlSession, model);
+		ProductsFTListCommand.execute2(sqlSession, model);
 		return "productsFTListV";
 		
 	}
 	@RequestMapping("/productscentwoodylist")
 	public String sWList(Model model) {
-		productsWListCommand.execute2(sqlSession, model);
+		ProductsWListCommand.execute2(sqlSession, model);
 		return "productsWListV";
 		
 	}
 	@RequestMapping("/productscentoritentallist")
 	public String sOList(Model model) {
-		productsOListCommand.execute2(sqlSession, model);
+		ProductsOListCommand.execute2(sqlSession, model);
 		return "productsOListV";
 		
 	}

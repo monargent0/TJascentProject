@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 
 import com.springlec.springAscent.dao.PDao;
 
-public class productpTListCommand implements ACommand {
+public class ProductpPListCommand implements ACommand {
 
 	@Override
 	public void execute1(SqlSession sqlSession,HttpServletRequest request) {
@@ -18,8 +18,7 @@ public class productpTListCommand implements ACommand {
 	@Override
 	public void execute2(SqlSession sqlSession, Model model) {
 		PDao dao = sqlSession.getMapper(PDao.class);
-		model.addAttribute("pTList",dao.pTList());
-
+		model.addAttribute("pPList",dao.pPList());
 	}
 	@Override
 	public void execute3(SqlSession sqlSession, HttpServletRequest request, Model model) {
