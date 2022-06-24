@@ -49,10 +49,11 @@ public class AControllerCart {
 	@RequestMapping("/cartWrite")
 	public String cartWrite(HttpServletRequest request, Model model) {
 
-		model.addAttribute("request", request);
 		cartWriteCommand.execute1(sqlSession, request);
+		String productCode = request.getParameter("productCode");
+		System.out.println(productCode);
 		
-		return "redirect:productDetailV";
+		return "productDetailV?productCode="+productCode;
 	}
 	
 	@RequestMapping("/cartModify")
