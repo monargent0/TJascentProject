@@ -18,18 +18,18 @@ public class AControllerCart {
 	private ACommand cartListCommand = null;
 	private ACommand cartWriteCommand = null;
 	private ACommand cartModifyCommand = null;
-//	private ACommand cartDeleteCommand = null;
+	private ACommand cartDeleteCommand = null;
 	
 //	private ACommand orderListCommand = null;
 //	private ACommand orderWriteCommand = null;
 //	private ACommand orderContentCommand = null;
 	
 	@Autowired
-	public void auto(ACommand cartList, ACommand cartWrite, ACommand cartModify) {
+	public void auto(ACommand cartList, ACommand cartWrite, ACommand cartModify, ACommand cartDelete) {
 		this.cartListCommand = cartList;
 		this.cartWriteCommand = cartWrite;
 		this.cartModifyCommand = cartModify;
-//		this.cartDeleteCommand = cartDelete;
+		this.cartDeleteCommand = cartDelete;
 		
 //		this.orderListCommand = orderList;
 //		this.orderWriteCommand = orderWrite;
@@ -63,13 +63,13 @@ public class AControllerCart {
 		
 		return "redirect:cartList";
 	}
-//	
-//	@RequestMapping("/cartDelete")
-//	public String cartDelete(HttpServletRequest request, Model model) {
-//		
-//		model.addAttribute("request", request);
-//		cartDeleteCommand.execute2(request, sqlSession);
-//		
-//		return "redirect:cartList";
-//	}
+	
+	@RequestMapping("/cartDelete")
+	public String cartDelete(HttpServletRequest request, Model model) {
+		
+		model.addAttribute("request", request);
+		cartDeleteCommand.execute1(sqlSession, request);
+		
+		return "redirect:cartList";
+	}
 }
