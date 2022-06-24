@@ -83,7 +83,7 @@
 				<input type="text" value="${dto.orderCode }" name="orderCode" readonly="readonly">
 				</td>
 				<td align="center">
-				<a href="orderDetail.do?orderNumber=${dto.orderNumber }&userID=<%=session.getAttribute("userID")%>">${dto.orderNumber }</a>
+				<a href="orderDetail?orderNumber=${dto.orderNumber }&userID=<%=session.getAttribute("userID")%>">${dto.orderNumber }</a>
 				</td>
 				<td align="center">
 				<img class="img" src="${dto.productImages }" width="150px" name="productImages">

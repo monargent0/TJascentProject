@@ -84,7 +84,7 @@
 			<div class="jb-text">
       	  <p id="hyper1">Red in full bloom</p>
     	  </div>
-		<a id="hyper2" href="sFList.do">More </a>		
+		<a id="hyper2" href="sFList">More </a>		
 		</ul>
 		
 	<!-- 상품 구현  -->

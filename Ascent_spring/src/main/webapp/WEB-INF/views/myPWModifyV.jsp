@@ -147,7 +147,7 @@ function noblank(obj) { // 공백사용못하게
 
  
  	<div class="contents">
- 		<form action="myPWModify.do" method="post" name="pwC">
+ 		<form action="myPWModify" method="post" name="pwC">
  			<table>
  			<tr><td><h2>비밀번호 변경</h2></td></tr>
 				<tr><td align="center">

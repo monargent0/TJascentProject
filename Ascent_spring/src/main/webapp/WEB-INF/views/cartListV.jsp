@@ -102,12 +102,12 @@ function checkBoxAll(event) {
 				<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
 				</td>
 				<td align="center">
-				<a href="productDetail.do?productCode=${dto.productCode }">
+				<a href="productDetail?productCode=${dto.productCode }">
 				<img class="img" src="${dto.productImages }" width="100px" name="productImages">
 				</a>
 				</td>
 				<td align="left">
-				<a href="productDetail.do?productCode=${dto.productCode }">${dto.productName }</a>
+				<a href="productDetail?productCode=${dto.productCode }">${dto.productName }</a>
 				</td>
 				<td align="center">
 				${dto.productSize } ml
@@ -131,7 +131,7 @@ function checkBoxAll(event) {
 			</c:forEach>
 			</table><br>
 				<input type="button" value="선택상품 주문" onclick="checkUserCheck()">
-				<input type="submit" value="선택상품 삭제" formaction="cartDelete.do">
+				<input type="submit" value="선택상품 삭제" formaction="cartDelete">
 			</form>
 </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>

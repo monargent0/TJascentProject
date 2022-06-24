@@ -273,7 +273,7 @@
 	</div>
 	
 	<div>
-		<form action="signIn.do" method="post" name="signin">
+		<form action="signIn" method="post" name="signin">
 			<div>
 				<div>
 					<label>Name</label>

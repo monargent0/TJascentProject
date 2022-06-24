@@ -114,8 +114,8 @@
 				<input type="text" value="${dto.orderSum }" name="orderSum" readonly="readonly">
 				</td> --%>
 				<td align="center">
-				<input type="submit" value="후기 작성" formaction="reviewWrite.do?orderCode=${dto.orderCode }">
-				<input type="submit" value="환불" formaction="refund.do?orderCode=${dto.orderCode }">	
+				<input type="submit" value="후기 작성" formaction="reviewWrite?orderCode=${dto.orderCode }">
+				<input type="submit" value="환불" formaction="refund?orderCode=${dto.orderCode }">	
 				</td>
 			</tr>
 			</c:forEach>
