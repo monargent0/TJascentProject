@@ -147,6 +147,8 @@ function cartWriteCheckUser() {
 	if (userID != 'null'){
 		cartForm.submit();
 		alert("장바구니에 담았습니다.")
+		location.href='productDetailV?productCode='+productCode;
+		/* 화면 전환 및 값 전달은 jsp단에서 */
 	}
 	else{
 		alert("로그인이 필요합니다.");

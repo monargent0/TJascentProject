@@ -59,7 +59,7 @@
 		<h1>비밀번호 찾기</h1>
 	</div>
 	
-		<form action="findPW.do" method="post" >
+		<form action="findPW" method="post" >
 			<div style="margin-bottom: 15px;">
 				<div>
 					<input type="text" name="userID" placeholder="아이디를 입력해 주세요" required="required" size="50"  onkeyup="noblank(this)">

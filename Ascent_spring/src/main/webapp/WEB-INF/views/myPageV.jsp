@@ -72,15 +72,15 @@
 <!-- 개인정보수정,회원탈퇴 -->
 <h4 align="center">MY PAGE</h4>
 
-<button onclick="location='profile.do'" style="width: 200px;" class="hd-btn">나의 정보</button> <br>
+<button onclick="location='profile'" style="width: 200px;" class="hd-btn">나의 정보</button> <br>
 <br>
-<button onclick="location='addressList.do'" style="width: 200px;" class="hd-btn">주소록</button> <br>
+<button onclick="location='addressList'" style="width: 200px;" class="hd-btn">주소록</button> <br>
 <br>
-<button onclick="location='orderList.do'" style="width: 200px;" class="hd-btn">주문내역</button> <br>
+<button onclick="location='orderList'" style="width: 200px;" class="hd-btn">주문내역</button> <br>
 <br>
-<button onclick="location='counselList.do'" style="width: 200px;" class="hd-btn">1:1문의</button> <br>
+<button onclick="location='counselList'" style="width: 200px;" class="hd-btn">1:1문의</button> <br>
 <br>
-<button onclick="location='reviewList.do'" style="width: 200px;" class="hd-btn" >후기목록</button> <br>
+<button onclick="location='reviewList'" style="width: 200px;" class="hd-btn" >후기목록</button> <br>
 <br>
 <button onclick="location='signOutV'" style="width: 200px;" class="hd-btn">회원탈퇴</button> <br>
 <br>

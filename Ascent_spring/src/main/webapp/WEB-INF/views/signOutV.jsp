@@ -90,7 +90,7 @@
 	</div>
 
 	<div>
-		<form action="signOut.do" method="post" name="signOut">
+		<form action="signOut" method="post" name="signOut">
 			<div>
 				<!-- <div>
 					<label>비밀번호 확인</label>

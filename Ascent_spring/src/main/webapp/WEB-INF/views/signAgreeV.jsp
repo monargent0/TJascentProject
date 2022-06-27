@@ -42,7 +42,6 @@
 	
 	function nocheck(){
 	 alert("동의하지 않으면 가입하실 수 없습니다");
-	/*  location.href="main.do"; */
 	 }
 </script>
 

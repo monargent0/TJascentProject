@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
 
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<link type="text/css" href="css/productlist.css" rel="stylesheet" >
+<link type="text/css" href="css/productlist.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="headers.css" rel="stylesheet">
 <link
@@ -32,26 +33,30 @@
 
 <title>Cart List</title>
 <style>
-	  table {
-        border-collapse: collapse;
-        width: auto;
-        height: auto;
-      }
-      
-      table, th, td {
-        padding: 5px;
-       }
-       th{
-       border-top : 1px solid black;
-       border-bottom: 1px solid black;
-       }
-       
-      .list{
-      	position: absolute;
-      	top : 50%;
-      	left : 50%;
-      	transform : translate(-50%,-50%);
-      }
+table {
+	border-collapse: collapse;
+	width: auto;
+	height: auto;
+}
+
+table, th, td {
+	padding: 5px;
+}
+
+th {
+	position: sticky;
+	top: 0px;
+	background-color: #FFFAF6 !important;
+	/* border-top: 1px solid black;
+	border-bottom: 1px solid black; */
+}
+
+.list {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 </style>
 </head>
 <script>
@@ -71,13 +76,15 @@ function checkBoxAll(event) {
 	}
 }
 </script>
-<body style="background-color:#FFFAF6">
-<%@include file="head.jsp" %>	
+<body style="background-color: #FFFAF6">
+	<%@include file="head.jsp"%>
 
 <div class="list">
 	<h1>장바구니</h1>
+	<div class='scroll'
+			style='width: 100%; height: 500px; overflow: auto;'>
 	<table border="1">
-			<tr>
+			<tr align="center">
 				<th hidden="">userID</th>
 				<th hidden="">cartCode</th>
 				<th hidden="">productCode</th>
@@ -102,12 +109,12 @@ function checkBoxAll(event) {
 				<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
 				</td>
 				<td align="center">
-				<a href="productDetail?productCode=${dto.productCode }">
+				<a href="productDetailV?productCode=${dto.productCode }">
 				<img class="img" src="${dto.productImages }" width="100px" name="productImages">
 				</a>
 				</td>
 				<td align="left">
-				<a href="productDetail?productCode=${dto.productCode }">${dto.productName }</a>
+				<a href="productDetailV?productCode=${dto.productCode }">${dto.productName }</a>
 				</td>
 				<td align="center">
 				${dto.productSize } ml
@@ -136,7 +143,9 @@ function checkBoxAll(event) {
 				</td>
 			</tr>
 			</c:forEach>
-			</table><br>
+			</table>
+		</div>
+			<br>
 				<input type="button" value="선택상품 주문" onclick="orderCheckCart()">
 				<input type="button" value="선택상품 삭제" onclick="deleteCheckCart()">
 			</form>
