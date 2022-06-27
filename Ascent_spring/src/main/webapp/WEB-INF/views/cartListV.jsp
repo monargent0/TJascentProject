@@ -32,26 +32,27 @@
 
 <title>Cart List</title>
 <style>
-	  table {
-        border-collapse: collapse;
+	table {
+		border-collapse: collapse;
         width: auto;
         height: auto;
-      }
+    }
       
-      table, th, td {
+    table, th, td {
         padding: 5px;
-       }
-       th{
+    }
+      
+    th{
        border-top : 1px solid black;
        border-bottom: 1px solid black;
-       }
+    }
        
-      .list{
+    .list{
       	position: absolute;
       	top : 50%;
       	left : 50%;
       	transform : translate(-50%,-50%);
-      }
+    }
 </style>
 </head>
 <script>
@@ -90,45 +91,47 @@ function checkBoxAll(event) {
 				<th>합계</th>
 			</tr>
 			<form name="cartForm" method="post">
-			<c:forEach items="${cartList }" var="dto">
-			<tr>
-				<td hidden="">
-				<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly">
-				</td>
-				<td hidden="">
-				<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly">
-				</td>
-				<td>
-				<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
-				</td>
-				<td align="center">
-				<a href="productDetail?productCode=${dto.productCode }">
-				<img class="img" src="${dto.productImages }" width="100px" name="productImages">
-				</a>
-				</td>
-				<td align="left">
-				<a href="productDetail?productCode=${dto.productCode }">${dto.productName }</a>
-				</td>
-				<td align="center">
-				${dto.productSize } ml
-				</td>
-				<td align="center">
-				${dto.productPrice } 원
-				</td>
-				<td align="center">
-					<select name="cartAmount">
-						<option value="${dto.cartAmount }" selected="selected">${dto.cartAmount }</option>
-						<option value="1" onselect="">1</option>
-						<option value="2" onselect="">2</option>
-						<option value="3" onselect="">3</option>
-					</select>
-					개
-				</td>
-				<td align="center">
-				${dto.cartSum } 원
-				</td>
-			</tr>
-			</c:forEach>
+				<c:forEach items="${cartList }" var="dto">
+			<div class='scroll' style='width: 100%; height: 200px; overflow: auto;'>
+				<tr>
+					<td hidden="">
+					<input type="text" value="<%=request.getParameter("userID") %>" name="userID" readonly="readonly">
+					</td>
+					<td hidden="">
+					<input type="text" value="${dto.cartCode }" name="cartCode" readonly="readonly">
+					</td>
+					<td>
+					<input type="checkbox"  name="checkCart" value="${dto.cartCode }">
+					</td>
+					<td align="center">
+					<a href="productDetail?productCode=${dto.productCode }">
+					<img class="img" src="${dto.productImages }" width="100px" name="productImages">
+					</a>
+					</td>
+					<td align="left">
+					<a href="productDetail?productCode=${dto.productCode }">${dto.productName }</a>
+					</td>
+					<td align="center">
+					${dto.productSize } ml
+					</td>
+					<td align="center">
+					${dto.productPrice } 원
+					</td>
+					<td align="center">
+						<select name="cartAmount">
+							<option value="${dto.cartAmount }" selected="selected">${dto.cartAmount }</option>
+							<option value="1" onselect="">1</option>
+							<option value="2" onselect="">2</option>
+							<option value="3" onselect="">3</option>
+						</select>
+						개
+					</td>
+					<td align="center">
+					${dto.cartSum } 원
+					</td>
+				</tr>
+			</div>
+				</c:forEach>
 			</table><br>
 				<input type="button" value="선택상품 주문" onclick="checkUserCheck()">
 				<input type="submit" value="선택상품 삭제" formaction="cartDelete">
