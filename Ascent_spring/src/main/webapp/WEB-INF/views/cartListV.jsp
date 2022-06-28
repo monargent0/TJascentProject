@@ -156,16 +156,6 @@ function checkBoxAll(event) {
 var cartForm = document.cartForm;
 var userID = '<%=session.getAttribute("userID")%>';
 
-function cartListCheckUser() {
-	if (userID != 'null'){
-		location.href='cartList?userID='+userID;
-	}
-	else{
-		alert("로그인이 필요합니다.");
-		location.href='logInV';
-	}
-}
-
 function orderCheckCart() {
 	const query = 'input[name="checkCart"]:checked';
 	const selectedEls = document.querySelectorAll(query);
